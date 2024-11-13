@@ -1,19 +1,11 @@
 <?php
-// Database connection details
-$servername = "localhost";
-$username = "root";
-$password = ""; // Ensure this is correct; it looks like you're using no password
-$dbname = "parkingz";
+$con = mysqli_connect("mysql", "u132092183_parkingz", "Parkingz@2024!", "u132092183_parkingz");
 
-// Create connection
-$con = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
 if (mysqli_connect_errno()) {
-    die("Connection failed: " . mysqli_connect_error());
+    echo "Connection Failed: " . mysqli_connect_error();
+    exit(); // Stop execution if the connection fails
+} else {
+    // Optional: Uncomment for debugging
+    // echo "Database connected successfully.";
 }
-
-// Optionally set the character set for the connection
-mysqli_set_charset($con, "utf8"); // Adjust if necessary
-
 ?>
