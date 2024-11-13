@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" contaent="width=device-width, initial-scale=1">
-    <title>Welcome to CTU Danao Parking System</title>
+    <title>1111Welcome to CTU Danao Parking System</title>
     <link rel="stylesheet" href="styles/welcome.css">
     <link rel="apple-touch-icon" href="images/ctu.png">
     <link rel="shortcut icon" href="images/ctu.png">
