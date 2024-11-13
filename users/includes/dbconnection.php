@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "parkingz");
+$con = mysqli_connect("localhost", "u1132092183_parkingz", "Parkingz@2024!", "u1132092183_parkingz");
 
 if (mysqli_connect_errno()) {
     echo "Connection Failed: " . mysqli_connect_error();
