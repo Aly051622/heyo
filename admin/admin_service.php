@@ -9,7 +9,7 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Fetch users who have sent messages
+// Fetch distinct users who have sent messages based on email
 $sql = "
     SELECT DISTINCT 
         tblregusers.ID, 
