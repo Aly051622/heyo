@@ -9,13 +9,14 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Fetch distinct users from the messages table and match them with registered users
+// Fetch distinct users who sent or received messages
 $sql = "
     SELECT DISTINCT 
         tblregusers.ID, 
         CONCAT(tblregusers.FirstName, ' ', tblregusers.LastName) AS FullName 
     FROM tblregusers
     JOIN messages ON messages.username = tblregusers.Email
+    OR messages.receiver = tblregusers.Email
     ORDER BY tblregusers.FirstName ASC
 ";
 
