@@ -1,11 +1,17 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Include the database connection
 include('includes/dbconnection.php');
 
 // Fetch user names from the database
-$sql = "SELECT first_name, username FROM tblregusers";  // Adjust the column names if necessary
+$sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers"; 
 $result = $conn->query($sql);
 
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +28,15 @@ $result = $conn->query($sql);
         <table border="1">
             <thead>
                 <tr>
-                    <th>Username</th>
+                    <th>User ID</th>
                     <th>Full Name</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['username']); ?></td>
-                        <td><?php echo htmlspecialchars($row['first_name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['ID']); ?></td>
+                        <td><?php echo htmlspecialchars($row['FullName']); ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
@@ -39,10 +45,6 @@ $result = $conn->query($sql);
         <p>No users found.</p>
     <?php endif; ?>
 
-    <?php
-    // Close the database connection
-    $conn->close();
-    ?>
-
+    <?php $conn->close(); ?>
 </body>
 </html>
