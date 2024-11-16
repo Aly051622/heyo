@@ -8,8 +8,8 @@ include 'includes/dbconnection.php';
 
 // Query to get distinct sender details
 $sql = "SELECT DISTINCT m.sender, u.FirstName, u.LastName, u.profile_pictures
-        FROM messages m
-        INNER JOIN tblregusers u ON m.sender = u.Email";
+        FROM messages AS m
+        INNER JOIN tblregusers AS u ON m.sender = u.Email";
 
 // Execute the query
 $result = mysqli_query($con, $sql);
