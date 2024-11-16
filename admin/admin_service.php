@@ -9,8 +9,16 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Fetch user names from the database
-$sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
+// Fetch user names who participated in conversations
+$sql = "
+    SELECT DISTINCT 
+        tblregusers.ID, 
+        CONCAT(tblregusers.FirstName, ' ', tblregusers.LastName) AS FullName 
+    FROM messages
+    JOIN tblregusers ON tblregusers.ID = messages.sender_id OR tblregusers.ID = messages.receiver_id
+    ORDER BY tblregusers.FirstName ASC
+";
+
 $result = $con->query($sql);
 
 if (!$result) {
@@ -25,22 +33,24 @@ if (!$result) {
     <title>Admin Service</title>
 </head>
 <body>
-    <h1>Users List</h1>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    <h1>Users Who Sent or Received Messages</h1>
+    <ul style="list-style-type: none; padding: 0;">
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
-                <!-- Display user names as clickable links -->
-                <a 
-                    href="conversation.php?user_id=<?php echo urlencode($row['ID']); ?>" 
-                    style="text-decoration: none; padding: 10px; background-color: #f0f0f0; border-radius: 5px; color: #333;"
-                >
-                    <?php echo htmlspecialchars($row['FullName']); ?>
-                </a>
+                <!-- Display user names vertically as clickable links -->
+                <li>
+                    <a 
+                        href="conversation.php?user_id=<?php echo urlencode($row['ID']); ?>" 
+                        style="text-decoration: none; color: #007BFF;"
+                    >
+                        <?php echo htmlspecialchars($row['FullName']); ?>
+                    </a>
+                </li>
             <?php endwhile; ?>
         <?php else: ?>
             <p>No users found.</p>
         <?php endif; ?>
-    </div>
+    </ul>
     <?php $con->close(); ?>
 </body>
 </html>
