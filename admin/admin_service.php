@@ -2,21 +2,21 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Include the database connection
-include('includes/dbconnection.php');
+include('../includes/dbconnection.php'); // Adjust the path if needed
 
 if (!isset($conn)) {
     die("Database connection not established.");
 }
 
+// Fetch data
 $sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
 $result = $conn->query($sql);
 
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +26,6 @@ if (!$result) {
 </head>
 <body>
     <h1>Users List</h1>
-
     <?php if ($result->num_rows > 0): ?>
         <table border="1">
             <thead>
@@ -47,7 +46,6 @@ if (!$result) {
     <?php else: ?>
         <p>No users found.</p>
     <?php endif; ?>
-
     <?php $conn->close(); ?>
 </body>
 </html>
