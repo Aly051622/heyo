@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include the database connection
-include('../includes/dbconnection.php');
+include('includes/dbconnection.php');
 
 if (!isset($conn)) {
     die("Database connection not established.");
