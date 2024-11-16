@@ -1,27 +1,34 @@
 <?php
-include_once 'includes/dbconnection.php'; // Make sure the connection is included
+ini_set('display_errors', 1); 
+error_reporting(E_ALL);
 
-$sql = "SELECT DISTINCT sender FROM messages"; // Get distinct senders
+include_once 'includes/dbconnection.php';
+
+if (!$con) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Example query: Select distinct senders from messages table
+$sql = "SELECT DISTINCT sender FROM messages"; 
 $result = mysqli_query($con, $sql);
 
 if (!$result) {
-    echo "Error with query: " . mysqli_error($con);
-    exit(); // Stop execution if query fails
+    die("Error with query: " . mysqli_error($con));  // This will show the specific SQL error
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $sender_email = $row['sender']; // Get the sender email
+    $sender_email = $row['sender'];
 
-    // Fetch sender info from tblregusers
+    // Fetch user info from tblregusers based on the sender's email
     $user_sql = "SELECT FirstName, LastName, profile_pictures FROM tblregusers WHERE Email = '$sender_email'";
     $user_result = mysqli_query($con, $user_sql);
     
-    if ($user_result) {
-        $user_info = mysqli_fetch_assoc($user_result);
-        echo "Sender: " . $user_info['FirstName'] . " " . $user_info['LastName'];
-        echo " <img src='" . $user_info['profile_pictures'] . "' alt='Profile Picture'>";
-    } else {
-        echo "Error fetching user info: " . mysqli_error($con);
+    if (!$user_result) {
+        die("Error fetching user info: " . mysqli_error($con)); // Show if the query fails
     }
+
+    $user_info = mysqli_fetch_assoc($user_result);
+    echo "Sender: " . htmlspecialchars($user_info['FirstName']) . " " . htmlspecialchars($user_info['LastName']);
+    echo " <img src='" . htmlspecialchars($user_info['profile_pictures']) . "' alt='Profile Picture'>";
 }
 ?>
