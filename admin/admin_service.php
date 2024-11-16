@@ -1,9 +1,5 @@
 <?php
-// Enable error reporting for debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Start the session to access session data
+// Start the session at the very beginning
 session_start();
 
 // Debug: Check if the session is set and contains the email
@@ -11,8 +7,10 @@ if (!isset($_SESSION['email'])) {
     die("You must be logged in to access this page. Session variable 'email' is not set.");
 }
 
-// If the session is correctly set, it will display the logged-in email
-echo "Logged in as: " . $_SESSION['email']; // Debugging output
+// Debug: Display session data
+echo "<pre>";
+print_r($_SESSION);  // Display all session data to see what's being stored
+echo "</pre>";
 
 // Include the database connection
 include('includes/dbconnection.php');
