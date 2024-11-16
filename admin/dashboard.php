@@ -13,7 +13,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
     $admin_id = $_SESSION['vpmsaid'];
 
     // Fetch unread messages for the admin
-    $query = "SELECT * FROM messages WHERE receiver = '$admin_id' AND status = 'unread' ORDER BY created_at DESC";
+    $sql = "SELECT * FROM messages WHERE receiver = '$user_id'"; // Make sure this is correct
     $result = mysqli_query($con, $query);
 
     if(!$result) {
