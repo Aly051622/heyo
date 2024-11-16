@@ -8,8 +8,8 @@ include 'includes/dbconnection.php';
 
 // Query to get distinct sender details
 $sql = "SELECT DISTINCT m.sender, u.FirstName, u.LastName, u.profile_pictures
-        FROM messages AS m
-        INNER JOIN tblregusers AS u ON m.sender = u.Email";
+        FROM messages m
+        JOIN tblregusers u ON m.sender = u.Email";
 
 // Execute the query
 $result = mysqli_query($con, $sql);
@@ -27,7 +27,6 @@ if (!$result) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Service</title>
-    <!-- Include any CSS files here -->
 </head>
 <body>
     <h2>Messages from Users</h2>
