@@ -9,14 +9,13 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Fetch distinct users who sent or received messages
+// Fetch users who have sent messages
 $sql = "
     SELECT DISTINCT 
         tblregusers.ID, 
         CONCAT(tblregusers.FirstName, ' ', tblregusers.LastName) AS FullName 
     FROM tblregusers
     JOIN messages ON messages.username = tblregusers.Email
-    OR messages.receiver = tblregusers.Email
     ORDER BY tblregusers.FirstName ASC
 ";
 
@@ -34,7 +33,7 @@ if (!$result) {
     <title>Admin Service</title>
 </head>
 <body>
-    <h1>Users Who Sent or Received Messages</h1>
+    <h1>Users Who Sent Messages</h1>
     <ul style="list-style-type: none; padding: 0;">
         <?php if ($result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
