@@ -9,7 +9,7 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Query to fetch user information
+// Fetch user names from the database
 $sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
 $result = $con->query($sql);
 
@@ -26,26 +26,21 @@ if (!$result) {
 </head>
 <body>
     <h1>Users List</h1>
-    <?php if ($result->num_rows > 0): ?>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Full Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($row['ID']); ?></td>
-                        <td><?php echo htmlspecialchars($row['FullName']); ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No users found.</p>
-    <?php endif; ?>
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <!-- Display user names as clickable links -->
+                <a 
+                    href="conversation.php?user_id=<?php echo urlencode($row['ID']); ?>" 
+                    style="text-decoration: none; padding: 10px; background-color: #f0f0f0; border-radius: 5px; color: #333;"
+                >
+                    <?php echo htmlspecialchars($row['FullName']); ?>
+                </a>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No users found.</p>
+        <?php endif; ?>
+    </div>
     <?php $con->close(); ?>
 </body>
 </html>
