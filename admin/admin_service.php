@@ -2,20 +2,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include('../includes/dbconnection.php'); // Adjust the path if needed
+// Adjusted path to the same directory
+include('includes/dbconnection.php');
 
 if (!isset($conn)) {
     die("Database connection not established.");
 }
 
-// Fetch data
 $sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
 $result = $conn->query($sql);
 
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
