@@ -18,7 +18,6 @@ $result = mysqli_query($con, $sql);
 if (!$result) {
     die("Query Failed: " . mysqli_error($con)); // Output error if query fails
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
