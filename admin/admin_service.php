@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // Include the database connection
 include 'includes/dbconnection.php';
 
-// Query to get distinct sender details
+// Query to get distinct sender details and their profiles
 $sql = "SELECT DISTINCT m.sender, u.FirstName, u.LastName, u.profile_pictures
         FROM messages m
         JOIN tblregusers u ON m.sender = u.Email";
@@ -19,6 +19,7 @@ if (!$result) {
     die("Query Failed: " . mysqli_error($con)); // Output error if query fails
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,12 +38,15 @@ if (!$result) {
         $lastName = $row['LastName'];
         $profilePicture = $row['profile_pictures'];
 
+        // Check if profile picture exists
+        $profilePicPath = $profilePicture ? 'uploads/profile_uploads/' . $profilePicture : 'default-profile.png';
+
         // Display the sender's name and profile picture
         echo "<div class='sender'>";
-        echo "<img src='uploads/profile_uploads/" . $profilePicture . "' alt='Profile Picture' width='50' height='50'>";
+        echo "<img src='" . $profilePicPath . "' alt='Profile Picture' width='50' height='50'>";
         echo "<p>" . $firstName . " " . $lastName . "</p>";
         echo "<a href='conversation.php?sender=" . urlencode($row['sender']) . "'>View Conversation</a>";
-        echo "</div>";
+        echo "</div><br>";
     }
     ?>
 
