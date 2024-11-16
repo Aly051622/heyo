@@ -3,16 +3,19 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Include the database connection
-include('includes/dbconnection.php');
-
-// Start the session to access the logged-in user's data
+// Start the session to access session data
 session_start();
 
-// Check if the user is logged in (e.g., checking if email is set in the session)
+// Debug: Check if the session is set and contains the email
 if (!isset($_SESSION['email'])) {
-    die("You must be logged in to access this page.");
+    die("You must be logged in to access this page. Session variable 'email' is not set.");
 }
+
+// If the session is correctly set, it will display the logged-in email
+echo "Logged in as: " . $_SESSION['email']; // Debugging output
+
+// Include the database connection
+include('includes/dbconnection.php');
 
 // Logged-in user's email (sender)
 $senderEmail = $_SESSION['email'];
