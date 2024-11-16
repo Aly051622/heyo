@@ -1,19 +1,9 @@
 <?php
-// Start the session at the top of the file
-session_start();
-
-// Check if the 'email' session variable is set to verify if the user is logged in
-if (!isset($_SESSION['email'])) {
-    // Redirect to login page if not logged in
-    header("Location: login.php");
-    exit(); // Ensure no further code is executed
-}
-
 // Include database connection
 include_once 'includes/dbconnection.php';
 
-// Get all messages sent to the admin
-$query = "SELECT DISTINCT sender FROM messages WHERE receiver = 'admin'"; // Adjust 'admin' if needed
+// Get all distinct senders who have messaged the admin
+$query = "SELECT DISTINCT sender FROM messages WHERE receiver = 'admin'"; 
 $result = mysqli_query($conn, $query);
 
 if (!$result) {
@@ -33,11 +23,12 @@ if (!$result) {
     <h1>Messages for Admin</h1>
     
     <?php
+    // Loop through each sender and fetch their details
     while ($row = mysqli_fetch_assoc($result)) {
-        $sender = $row['sender'];
+        $senderEmail = $row['sender'];
         
-        // Get sender's profile picture and name from tblregusers using their email
-        $userQuery = "SELECT profile_pictures, FirstName, LastName FROM tblregusers WHERE Email = '$sender'";
+        // Get sender's profile picture and full name from tblregusers
+        $userQuery = "SELECT profile_pictures, FirstName, LastName FROM tblregusers WHERE Email = '$senderEmail'";
         $userResult = mysqli_query($conn, $userQuery);
         
         if ($userResult && mysqli_num_rows($userResult) > 0) {
@@ -46,9 +37,10 @@ if (!$result) {
             $profilePicture = $user['profile_pictures'];
             $fullName = $user['FirstName'] . ' ' . $user['LastName'];
             
+            // Display the user's name with their profile picture, and link to the conversation
             echo "<div class='user-message'>";
             echo "<img src='../uploads/profile_uploads/$profilePicture' alt='$fullName' width='50' height='50'>";
-            echo "<a href='conversation.php?user=$sender'>$fullName</a>";
+            echo "<a href='conversation.php?user=$senderEmail'>$fullName</a>";
             echo "</div>";
         }
     }
