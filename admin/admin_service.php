@@ -9,13 +9,13 @@ if (!isset($con)) {
     die("Database connection not established.");
 }
 
-// Fetch distinct users who have sent messages based on email
+// Fetch distinct users who have sent messages based on email (case-insensitive and trimmed)
 $sql = "
     SELECT DISTINCT 
         tblregusers.ID, 
         CONCAT(tblregusers.FirstName, ' ', tblregusers.LastName) AS FullName 
     FROM tblregusers
-    JOIN messages ON messages.username = tblregusers.Email
+    JOIN messages ON LOWER(TRIM(messages.username)) = LOWER(TRIM(tblregusers.Email))
     ORDER BY tblregusers.FirstName ASC
 ";
 
