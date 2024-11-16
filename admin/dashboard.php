@@ -2,11 +2,23 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-error_reporting(0);
-if (strlen($_SESSION['vpmsaid']==0)) {
-  header('location:logout.php');
-  } else{ ?>
 
+// Check if the admin is logged in
+if (strlen($_SESSION['vpmsaid'] == 0)) {
+    // Redirect to logout if not logged in
+    header('location:logout.php');
+    exit;
+} else {
+    // Get the admin ID from the session
+    $admin_id = $_SESSION['vpmsaid'];
+
+    // Fetch unread messages for the admin
+    $query = "SELECT * FROM messages WHERE receiver = '$admin_id' AND status = 'unread' ORDER BY created_at DESC";
+    $result = mysqli_query($con, $query);
+
+    // Check if there are any unread messages
+    $unread_messages = mysqli_num_rows($result);
+?>
 
 <!doctype html>
 

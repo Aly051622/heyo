@@ -1,24 +1,22 @@
 <?php
 session_start();
-error_reporting(0);
 include('includes/dbconnection.php');
 
-if(isset($_POST['login']))
-  {
-    $adminuser=$_POST['username'];
-    $password=md5($_POST['password']);
-    $query=mysqli_query($con,"select ID from tbladmin where  UserName='$adminuser' && Password='$password' ");
-    $ret=mysqli_fetch_array($query);
-    if($ret>0){
-      $_SESSION['vpmsaid']=$ret['ID'];
-     header('location:dashboard.php');
+if (isset($_POST['login'])) {
+    $adminuser = $_POST['username'];
+    $password = md5($_POST['password']);
+    $query = mysqli_query($con, "SELECT ID FROM tbladmin WHERE UserName='$adminuser' AND Password='$password'");
+    $ret = mysqli_fetch_array($query);
+    
+    if ($ret > 0) {
+        $_SESSION['vpmsaid'] = $ret['ID'];
+        header('location: dashboard.php');  // Redirect to the dashboard
+    } else {
+        echo "<script>alert('Invalid Details.');</script>";
     }
-    else{
-  
-     echo "<script>alert('Invalid Details.');</script>";
-    }
-  }
-  ?>
+}
+?>
+
 
 
 <!DOCTYPE html>
