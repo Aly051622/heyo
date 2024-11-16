@@ -3,10 +3,13 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include the database connection
-include('includes/dbconnection.php');
+include('../includes/dbconnection.php');
 
-// Fetch user names from the database
-$sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers"; 
+if (!isset($conn)) {
+    die("Database connection not established.");
+}
+
+$sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
 $result = $conn->query($sql);
 
 if (!$result) {
