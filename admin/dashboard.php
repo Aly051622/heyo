@@ -1,27 +1,11 @@
 <?php
 session_start();
-error_reporting(E_ALL); // Report all errors
-ini_set('display_errors', 1); // Display errors on screen
+error_reporting(0);
 include('includes/dbconnection.php');
-
-// Check if the admin is logged in
-if (strlen($_SESSION['vpmsaid'] == 0)) {
-    // Redirect to logout if not logged in
-    header('location:logout.php');
-    exit;
-} else {
-    $admin_id = $_SESSION['vpmsaid'];
-
-    // Fetch unread messages for the admin
-    $sql = "SELECT * FROM messages WHERE receiver = '$user_id'"; // Make sure this is correct
-    $result = mysqli_query($con, $query);
-
-    if(!$result) {
-        die('Database query failed: ' . mysqli_error($con));
-    }
-
-    $unread_messages = mysqli_num_rows($result);
-?>
+error_reporting(0);
+if (strlen($_SESSION['vpmsaid']==0)) {
+  header('location:logout.php');
+  } else{ ?>
 
 
 <!doctype html>
