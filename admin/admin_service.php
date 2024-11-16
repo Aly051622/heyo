@@ -2,20 +2,29 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Adjusted path to the same directory
-include('includes/dbconnection.php');
+include('includes/dbconnection.php'); // Ensure this path is correct
 
 if (!isset($conn)) {
     die("Database connection not established.");
 }
 
+// Run a simple test query
+$sql = "SELECT 1";
+if (!$conn->query($sql)) {
+    die("Query failed: " . $conn->error);
+} else {
+    echo "Database connection and query successful!";
+}
+
+// Proceed with your main query
 $sql = "SELECT CONCAT(FirstName, ' ', LastName) AS FullName, ID FROM tblregusers";
 $result = $conn->query($sql);
 
 if (!$result) {
-    die("Query failed: " . $conn->error);
+    die("Main query failed: " . $conn->error);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
