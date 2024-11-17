@@ -1,94 +1,95 @@
 <?php
-// Enable error reporting for debugging
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+session_start();
+include('../includes/dbconnection.php'); // Ensure the path is correct to connect to the database
+require '../vendor/autoload.php';  // Corrected path to autoload.php for PHPMailer
 
-include('includes/dbconnection.php'); // Include your DB connection
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Include the PHPMailer autoloader (change the path if necessary)
-require 'vendor/autoload.php';
+if(isset($_POST['login'])) {
+    $emailOrMobile = $_POST['emailcont'];
+    $password = $_POST['password'];
 
-// Retrieve user input (username and password)
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-// Query to find user by email
-$query = "SELECT * FROM tblregusers WHERE Email = '$email'";
-$result = mysqli_query($con, $query);
-$row = mysqli_fetch_assoc($result);
-
-if (!$row) {
-    // User not found
-    echo "<script>alert('User not found.');</script>";
-    exit;
-}
-
-// Check if the account is locked
-if ($row['AccountLocked'] == 1) {
-    echo "<script>alert('Your account is temporarily locked due to multiple failed attempts. Please check your email for further instructions.');</script>";
-    exit;
-}
-
-// Validate password
-if (password_verify($password, $row['Password'])) {
-    // Successful login, reset FailedAttempts
-    mysqli_query($con, "UPDATE tblregusers SET FailedAttempts = 0 WHERE Email = '$email'");
-    echo "<script>alert('Login successful');</script>";
-    // Redirect to dashboard or home page
-    header("Location: dashboard.php");
-    exit;
-} else {
-    // Failed login attempt
-    $failedAttempts = $row['FailedAttempts'] + 1;
-    $lastFailedAttempt = time();
-    
-    // Update FailedAttempts and LastFailedAttempts in the database
-    mysqli_query($con, "UPDATE tblregusers SET FailedAttempts = $failedAttempts, LastFailedAttempts = $lastFailedAttempt WHERE Email = '$email'");
-    
-    if ($failedAttempts >= 3) {
-        // Lock the account after 3 failed attempts
-        mysqli_query($con, "UPDATE tblregusers SET AccountLocked = 1 WHERE Email = '$email'");
-        
-        // Send lock notification via email
-        sendLockNotification($row['Email']);
-        
-        echo "<script>alert('Your account has been locked due to 3 failed attempts. Please check your email for further instructions.');</script>";
+    // Check if the input is an email or mobile number
+    if (filter_var($emailOrMobile, FILTER_VALIDATE_EMAIL)) {
+        $condition = "Email='$emailOrMobile'";
     } else {
-        // Inform the user about remaining attempts
-        echo "<script>alert('Incorrect password. You have " . (3 - $failedAttempts) . " attempt(s) left.');</script>";
+        $condition = "MobileNumber='$emailOrMobile'";
     }
-    exit;
+
+    // Fetch user details based on email or mobile number
+    $query = mysqli_query($con, "SELECT ID, Email, MobileNumber, Password, FailedAttempts, LastFailedAttempt FROM tblregusers WHERE $condition");
+    $row = mysqli_fetch_assoc($query);
+
+    // If user exists
+    if ($row) {
+        // Check if the account is locked due to failed attempts
+        $failedAttempts = $row['FailedAttempts'];
+        $lastFailedAttempt = strtotime($row['LastFailedAttempt']);
+        $currentTime = time();
+        $lockDuration = 300; // Lock duration in seconds (e.g., 5 minutes)
+
+        if ($failedAttempts >= 3 && ($currentTime - $lastFailedAttempt) < $lockDuration) {
+            // Account is locked, show message and do not proceed
+            echo "<script>alert('Your account is locked due to multiple failed login attempts. Please try again later.');</script>";
+        } else {
+            // Check if the password is correct
+            if (password_verify($password, $row['Password'])) {
+                // Reset failed attempts after successful login
+                mysqli_query($con, "UPDATE tblregusers SET FailedAttempts = 0 WHERE ID = {$row['ID']}");
+                $_SESSION['vpmsuid'] = $row['ID'];
+                $_SESSION['vpmsumn'] = $row['MobileNumber'];
+                header('location:dashboard.php');
+            } else {
+                // Increment failed attempts
+                $newFailedAttempts = $failedAttempts + 1;
+                $currentTimeFormatted = date('Y-m-d H:i:s', $currentTime);
+                mysqli_query($con, "UPDATE tblregusers SET FailedAttempts = $newFailedAttempts, LastFailedAttempt = '$currentTimeFormatted' WHERE ID = {$row['ID']}");
+
+                // If 3 attempts failed, lock the account
+                if ($newFailedAttempts >= 3) {
+                    // Lock the account and send an email notification
+                    sendLockNotificationEmail($row['Email']);
+                }
+
+                echo "<script>alert('Invalid credentials. Attempt $newFailedAttempts/3');</script>";
+            }
+        }
+    } else {
+        echo "<script>alert('User does not exist.');</script>";
+    }
 }
 
 // Function to send account lock notification email
-function sendLockNotification($email) {
+function sendLockNotificationEmail($email) {
     $mail = new PHPMailer(true);
     try {
+        // Server settings
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com'; // Use your SMTP server here
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'your-email@gmail.com'; // Replace with your email
-        $mail->Password = 'your-email-password'; // Replace with your app password or email password
+        $mail->Username = 'developershalcyon@gmail.com';  // Use your email here
+        $mail->Password = 'uhdv sagp oljc smwm';  // Use your app password here
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
         // Recipients
-        $mail->setFrom('no-reply@yourdomain.com', 'Parking System');
-        $mail->addAddress($email); // Add recipient's email
+        $mail->setFrom('developershalcyon@gmail.com', 'CTU Parking System');
+        $mail->addAddress($email);  // Send to the user's email
+        $mail->Subject = 'Account Locked Due to Failed Login Attempts';
+        $mail->Body = 'Your account has been temporarily locked due to multiple failed login attempts. Please try again after a few minutes.';
 
-        // Content
-        $mail->isHTML(true);
-        $mail->Subject = 'Account Locked - Multiple Failed Login Attempts';
-        $mail->Body    = 'Your account has been temporarily locked due to 3 failed login attempts. Please contact support to unlock your account.';
-
-        $mail->send();
+        // Send the email
+        if ($mail->send()) {
+            // Email sent successfully, nothing more to do here
+            error_log("Account lock notification sent to $email");
+        } else {
+            error_log('Failed to send lock notification email: ' . $mail->ErrorInfo);
+        }
     } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        error_log('Mailer Error: ' . $e->getMessage());
     }
 }
-
 ?>
 
 
