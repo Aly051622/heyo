@@ -96,10 +96,6 @@ function sendLockNotificationEmail($email) {
 ?>
 
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
    <head>
@@ -204,212 +200,92 @@ function sendLockNotificationEmail($email) {
     .pass-key:valid ~ .show{
       display: block;
     }
-    .pass{
-      text-align: left;
-      margin: 10px 0;
+    .pass-key:invalid ~ .show{
+      display: none;
     }
-    .pass a{
-      color: white;
-      text-decoration: none;
-      font-family: 'Poppins',sans-serif;
-    }
-    .pass:hover a{
-      text-decoration: underline;
-    }
-    .field input[type="submit"]{
-      border-radius: 9px;
-      background-color: rgb(53, 97, 255);        
-      color: white;
-      border: solid ;
-        cursor:pointer;
-        font-weight:bold;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-    .field input[type="submit"]:hover{
-      background-color: darkblue;
-      border: solid blue;
-
-    }
-    .login{
-      margin: 20px 0;
-      font-family: 'Poppins',sans-serif;
-    }
-    .links{
-      display: flex;
-      cursor: pointer;
-      color: white;
-      margin: 0 0 20px 0;
-    }
-    .facebook,.instagram{
-      width: 100%;
-      height: 45px;
-      line-height: 45px;
-      margin-left: 10px;
-    }
-    .facebook{
-      margin-left: 0;
-      background: #4267B2;
-      border: 1px solid #3e61a8;
-    }
-    .instagram{
-      background: #E1306C;
-      border: 1px solid #df2060;
-    }
-    .facebook:hover{
-      background: #3e61a8;
-    }
-    .instagram:hover{
-      background: #df2060;
-    }
-    .links i{
-      font-size: 17px;
-    }
-    i span{
-      margin-left: 8px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      font-size: 16px;
-      font-family: 'Poppins',sans-serif;
-    }
-    .signup{
+    .forget-pass{
+      margin-top: 15px;
       font-size: 15px;
-      color: white;
-      font-family: 'Poppins',sans-serif;
+      color: black;
     }
-    .signup a{
-      color: #3498db;
-      text-decoration: none;
+    .forget-pass a{
+      color: black;
+      font-weight: 600;
     }
-    .signup a:hover{
-      text-decoration: underline;
-    }
-
-    input[type="text"]:hover, input[type="password"]:hover {
-                background-color: whitesmoke;
-                border: 2px solid lightblue;
-            }
-
-    #home{
-      margin: 2vw 0 0 15vw; /* Adjusted margin for responsiveness */
-        background-color: rgb(53, 97, 255);
-        border-radius: 10px;
-        cursor: pointer;
-        border: solid;
-        font-weight:bold;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-      }
-    #home:hover{
-      background-color: darkblue;
-        border: solid blue;
-        border-radius: 10px;
-    }
-
-    /*bag o ni nga loading*/
-    #loading-spinner {
-      margin-top:7px;
-        display: none;
-        color: white;
-      }
-
-      /*Responsiveness for all*/
-      @media (max-width: 768px) {
-    .content {
-        width: 80%; /* Adjust width for smaller screens */
-        padding: 40px 24px; /* Reduce padding */
-        border-radius: 15px; /* Adjust border-radius */
-    }
-}
-
-@media (max-width: 480px) {
-    .content {
-        width: 85%; /* Further reduce width for very small screens */
-        padding: 30px 20px; /* Further reduce padding */
-        border-radius: 20px; /* Adjust border-radius for a smaller look */
-        height: 450px;
-    }
-    .bg-img:after{
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      height: 100vh;
+    .login-btn{
+      margin-top: 25px;
       width: 100%;
-      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border-radius: 7px;
+      background: #ff6600;
+      color: white;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
     }
-    #home{
-      margin-left: 12.5em;
+    .login-btn:hover{
+      background: #f44336;
+      cursor: pointer;
     }
-}
-        </style>
-      <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loginForm = document.querySelector('form');
-        const loadingSpinner = document.getElementById('loading-spinner');
+    .login-btn:focus{
+      outline: none;
+    }
+    .media-links{
+      margin-top: 30px;
+    }
+    .media-links li{
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 23px;
+      color: white;
+    }
+    .media-links li a{
+      color: white;
+      font-size: 27px;
+    }
+    .media-links li a:hover{
+      color: #f44336;
+    }
+    .footer-text{
+      margin-top: 70px;
+      font-size: 14px;
+      color: #ffffff;
+      line-height: 23px;
+    }
+    .footer-text a{
+      color: #ff6600;
+      font-weight: 600;
+    }
 
-        loginForm.addEventListener('submit', function() {
-          // Show the loading spinner when the form is submitted
-          loadingSpinner.style.display = 'inline-block';
-        });
-      });
-</script>
-   
-    </head>
-   <body>
-      <div class="bg-img">
-         <div class="content">
-         <a style="text-decoration:none;">   
-         <header>C L I E N T  &nbsp; LOGIN</header> </a>
-    <form method="post">
-               <div class="field">
-                  <span class="fa fa-user"></span>
-                  <input type="text" name="emailcont" required="true" placeholder="Registered Email or Contact Number" required="true" class="form-control">
-               </div>
-               <div class="field space">
-              <span class="fa fa-lock"></span>
-              <input type="password" id="password" class="form-control" name="password" placeholder="Password" required="true">
-              <span class="show" id="show-password"><i class="fas fa-eye-slash"></i></span>
+    @media (max-width: 420px){
+      .content{
+        width: 290px;
+        padding: 40px 30px;
+      }
+      .content header{
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+   <div class="bg-img">
+      <div class="content">
+         <header>Login</header>
+         <form method="post">
+            <div class="field">
+               <span><i class="fa fa-envelope"></i></span>
+               <input type="text" name="emailcont" placeholder="Email or Mobile Number" required>
             </div>
-               <div class="pass">
-               <a href="forgot-password.php">Forgot Password?</a>
-               </div>
-               <div class="field" style="color: white;">
-                  <input type="submit"name="login" value="LOGIN" id="loginbtn"  style="color: white;">
-               </div>
-               <div class="signup space">
-               Don't have account?
-               <a href="signup.php" style="color: white; font-weight: 500;">Signup Now!</a>
+            <div class="field space">
+               <span><i class="fa fa-lock"></i></span>
+               <input type="password" class="pass-key" name="password" placeholder="Password" required>
             </div>
-            <div id="loading-spinner" class="fa fa-spinner fa-spin fa-3x"></div>
-
-               <a href="../welcome.php" class="btn btn-primary" id="home">
-                <span class="glyphicon glyphicon-home"></span> Home</a>
-    </form>
-  
-         </div>
+            <div class="space">
+               <button class="login-btn" type="submit" name="login">Login</button>
+            </div>
+         </form>
       </div>
-
-      <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script>
-  const passField = document.querySelector('#password');
-      const showBtn = document.querySelector('#show-password');
-
-      showBtn.addEventListener('click', function() {
-        if (passField.type === "password") {
-          passField.type = "text";
-          showBtn.innerHTML = '<i class="fas fa-eye"></i>'; 
-          showBtn.style.color = "red"; 
-        } else {
-          passField.type = "password";
-          showBtn.innerHTML = '<i class="fas fa-eye-slash"></i>'; 
-          showBtn.style.color = "black"; // 
-        }
-      });
-</script>
-
-   </body>
+   </div>
+</body>
 </html>
