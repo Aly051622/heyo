@@ -6,7 +6,7 @@ require '../vendor/autoload.php';  // Corrected path to autoload.php for PHPMail
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if(isset($_POST['login'])) {
+if (isset($_POST['login'])) {
     $emailOrMobile = $_POST['emailcont'];
     $password = $_POST['password'];
 
@@ -50,9 +50,12 @@ if(isset($_POST['login'])) {
                 if ($newFailedAttempts >= 3) {
                     // Lock the account and send an email notification
                     sendLockNotificationEmail($row['Email']);
+                    echo "<script>alert('Your account is now locked. Please try again after 5 minutes.');</script>";
+                } else {
+                    // Display remaining attempts
+                    $remainingAttempts = 3 - $newFailedAttempts;
+                    echo "<script>alert('Invalid credentials. You have $remainingAttempts attempts left.');</script>";
                 }
-
-                echo "<script>alert('Invalid credentials. Attempt $newFailedAttempts/3');</script>";
             }
         }
     } else {
