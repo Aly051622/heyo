@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
                 // Registration successful, redirect for verification
                 $_SESSION['verification_email'] = $email; // Store email in session
                 echo '<script>
-                    alert("Registration successful! A verification code has been sent to your email.");
+                    alert(" A verification code has been sent to your email.");
                     window.location.href = "send_verification_code.php";
                 </script>';
             } else {
