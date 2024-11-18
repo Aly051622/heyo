@@ -375,7 +375,7 @@ input[type="text"]:hover, input[type="password"]:hover {
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-telephone-fill" style="font-size: 20px"></span>
-                <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" placeholder="Mobile Number" required="true" class="form-control">
+                <input type="text" name="mobilenumber" maxlength="11" pattern="[0-9]{10}" placeholder="Mobile Number" required="true" class="form-control">
             </div><br>
             <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">
                 Next <i class="bi bi-caret-right-square-fill"></i>
