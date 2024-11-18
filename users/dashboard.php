@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(0);
-include('../DBconnection/dbconnection.php');
+include('includes/dbconnection.php');
 error_reporting(0);
 if (strlen($_SESSION['vpmsuid']==0)) {
   header('location:logout.php');
@@ -317,7 +317,8 @@ setTimeout(function() {
 
 
 </script>
-
+<script>
+    </script>
 </body>
 </html>
 <?php } ?>
