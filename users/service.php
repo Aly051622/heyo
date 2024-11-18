@@ -251,7 +251,7 @@ include('includes/dbconnection.php');
 <body class="bg-img">
   <!-- Navbar Section -->
   <div id="page-top" class="navbar">
-    <a href="../dashboard.php" class="btn btn-primary" id="home"  style=" margin-left: 30px; positipn: absolute;">
+    <a href="../welcome.php" class="btn btn-primary" id="home"  style=" margin-left: 30px; positipn: absolute;">
       <i class="bi bi-caret-left-fill" ></i> Back
     </a>
     <h1>Customer Service</h1>
