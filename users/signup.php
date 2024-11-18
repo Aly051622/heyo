@@ -382,42 +382,7 @@ input[type="text"]:hover, input[type="password"]:hover {
             </button>
         </div>
 
-        <!-- Page 2
-        <div id="page2" style="display: none;">
-          
-            <div class="form-group field space">
-                <span class="fa bi bi-person-lines-fill" style="font-size: 20px"></span>
-                <select name="userType" id="userType" class="form-control field" required="true" onchange="updatePlace()">
-                    <option value="" disabled selected>Select user type</option>
-                    <option value="student">Student</option>
-                    <option value="faculty">Faculty</option>
-                    <option value="visitor">Visitor</option>
-                    <option value="staff">Staff</option>
-                </select>
-            </div>
-
-            <div class="form-group field space">
-                <span class="fa bi bi-geo-fill" style="font-size: 20px"></span>
-                <input type="text" name="place" id="place" placeholder="Place" readonly class="form-control">
-            </div>
-
-            <div class="form-group field space">
-                <span class="fa bi bi-person-video2" style="font-size: 20px"></span>
-                <input type="text" name="LicenseNumber" maxlength="10" pattern="[0-9]*" placeholder="License Number" required="true" class="form-control">
-            </div>
-            <div class="space">
-                <button type="button" onclick="prevPage('page1')" class="nextbtn">
-                    <i class="bi bi-caret-left-square-fill"></i> Previous
-                </button>
-
-                <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage2">
-                    Next <i class="bi bi-caret-right-square-fill"></i>
-                </button>
-            </div>
-        </div>
--->
-
-        <!-- Page 3 -->
+        <!-- Page 2 -->
         <div id="page2" style="display: none;">
             <div class="form-group field space">
                 <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
@@ -442,7 +407,7 @@ input[type="text"]:hover, input[type="password"]:hover {
             <div>
                 <input type="submit" name="submit" class="field submitbtn btn-success btn-flat m-b-30 m-t-30" id="submitBtn" value="REGISTER">
             </div><br>
-            <button type="button" onclick="prevPage('page2')" class="nextbtn">
+            <button type="button" onclick="prevPage('page1')" class="nextbtn">
                 <i class="bi bi-caret-left-square-fill"></i> Previous
             </button>
         </div>
@@ -452,45 +417,29 @@ input[type="text"]:hover, input[type="password"]:hover {
 <script>
     let currentPage = 1;
 
-    function updatePlace() {
-        var userTypeSelect = document.getElementById('userType');
-        var placeInput = document.getElementById('place');
-
-        switch (userTypeSelect.value) {
-            case 'faculty':
-            case 'staff':
-                placeInput.value = "Beside Kadasig Gym";
-                break;
-            case 'student':
-                placeInput.value = "Beside the CME Building";
-                break;
-            case 'visitor':
-                placeInput.value = "Front";
-                break;
-            default:
-                placeInput.value = "";
-                break;
-        }
-    }
-
     function nextPage(nextPageId) {
         const currentForm = document.getElementById(`page${currentPage}`);
         const nextForm = document.getElementById(nextPageId);
 
-        currentForm.style.display = 'none';
-        nextForm.style.display = 'block';
-        currentPage++;
+        if (nextForm) {
+            currentForm.style.display = 'none';
+            nextForm.style.display = 'block';
+            currentPage++;
+        }
     }
 
     function prevPage(prevPageId) {
         const currentForm = document.getElementById(`page${currentPage}`);
         const prevForm = document.getElementById(prevPageId);
 
-        currentForm.style.display = 'none';
-        prevForm.style.display = 'block';
-        currentPage--;
+        if (prevForm) {
+            currentForm.style.display = 'none';
+            prevForm.style.display = 'block';
+            currentPage--;
+        }
     }
 </script>
+
 
 </body>
 </html>
