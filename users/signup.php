@@ -410,14 +410,14 @@ input[type="text"]:hover, input[type="password"]:hover {
                     <i class="bi bi-caret-left-square-fill"></i> Previous
                 </button>
 -->
-                <button type="button" onclick="nextPage('page3')" class="nextbtn" id="nextBtnPage2">
+                <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage2">
                     Next <i class="bi bi-caret-right-square-fill"></i>
                 </button>
             </div>
         </div>
 
         <!-- Page 3 -->
-        <div id="page3" style="display: none;">
+        <div id="page2" style="display: none;">
             <div class="form-group field space">
                 <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
                 <input type="email" name="email" placeholder="Email address" required="true" class="form-control">
