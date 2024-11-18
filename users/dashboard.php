@@ -317,8 +317,7 @@ setTimeout(function() {
 
 
 </script>
-<script>
-    </script>
+
 </body>
 </html>
 <?php } ?>
