@@ -361,7 +361,7 @@ input[type="text"]:hover, input[type="password"]:hover {
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
             <div class="login-form">
-    <form method="post" action="process_registration.php" id="registrationForm" onsubmit="return checkpass();">
+    <form method="post" action="dashboard.php" id="registrationForm" onsubmit="return checkpass();">
         <!-- Page 1 -->
         <div id="page1">
             <div class="form-group field space">
