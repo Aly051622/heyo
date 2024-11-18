@@ -8,9 +8,7 @@ if (isset($_POST['submit'])) {
     $contno = $_POST['mobilenumber'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $userType = $_POST['userType'];
-    $place = $_POST['place'];
-    $LicenseNumber = $_POST['LicenseNumber'];
+   
     
     // Use the correct variable name
     $stmt = mysqli_prepare($con, "SELECT Email FROM tblregusers WHERE Email=? OR MobileNumber=?");
@@ -22,7 +20,7 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("This email or Contact Number is already associated with another account")</script>';
     } else {
         // Initialize $query
-        $query = mysqli_prepare($con, "INSERT INTO tblregusers(FirstName, LastName, MobileNumber, Email, Password, user_type, place, LicenseNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $query = mysqli_prepare($con, "INSERT INTO tblregusers(FirstName, LastName, MobileNumber, Email, Password) VALUES (?, ?, ?, ?, ?)");
         
         if ($query) { // Check if the statement was prepared successfully
             mysqli_stmt_bind_param(
@@ -33,9 +31,7 @@ if (isset($_POST['submit'])) {
                 $contno,
                 $email,
                 $password,
-                $userType,
-                $place,
-                $LicenseNumber
+               
             );
 
             if (mysqli_stmt_execute($query)) {
@@ -360,8 +356,9 @@ input[type="text"]:hover, input[type="password"]:hover {
          <i class="fa-solid fa fa-xmark"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
+
             <div class="login-form">
-    <form method="post" action="dashboard.php" id="registrationForm" onsubmit="return checkpass();">
+    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
         <!-- Page 1 -->
         <div id="page1">
             <div class="form-group field space">
@@ -389,11 +386,11 @@ input[type="text"]:hover, input[type="password"]:hover {
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="password" id="password" placeholder="Enter password" required="true" class="form-control">
+                <input type="password" name="password" placeholder="Enter password" required="true" class="form-control">
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
+                <input type="password" name="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
             </div>
             <div class="checkbox">
                 <label class="pull-right">
@@ -436,18 +433,6 @@ input[type="text"]:hover, input[type="password"]:hover {
             prevForm.style.display = 'block';
             currentPage--;
         }
-    }
-
-    function checkpass() {
-        const password = document.getElementById("password").value;
-        const repeatPassword = document.getElementById("repeatpassword").value;
-
-        if (password !== repeatPassword) {
-            alert("Passwords do not match. Please try again.");
-            return false;
-        }
-
-        return true; // Proceed with form submission if passwords match
     }
 </script>
 
