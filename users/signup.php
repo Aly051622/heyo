@@ -409,13 +409,13 @@ input[type="text"]:hover, input[type="password"]:hover {
                 <button type="button" onclick="prevPage('page1')" class="nextbtn">
                     <i class="bi bi-caret-left-square-fill"></i> Previous
                 </button>
--->
+
                 <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage2">
                     Next <i class="bi bi-caret-right-square-fill"></i>
                 </button>
             </div>
         </div>
-
+-->
         <!-- Page 3 -->
         <div id="page2" style="display: none;">
             <div class="form-group field space">
