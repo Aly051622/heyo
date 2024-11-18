@@ -12,11 +12,13 @@
                         <i class="menu-icon ti-truck"></i>View Vehicle
                     </a>
                 </li>
+                <!--
                 <li>
                     <a href="maps.php">
                         <i class="menu-icon ti-map"></i>Maps
                     </a>
                 </li>
+-->
                 <li>
                     <a href="service.php">
                         <i class="bi bi-headset"></i>ChatConcern
