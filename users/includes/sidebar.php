@@ -14,11 +14,6 @@
                 </li>
                 <li>
                     <a href="view-vehicle.php">
-                        <i class="menu-icon fa fa-truck"></i>View Vehicle
-                    </a>
-                </li>
-                <li>
-                    <a href="view-vehicle.php">
                     <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
                     </a>
                 </li>
