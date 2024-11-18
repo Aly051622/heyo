@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/dbconnection.php'); // Ensure this path is correct
+include('../DBconnection/dbconnection.php');// Ensure this path is correct
 
 if (isset($_POST['submit'])) {
     $fname = $_POST['firstname'];
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
                 // Send verification code after successful registration
                 $_SESSION['verification_email'] = $email; // Store email in session
                 echo '<script>
-                    alert("You have successfully registered. A verification code has been sent to your email.");
+                    alert("A verification code has been sent to your email.");
                     window.location.href = "send_verification_code.php"; // Redirect to send verification code
                 </script>';
             } else {
@@ -105,6 +105,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="assets/css/style.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
    <style>
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500&display=swap');
@@ -120,6 +123,9 @@ if (isset($_POST['submit'])) {
       background-size: cover;
       background-position: center;
       margin-top: -40px;
+      overflow: hidden;
+    }
+    body{
       overflow: hidden;
     }
     .bg-img:after{
@@ -335,6 +341,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     #x{
       margin-left: 9.5em;
       margin-top: -1em;
+      font-weight: bold;
       position: absolute;
     }
     .space{
@@ -350,7 +357,7 @@ input[type="text"]:hover, input[type="password"]:hover {
       <div class="bg-img">
          <div class="content">
          <a href="login.php" id="x">
-         X</a>
+         <i class="fa-solid fa fa-xmark"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
 
