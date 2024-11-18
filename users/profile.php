@@ -77,6 +77,23 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="apple-touch-icon" href="images/ctu.png">
+    <link rel="shortcut icon" href="images/ctu.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">   
+    <!-- Include Bootstrap CSS (required for styling) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
    <style>
 
 #notification {
@@ -109,12 +126,78 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     font-size: 18px;
     font-weight: bold;
 }
+body{
+        background-color: whitesmoke;
+        height: 100vh;
+    }
+    .card, .card-header{
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            top: 50%;
+                 }
+                 .btn{
+                border: solid lightgray;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: rgb(53, 97, 255);
+                color: white;
+                cursor: pointer;
+                font-family: 'Monsterrat', sans-serif;
+                font-weight: bolder;
+        }
 
+           .btn:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
+         .btn{
+            cursor: pointer;
+         }
+           /* Container for images */
+    .imgp { 
+        background-color: transparent; 
+        border-radius: 8px;
+        width: 935px;
+    }
+    .imgp input[type="file"]{
+        margin-left: 15em;
+        margin-top:-40px;
+        cursor: pointer;
+        text-align: left;
+    }
+    .img-fluid{
+        height: 300px;
+        width: auto;
+        justify-content: center;
+        align-items:center;
+    }
+
+    /* Style for clickable images */
+    .clickable-image {
+        width: 100%; 
+        height: auto; 
+        max-height: 150px;
+        object-fit: cover;
+        border-radius: 8px; 
+        cursor: pointer; 
+        transition: transform 0.2s ease-in-out; 
+    }
+
+    .clickable-image:hover {
+        transform: scale(1.1); 
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    }
+    .reg{
+        margin-left: 18px;
+        width: 500px;
+    }
 </style>
+
 </head>
 <body>
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
+    
+   <?php include_once('includes/header.php');?>
 
     <!-- Notification system -->
    <!-- Notification system -->
@@ -123,19 +206,13 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <button id="notification-close">&times;</button>
 </div>
 
-</body>
-</html>
-
-
-   <?php include_once('userheader.php');?>
-
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>My Profile</h1>
                             </div>
                         </div>
                     </div>
@@ -157,18 +234,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
         <div class="content">
             <div class="animated fadeIn">
 
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            
-                           
-                        </div> <!-- .card -->
-
-                    </div><!--/.col-->
-
-              
-
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
@@ -187,7 +252,7 @@ while ($row = mysqli_fetch_array($ret)) {
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">First Name</label></div>
                                         <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" value="<?php  echo $row['FirstName'];?>">
-                                            <br></div>
+                                            </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="email-input" class=" form-control-label">Last Name</label></div>
@@ -215,40 +280,39 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
                                     </div>
 
-
-
-                                    <div class="row form-group">
+<div class="row form-group">
     <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
     <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
 </form>
 
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
+<script>
+    $(document).on('click', '.clickable-image', function () {
+        var src = $(this).attr('src');
+        var title = $(this).data('title');
+        $('#modalImage').attr('src', src);
+        $('#imageModalTitle').text(title);
+    });
+</script>
 
-
-
-
-
-
-<!-- Include Bootstrap CSS (required for styling) -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<!-- CSS for Fixed Image Size -->
-<style>
-    .clickable-image {
-        width: 100%;               /* Responsive width */
-        height: 300px;              /* Fixed height (similar to Instagram posts) */
-        object-fit: cover;          /* Ensures the image scales properly without distortion */
-        border-radius: 8px;         /* Optional: Add rounded corners */
-        cursor: pointer;            /* Pointer cursor to indicate the image is clickable */
-        transition: transform 0.2s; /* Smooth scaling effect on hover */
-    }
-
-    .clickable-image:hover {
-        transform: scale(1.05);     /* Slight zoom effect on hover */
-    }
-</style>
 
 <!-- HTML Form -->
 <div class="container mt-5">
@@ -264,7 +328,7 @@ while ($row = mysqli_fetch_array($ret)) {
         <?php endif; ?>
 
         <?php if ($crImage): ?>
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4 im">
                 <h4>CR File</h4>
                 <img src="<?php echo $crImage; ?>" alt="CR File" 
                      class="img-fluid clickable-image" 
@@ -285,23 +349,6 @@ while ($row = mysqli_fetch_array($ret)) {
     </div>
 </div>
 
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalTitle"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <img id="modalImage" src="" alt="" class="img-fluid">
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Include Bootstrap JS and jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -315,35 +362,8 @@ while ($row = mysqli_fetch_array($ret)) {
         $('#imageModalTitle').text(title);
     });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="reg">
     <p>Registration Status: <?php echo $registrationStatus; ?></p>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- Persistent Notification system -->
     <div id="notification" style="display: none;">
@@ -365,36 +385,39 @@ while ($row = mysqli_fetch_array($ret)) {
             </div>
         </div>
 
-        <div class="row form-group" id="for-registration-files" style="display: none;">
-            <div class="col-md-3">
-                <label for="nv-file" class="form-control-label">Upload MV File</label>
-            </div>
-            <div class="col-md-9">
-                <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control">
-            </div>
-        </div>
+        <div class="imgp">
+                <div class="row form-group" id="for-registration-files" style="display: none;">
+                    <div class="col-md-3">
+                        <label for="nv-file" class="form-control-label">Upload MV File</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control">
+                    </div>
+                </div>
 
-        <div class="row form-group" id="registered-files" style="display: none;">
-            <div class="col-md-3">
-                <label for="or-file" class="form-control-label">Upload OR File</label>
-            </div>
-            <div class="col-md-9">
-                <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="cr-file" class="form-control-label">Upload CR File</label>
-            </div>
-            <div class="col-md-9">
-                <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control">
-            </div>
+                <div class="row form-group" id="registered-files" style="display: none;">
+                    <div class="col-md-3">
+                        <label for="or-file" class="form-control-label">Upload OR File</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control">
+                    </div><br>
+                    <div class="col-md-3">
+                        <label for="cr-file" class="form-control-label">Upload CR File</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control">
+                    </div>
+                </div>
         </div>
-
+        
         <div class="row form-group">
-            <div class="col text-center">
-                <button type="submit" id="submit-button" class="btn btn-primary btn-sm">Submit</button>
-            </div>
-        </div>
+                    <div class="col text-center">
+                        <button type="submit" id="submit-button" class="btn btn-sm"><i class="bi bi-images"></i> Submit</button>
+                </div>
+        </div>  
     </form>
+</div>
 </div>
 <script>
         // Show/hide upload fields based on selected registration status
@@ -506,35 +529,20 @@ while ($row = mysqli_fetch_array($ret)) {
     });
 </script>
 
-
-
-
-                                    
-                                    <?php } ?>
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >⏏ Update</button></p>
-                                </form>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-
-                    <div class="col-lg-6">
-                        
-                  
+         <?php } ?>
+                <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" > ⏏ Update</button></p>
+                </form>
+            </div>    
                 </div>
-
-           
-
+                    </div>
+                <div class="col-lg-6">
+                </div>
             </div>
-
 
         </div><!-- .animated -->
     </div><!-- .content -->
 
     <div class="clearfix"></div>
-
-   <?php include_once('includes/footer.php');?>
 
 </div><!-- /#right-panel -->
 
