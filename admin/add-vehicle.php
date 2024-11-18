@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Manila');
 error_reporting(E_ALL); // Enable error reporting for debugging
 ini_set('display_errors', 1);
 
