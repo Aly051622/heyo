@@ -360,9 +360,8 @@ input[type="text"]:hover, input[type="password"]:hover {
          <i class="fa-solid fa fa-xmark"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
-
             <div class="login-form">
-    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
+    <form method="post" action="process_registration.php" id="registrationForm" onsubmit="return checkpass();">
         <!-- Page 1 -->
         <div id="page1">
             <div class="form-group field space">
@@ -390,11 +389,11 @@ input[type="text"]:hover, input[type="password"]:hover {
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="password" placeholder="Enter password" required="true" class="form-control">
+                <input type="password" name="password" id="password" placeholder="Enter password" required="true" class="form-control">
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
+                <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
             </div>
             <div class="checkbox">
                 <label class="pull-right">
@@ -437,6 +436,18 @@ input[type="text"]:hover, input[type="password"]:hover {
             prevForm.style.display = 'block';
             currentPage--;
         }
+    }
+
+    function checkpass() {
+        const password = document.getElementById("password").value;
+        const repeatPassword = document.getElementById("repeatpassword").value;
+
+        if (password !== repeatPassword) {
+            alert("Passwords do not match. Please try again.");
+            return false;
+        }
+
+        return true; // Proceed with form submission if passwords match
     }
 </script>
 
