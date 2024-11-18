@@ -384,6 +384,7 @@ input[type="text"]:hover, input[type="password"]:hover {
 
         <!-- Page 2 -->
         <div id="page2" style="display: none;">
+          <!--
             <div class="form-group field space">
                 <span class="fa bi bi-person-lines-fill" style="font-size: 20px"></span>
                 <select name="userType" id="userType" class="form-control field" required="true" onchange="updatePlace()">
@@ -394,6 +395,7 @@ input[type="text"]:hover, input[type="password"]:hover {
                     <option value="staff">Staff</option>
                 </select>
             </div>
+-->
             <div class="form-group field space">
                 <span class="fa bi bi-geo-fill" style="font-size: 20px"></span>
                 <input type="text" name="place" id="place" placeholder="Place" readonly class="form-control">
