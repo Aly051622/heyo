@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(0);
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 error_reporting(0);
 if (strlen($_SESSION['vpmsuid']==0)) {
   header('location:logout.php');
@@ -70,27 +70,25 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     
     <title>Client Dashboard | CTU DANAO Parking System</title>
    
-
-    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="path-to-your-pe-icon-styles.css">
-    <link rel="stylesheet" href="park.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+<link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+<link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="../admin/assets/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="path-to-your-pe-icon-styles.css">
+<link rel="stylesheet" href="park.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
 
     <style>
         body{
@@ -175,7 +173,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         }
             /* Card-specific styles */
         .notification {
-            max-width: 500px;
+            max-width: 300px;
             height: auto;
             padding: 4px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -184,13 +182,14 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             position: absolute;
             border-radius: 9px;
             text-align: center;
-            margin-top: 10px;
+            margin-top: -10px;
             color: green;
             font-weight: bold;
             position: absolute;
         }
             .content{
                 background-color: transparent;
+                margin-top: -30px;
             }
             #notificationCard {
                 opacity: 1;
@@ -208,7 +207,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <body>
     <?php include_once('includes/sidebar.php'); ?>
     <?php include_once('includes/header.php'); ?>
-    <?php include_once('userheader.php'); ?>
+    <?php include_once('includes/userheader.php'); ?>
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
@@ -218,9 +217,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-                    <div class="col-lg-12 col-md-6">
+                    <div class="col-lg-1">
                             <div class="card-body " id="notificationCard">
-                                <h2>Welcome! <?php echo $firstName; ?> <?php echo $lastName; ?></h2>
+                                <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
                         </div>
                     </div>
                 </div>
@@ -231,12 +230,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
         <!-- Notification card with disappearing effect -->
         <?php if ($regValidityStatus == 0): ?>
-            <div  class="notification" style="margin-left: 30em; position: absolute;">
+            <div  class="notification" style="margin-left: 25em; position: absolute;">
                 <?php echo $licenseStatusMessage; ?>
             </div>
         <?php endif; ?>
 
-    <div class="carousel-container"style="margin-top: -50px;">
+    <div class="carousel-container"style="margin-top: -70px;">
         <div class="carousel">
             <img src="images/tem.png" alt="Slide 1">
             <img src="images/temp.png" alt="Slide 2">
@@ -250,39 +249,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         </div>
     </div>
 
-    <div class="scrollable-images">
-    <h2> PROPOSED PARKING AREAS</h2>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/allArea.png" alt="Image 6">
-
-    <hr class="section-divider"> 
-
-    <h4> Area A</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaA.png" alt="Image 7">
-    <hr class="section-divider"> 
-
-    <h4> Area B</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaB.png" alt="Image 8">
-
-    <hr class="section-divider"> 
-
-    <h4> Area C</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaC.png" alt="Image 9">
-
-    <hr class="section-divider"> 
-
-    <h4> Area D</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaD.png" alt="Image 10">
-</div>
-
-
+<?php include_once('slide.php'); ?>
     <div class="clearfix"></div>
 <!-- Footer -->
 
+<?php include_once('includes/footer.php'); ?>
 
 <!-- /#right-panel -->
 
@@ -293,7 +264,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../admin/assets/js/main.js"></script>
-<script src="../admin/assets/js/main.js"></script>
+
 
 <script>
 const carousel = document.querySelector('.carousel');
@@ -346,8 +317,7 @@ setTimeout(function() {
 
 
 </script>
-<script>
-    </script>
+
 </body>
 </html>
 <?php } ?>
