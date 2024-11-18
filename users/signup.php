@@ -383,8 +383,21 @@ input[type="text"]:hover, input[type="password"]:hover {
         </div>
 
         <!-- Page 2 -->
-       
-
+        <div id="page2" style="display: none;">
+            <div class="form-group field space">
+                <span class="fa bi bi-person-lines-fill" style="font-size: 20px"></span>
+                <select name="userType" id="userType" class="form-control field" required="true" onchange="updatePlace()">
+                    <option value="" disabled selected>Select user type</option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="visitor">Visitor</option>
+                    <option value="staff">Staff</option>
+                </select>
+            </div>
+            <div class="form-group field space">
+                <span class="fa bi bi-geo-fill" style="font-size: 20px"></span>
+                <input type="text" name="place" id="place" placeholder="Place" readonly class="form-control">
+            </div>
             <div class="form-group field space">
                 <span class="fa bi bi-person-video2" style="font-size: 20px"></span>
                 <input type="text" name="LicenseNumber" maxlength="10" pattern="[0-9]*" placeholder="License Number" required="true" class="form-control">
