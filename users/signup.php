@@ -400,7 +400,7 @@ input[type="text"]:hover, input[type="password"]:hover {
                 <span class="fa bi bi-geo-fill" style="font-size: 20px"></span>
                 <input type="text" name="place" id="place" placeholder="Place" readonly class="form-control">
             </div>
--->
+
             <div class="form-group field space">
                 <span class="fa bi bi-person-video2" style="font-size: 20px"></span>
                 <input type="text" name="LicenseNumber" maxlength="10" pattern="[0-9]*" placeholder="License Number" required="true" class="form-control">
@@ -409,6 +409,7 @@ input[type="text"]:hover, input[type="password"]:hover {
                 <button type="button" onclick="prevPage('page1')" class="nextbtn">
                     <i class="bi bi-caret-left-square-fill"></i> Previous
                 </button>
+-->
                 <button type="button" onclick="nextPage('page3')" class="nextbtn" id="nextBtnPage2">
                     Next <i class="bi bi-caret-right-square-fill"></i>
                 </button>
