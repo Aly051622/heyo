@@ -381,7 +381,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">Next <i class="bi bi-caret-right-square-fill"></i></button>
 </div>
 
-<!-- Page 2 -->
+<!-- Page 2 
 <div id="page2" style="display: none;">
     <div class="form-group field space">
         <span class="fa bi bi-person-lines-fill" style="font-size: 20px"></span>
@@ -397,6 +397,7 @@ input[type="text"]:hover, input[type="password"]:hover {
         <span class="fa bi bi-geo-fill" style="font-size: 20px"> </span>
         <input type="text" name="place" id="place" placeholder="Place" readonly class="form-control">
     </div>
+    -->
 <!--
     <div class="form-group field space">
         <span class="fa bi bi-person-video2" style="font-size: 20px"></span>
