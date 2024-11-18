@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 error_reporting(0);
@@ -40,9 +41,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         background-color: #f9fcff;
         background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
          }
+         body{
+    background: whitesmoke;
+    height: 100vh;
+}
          .card, .card-header{
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-         }
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+                 }
          .btn:hover{
             background: orange;
          }
@@ -56,7 +61,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <!-- Right Panel -->
 
-     <?php include_once('userheader.php');?>
+     <?php include_once('includes/header.php');?>
 
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
@@ -64,7 +69,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>View Vehicle Details</h1>
                             </div>
                         </div>
                     </div>
@@ -98,16 +103,15 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                   
               <?php
  $cid=$_GET['viewid'];
-$ret=mysqli_query($con,"select * from tblvehicle where ID='$cid'");
+ $ret = mysqli_query($con, "SELECT *, 
+ DATE_FORMAT(InTime, '%h:%i %p %m-%d-%Y') AS FormattedInTime, 
+ DATE_FORMAT(OutTime, '%h:%i %p %m-%d-%Y') AS FormattedOutTime 
+FROM tblvehicle WHERE ID='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>                       <table border="1" class="table table-bordered mg-b-0">
-   
-   <tr>
-                                <th>Parking Number</th>
-                                   <td><?php  echo $row['ParkingNumber'];?></td>
-                                   </tr>                             
+                              
 <tr>
                                 <th>Vehicle Category</th>
                                    <td><?php  echo $row['VehicleCategory'];?></td>
@@ -115,6 +119,14 @@ while ($row=mysqli_fetch_array($ret)) {
                                    <tr>
                                 <th>Vehicle Company Name</th>
                                    <td><?php  echo $packprice= $row['VehicleCompanyname'];?></td>
+                                   </tr>
+                                   <tr>
+                                <th>Model</th>
+                                   <td><?php  echo $packprice= $row['Model'];?></td>
+                                   </tr>
+                                   <tr>
+                                <th>Color</th>
+                                   <td><?php  echo $packprice= $row['Color'];?></td>
                                    </tr>
                                 <tr>
                                 <th>Registration Number</th>
@@ -128,17 +140,12 @@ while ($row=mysqli_fetch_array($ret)) {
                                        <th>Owner Contact Number</th>
                                         <td><?php  echo $row['OwnerContactNumber'];?></td>
                                     </tr>
-                                  <!--  <tr>  
-                                       <th>Parking Place</th>
-                                        <td><?php  echo $row['place'];?></td> 
-                                    </tr>
-                                    <tr> -->
-                               <th>In Time</th>
-                                <td><?php  echo $row['InTime'];?></td>
-                            </tr>
-                            <tr>
+                               <th>Registration Date</th>
+                                <td><?php  echo $row['FormattedInTime'];?></td>
+                           <!-- <tr>
     <th>Status</th>
-    <td> <?php  
+    <td> 
+        <?php  
 if($row['Status']=="")
 {
   echo "Vehicle In";
@@ -149,7 +156,7 @@ if($row['Status']=="Out")
 }
 
      ;?></td>
-  </tr>
+  </tr>-->
    
 <tr>
 
@@ -173,7 +180,6 @@ if($row['Status']=="Out")
 
 <div class="clearfix"></div>
 
-<?php include_once('includes/footer.php');?>
 
 </div><!-- /#right-panel -->
 
