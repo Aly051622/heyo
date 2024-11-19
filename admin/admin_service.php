@@ -5,17 +5,20 @@ session_start();
 // Include database connection
 include('includes/dbconnection.php');
 
-// Verify that the user is logged in as admin
-if (!isset($_SESSION['email']) || $_SESSION['email'] !== 'tester1@gmail.com') {
-    exit('Unauthorized access.');
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    exit('Unauthorized access. Please log in to view this page.');
 }
 
-// Query to fetch distinct senders who messaged the admin (tester1@gmail.com)
+// Query to fetch distinct users who sent messages to the logged-in admin
 $sql = "
-    SELECT DISTINCT m.sender, u.FirstName, u.LastName, u.profile_pictures
+    SELECT DISTINCT m.username AS sender_email, 
+           u.FirstName, 
+           u.LastName, 
+           u.profile_pictures
     FROM messages m
-    JOIN tblregusers u ON m.sender = u.Email
-    WHERE m.receiver = 'tester1@gmail.com'
+    JOIN tblregusers u ON m.username = u.Email
+    WHERE m.isSupport = 0
     ORDER BY m.created_at DESC
 ";
 
@@ -30,7 +33,7 @@ if (!$result) {
 // Display results if there are messages
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $sender_email = $row['sender'];
+        $sender_email = $row['sender_email'];
         $first_name = $row['FirstName'];
         $last_name = $row['LastName'];
         $profile_picture = $row['profile_pictures'];
