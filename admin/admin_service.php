@@ -7,8 +7,7 @@ include('includes/dbconnection.php');
 
 // Verify that the user is logged in (optional based on your logic)
 if (!isset($_SESSION['email']) || $_SESSION['email'] != 'tester1@gmail.com') {
-    // Redirect to the login page or admin dashboard if the user is not logged in
-    header("Location: login.php");  // Adjust to your login page if needed
+ 
     exit();
 }
 
