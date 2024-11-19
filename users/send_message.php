@@ -1,48 +1,36 @@
 <?php
-// Include the database connection
+session_start();
 include('includes/dbconnection.php');
 
-// Ensure the script only handles POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve and decode JSON input
     $input = json_decode(file_get_contents('php://input'), true);
     $message = trim($input['message'] ?? '');
 
-    // Validate message input
+    // Validate the message
     if (empty($message)) {
         echo json_encode(['success' => false, 'message' => 'Message cannot be empty.']);
         exit;
     }
 
-    // Retrieve user session data
-    session_start();
-    $userId = $_SESSION['user_id'] ?? null;
-    $username = $_SESSION['username'] ?? null;
-
-    // Validate session data
-    if (empty($userId) || empty($username)) {
-        echo json_encode(['success' => false, 'message' => 'User not logged in.']);
+    // Check if the user is logged in
+    if (!isset($_SESSION['user_id'])) {
+        echo json_encode(['success' => false, 'message' => 'Please log in to send a message.']);
         exit;
     }
 
-    // Set isSupport flag (0 for user messages)
-    $isSupport = 0;
+    $userId = $_SESSION['user_id']; // Logged-in user ID
+    $username = $_SESSION['username'] ?? 'Guest'; // Use session username or fallback to 'Guest'
+    $isSupport = 0; // Indicate this is a user message
 
+    // Insert the message into the database
     try {
-        // Prepare the SQL statement
         $stmt = $con->prepare("INSERT INTO messages (user_id, username, message, isSupport) VALUES (?, ?, ?, ?)");
-        if (!$stmt) {
-            throw new Exception("Failed to prepare the statement: " . $con->error);
-        }
-
-        // Bind parameters
         $stmt->bind_param("issi", $userId, $username, $message, $isSupport);
 
-        // Execute the statement
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'Message sent successfully.']);
         } else {
-            throw new Exception("Failed to execute the statement: " . $stmt->error);
+            throw new Exception("Failed to execute query: " . $stmt->error);
         }
 
         $stmt->close();
@@ -54,3 +42,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
+?>

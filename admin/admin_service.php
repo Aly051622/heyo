@@ -1,9 +1,6 @@
 <?php
-// Include the database connection
-include('includes/dbconnection.php');
-
-// Start the session to check admin login
 session_start();
+include('includes/dbconnection.php');
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin_id'])) {
@@ -11,17 +8,21 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
-// Fetch all user messages (isSupport = 0)
-$query = "SELECT user_id, username, message, created_at FROM messages WHERE isSupport = 0 ORDER BY created_at ASC";
+$adminId = $_SESSION['admin_id'];
+
+// Fetch messages grouped by user
+$query = "SELECT DISTINCT user_id, username 
+          FROM messages 
+          WHERE isSupport = 0 
+          ORDER BY created_at DESC";
 $result = $con->query($query);
 
-if ($result && $result->num_rows > 0) {
-    // Display the messages
+if ($result->num_rows > 0) {
+    echo "<h3>Messages</h3>";
     while ($row = $result->fetch_assoc()) {
         echo "<div>";
-        echo "<strong>" . htmlspecialchars($row['username']) . ":</strong> ";
-        echo "<p>" . htmlspecialchars($row['message']) . "</p>";
-        echo "<small>Sent on: " . $row['created_at'] . "</small>";
+        echo "<strong>User:</strong> " . htmlspecialchars($row['username']) . " ";
+        echo "<a href='view_messages.php?user_id=" . $row['user_id'] . "'>View Conversation</a>";
         echo "</div><hr>";
     }
 } else {
