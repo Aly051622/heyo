@@ -357,29 +357,35 @@ while ($row = $query->fetch_assoc()) {
 <script>
      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
 
-// Attempt to get available cameras
-Instascan.Camera.getCameras().then(function (cameras) {
-        if (cameras.length > 0) {
-            let selectedCamera = cameras[0]; // Default to the first camera
+     Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+        let selectedCamera = cameras[0];
 
-            // Attempt to prioritize the back camera for mobile devices
-            cameras.forEach(function (camera) {
-                if (camera.name.toLowerCase().includes('back')) {
-                    selectedCamera = camera;
-                }
-            });
+        cameras.forEach(function (camera) {
+            if (camera.name.toLowerCase().includes('back')) {
+                selectedCamera = camera;
+            }
+        });
 
-            scanner.start(selectedCamera).catch(function (e) {
-                console.error("Error starting scanner:", e);
-                document.getElementById('scanner-status').textContent = "Error: Unable to start the scanner. Please check camera permissions.";
-            });
-        } else {
-            document.getElementById('scanner-status').textContent = "No camera detected. Please check if the device has an available camera.";
-        }
-    }).catch(function (e) {
-        console.error("Error accessing cameras:", e);
-        document.getElementById('scanner-status').textContent = "Error: Unable to access cameras. Make sure permissions are allowed and refresh the page.";
-    });
+        scanner.start(selectedCamera).then(() => {
+            const videoElement = document.getElementById('preview');
+            if (selectedCamera.name.toLowerCase().includes('back')) {
+                videoElement.style.transform = 'scale(1, 1)'; // Normal orientation
+            } else {
+                videoElement.style.transform = 'scale(-1, 1)'; // Mirrored for front camera
+            }
+        }).catch(function (e) {
+            console.error("Error starting scanner:", e);
+            document.getElementById('scanner-status').textContent = "Error: Unable to start the scanner. Please check camera permissions.";
+        });
+    } else {
+        document.getElementById('scanner-status').textContent = "No camera detected. Please check if the device has an available camera.";
+    }
+}).catch(function (e) {
+    console.error("Error accessing cameras:", e);
+    document.getElementById('scanner-status').textContent = "Error: Unable to access cameras. Make sure permissions are allowed and refresh the page.";
+});
+
 
  // Handle QR code scan event
  scanner.addListener('scan', function (content) {

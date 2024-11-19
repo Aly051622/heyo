@@ -47,7 +47,7 @@ if (isset($_POST['add_slot'])) {
 
     // Determine the area prefix based on selected area
     switch ($area) {
-        case "Front Admin":
+        case "A":
             $prefix = "A";
             break;
         case "Beside CME":
@@ -142,7 +142,7 @@ function fetchAndDisplaySlots($conn, $area, $prefix) {
 }
 
 // Example usage for Front Admin area
-fetchAndDisplaySlots($conn, 'Front Admin', 'A');
+fetchAndDisplaySlots($conn, 'A', 'A');
 ?>
 
 <!DOCTYPE html>
@@ -456,7 +456,7 @@ fetchAndDisplaySlots($conn, 'Front Admin', 'A');
     <form method="POST" action="">
                 <div class="add-slot">
                     <select name="area" id="areaSelect">
-                            <option value="Front Admin">Front Admin</option>
+                            <option value="A">A</option>
                             <option value="Beside CME">Beside CME</option>
                             <option value="Kadasig">Kadasig</option>
                             <option value="Behind">Behind</option>
@@ -473,7 +473,7 @@ fetchAndDisplaySlots($conn, 'Front Admin', 'A');
         <div id="sidebar" class="sidebar">
                <!-- Toggle Button -->
             <div class="select-area">
-                <button id="btnFrontAdmin"><i class="bi bi-signpost-2-fill"></i> Front Admin</button>
+                <button id="btnFrontAdmin"><i class="bi bi-signpost-2-fill"></i> A</button>
                 <button id="btnBesideCME"><i class="bi bi-signpost-2-fill"></i> Beside CME</button>
                 <button id="btnKadasig"><i class="bi bi-signpost-2-fill"></i> Kadasig</button>
                 <button id="btnBehind"><i class="bi bi-signpost-2-fill"></i> Behind</button>
