@@ -13,8 +13,8 @@ if (!isset($_SESSION['vpmsaid'])) {
 $adminId = $_SESSION['vpmsaid']; // Use the session variable 'vpmsaid' for admin ID
 
 try {
-    // Fetch distinct users who have messaged the admin
-    $query = "SELECT DISTINCT user_id, username FROM messages WHERE isSupport = 0 ORDER BY created_at DESC";
+    // Debug: Check if there are any messages at all (ignoring 'isSupport' for now)
+    $query = "SELECT DISTINCT user_id, username FROM messages ORDER BY created_at DESC";
     $result = $con->query($query);
 
     if ($result->num_rows > 0) {
