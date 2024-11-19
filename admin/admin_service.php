@@ -5,10 +5,13 @@ session_start();
 // Include database connection
 include('includes/dbconnection.php');
 
-// Check if the user is logged in
-if (!isset($_SESSION['email'])) {
-    exit('Unauthorized access. Please log in to view this page.');
+// Check if the user is logged in using a valid session variable
+if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+    die('Unauthorized access.');
 }
+
+// Store the logged-in user's email from the session
+$logged_in_email = $_SESSION['email'];
 
 // Query to fetch distinct users who sent messages to the logged-in admin
 $sql = "
@@ -18,7 +21,7 @@ $sql = "
            u.profile_pictures
     FROM messages m
     JOIN tblregusers u ON m.username = u.Email
-    WHERE m.isSupport = 0
+    WHERE m.isSupport = 0 -- Only fetch messages from users (not support/admin)
     ORDER BY m.created_at DESC
 ";
 
