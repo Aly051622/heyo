@@ -1,10 +1,46 @@
-<?php session_start(); ?>
+<?php session_start(); 
+ini_set('log_errors', 1);
+ini_set('error_log', 'error_log.txt'); // Set log file path
+ini_set('display_errors', 1); // Disable on-screen error display
+date_default_timezone_set('Asia/Manila');
+
+
+$server = "localhost";
+$username = "u132092183_parkingz";
+$password = "@Parkingz!2024";
+$dbname = "u132092183_parkingz";
+
+$conn = new mysqli($server, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if (isset($_POST['id'])) {
+    $id = intval($_POST['id']);
+    $sql = "DELETE FROM tblqr_login WHERE ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        echo "success";
+    } else {
+        echo "error";
+    }
+    $stmt->close();
+    exit; // Stop further processing after deletion response
+}
+
+$conn->close();
+?>
+
+?>
 <html class="no-js" lang="">
 <head>
     <script type="text/javascript" src="js/adapter.min.js"></script>
     <script type="text/javascript" src="js/vue.min.js"></script>
-    <script type="text/javascript" src="js/instascan.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -23,78 +59,27 @@
 
     <style>
         body {
-            font-weight: bold;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            color: black;
+            background-color: #f9fcff;
+            background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
         }
-
-/* Media query for mobile devices */
-@media (max-width: 480px) {
-    body {
-        font-weight: normal; /* Adjust font weight if needed for readability */
-        height: auto; /* Let content define height on smaller screens */
-    }
-}
-
-
         .no-js {
             background-color: #f9fcff;
             background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
         }
         .container {
-        padding: 20px;
+            padding: 20px;
         }
-
-        /* Media query for mobile devices */
-        @media (max-width: 480px) {
-            .container {
-                padding: 10px; /* Reduce padding for mobile view */
-            }
-        }
-
         .scanner-container, .table-container {
             margin-top: 20px;
-            padding: 10px;
         }
-
-        /* Media query for mobile devices */
-        @media (max-width: 480px) {
-            .scanner-container, .table-container {
-                margin-top: 10px; /* Reduce the top margin for mobile */
-                padding: 5px; /* Adjust padding for smaller screens */
-                width: 100px; /* Make the containers full width */
-                box-sizing: border-box; /* Ensure padding and border are included in the width */
-                height: 100px;
-            }
-        }
-
         video {
-            width: 500px; /* Reduced size */
-            height: 300px; /* Square scanner */
+            width: 500px;
+            height: 300px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             display: block;
-            margin: 0 auto; /* Centered */
-        }
-        /* Media query for smaller screens */
-        @media (max-width: 768px) {
-            video {
-                max-width: 400px; /* Reduce max width on tablets */
-            }
-        }
-
-        @media (max-width: 480px) {
-            video {
-                max-width: 100%; /* Full width on small devices */
-            }
-        }
-
-        table {
-            width: 100%;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            border-radius: 5px;
+            margin: 0 auto;
         }
         .scanner-label {
             font-weight: bold; 
@@ -103,184 +88,19 @@
             text-align: center; 
             margin-top: 10px;
         }
-        .alert {
-            transition: opacity 0.5s ease;
-        }
-            /* Navbar Styles */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 65px;
-        padding: 8px;
-        color: white;
-        z-index: 1000;
-        background-color: rgb(75, 75, 255);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-
-    .navbar-brand a{
-        font-size: 24px;
-        font-weight: bold;
-        text-decoration: none;
-        color: white;
-    }
-    
-/* Responsive styles */
-@media (max-width: 768px) {
-    .navbar {
-        height: 50px; /* Allow height to adjust based on content */
-    }
-
-    .navbar .nav-item {
-        margin: 5px 0; /* Add spacing between items */
-    }
-}
-
-@media (max-width: 480px) {
-    .navbar {
-        height: 50px;
-        padding: 5px; /* Reduce padding for smaller screens */
-    }
-
-    .navbar .nav-item {
-        font-size: 14px; /* Reduce font size */
-    }
-}
-
-        #title{
-            margin-left: 50px;
-        }
-          /* Media Queries for Responsiveness */
-          @media (max-width: 768px) {
-            #title{
-                margin-top: 25px; /* Add space between buttons */
-                text-align: center; /* Center text in buttons */
-                margin-left: 20px;
-            }
-        }
-        @media (max-width: 480px) {
-            #title{
-                margin-left: 25px;
-                top: 100px; /* Add space between buttons */
-                text-align: center; /* Center text in buttons */
-            }
-        }
-        /*qrbutton add css*/
-        .dropbtn{
-            color: white;
-            padding: 8px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            background-color: orange;
-            border-radius: 9px;
-            font-weight: bold;
-            border: solid;
-            margin-right: 30px;
-            font-family: Arial, sans-serif;
-        }
-        .dropbtn:hover{
-            background-color: white;
-            color: orange;
-            border: solid orange;
-            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
-        }
-
-        .dropdown-content{
-            font-size: 12px;
-            border-bottom-left-radius: 9px;
-            border-bottom-right-radius: 9px;
-            margin-top: 0px;
-            width: 135px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f3ab19e0;
-            color:white;
-        }
-        
- /* Media Queries for Responsiveness */
- @media (max-width: 768px) {
-            .dropbtns {
-                margin-top: 9px;
-                display: inline;
-                position: relative;
-                z-index: 1006;
-            }
-
-            #drp-con1{
-                margin-top: -7px; 
-                width: 40%; 
-                text-align: center; 
-                padding: 0px;
-                z-index:1007;
-                margin-left: 20px;
-                position: absolute;
-            }
-            #drp-con2 {
-                margin-top: -7px; 
-                width: 40%; 
-                text-align: center; 
-                padding: -1px;
-                z-index:1007;
-                margin-left: 195px;
-                position: absolute;
-            }
-            #bt1{
-                margin-bottom: 8px; 
-                width: 40%;
-                text-align: center;
-                padding: 5px;
-                margin-left: 20px;  
-            }
-            #bt2{
-                margin-left: 195px;
-                margin-top: -42px;
-                width: 40%;
-                padding: 5px;
-                z-index: 1006;
-            }
-        }
-
     </style>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
-
 </head>
 <body>
 <!-- Responsive Navigation Bar -->
-<nav class="navbar">
-    <div class="navbar-brand"><a href="monitor.php"id="title">Parking Slot Manager</a></div>
-        <!-- QR Scanner Dropdown -->
-        <div class="dropdown">
-            <button class="dropbtn" id="bt1"><i class="bi bi-qr-code-scan"></i> QR Scanner</button>
-            <div class="dropdown-content" id="drp-con1">
-                <a href="qrlogin.php"><i class="bi bi-car-front-fill"></i> Log-in</a>
-                <a href="qrlogout.php"><i class="bi bi-car-front"></i> Log-out</a>
-            </div>
-        </div>
-
-        <!-- Manual Input Dropdown -->
-        <div class="dropdown">
-            <button class="dropbtn" id="bt2"><i class="bi bi-journal-album"></i> Manual Input</button>
-            <div class="dropdown-content" id="drp-con2">
-                <a href="#"><i class="bi bi-car-front-fill"></i> Log-in</a>
-                <a href="#"><i class="bi bi-car-front"></i> Log-out</a>
-            </div>
-        </div>
-    </div>
-</nav>
+<?php include_once('includes/headerin.php');?>
 
 <div class="container" style="background: transparent;">
     <div class="row">
         <!-- Scanner Section -->
-        <div class="col-md-12 scanner-container">
-            <video id="preview"></video>
-            <div class="scanner-label">SCAN QR CODE <i class="fas fa-qrcode"></i></div>
+        <div class="col-md-12">
+                <video id="preview" style="width: 100%; max-width: 500px; height: auto;"></video>
+                <div id="scanner-status" style="text-align: center; font-weight: bold; color: orange; margin-top: 10px;"></div>
+            </div>
 
             <?php
             if (isset($_SESSION['error'])) {
@@ -290,6 +110,7 @@
                     " . $_SESSION['error'] . "
                 </div>
                 ";
+                unset($_SESSION['error']); // Clear the error message after displaying
             }
 
             if (isset($_SESSION['success'])) {
@@ -302,8 +123,21 @@
                     </button>
                 </div>
                 ";
+                unset($_SESSION['success']); // Clear the success message after displaying
             }
             ?>
+        </div>
+
+        <!-- Area Selection Dropdown -->
+        <div class="col-md-12">
+            <label for="areaSelect" style="font-weight: bold; color: orange; font-size: 18px;">Select Area:</label>
+            <select id="areaSelect" class="form-control" required>
+                <option value="">--Select Area--</option>
+                <option value="A">Front Admin</option>
+                <option value="B">Beside CME</option>
+                <option value="C">Kadasig</option>
+                <option value="D">Behind</option>
+            </select>
         </div>
 
         <!-- Table Section -->
@@ -311,21 +145,22 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <td>ID</td>
+                        <td>No.</td>
                         <td>Name</td>
-                        <td>Position/Status</td>
+                        <td>Contact Number</td>
                         <td>Vehicle Type</td>
                         <td>Vehicle Plate Number</td>
                         <td>Parking Slot</td>
                         <td>TIMEIN</td>
+                        <td>Action</td> <!-- New column for delete action -->
                     </tr>
                 </thead>
                 <tbody>
                 <?php
 $server = "localhost";
-$username = "root";
-$password = "";
-$dbname = "parkingz";
+$username = "u132092183_parkingz";
+$password = "@Parkingz!2024";
+$dbname = "u132092183_parkingz";
 
 $conn = new mysqli($server, $username, $password, $dbname);
 
@@ -333,59 +168,186 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
+// After processing the QR code
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['qrData'])) {
-    // Assume the scanned QR code data is sent via POST request as 'qrData'
     $qrData = $_POST['qrData'];
 
-    // Example QR code data format:
-    // "Vehicle Type: SUV\nPlate Number: ABC1234\nName: John Doe\nUser Type: Regular"
-
-    // Parse the QR code data
     $dataLines = explode("\n", $qrData);
     $vehicleType = str_replace('Vehicle Type: ', '', $dataLines[0]);
     $vehiclePlateNumber = str_replace('Plate Number: ', '', $dataLines[1]);
     $name = str_replace('Name: ', '', $dataLines[2]);
-    $positionStatus = str_replace('User Type: ', '', $dataLines[3]); // Using "User Type" as position/status
+    $mobilenum = str_replace('Contact Number: ', '', $dataLines[3]);
+    $model = str_replace('Model: ', '', $dataLines[4]);
+    $timeIn = date("Y-m-d h:i:s A");
 
-    // Insert the parsed data into the tblqr_login
-    $timeIn = date("Y-m-d H:i:s"); // Capture current time for TIMEIN field
-    $sql = "INSERT INTO tblqr_login (Name, PositionStatus, VehicleType, VehiclePlateNumber, TIMEIN)
-            VALUES ('$name', '$positionStatus', '$vehicleType', '$vehiclePlateNumber', '$timeIn')";
+    // Define models that require 5 slots
+    $largeModels = ['Fortuner', 'MU-X', 'Montero Sport', 'Everest', 'Terra', 'Trailblazer', 'Land Cruiser', 'Patrol', 'Expedition'];
 
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('QR data successfully logged');</script>";
-    } else {
-        echo "<script>alert('Error: " . $conn->error . "');</script>";
+
+
+    // Get the selected area prefix
+    $selectedArea = $_POST['selectedArea'];
+    
+    if (!$selectedArea) {
+        $_SESSION['error'] = 'Please select an area first.';
+        // Stay on the current page (no redirection to monitor.php)
+        header('Location: qrlogin.php');
+        exit();
     }
+
+    // Check if user is already logged in without logging out
+$checkLogoutQR = "SELECT * FROM tblqr_logout WHERE Name = '$name' AND VehiclePlateNumber = '$vehiclePlateNumber' ORDER BY TIMEOUT DESC LIMIT 1";
+$checkLoginQR = "SELECT * FROM tblqr_login WHERE Name = '$name' AND VehiclePlateNumber = '$vehiclePlateNumber' ORDER BY TIMEIN DESC LIMIT 1";
+
+$checkLogoutManual = "SELECT * FROM tblmanual_logout WHERE OwnerName = '$name' AND RegistrationNumber = '$vehiclePlateNumber' ORDER BY TimeOut DESC LIMIT 1";
+$checkLoginManual = "SELECT * FROM tblmanual_login WHERE OwnerName = '$name' AND RegistrationNumber = '$vehiclePlateNumber' ORDER BY TimeIn DESC LIMIT 1";
+
+// Execute the queries
+$logoutResultQR = $conn->query($checkLogoutQR);
+$loginResultQR = $conn->query($checkLoginQR);
+$logoutResultManual = $conn->query($checkLogoutManual);
+$loginResultManual = $conn->query($checkLoginManual);
+
+// Determine the latest logout and login times across both tables
+$lastLogoutTime = null;
+$lastLoginTime = null;
+
+if ($logoutResultQR->num_rows > 0) {
+    $lastLogoutTime = $logoutResultQR->fetch_assoc()['TIMEOUT'];
 }
 
-// Query the current day records
-$sql = "SELECT ID, Name, PositionStatus, VehicleType, VehiclePlateNumber, ParkingSlot, TIMEIN 
+if ($logoutResultManual->num_rows > 0) {
+    $lastLogoutTime = max($lastLogoutTime, $logoutResultManual->fetch_assoc()['TimeOut']);
+}
+
+if ($loginResultQR->num_rows > 0) {
+    $lastLoginTime = $loginResultQR->fetch_assoc()['TIMEIN'];
+}
+
+if ($loginResultManual->num_rows > 0) {
+    $lastLoginTime = max($lastLoginTime, $loginResultManual->fetch_assoc()['TimeIn']);
+}
+
+// Ensure last login time is later than last logout time, or no previous login exists
+if ($lastLoginTime && (!$lastLogoutTime || $lastLoginTime > $lastLogoutTime)) {
+    $_SESSION['error'] = 'You cannot log in again without logging out first.';
+    header('Location: qrlogin.php');
+    exit();
+}
+
+
+     // Determine slot requirements based on vehicle type and model
+     if ($vehicleType === 'Four Wheeler Vehicle' && in_array($model, $largeModels)) {
+        $limit = 5; // Specific large models need 5 slots
+    } elseif ($vehicleType === 'Four Wheeler Vehicle') {
+        $limit = 4; // General four-wheeler needs 4 slots
+    } elseif ($vehicleType === 'Two Wheeler Vehicle') {
+        $limit = 1; // Two-wheeler needs 1 slot
+    }
+
+    // Find consecutive vacant slots
+    $slotQuery = "SELECT SlotNumber FROM tblparkingslots 
+                  WHERE Status = 'Vacant' 
+                  AND SlotNumber LIKE '$selectedArea%' 
+                  ORDER BY CAST(SUBSTRING(SlotNumber, 2) AS UNSIGNED)";
+
+    $slotResult = $conn->query($slotQuery);
+    $availableSlots = [];
+
+    if ($slotResult->num_rows > 0) {
+        while ($row = $slotResult->fetch_assoc()) {
+            $availableSlots[] = $row['SlotNumber'];
+        }
+
+        // Check for sufficient consecutive slots
+        $occupiedSlots = [];
+        $sequence = []; // Temporary array to hold consecutive slots
+
+        foreach ($availableSlots as $slot) {
+            if (empty($sequence)) {
+                $sequence[] = $slot;
+            } else {
+                $lastSlotNumber = intval(substr(end($sequence), 1));
+                $currentSlotNumber = intval(substr($slot, 1));
+
+                if ($currentSlotNumber === $lastSlotNumber + 1) {
+                    $sequence[] = $slot;
+                } else {
+                    $sequence = [$slot]; // Reset sequence if it's broken
+                }
+            }
+
+            if (count($sequence) === $limit) {
+                $occupiedSlots = $sequence;
+                break;
+            }
+        }
+
+
+        if (count($occupiedSlots) == $limit) {
+            $slots = implode(', ', $occupiedSlots);
+
+            // Insert login information and parking slot
+            $sql = "INSERT INTO tblqr_login (Name, ContactNumber, VehicleType, VehiclePlateNumber, ParkingSlot, TIMEIN)
+                    VALUES ('$name', '$mobilenum', '$vehicleType', '$vehiclePlateNumber', '$slots', '$timeIn')";
+
+            // Update the status of the occupied slots
+            foreach ($occupiedSlots as $slot) {
+                $updateSlot = "UPDATE tblparkingslots SET Status = 'Occupied' WHERE SlotNumber = '$slot'";
+                $conn->query($updateSlot);
+            }
+
+            if ($conn->query($sql) === TRUE) {
+                $_SESSION['success'] = 'Vehicle added successfully.';
+                header('Location: monitor.php');
+                exit();
+            } else {
+                $_SESSION['error'] = 'Error: ' . $conn->error;
+            }
+        } else {
+            $_SESSION['error'] = 'No consecutive slots available for this vehicle type.';
+        }
+    } else {
+        $_SESSION['error'] = 'No vacant slots available in this area.';
+    }
+
+    exit();
+}
+
+
+
+
+$sql = "SELECT ID, Name, ContactNumber, VehicleType, VehiclePlateNumber, ParkingSlot, TIMEIN 
         FROM tblqr_login 
-        WHERE DATE(TIMEIN) = CURDATE()";
+        WHERE DATE(TIMEIN) = CURDATE() 
+        ORDER BY TIMEIN DESC";
 
 $query = $conn->query($sql);
 
 if (!$query) {
-    die("Query failed: " . $conn->error);
+    die('Error: ' . mysqli_error($conn));
 }
-?>
 
-        <?php
-        while ($row = $query->fetch_assoc()) {
-        ?>
-            <tr>
-                <td><?php echo $row['ID']; ?></td>
-                <td><?php echo $row['Name']; ?></td>
-                <td><?php echo $row['PositionStatus']; ?></td>
-                <td><?php echo $row['VehicleType']; ?></td>
-                <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                <td><?php echo $row['ParkingSlot']; // Parking Slot is left blank ?></td>
-                <td><?php echo $row['TIMEIN']; ?></td>
-            </tr>
-        <?php
-        }
-        ?>
+while ($row = $query->fetch_assoc()) {
+    $formattedTimeIn = (new DateTime($row['TIMEIN']))->format('h:i:s A m-d-y');
+    echo "
+    <tr>
+        <td>" . $row['ID'] . "</td>
+        <td>" . $row['Name'] . "</td>
+        <td>" . $row['ContactNumber'] . "</td>
+        <td>" . $row['VehicleType'] . "</td>
+        <td>" . $row['VehiclePlateNumber'] . "</td>
+        <td>" . $row['ParkingSlot'] . "</td>
+        <td>" . $formattedTimeIn . "</td>
+        <td>
+        <button onclick=\"deleteEntry(" . $row['ID'] . ")\" class=\"btn btn-danger btn-sm\">Delete</button>
+                        </td>
+    </tr>
+    ";
+}
+
+                ?>
                 </tbody>
             </table>
         </div>
@@ -393,42 +355,88 @@ if (!$query) {
 </div>
 
 <script>
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-    Instascan.Camera.getCameras().then(function (cameras) {
+     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+
+// Attempt to get available cameras
+Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-            scanner.start(cameras[0]);
+            let selectedCamera = cameras[0]; // Default to the first camera
+
+            // Attempt to prioritize the back camera for mobile devices
+            cameras.forEach(function (camera) {
+                if (camera.name.toLowerCase().includes('back')) {
+                    selectedCamera = camera;
+                }
+            });
+
+            scanner.start(selectedCamera).catch(function (e) {
+                console.error("Error starting scanner:", e);
+                document.getElementById('scanner-status').textContent = "Error: Unable to start the scanner. Please check camera permissions.";
+            });
         } else {
-            alert('No cameras found');
+            document.getElementById('scanner-status').textContent = "No camera detected. Please check if the device has an available camera.";
         }
     }).catch(function (e) {
-        console.error(e);
+        console.error("Error accessing cameras:", e);
+        document.getElementById('scanner-status').textContent = "Error: Unable to access cameras. Make sure permissions are allowed and refresh the page.";
     });
 
-    scanner.addListener('scan', function (content) {
-        // Send the QR code content to the server via POST request
-        fetch('qrlogin.php', {
-            method: 'POST',
+ // Handle QR code scan event
+ scanner.addListener('scan', function (content) {
+    const selectedArea = document.getElementById('areaSelect').value;
+
+    if (!selectedArea) {
+        alert('Please select an area first!');
+        return;
+    }
+
+    fetch('qrlogin.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'qrData=' + encodeURIComponent(content) + '&selectedArea=' + encodeURIComponent(selectedArea),
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log('Server Response:', data);
+        if (data.includes('Error!')) {
+            document.body.innerHTML = data;
+        } else {
+            alert("Unexpected server response: " + data);
+            window.location.href = 'monitor.php';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("An error occurred while processing the QR code.");
+    });
+});
+
+function deleteEntry(id) {
+    if (confirm("Are you sure you want to delete this entry?")) {
+        fetch("", { // Use the same script URL
+            method: "POST",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: 'qrData=' + encodeURIComponent(content),
+            body: "id=" + id
         })
         .then(response => response.text())
-        .then(data => {
-            // Reload the page to update the table with the new entry
-            window.location.reload();
+        .then(result => {
+            if (result === "success") {
+                alert("Entry deleted successfully.");
+                location.reload(); // Reload the page to refresh the table
+            } else {
+                alert("Failed to delete entry.");
+            }
         })
-        .catch(error => console.error('Error:', error));
-    });
-
-    // Automatically hide success alert after 5 seconds
-    setTimeout(function() {
-        let successAlert = document.getElementById('successAlert');
-        if (successAlert) {
-            successAlert.style.opacity = '0';
-            setTimeout(function() { successAlert.remove(); }, 500); // Fully remove after fade out
-        }
-    }, 1500);
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    }
+}
 </script>
+
 </body>
 </html>
