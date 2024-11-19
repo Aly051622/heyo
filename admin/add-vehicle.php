@@ -218,6 +218,7 @@ function updateModelOptions() {
         "Suzuki Motors": ["Suzuki Raider R150", "Suzuki Skydrive", "Suzuki Burgman Street", "Suzuki Smash 115", "Suzuki GSX-R150", "Suzuki Gixxer"],
         "SYM": ["SYM Maxsym 400i", "SYM Bonus X", "SYM RV1-2"],
         "TVS": ["TVS Apache RTR 200", "TVS Apache RTR 160", "TVS Dazz", "TVS XL100"],
+        "Racal" : ["Racal 115", "Racal King 175", "Racal Raptor 250", "Racal Classic 150", "Racal KRZ 150", "Racal Adventure 200", "Racal 160"],
         "Yamaha": ["Yamaha Mio Aerox", "Yamaha Mio Soul i 125", "Yamaha Mio i 125", "Yamaha Mio Sporty", "Yamaha NMAX", "Yamaha XMAX", "Yamaha FZi", "Yamaha YZF-R15", "Yamaha Sniper 155"],
         "Chevrolet": ["Colorado", "Spark", "Trailblazer", "Tracker", "Trax", "Tahoe", "Suburban", "Corvette", "Camaro", "Captiva"],
         "Ford": ["EcoSport", "Everest", "Mustang", "Ranger", "Expedition"],
