@@ -2,35 +2,31 @@
 session_start();
 include('includes/dbconnection.php');
 
-// Check if login form is submitted
 if (isset($_POST['login'])) {
     $adminuser = trim($_POST['username']);
-    $password = md5(trim($_POST['password'])); // Use secure password hashing methods like password_hash in future implementations.
+    $password = md5(trim($_POST['password']));
 
-    // Prepare and execute the query to prevent SQL injection
+    // Secure prepared statement
     $stmt = $con->prepare("SELECT ID, AdminName FROM tbladmin WHERE UserName = ? AND Password = ?");
     $stmt->bind_param("ss", $adminuser, $password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Fetch admin details
         $admin = $result->fetch_assoc();
-        $_SESSION['vpmsaid'] = $admin['ID']; // Store admin ID in session
-        $_SESSION['admin_name'] = $admin['AdminName']; // Optionally store admin name for UI purposes
-
-        // Redirect to dashboard
+        $_SESSION['vpmsaid'] = $admin['ID']; // Admin ID
+        $_SESSION['admin_name'] = $admin['AdminName']; // Optional: Admin name
         header('location: dashboard.php');
         exit;
     } else {
-        // Invalid login credentials
-        echo "<script>alert('Invalid username or password. Please try again.');</script>";
+        echo "<script>alert('Invalid username or password.');</script>";
     }
 
     $stmt->close();
 }
 $con->close();
 ?>
+
 
 
 

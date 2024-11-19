@@ -1,5 +1,7 @@
 <?php
 session_start();
+include('includes/auth_check.php'); // Ensure admin is logged in
+
 include('includes/dbconnection.php');
 
 // Ensure admin is logged in
