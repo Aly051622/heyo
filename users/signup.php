@@ -19,12 +19,19 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("This email or contact number is already associated with another account.")</script>';
     } else {
         // Insert data into tblregusers table
-        $query = mysqli_prepare($con, "INSERT INTO tblregusers (FirstName, LastName, MobileNumber, Email, Password) VALUES (?, ?, ?, ?, ?)");
+        $insert_query = mysqli_prepare($con, "INSERT INTO tblregusers (FirstName, LastName, MobileNumber, Email, Password, user_type, place, registration_status, verification_status, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         
-        if ($query) { // Check if the statement is prepared successfully
-            mysqli_stmt_bind_param($query, "sssss", $fname, $lname, $contno, $email, $password);
+        if ($insert_query) { // Check if the statement is prepared successfully
+            // Add additional parameters as needed (user_type, place, etc.)
+            $user_type = 'user';  // Set a default user type
+            $place = 'Unknown';   // Default place value
+            $registration_status = 'pending';
+            $verification_status = 'pending';
+            $status = 'inactive';
 
-            if (mysqli_stmt_execute($query)) {
+            mysqli_stmt_bind_param($insert_query, "ssisssssss", $fname, $lname, $contno, $email, $password, $user_type, $place, $registration_status, $verification_status, $status);
+
+            if (mysqli_stmt_execute($insert_query)) {
                 // Registration successful, redirect for verification
                 $_SESSION['verification_email'] = $email; // Store email in session
                 echo '<script>
@@ -35,7 +42,7 @@ if (isset($_POST['submit'])) {
                 echo '<script>alert("Something went wrong. Please try again.")</script>';
             }
 
-            mysqli_stmt_close($query);
+            mysqli_stmt_close($insert_query);
         } else {
             echo '<script>alert("Failed to prepare the SQL statement.")</script>';
         }
@@ -45,6 +52,7 @@ if (isset($_POST['submit'])) {
     mysqli_close($con);
 }
 ?>
+
 
 
 
