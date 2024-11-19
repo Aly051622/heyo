@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Manila');
 error_reporting(0);
 include('includes/dbconnection.php');
 if (strlen($_SESSION['vpmsaid'] == 0)) {
