@@ -4,13 +4,13 @@ include('includes/auth_check.php'); // Ensure admin is logged in
 
 include('includes/dbconnection.php');
 
-// Ensure admin is logged in
-if (!isset($_SESSION['admin_id'])) {
+// Ensure admin is logged in by checking the correct session variable 'vpmsaid'
+if (!isset($_SESSION['vpmsaid'])) {
     echo "Please log in as an admin.";
     exit;
 }
 
-$adminId = $_SESSION['admin_id'];
+$adminId = $_SESSION['vpmsaid']; // Use the session variable 'vpmsaid' for admin ID
 
 try {
     // Fetch distinct users who have messaged the admin
