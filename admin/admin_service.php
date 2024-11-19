@@ -2,13 +2,12 @@
 session_start();
 include('includes/dbconnection.php');
 
-// Ensure the admin is logged in
+// Ensure admin is logged in
 if (!isset($_SESSION['admin_id'])) {
     echo "Please log in as an admin.";
     exit;
 }
 
-// Admin session details
 $adminId = $_SESSION['admin_id'];
 
 try {
