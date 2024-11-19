@@ -1,61 +1,39 @@
 <?php
-// Start the session
-session_start();
-
-// Include database connection
+// Include the database connection
 include('includes/dbconnection.php');
 
-// Fetch the logged-in user's email from the session, even if not strictly validated
-$logged_in_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;
+// Start the session to check if the admin is logged in
+session_start();
 
-// Query to fetch distinct users who sent messages
-$sql = "
-    SELECT DISTINCT m.username AS sender_email, 
-           u.FirstName, 
-           u.LastName, 
-           u.profile_pictures
-    FROM messages m
-    JOIN tblregusers u ON m.username = u.Email
-    ORDER BY m.created_at DESC
-";
-
-// Execute the query
-$result = mysqli_query($con, $sql);
-
-// Check for query errors
-if (!$result) {
-    die("Query Failed: " . mysqli_error($con));
+// Check if admin is logged in (you can use $_SESSION variables or authentication method here)
+if (!isset($_SESSION['admin_id'])) {
+    echo "Please log in as an admin.";
+    exit;
 }
 
-// Display results if there are messages
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $sender_email = $row['sender_email'];
-        $first_name = $row['FirstName'];
-        $last_name = $row['LastName'];
-        $profile_picture = $row['profile_pictures'];
+$adminId = $_SESSION['admin_id'];  // Admin ID from session
+$adminUsername = $_SESSION['admin_username'];  // Admin username from session
 
-        // Sanitize data for display
-        $safe_first_name = htmlspecialchars($first_name);
-        $safe_last_name = htmlspecialchars($last_name);
-        $safe_email = htmlspecialchars($sender_email);
-        $profile_picture_path = $profile_picture
-            ? 'uploads/profile_uploads/' . htmlspecialchars($profile_picture)
-            : 'uploads/default-profile-picture.jpg';
+// Fetch all user messages (isSupport = 0 for user messages)
+$query = "SELECT messages.username, messages.message, messages.created_at 
+          FROM messages 
+          WHERE messages.isSupport = 0 
+          ORDER BY messages.created_at ASC";
 
-        // Display user information
-        echo '<div style="margin-bottom: 20px;">';
-        echo '<img src="' . $profile_picture_path . '" alt="Profile Picture" width="50" height="50" style="border-radius: 50%;"> ';
-        echo '<strong>' . $safe_first_name . ' ' . $safe_last_name . '</strong>';
-        echo '<br>';
-        echo '<a href="conversation.php?sender=' . urlencode($safe_email) . '">View Conversation</a>';
-        echo '</div>';
+$result = $con->query($query);
+
+if ($result->num_rows > 0) {
+    // Display the messages
+    while ($row = $result->fetch_assoc()) {
+        echo "<div>";
+        echo "<strong>" . htmlspecialchars($row['username']) . ":</strong> ";
+        echo "<p>" . htmlspecialchars($row['message']) . "</p>";
+        echo "<small>Sent on: " . $row['created_at'] . "</small>";
+        echo "</div><hr>";
     }
 } else {
-    // Display a message if no messages are available
-    echo '<p>No users have messaged the admin yet.</p>';
+    echo "No users have messaged the admin yet.";
 }
 
-// Close the database connection
-mysqli_close($con);
+$con->close();
 ?>
