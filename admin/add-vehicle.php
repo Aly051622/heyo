@@ -183,7 +183,7 @@ function updateMakeBrandOptions() {
     const otherMakeInput = document.getElementById("otherMake");
     vehcomp.innerHTML = '<option value="">Select Make/Brand</option>';
     const options = {
-        "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
+        "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio","Racal", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
         "Four Wheeler Vehicle": ["Chevrolet", "Ford", "Honda", "Hyundai", "Isuzu", "Kia", "Lexus", "MG (Morris Garages)", "Mitsubishi", "Nissan", "Peugeot", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Others, please specify"],
         "Bicycles": ["Battle", "Brusko", "Cannondale", "GT", "Hiland", "Kona", "Nakto", "RoyalBaby", "Others, please specify"]
     };
