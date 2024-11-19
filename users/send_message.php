@@ -14,22 +14,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Retrieve username (modify logic as needed)
+    // Retrieve username and user_id from session
     session_start();
     $username = $_SESSION['username'] ?? 'Guest'; // Fallback to 'Guest' if no session is set
+    $userId = $_SESSION['user_id'] ?? 0; // Make sure user_id is set in session
 
     // Set isSupport flag (0 for user messages)
     $isSupport = 0;
 
     try {
         // Prepare the SQL statement
-        $stmt = $con->prepare("INSERT INTO messages (username, message, isSupport) VALUES (?, ?, ?)");
+        $stmt = $con->prepare("INSERT INTO messages (user_id, username, message, isSupport) VALUES (?, ?, ?, ?)");
         if (!$stmt) {
             throw new Exception("Failed to prepare the statement: " . $con->error);
         }
 
         // Bind parameters
-        $stmt->bind_param("ssi", $username, $message, $isSupport);
+        $stmt->bind_param("issi", $userId, $username, $message, $isSupport);
 
         // Execute the statement
         if ($stmt->execute()) {
@@ -37,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             throw new Exception("Failed to execute the statement: " . $stmt->error);
         }
-        
+
         $stmt->close();
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
@@ -47,3 +48,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
+?>

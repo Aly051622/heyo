@@ -1,7 +1,9 @@
 <?php
+// Include the database connection
 include('includes/dbconnection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Retrieve all messages where isSupport = 0 (user messages)
     $stmt = $con->prepare("SELECT username, message, isSupport, created_at FROM messages WHERE isSupport = 0 ORDER BY created_at ASC");
     $stmt->execute();
     $result = $stmt->get_result();
