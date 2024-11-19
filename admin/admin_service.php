@@ -5,15 +5,15 @@ session_start();
 // Include database connection
 include('includes/dbconnection.php');
 
-// Check if the user is logged in using a valid session variable
-if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-    die('Unauthorized access.');
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    exit('Unauthorized access.');
 }
 
-// Store the logged-in user's email from the session
+// Get the logged-in user's email
 $logged_in_email = $_SESSION['email'];
 
-// Query to fetch distinct users who sent messages to the logged-in admin
+// Query to fetch distinct users who messaged the logged-in user (admin)
 $sql = "
     SELECT DISTINCT m.username AS sender_email, 
            u.FirstName, 
@@ -21,7 +21,7 @@ $sql = "
            u.profile_pictures
     FROM messages m
     JOIN tblregusers u ON m.username = u.Email
-    WHERE m.isSupport = 0 -- Only fetch messages from users (not support/admin)
+    WHERE m.isSupport = 0 AND m.username != '$logged_in_email'
     ORDER BY m.created_at DESC
 ";
 
@@ -59,7 +59,7 @@ if (mysqli_num_rows($result) > 0) {
     }
 } else {
     // Display a message if no messages are available
-    echo '<p>No users have messaged the admin yet.</p>';
+    echo '<p>No users have messaged you yet.</p>';
 }
 
 // Close the database connection
