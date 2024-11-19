@@ -343,7 +343,7 @@ input[type="text"]:hover, input[type="password"]:hover {
    <div style="text-align:center;margin-top:40px;">
       <div class="bg-img">
          <div class="content">
-         <a href="login.php" id="x">
+         <a href="admin/dashboard.php" id="x">
          <i class="fa-solid fa fa-xmark"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
