@@ -277,7 +277,31 @@ include('includes/dbconnection.php');
       </div>
     </div>
   </div>
+  <script>
+  document.getElementById('send-button').addEventListener('click', function () {
+    const message = document.getElementById('message-input').value;
 
+    if (message.trim() !== "") {
+        fetch('send_message.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: message })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.innerHTML += `<div class="message-user">${message}</div>`;
+                document.getElementById('message-input').value = ''; // Clear input
+            } else {
+                alert("Failed to send message.");
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+});
+
+</script>
   <!-- Chat Box Container -->
   <div id="chat-box-container">
     <div id="chat-box"></div>

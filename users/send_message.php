@@ -2,30 +2,48 @@
 // Include the database connection
 include('includes/dbconnection.php');
 
+// Ensure the script only handles POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve and decode JSON input
     $input = json_decode(file_get_contents('php://input'), true);
-    $message = $input['message'] ?? '';
+    $message = trim($input['message'] ?? '');
 
-    // Validate message
+    // Validate message input
     if (empty($message)) {
         echo json_encode(['success' => false, 'message' => 'Message cannot be empty.']);
         exit;
     }
 
-    // Prepare and execute the SQL statement to save the message
-    $stmt = $con->prepare("INSERT INTO messages (username, message, isSupport) VALUES (?, ?, ?)");
-    $isSupport = 0; // 0 for user messages
-    $username = 'User'; // Change to the actual username or get it from session
-    $stmt->bind_param("ssi", $username, $message, $isSupport);
+    // Retrieve username (modify logic as needed)
+    session_start();
+    $username = $_SESSION['username'] ?? 'Guest'; // Fallback to 'Guest' if no session is set
 
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
-    } else {
-        echo json_encode(['success' => false, 'message' => 'Failed to send message.']);
+    // Set isSupport flag (0 for user messages)
+    $isSupport = 0;
+
+    try {
+        // Prepare the SQL statement
+        $stmt = $con->prepare("INSERT INTO messages (username, message, isSupport) VALUES (?, ?, ?)");
+        if (!$stmt) {
+            throw new Exception("Failed to prepare the statement: " . $con->error);
+        }
+
+        // Bind parameters
+        $stmt->bind_param("ssi", $username, $message, $isSupport);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Message sent successfully.']);
+        } else {
+            throw new Exception("Failed to execute the statement: " . $stmt->error);
+        }
+        
+        $stmt->close();
+    } catch (Exception $e) {
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    } finally {
+        $con->close();
     }
-
-    $stmt->close();
-    $con->close();
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
