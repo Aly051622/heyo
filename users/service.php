@@ -83,9 +83,6 @@ $user = mysqli_fetch_assoc($query);
             border: none;
             z-index: 1000;
             margin-top: -90px;
-        }
-
-        #chat-box {
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: #007bff #ff9933;
@@ -244,53 +241,48 @@ $user = mysqli_fetch_assoc($query);
   <!-- Breadcrumbs -->
   <div class="breadcrumbs mb-3">
     <div class="breadcrumbs-inner">
-      <div class="row m-0">
-          <div class="page-header float-right">
-            <div class="page-title" style="background: transparent; margin-top: 5px; margin-bottom: 30px; margin-left: 75em;">
-              <ol class="breadcrumb text-right">
-                <li>
-                  <div class="message-icon" id="message-icon">
-                    <i class="bi bi-chat-left-text-fill"></i> Chat with Support
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><span>Customer Service</span></li>
+      </ol>
     </div>
   </div>
-  <script>
-  document.getElementById('send-button').addEventListener('click', function () {
-    const message = document.getElementById('message-input').value;
-    if (message.trim() !== "") {
-        fetch('send_message.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: message })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const chatBox = document.getElementById('chat-box');
-                chatBox.innerHTML += `<div class="message-user">${message}</div>`;
-                document.getElementById('message-input').value = ''; 
-            } else {
-                alert(data.message); 
-            }
-        })
-        .catch(err => {
-            alert('Error: ' + err);
-        });
-    }
-  });
-  </script>
 
-  <!-- Main Content -->
+  <!-- Chat Section -->
   <div class="container">
-      <div id="chat-box"></div>
-      <textarea id="message-input" rows="4"></textarea>
-      <button id="send-button">Send</button>
+    <div id="chat-box"></div>
+    <textarea id="message-input" rows="4"></textarea>
+    <button id="send-button">Send</button>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Wait until DOM is loaded to attach event listeners
+
+        // Handle sending the message
+        document.getElementById('send-button').addEventListener('click', function () {
+            const message = document.getElementById('message-input').value;
+            if (message.trim() !== "") {
+                fetch('send_message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const chatBox = document.getElementById('chat-box');
+                        chatBox.innerHTML += `<div class="message-user">${message}</div>`;
+                        document.getElementById('message-input').value = ''; // Clear input after sending
+                    } else {
+                        alert(data.message); // Show error if message is not sent successfully
+                    }
+                })
+                .catch(err => {
+                    alert('Error: ' + err); // Handle any errors that occur during the fetch
+                });
+            }
+        });
+    });
+  </script>
 </body>
 </html>
