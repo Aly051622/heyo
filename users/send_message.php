@@ -19,6 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_SESSION['username'] ?? 'Guest'; // Fallback to 'Guest' if no session is set
     $userId = $_SESSION['user_id'] ?? 0; // Make sure user_id is set in session
 
+    // Log the message and user data for debugging
+    error_log("Message received: $message");
+    error_log("User ID: " . $userId);
+    error_log("Username: " . $username);
+
     // Set isSupport flag (0 for user messages)
     $isSupport = 0;
 
