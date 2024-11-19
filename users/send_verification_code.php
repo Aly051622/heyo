@@ -20,7 +20,7 @@ if (isset($_SESSION['verification_email'])) {
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
         $mail->Username = 'developershalcyon@gmail.com'; 
-        $mail->Password = 'uhdv sagp oljc smwm'; // Use your app password
+        $mail->Password = 'xagc gxug ghgl ciok'; // Use your app password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
