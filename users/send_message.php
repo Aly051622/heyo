@@ -14,15 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Retrieve username and user_id from session
+    // Retrieve user session data
     session_start();
-    $username = $_SESSION['username'] ?? 'Guest'; // Fallback to 'Guest' if no session is set
-    $userId = $_SESSION['user_id'] ?? 0; // Make sure user_id is set in session
+    $userId = $_SESSION['user_id'] ?? null;
+    $username = $_SESSION['username'] ?? null;
 
-    // Log the message and user data for debugging
-    error_log("Message received: $message");
-    error_log("User ID: " . $userId);
-    error_log("Username: " . $username);
+    // Validate session data
+    if (empty($userId) || empty($username)) {
+        echo json_encode(['success' => false, 'message' => 'User not logged in.']);
+        exit;
+    }
 
     // Set isSupport flag (0 for user messages)
     $isSupport = 0;
