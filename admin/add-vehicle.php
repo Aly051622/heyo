@@ -1,8 +1,9 @@
 <?php
 session_start();
-date_default_timezone_set('Asia/Manila');
 error_reporting(E_ALL); // Enable error reporting for debugging
 ini_set('display_errors', 1);
+
+date_default_timezone_set('Asia/Manila');
 
 include('includes/dbconnection.php');
 
@@ -71,6 +72,8 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 $qrImagePath = "qrcodes/" . $qrImageName;
                 $qrCodeContent = file_get_contents($qrCodeUrl);
                 file_put_contents($qrImagePath, $qrCodeContent);
+
+                $currentTime = date('Y-m-d H:i:s');
 
                 // Update INSERT query to include the ImagePath column
                 $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath) 
