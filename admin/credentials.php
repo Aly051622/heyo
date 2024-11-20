@@ -19,7 +19,7 @@ $queryUnvalidated = "
 $resultUnvalidated = mysqli_query($con, $queryUnvalidated);
 
 if (mysqli_num_rows($resultUnvalidated) > 0) {
-    echo "<h1>Unvalidated Clients</h1>";
+    echo "<h1>Credentials</h1>";
     echo "<table border='1'>";
     echo "<tr>
             <th>Email</th>
