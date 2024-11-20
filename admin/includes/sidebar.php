@@ -84,28 +84,49 @@
     <li><i class="menu-icon fa fa-user-circle-o"></i><a href="register.php">Register Client</a></li>
     <li>
         <i class="menu-icon fa fa-address-book"></i>
-        <a href="#" onclick="promptUserInfoPassword()">User Information</a>
+        <a href="#" onclick="showPasswordModal()">User Information</a>
     </li>
     <li><i class="menu-icon fa bi bi-chat-dots-fill"></i><a href="admin_comments.php">Comment</a></li>
     <li><i class="menu-icon fa bi bi-envelope-paper-heart"></i><a href="admin_feedbacks.php">Feedback</a></li>
     <li><i class="menu-icon fa bi bi-headset"></i><a href="admin_service.php">Customer Service</a></li>
 </ul>
 
-<script>
-function promptUserInfoPassword() {
-    // Ask for the password
-    const password = prompt("Please enter the password to access User Information:");
+<!-- Password Modal -->
+<div id="passwordModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
+    <h3>Enter Password</h3>
+    <input type="password" id="passwordInput" placeholder="Password" style="margin-bottom: 10px; padding: 5px;">
+    <br>
+    <button onclick="validatePassword()" style="padding: 5px 10px;">Submit</button>
+    <button onclick="closePasswordModal()" style="padding: 5px 10px;">Cancel</button>
+</div>
 
-    // Check if the entered password is correct
-    if (password === "userinformation") {
-        // Redirect to the User Information page
+<!-- Modal Background -->
+<div id="modalBackground" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="closePasswordModal()"></div>
+
+<script>
+function showPasswordModal() {
+    // Show the modal and its background
+    document.getElementById('passwordModal').style.display = 'block';
+    document.getElementById('modalBackground').style.display = 'block';
+}
+
+function closePasswordModal() {
+    // Hide the modal and its background
+    document.getElementById('passwordModal').style.display = 'none';
+    document.getElementById('modalBackground').style.display = 'none';
+}
+
+function validatePassword() {
+    const password = document.getElementById('passwordInput').value;
+    if (password === "userinformation") { // Replace with your secure password
         window.location.href = "reg-users.php";
-    } else if (password !== null) {
-        // Alert user if the password is incorrect
+    } else {
         alert("Invalid password. Access denied.");
+        closePasswordModal();
     }
 }
 </script>
+
 
 
 <!--
