@@ -10,7 +10,7 @@ $queryUnvalidated = "
            r.cr_image, 
            r.nv_image, 
            r.or_image, 
-           r.profile_pictures
+    
     FROM uploads u
     LEFT JOIN tblregusers r ON u.email = r.Email
     WHERE u.validity = 0 OR u.expiration_date < CURDATE()
@@ -27,7 +27,6 @@ if (mysqli_num_rows($resultUnvalidated) > 0) {
             <th>CR Image</th>
             <th>NV Image</th>
             <th>OR Image</th>
-            <th>Profile Picture</th>
           </tr>";
 
     while ($row = mysqli_fetch_assoc($resultUnvalidated)) {
