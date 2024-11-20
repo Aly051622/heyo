@@ -95,23 +95,35 @@
 -->
                     <!-- This is for the credentials of the user such as OR, CR, NV files -->
                     <li>
-    <a href="#" onclick="openCredentials()"> 
+    <a href="#" onclick="showPasswordModal()"> 
         <i class="menu-icon fa bi-geo-fill"></i> Credentials 
     </a>
 </li>
 
+<!-- Modal for Password -->
+<div id="passwordModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; background:white; border:1px solid #ccc; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1000;">
+    <h3>Enter Password</h3>
+    <input type="password" id="passwordInput" placeholder="Enter password" style="padding:10px; width:100%; margin-bottom:10px;" />
+    <button onclick="validatePassword()" style="padding:10px 20px; background:#007bff; color:white; border:none; cursor:pointer;">Submit</button>
+    <button onclick="closePasswordModal()" style="padding:10px 20px; background:#ccc; color:black; border:none; cursor:pointer;">Cancel</button>
+</div>
+
 <script>
-function openCredentials() {
-    // Prompt for the password
-    const password = prompt("Please enter the password to access credentials:");
-    
-    // Validate the password
-    if (password === "credentials") {
-        // Redirect to the credentials page
+function showPasswordModal() {
+    document.getElementById('passwordModal').style.display = 'block';
+}
+
+function closePasswordModal() {
+    document.getElementById('passwordModal').style.display = 'none';
+}
+
+function validatePassword() {
+    const password = document.getElementById('passwordInput').value;
+    if (password === "credentials") { // Replace with your secure password
         window.location.href = "credentials.php";
-    } else if (password !== null) {
-        // Alert for invalid password (if user didn't cancel)
+    } else {
         alert("Invalid password. Access denied.");
+        closePasswordModal();
     }
 }
 </script>
