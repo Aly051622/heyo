@@ -93,7 +93,11 @@
                         <a href="manage-slot.php"><i class="menu-icon fa  bi bi-geo-fill"></i> Add Area and Slot</a>
                     </li>
 -->
+                    <!-- This is for the credentials of the user such as OR, CR, NV files -->
+                    <li>
+                    <a href= "credentials.php"> <i class = "menu-icon fa bi-geo-fill"> </i> Credentials </a>
                 </ul>
+</li>
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
