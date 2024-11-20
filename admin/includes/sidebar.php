@@ -106,7 +106,7 @@ function closeUserInfoModal() {
 
 function validateUserInfoPassword() {
     const password = document.getElementById('userInfoPassword').value;
-    if (password === "client information") { // Replace with your secure password
+    if (password === "clientinformation") { // Replace with your secure password
         window.location.href = "reg-users.php";
     } else {
         alert("Invalid password. Access denied.");
