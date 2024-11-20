@@ -9,14 +9,13 @@ $queryAllUsers = "
            LastName, 
            Email, 
            MobileNumber, 
-           LicenseNumber, 
+          
            or_image, 
            cr_image, 
            nv_image, 
-           profile_pictures, 
-           RegDate, 
-           status, 
-           validity 
+           profile_pictures
+          
+           
     FROM tblregusers
 ";
 
@@ -31,14 +30,13 @@ if (mysqli_num_rows($resultAllUsers) > 0) {
             <th>Last Name</th>
             <th>Email</th>
             <th>Mobile Number</th>
-            <th>License Number</th>
+           
             <th>OR Image</th>
             <th>CR Image</th>
             <th>NV Image</th>
             <th>Profile Picture</th>
-            <th>Registration Date</th>
-            <th>Status</th>
-            <th>Validity</th>
+            
+            
           </tr>";
 
     while ($row = mysqli_fetch_assoc($resultAllUsers)) {
