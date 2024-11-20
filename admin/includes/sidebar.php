@@ -115,7 +115,6 @@
     <li><i class="menu-icon fa bi bi-envelope-paper-heart"></i><a href="admin_feedbacks.php">Feedback</a></li>
     <li><i class="menu-icon fa bi bi-headset"></i><a href="admin_service.php">Customer Service</a></li>
 </ul>
-
 <script>
 function showPasswordModal() {
     console.log('Password modal shown'); // Debugging line
@@ -132,11 +131,21 @@ function closePasswordModal() {
 function validatePassword() {
     const password = document.getElementById('passwordInput').value.trim(); // Trim spaces
     console.log("Entered Password:", password); // Log entered password for debugging
-    if (password === "information") { // Replace with your secure password
-        window.location.href = "reg-users.php";
+
+    // Debugging: Check for any issues with password input
+    if (!password) {
+        alert("Please enter a password.");
+        return;
+    }
+
+    // Correct password check (adjust as necessary)
+    const correctPassword = "information"; // Replace with your secure password
+
+    if (password === correctPassword) {
+        window.location.href = "reg-users.php"; // Redirect to the appropriate page
     } else {
         alert("Invalid password. Access denied.");
-        closePasswordModal();
+        closePasswordModal(); // Close modal if password is incorrect
     }
 }
 
