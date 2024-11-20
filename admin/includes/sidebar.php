@@ -112,7 +112,6 @@
     <li><i class="menu-icon fa bi bi-envelope-paper-heart"></i><a href="admin_feedbacks.php">Feedback</a></li>
     <li><i class="menu-icon fa bi bi-headset"></i><a href="admin_service.php">Customer Service</a></li>
 </ul>
-
 <!-- Password Modal -->
 <div id="passwordModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 1000;">
     <h3>Enter Password</h3>
@@ -141,7 +140,8 @@ function closePasswordModal() {
 }
 
 function validatePassword() {
-    const password = document.getElementById('passwordInput').value;
+    const password = document.getElementById('passwordInput').value.trim(); // Trim spaces
+    console.log("Entered Password:", password); // Log entered password for debugging
     if (password === "userinformation") { // Replace with your secure password
         window.location.href = "reg-users.php";
     } else {
@@ -164,6 +164,7 @@ function togglePasswordVisibility() {
     }
 }
 </script>
+
 
 
 
