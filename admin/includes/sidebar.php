@@ -82,38 +82,7 @@
                         
                             <ul class="sub-menu children dropdown-menu">
                                 <li><i class="menu-icon fa fa-user-circle-o"></i><a href="register.php">Register Client</a></li>
-                                <li>
-    <i class="menu-icon fa fa-address-book"></i>
-    <a href="#" onclick="showUserInfoModal()">User Information</a>
-</li>
-
-<!-- Modal for Password -->
-<div id="userInfoModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); padding:20px; background:white; border:1px solid #ccc; box-shadow:0 4px 8px rgba(0,0,0,0.2); z-index:1000;">
-    <h3>Enter Password</h3>
-    <input type="password" id="userInfoPassword" placeholder="Enter password" style="padding:10px; width:100%; margin-bottom:10px;" />
-    <button onclick="validateUserInfoPassword()" style="padding:10px 20px; background:#007bff; color:white; border:none; cursor:pointer;">Submit</button>
-    <button onclick="closeUserInfoModal()" style="padding:10px 20px; background:#ccc; color:black; border:none; cursor:pointer;">Cancel</button>
-</div>
-
-<script>
-function showUserInfoModal() {
-    document.getElementById('userInfoModal').style.display = 'block';
-}
-
-function closeUserInfoModal() {
-    document.getElementById('userInfoModal').style.display = 'none';
-}
-
-function validateUserInfoPassword() {
-    const password = document.getElementById('userInfoPassword').value;
-    if (password === "clientinformation") { // Replace with your secure password
-        window.location.href = "reg-users.php";
-    } else {
-        alert("Invalid password. Access denied.");
-        closeUserInfoModal();
-    }
-}
-</script>
+                                <li><i class="menu-icon fa fa-address-book"></i><a href="reg-users.php">User Information</a></li>
                                 <li><i class="menu-icon  fa bi bi-chat-dots-fill"></i><a href="admin_comments.php">Comment</a></li>
                                 <li><i class="menu-icon fa  bi bi-envelope-paper-heart"></i><a href="admin_feedbacks.php">Feedback</a></li>
                                 <li><i class="menu-icon fa  bi bi-headset"></i><a href="admin_service.php">Customer Service</a></li>
