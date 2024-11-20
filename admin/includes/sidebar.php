@@ -95,8 +95,27 @@
 -->
                     <!-- This is for the credentials of the user such as OR, CR, NV files -->
                     <li>
-                    <a href= "credentials.php"> <i class = "menu-icon fa bi-geo-fill"> </i> Credentials </a>
-                </ul>
+    <a href="#" onclick="openCredentials()"> 
+        <i class="menu-icon fa bi-geo-fill"></i> Credentials 
+    </a>
+</li>
+
+<script>
+function openCredentials() {
+    // Prompt for the password
+    const password = prompt("Please enter the password to access credentials:");
+    
+    // Validate the password
+    if (password === "credentials") {
+        // Redirect to the credentials page
+        window.location.href = "credentials.php";
+    } else if (password !== null) {
+        // Alert for invalid password (if user didn't cancel)
+        alert("Invalid password. Access denied.");
+    }
+}
+</script>
+
 </li>
             </div><!-- /.navbar-collapse -->
         </nav>
