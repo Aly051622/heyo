@@ -132,7 +132,7 @@ function closePasswordModal() {
 function validatePassword() {
     const password = document.getElementById('passwordInput').value.trim(); // Trim spaces
     console.log("Entered Password:", password); // Log entered password for debugging
-    if (password === "userinformation") { // Replace with your secure password
+    if (password === "information") { // Replace with your secure password
         window.location.href = "reg-users.php";
     } else {
         alert("Invalid password. Access denied.");
