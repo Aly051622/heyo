@@ -73,11 +73,11 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 $qrCodeContent = file_get_contents($qrCodeUrl);
                 file_put_contents($qrImagePath, $qrCodeContent);
 
-                $currentTime = date('Y-m-d H:i:s');
+                $inTime = date('Y-m-d H:i:s');
 
                 // Update INSERT query to include the ImagePath column
-                $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath) 
-                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$qrImagePath', '$imagePath')";
+                $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
+                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$qrImagePath', '$imagePath', '$inTime')";
 
                 if (mysqli_query($con, $query)) {
                     echo "<script>alert('Vehicle Entry Detail has been added');</script>";
