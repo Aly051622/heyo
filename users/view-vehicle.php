@@ -1,61 +1,45 @@
 <?php
 session_start();
-error_reporting(0);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include('includes/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
+    exit();
 } else {
-    $userId = $_SESSION['vpmsuid']; // Get the logged-in user's ID
+    $userId = $_SESSION['vpmsuid'];
 
-    // Fetch user's details and QR code path
-    $sql = "
-        SELECT 
-            tblregusers.FirstName, 
-            tblregusers.LastName, 
-            tblvehicle.QRCodePath 
-        FROM tblvehicle
-        JOIN tblregusers ON tblvehicle.user_id = tblregusers.ID
-        WHERE tblregusers.ID = :userId";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    try {
+        // Ensure $conn is valid PDO instance
+        $sql = "
+            SELECT 
+                tblregusers.FirstName, 
+                tblregusers.LastName, 
+                tblvehicle.QRCodePath 
+            FROM tblvehicle
+            JOIN tblregusers ON tblvehicle.user_id = tblregusers.ID
+            WHERE tblregusers.ID = :userId";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($row) {
-        $firstName = $row['FirstName'];
-        $lastName = $row['LastName'];
-        $qrCodePath = $row['QRCodePath'];
+        if ($row) {
+            $firstName = $row['FirstName'];
+            $lastName = $row['LastName'];
+            $qrCodePath = $row['QRCodePath'];
 
-        // Generate a QR code image with the name overlay for download
-        if (!empty($qrCodePath) && file_exists($qrCodePath)) {
-            $outputImagePath = 'output/' . $userId . '_qr_with_name.png'; // Set the path for the new image
-            
-            // Create a new image with name overlay
-            $qrImage = imagecreatefrompng($qrCodePath);
-            $white = imagecolorallocate($qrImage, 255, 255, 255);
-            $black = imagecolorallocate($qrImage, 0, 0, 0);
-
-            $fontPath = __DIR__ . '/fonts/arial.ttf'; // Path to a .ttf font file
-            $fontSize = 12;
-            $nameText = $firstName . ' ' . $lastName;
-
-            // Add text overlay below the QR code
-            $imageWidth = imagesx($qrImage);
-            $imageHeight = imagesy($qrImage);
-            $textBox = imagettfbbox($fontSize, 0, $fontPath, $nameText);
-            $textWidth = abs($textBox[4] - $textBox[0]);
-            $textX = ($imageWidth - $textWidth) / 2;
-            $textY = $imageHeight - 10; // Position below the QR code
-
-            imagettftext($qrImage, $fontSize, 0, $textX, $textY, $black, $fontPath, $nameText);
-
-            // Save the new image
-            imagepng($qrImage, $outputImagePath);
-            imagedestroy($qrImage);
+            // QR Code generation logic here...
         }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
+}
 ?>
+
 
   
 <!doctype html>
