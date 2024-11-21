@@ -1,47 +1,14 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+error_reporting(0);
 include('includes/dbconnection.php');
-
-if (strlen($_SESSION['vpmsuid'] == 0)) {
-    header('location:logout.php');
-    exit();
-} else {
-    $userId = $_SESSION['vpmsuid'];
-
-    try {
-        // Ensure $conn is valid PDO instance
-        $sql = "
-            SELECT 
-                tblregusers.FirstName, 
-                tblregusers.LastName, 
-                tblvehicle.QRCodePath 
-            FROM tblvehicle
-            JOIN tblregusers ON tblvehicle.user_id = tblregusers.ID
-            WHERE tblregusers.ID = :userId";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($row) {
-            $firstName = $row['FirstName'];
-            $lastName = $row['LastName'];
-            $qrCodePath = $row['QRCodePath'];
-
-            // QR Code generation logic here...
-        }
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
-}
-?>
+if (strlen($_SESSION['vpmsuid']==0)) {
+  header('location:logout.php');
+  } else{
 
 
-  
+
+  ?>
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -182,19 +149,19 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
+                                            <!-- QR CODE IMG -->
                                             <div class="col-md-3">
-    <!-- QR Code Display -->
-    <?php if (!empty($qrCodePath) && file_exists($qrCodePath)) { ?>
-        <p style="margin: 0;"><strong>Download QR Code</strong></p>
-        <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-        <a href="<?php echo htmlspecialchars($outputImagePath); ?>" download="<?php echo htmlspecialchars($firstName . '_' . $lastName); ?>.png" class="download-icon">
-            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-        </a>
-    <?php } else { ?>
-        <p>QR Code image not found</p>
-    <?php } ?>
-</div>
-
+                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
+                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
+                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <p>QR Code image not found</p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
