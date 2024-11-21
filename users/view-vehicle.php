@@ -124,6 +124,12 @@ body{
                             $ownerno = $_SESSION['vpmsumn'];
                             $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
 
+                            if (mysqli_num_rows($ret) == 0) { 
+                                // No data found, display the message
+                                echo '<div class="alert alert-danger text-center" style="color: red; font-weight: bold;">
+                                        Please go to Register Vehicle on the sidebar to obtain QR Code, and fill-up the required details HONESTLY.
+                                      </div>';
+                            } else {
                             while ($row = mysqli_fetch_array($ret)) {
                                 $imagePath = $row['ImagePath'];
                                 $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
@@ -173,6 +179,7 @@ body{
                                 </div>
                             <?php
                             }
+                        }
                             ?>
 </div>
 
