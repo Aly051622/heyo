@@ -157,11 +157,22 @@ body{
             // Get the referer header (origin of the request)
             $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 
-            // The allowed domain where the QR code can be accessed
-            $allowed_domain = 'vpms.ctudanaoparksys.icu';
+            // The allowed pages where the QR code can be accessed from
+            $allowed_pages = [
+                'https://vpms.ctudanaoparksys.icu/guard/qrlogin.php',
+                'https://vpms.ctudanaoparksys.icu/guard/qrlogout.php'
+            ];
 
-            // Check if the referer matches the allowed domain
-            if (strpos($referer, $allowed_domain) !== false) {
+            // Check if the referer matches any of the allowed pages
+            $qr_access_allowed = false;
+            foreach ($allowed_pages as $allowed_page) {
+                if (strpos($referer, $allowed_page) !== false) {
+                    $qr_access_allowed = true;
+                    break;
+                }
+            }
+
+            if ($qr_access_allowed) {
                 ?>
                 <p style="margin: 0;"><strong>Download QR Code</strong></p>
                 <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
@@ -170,7 +181,7 @@ body{
                 </a>
                 <?php
             } else {
-                // If the referer doesn't match, display a message
+                // If the referer doesn't match the allowed pages, display an error message
                 echo '<p>QR Code cannot be accessed outside the system.</p>';
             }
         } else {
