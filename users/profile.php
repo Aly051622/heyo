@@ -275,14 +275,6 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
                                     </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Place</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
-                                    </div>
-
-<div class="row form-group">
-    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
-    <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
 </form>
 
 <!-- Bootstrap Modal -->

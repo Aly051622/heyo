@@ -22,7 +22,11 @@
                         <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
                     </a>
                 </li>
-               
+                <li>
+                    <a href="add-vehicle.php">
+                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                    </a>
+                </li>
                 <li>
                     <a href="service.php">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern

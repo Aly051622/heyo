@@ -73,11 +73,11 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 $qrCodeContent = file_get_contents($qrCodeUrl);
                 file_put_contents($qrImagePath, $qrCodeContent);
 
-                $currentTime = date('Y-m-d H:i:s');
+                $inTime = date('Y-m-d H:i:s');
 
                 // Update INSERT query to include the ImagePath column
-                $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath) 
-                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$qrImagePath', '$imagePath')";
+                $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
+                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$qrImagePath', '$imagePath', '$inTime')";
 
                 if (mysqli_query($con, $query)) {
                     echo "<script>alert('Vehicle Entry Detail has been added');</script>";
@@ -415,7 +415,7 @@ function updateModelOptions() {
                             </div>
                              <div class="row form-group">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Contact Number</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="11" pattern="[0-9]+"></div>
                             </div>
                            
                             

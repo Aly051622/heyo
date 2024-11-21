@@ -129,7 +129,7 @@ if(isset($_GET['del'])) {
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Manage Incoming Vehicle</strong>
+                            <strong class="card-title">Manage Registered Vehicle</strong>
                         </div>
                         <div class="card-body">
                              <table class="table">
