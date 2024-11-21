@@ -2,11 +2,18 @@
 session_start();
 include('includes/dbconnection.php');
 
-// Function to securely validate the token and vehicle ID
+// Function to securely validate the token
 function isValidToken($vehid, $token) {
-    // Create a token from the vehicle ID and timestamp (you can adjust the time limit as needed)
-    $validToken = md5($vehid . time());
-    return $validToken === $token;
+    // Check if the token exists in the session
+    if (isset($_SESSION['token_' . $vehid])) {
+        $storedTokenData = $_SESSION['token_' . $vehid];
+        
+        // Check if the token matches and if it has not expired
+        if ($storedTokenData['token'] === $token && time() <= $storedTokenData['expiry']) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // Check if 'token' and 'vehid' are provided in the URL
