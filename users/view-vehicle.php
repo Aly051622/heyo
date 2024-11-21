@@ -152,8 +152,8 @@ body{
                                             <?php
 // Assuming $ownerno is already defined and contains the contact number or relevant user ID
 
-// Fetch the user's information, including their full name, from both tables
-$ret = mysqli_query($con, "SELECT v.RegistrationNumber, v.Model, v.VehicleCompanyname, v.Color, v.ImagePath, v.QRCodePath, u.FirstName, u.LastName, v.ID as vehid 
+// Fetch the user's information, including their full name, from tblregusers
+$ret = mysqli_query($con, "SELECT u.FirstName, u.LastName, v.QRCodePath 
                            FROM tblvehicle v
                            JOIN tblregusers u ON v.UserID = u.ID
                            WHERE v.OwnerContactNumber='$ownerno'");
@@ -164,16 +164,16 @@ $row = mysqli_fetch_assoc($ret);
 $userName = $row['FirstName'] . ' ' . $row['LastName'];
 
 // Set the QR code path if it exists
-$qrCodePath = $row['QRCodePath']; // Make sure this path is set correctly
+$qrCodePath = $row['QRCodePath']; // Ensure this path is set correctly
 ?>
 
 <!-- QR CODE IMG -->
 <div class="col-md-3">
     <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-        <p style="margin: 0;"><strong>User: <?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
+        <p style="margin: 0;"><strong><?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
         <p style="margin: 0;"><strong>Download QR Code</strong></p>
         <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-        <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+        <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo htmlspecialchars($userName . '_QRCode.png'); ?>" class="download-icon">
             <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
         </a>
     <?php } else { ?>
