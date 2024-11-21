@@ -163,13 +163,13 @@ $row = mysqli_fetch_assoc($ret);
 // Concatenate first and last name to form the full name
 $userName = $row['FirstName'] . ' ' . $row['LastName'];
 
-// Set the QR code path if it exists
+// Ensure the QR code path exists
 $qrCodePath = $row['QRCodePath']; // Ensure this path is set correctly
 ?>
 
 <!-- QR CODE IMG -->
 <div class="col-md-3">
-    <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
+    <?php if (!empty($qrCodePath) && file_exists($qrCodePath)) { ?>
         <p style="margin: 0;"><strong><?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
         <p style="margin: 0;"><strong>Download QR Code</strong></p>
         <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
