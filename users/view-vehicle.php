@@ -2,13 +2,62 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vpmsuid']==0)) {
-  header('location:logout.php');
-  } else{
 
+if (strlen($_SESSION['vpmsuid'] == 0)) {
+    header('location:logout.php');
+} else {
+    $userId = $_SESSION['vpmsuid']; // Get the logged-in user's ID
 
+    // Fetch user's details and QR code path
+    $sql = "
+        SELECT 
+            tblregusers.FirstName, 
+            tblregusers.LastName, 
+            tblvehicle.QRCodePath 
+        FROM tblvehicle
+        JOIN tblregusers ON tblvehicle.user_id = tblregusers.ID
+        WHERE tblregusers.ID = :userId";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-  ?>
+    if ($row) {
+        $firstName = $row['FirstName'];
+        $lastName = $row['LastName'];
+        $qrCodePath = $row['QRCodePath'];
+
+        // Generate a QR code image with the name overlay for download
+        if (!empty($qrCodePath) && file_exists($qrCodePath)) {
+            $outputImagePath = 'output/' . $userId . '_qr_with_name.png'; // Set the path for the new image
+            
+            // Create a new image with name overlay
+            $qrImage = imagecreatefrompng($qrCodePath);
+            $white = imagecolorallocate($qrImage, 255, 255, 255);
+            $black = imagecolorallocate($qrImage, 0, 0, 0);
+
+            $fontPath = __DIR__ . '/fonts/arial.ttf'; // Path to a .ttf font file
+            $fontSize = 12;
+            $nameText = $firstName . ' ' . $lastName;
+
+            // Add text overlay below the QR code
+            $imageWidth = imagesx($qrImage);
+            $imageHeight = imagesy($qrImage);
+            $textBox = imagettfbbox($fontSize, 0, $fontPath, $nameText);
+            $textWidth = abs($textBox[4] - $textBox[0]);
+            $textX = ($imageWidth - $textWidth) / 2;
+            $textY = $imageHeight - 10; // Position below the QR code
+
+            imagettftext($qrImage, $fontSize, 0, $textX, $textY, $black, $fontPath, $nameText);
+
+            // Save the new image
+            imagepng($qrImage, $outputImagePath);
+            imagedestroy($qrImage);
+        }
+    }
+?>
+
+  
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -149,19 +198,19 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                            <!-- QR CODE IMG -->
                                             <div class="col-md-3">
-                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
-                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-                                                    </a>
-                                                <?php } else { ?>
-                                                    <p>QR Code image not found</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
+    <!-- QR Code Display -->
+    <?php if (!empty($qrCodePath) && file_exists($qrCodePath)) { ?>
+        <p style="margin: 0;"><strong>Download QR Code</strong></p>
+        <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+        <a href="<?php echo htmlspecialchars($outputImagePath); ?>" download="<?php echo htmlspecialchars($firstName . '_' . $lastName); ?>.png" class="download-icon">
+            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+        </a>
+    <?php } else { ?>
+        <p>QR Code image not found</p>
+    <?php } ?>
+</div>
+
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
