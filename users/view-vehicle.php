@@ -1,8 +1,9 @@
 <?php
 session_start();
-error_reporting(E_ALL); // Enable full error reporting
+error_reporting(E_ALL); // Enable all error reporting
+ini_set('display_errors', 1); // Ensure errors are displayed
 
-include('includes/dbconnection.php'); // Ensure dbconnection.php is properly included and connected
+include('includes/dbconnection.php'); // Ensure the database connection is correct
 
 // Check if ownerno is set before running the query
 if (isset($_SESSION['ownerno'])) {
@@ -36,6 +37,7 @@ if (empty($_SESSION['vpmsuid'])) {
     exit; // Ensure script stops executing after redirection
 }
 ?>
+
 
 <!doctype html>
 
