@@ -2,28 +2,25 @@
 session_start();
 error_reporting(0);
 include('includes/dbconnection.php');
-if (strlen($_SESSION['vpmsuid']==0)) {
-  header('location:logout.php');
-  } else{
 
+// Redirect if session is not set
+if (strlen($_SESSION['vpmsuid']) == 0) {
+    header('location:logout.php');
+    exit;
+}
+?>
 
-
-  ?>
 <!doctype html>
-
-<html class="no-js" lang="">
+<html lang="">
 <head>
-   
     <title>CTU- Danao Parking System - View Vehicle Parking Details</title>
-    
+
     <link rel="apple-touch-icon" href="images/ctu.png">
     <link rel="shortcut icon" href="images/ctu.png">
-   
     <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
     <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
 
-
-
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -32,85 +29,84 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-<style>
-    #printbtn:hover,
-#viewbtn:hover {
-    background: orange;
-    color: black;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
-}
 
-body{
-    background: whitesmoke;
-    height: 100vh;
-}
-.card, .card-header{
+    <!-- Custom Styles -->
+    <style>
+        #printbtn:hover,
+        #viewbtn:hover {
+            background: orange;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+        }
+
+        body {
+            background: whitesmoke;
+            height: 100vh;
+        }
+
+        .card, .card-header {
             box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-                 }
-#printbtn {
-    background: yellowgreen;
-    color: white;
-}
+        }
 
-/* Styling for the download button */
-.download-icon {
-    display: inline-block;
-    padding: 7px 7px; /* Add some padding */
-    text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 18px; /* Adjust font size */
-    font-weight: bold; /* Bold text */
-    transition: background-color 0.3s ease; /* Smooth transition */
-}
+        #printbtn {
+            background: yellowgreen;
+            color: white;
+        }
 
-/* Hover effect for the download button */
-.download-icon:hover {
-    background-color: orange; /* Darker green on hover */
-}
+        /* Styling for the download button */
+        .download-icon {
+            display: inline-block;
+            padding: 7px 7px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
-</style>
+        /* Hover effect for the download button */
+        .download-icon:hover {
+            background-color: orange;
+        }
+
+    </style>
 </head>
+
 <body>
     <!-- Left Panel -->
-
-  <?php include_once('includes/sidebar.php');?>
-
-    <!-- Left Panel -->
+    <?php include_once('includes/sidebar.php'); ?>
 
     <!-- Right Panel -->
+    <?php include_once('includes/header.php'); ?>
 
-     <?php include_once('includes/header.php');?>
-
-
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Owned Vehicles</h1>
-                            </div>
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h1>Owned Vehicles</h1>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
-                                    <li class="active">View Vehicle Parking Details</li>
-                                </ol>
-                            </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                                <li class="active">View Vehicle Parking Details</li>
+                            </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="content">
+    <div class="content">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-lg-12">
@@ -119,16 +115,17 @@ body{
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
-                        <?php
-                            $ownerno = $_SESSION['vpmsumn'];
-                            $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
+                            <?php
+                                $ownerno = $_SESSION['vpmsumn'];
+                                $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, OwnerFirstName, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
 
-                            while ($row = mysqli_fetch_array($ret)) {
-                                $imagePath = $row['ImagePath'];
-                                $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
-                                    ? '../admin/qrcodes/' . $row['QRCodePath'] 
-                                    : '../admin/' . $row['QRCodePath'];
-                                $fullImagePath = __DIR__ . '/' . $imagePath; // Full path on the server
+                                while ($row = mysqli_fetch_array($ret)) {
+                                    $imagePath = $row['ImagePath'];
+                                    $ownerFirstName = $row['OwnerFirstName']; // Get user's first name
+                                    $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
+                                        ? '../admin/qrcodes/' . $row['QRCodePath'] 
+                                        : '../admin/' . $row['QRCodePath'];
+                                    $fullImagePath = __DIR__ . '/' . $imagePath;
                             ?>
                                 <div class="d-flex align-items-center border rounded p-3 mb-3">
                                     <div class="flex-shrink-0 mr-3">
@@ -154,7 +151,7 @@ body{
                                                 <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
                                                     <p style="margin: 0;"><strong>Download QR Code</strong></p>
                                                     <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo htmlspecialchars($ownerFirstName . '-QR.png'); ?>" class="download-icon">
                                                         <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
                                                     </a>
                                                 <?php } else { ?>
@@ -170,35 +167,23 @@ body{
                                         </div>
                                     </div>
                                 </div>
-                            <?php
-                            }
-                            ?>
-</div>
-
+                            <?php } // End of while loop ?>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-   
-
         </div>
-    </div><!-- .animated -->
-</div><!-- .content -->
+    </div>
 
-<div class="clearfix"></div>
+    <div class="clearfix"></div>
 
+    </div><!-- /#right-panel -->
 
-</div><!-- /#right-panel -->
-
-<!-- Right Panel -->
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
-
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="../admin/assets/js/main.js"></script>
 </body>
 </html>
-<?php }  ?>
