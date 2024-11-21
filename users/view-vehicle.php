@@ -149,12 +149,22 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                           <!-- QR CODE IMG -->
+                                            <?php
+// Fetch the user's information, including their full name, from both tables
+$ret = mysqli_query($con, "SELECT v.RegistrationNumber, v.Model, v.VehicleCompanyname, v.Color, v.ImagePath, v.QRCodePath, u.FirstName, u.LastName, v.ID as vehid 
+                           FROM tblvehicle v
+                           JOIN tblregusers u ON v.UserID = u.ID
+                           WHERE v.OwnerContactNumber='$ownerno'");
+
+$row = mysqli_fetch_assoc($ret);
+
+// Concatenate first and last name to form the full name
+$userName = $row['FirstName'] . ' ' . $row['LastName'];
+?>
+
+<!-- QR CODE IMG -->
 <div class="col-md-3">
-    <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { 
-        // Fetch the user's full name from the database
-        $userName = $row['FullName']; // Replace with the correct column name for the user's full name
-    ?>
+    <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
         <p style="margin: 0;"><strong>User: <?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
         <p style="margin: 0;"><strong>Download QR Code</strong></p>
         <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
