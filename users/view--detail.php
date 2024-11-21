@@ -105,8 +105,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               <?php
  $cid=$_GET['viewid'];
  $ret = mysqli_query($con, "SELECT *, 
- DATE_FORMAT(InTime, '%H:%i %m-%d-%Y') AS FormattedInTime, 
- DATE_FORMAT(OutTime, '%H:%i %m-%d-%Y') AS FormattedOutTime 
+ DATE_FORMAT(InTime, '%h:%i %p %m-%d-%Y') AS FormattedInTime, 
+ DATE_FORMAT(OutTime, '%h:%i %p %m-%d-%Y') AS FormattedOutTime 
 FROM tblvehicle WHERE ID='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
