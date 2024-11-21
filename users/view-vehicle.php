@@ -150,6 +150,8 @@ body{
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
                                             <?php
+// Assuming $ownerno is already defined and contains the contact number or relevant user ID
+
 // Fetch the user's information, including their full name, from both tables
 $ret = mysqli_query($con, "SELECT v.RegistrationNumber, v.Model, v.VehicleCompanyname, v.Color, v.ImagePath, v.QRCodePath, u.FirstName, u.LastName, v.ID as vehid 
                            FROM tblvehicle v
@@ -160,6 +162,9 @@ $row = mysqli_fetch_assoc($ret);
 
 // Concatenate first and last name to form the full name
 $userName = $row['FirstName'] . ' ' . $row['LastName'];
+
+// Set the QR code path if it exists
+$qrCodePath = $row['QRCodePath']; // Make sure this path is set correctly
 ?>
 
 <!-- QR CODE IMG -->
