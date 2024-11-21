@@ -149,13 +149,26 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                          <!-- QR CODE IMG -->
+                                          <?php
+// Include the PHP QR Code library
+include('phpqrcode/qrlib.php');
+
+// Fetch the user's full name from the database
+$userName = htmlspecialchars($row['FirstName']) . ' ' . htmlspecialchars($row['LastName']);
+
+// Define the path for the QR code image
+$qrCodePath = 'path_to_save_qr_code/' . $userName . '_QRCode.png';
+
+// Generate the QR code with the user's name
+QRcode::png($userName, $qrCodePath, 'L', 4, 4); // 'L' is the error correction level, '4' is the size of the QR code
+
+?>
+
+<!-- QR CODE IMG -->
 <div class="col-md-3">
     <?php 
-    // Check if QR code path exists and is valid
-    if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { 
-        // Concatenate the user's full name (FirstName and LastName)
-        $userName = htmlspecialchars($row['FirstName']) . ' ' . htmlspecialchars($row['LastName']);
+    // Check if QR code image exists
+    if (file_exists($qrCodePath)) { 
     ?>
         <!-- Display the user's full name -->
         <p style="margin: 0;"><strong><?php echo $userName; ?></strong></p>
