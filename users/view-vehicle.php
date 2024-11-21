@@ -1,11 +1,26 @@
 <?php
 session_start();
-error_reporting(0);
-include('includes/dbconnection.php');
+error_reporting(E_ALL); // Enable full error reporting
+
+include('includes/dbconnection.php'); // Ensure dbconnection.php is properly included and connected
+
+// Check if ownerno is set before running the query
+if (isset($_SESSION['ownerno'])) {
+    $ownerno = $_SESSION['ownerno']; // Or retrieve it from another source (e.g., $_POST, $_GET)
+} else {
+    // If ownerno is not set, handle the error gracefully
+    die('Owner contact number is not set.');
+}
+
 $ret = mysqli_query($con, "SELECT u.FirstName, u.LastName, v.QRCodePath 
                            FROM tblvehicle v
                            JOIN tblregusers u ON v.UserID = u.ID
                            WHERE v.OwnerContactNumber='$ownerno'");
+
+if (!$ret) {
+    // Log the error and display a generic message
+    die('Database query failed: ' . mysqli_error($con));
+}
 
 $row = mysqli_fetch_assoc($ret);
 
@@ -14,13 +29,14 @@ $userName = $row['FirstName'] . ' ' . $row['LastName'];
 
 // Ensure the QR code path exists
 $qrCodePath = $row['QRCodePath']; // Ensure this path is set correctly
-if (strlen($_SESSION['vpmsuid']==0)) {
-  header('location:logout.php');
-  } else{
 
+// Check if session is valid
+if (empty($_SESSION['vpmsuid'])) {
+    header('location:logout.php');
+    exit; // Ensure script stops executing after redirection
+}
+?>
 
-
-  ?>
 <!doctype html>
 
 <html class="no-js" lang="">
