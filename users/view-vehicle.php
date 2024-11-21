@@ -1,78 +1,14 @@
 <?php
 session_start();
 error_reporting(0);
-date_default_timezone_set('Asia/Manila');
 include('includes/dbconnection.php');
+if (strlen($_SESSION['vpmsuid']==0)) {
+  header('location:logout.php');
+  } else{
 
-if (strlen($_SESSION['vpmsuid'] == 0)) {
-    header('location:logout.php');
-} else {
-    $userId = $_SESSION['vpmsuid']; // Get the logged-in user's ID
 
-    // Fetch user's details and QR code path
-    $sql = "
-        SELECT 
-            tblregusers.FirstName, 
-            tblregusers.LastName, 
-            tblvehicle.QRCodePath 
-        FROM tblvehicle
-        JOIN tblregusers ON tblvehicle.user_id = tblregusers.ID
-        WHERE tblregusers.ID = :userId";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($row) {
-        $firstName = $row['FirstName'];
-        $lastName = $row['LastName'];
-        $qrCodePath = $row['QRCodePath'];
-
-        // Generate a QR code image with the name overlay if the QR code exists
-        if (!empty($qrCodePath) && file_exists($qrCodePath)) {
-            $outputImagePath = 'output/' . $userId . '_qr_with_name.png'; // Set the path for the new image
-            
-            // Create a new image with name overlay
-            $qrImage = imagecreatefrompng($qrCodePath);
-            $white = imagecolorallocate($qrImage, 255, 255, 255);
-            $black = imagecolorallocate($qrImage, 0, 0, 0);
-
-            $fontPath = __DIR__ . '/fonts/arial.ttf'; // Path to a .ttf font file
-            $fontSize = 12;
-            $nameText = $firstName . ' ' . $lastName;
-
-            // Add text overlay above the QR code
-            $imageWidth = imagesx($qrImage);
-            $textBox = imagettfbbox($fontSize, 0, $fontPath, $nameText);
-            $textWidth = abs($textBox[4] - $textBox[0]);
-            $textX = ($imageWidth - $textWidth) / 2;
-            $textY = 20; // Position above the QR code
-
-            imagettftext($qrImage, $fontSize, 0, $textX, $textY, $black, $fontPath, $nameText);
-
-            // Save the new image
-            imagepng($qrImage, $outputImagePath);
-            imagedestroy($qrImage);
-        }
-    }
-?>
-
-<div class="col-md-3">
-    <?php if (!empty($firstName) && !empty($lastName)) { ?>
-        <p><strong><?php echo htmlspecialchars($firstName) . ' ' . htmlspecialchars($lastName); ?></strong></p>
-    <?php } ?>
-
-    <?php if (!empty($qrCodePath) && file_exists($qrCodePath)) { ?>
-        <p style="margin: 0;"><strong>Download QR Code</strong></p>
-        <img src="<?php echo htmlspecialchars($outputImagePath); ?>" alt="User's QR Code with Name" style="width:100px;height:100px;" class="img-fluid" />
-        <a href="<?php echo htmlspecialchars($outputImagePath); ?>" download="<?php echo htmlspecialchars($firstName . '_' . $lastName); ?>.png" class="download-icon">
-            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-        </a>
-    <?php } else { ?>
-        <p>QR Code image not found</p>
-    <?php } ?>
-</div>
-
+  ?>
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -187,12 +123,6 @@ body{
                             $ownerno = $_SESSION['vpmsumn'];
                             $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
 
-                            if (mysqli_num_rows($ret) == 0) { 
-                                // No data found, display the message
-                                echo '<div class="alert alert-danger text-center" style="color: red; font-weight: bold;">
-                                        Please go to Register Vehicle on the sidebar to obtain QR Code, and fill-up the required details HONESTLY.
-                                      </div>';
-                            } else {
                             while ($row = mysqli_fetch_array($ret)) {
                                 $imagePath = $row['ImagePath'];
                                 $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
@@ -242,7 +172,6 @@ body{
                                 </div>
                             <?php
                             }
-                        }
                             ?>
 </div>
 
