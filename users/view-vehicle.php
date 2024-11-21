@@ -149,19 +149,37 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                            <!-- QR CODE IMG -->
-                                            <div class="col-md-3">
-                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
-                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-                                                    </a>
-                                                <?php } else { ?>
-                                                    <p>QR Code image not found</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
+                                            <?php
+// Fetch the user's full name from the tblregusers table
+$userId = $row['user_id']; // Adjust based on the column referencing the user ID
+$query = "SELECT CONCAT(firstname, ' ', lastname) AS fullname FROM tblregusers WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$fullName = $user['fullname'];
+?>
+
+<!-- QR CODE IMG -->
+<div class="col-md-3">
+    <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
+        <!-- Display Full Name -->
+        <p style="margin: 0; font-weight: bold; text-align: center;">
+            <?php echo htmlspecialchars($fullName); ?>
+        </p>
+
+        <!-- QR Code Section -->
+        <p style="margin: 0;"><strong>Download QR Code</strong></p>
+        <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+        <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+        </a>
+    <?php } else { ?>
+        <p>QR Code image not found</p>
+    <?php } ?>
+</div>
+
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
