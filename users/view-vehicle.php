@@ -149,19 +149,23 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                            <!-- QR CODE IMG -->
-                                            <div class="col-md-3">
-                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
-                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-                                                    </a>
-                                                <?php } else { ?>
-                                                    <p>QR Code image not found</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
+                                           <!-- QR CODE IMG -->
+<div class="col-md-3">
+    <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { 
+        // Fetch the user's full name from the database
+        $userName = $row['FullName']; // Replace with the correct column name for the user's full name
+    ?>
+        <p style="margin: 0;"><strong>User: <?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
+        <p style="margin: 0;"><strong>Download QR Code</strong></p>
+        <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+        <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+        </a>
+    <?php } else { ?>
+        <p>QR Code image not found</p>
+    <?php } ?>
+</div>
+
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
