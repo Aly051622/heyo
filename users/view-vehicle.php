@@ -1,44 +1,14 @@
 <?php
 session_start();
-error_reporting(E_ALL); // Enable all error reporting
-ini_set('display_errors', 1); // Ensure errors are displayed
-
-include('includes/dbconnection.php'); // Ensure the database connection is correct
-
-// Check if ownerno is set before running the query
-if (isset($_SESSION['ownerno'])) {
-    $ownerno = $_SESSION['ownerno']; // Or retrieve it from another source (e.g., $_POST, $_GET)
-} else {
-    // If ownerno is not set, handle the error gracefully
-    die('Owner contact number is not set.');
-}
-
-$ret = mysqli_query($con, "SELECT u.FirstName, u.LastName, v.QRCodePath 
-                           FROM tblvehicle v
-                           JOIN tblregusers u ON v.UserID = u.ID
-                           WHERE v.OwnerContactNumber='$ownerno'");
-
-if (!$ret) {
-    // Log the error and display a generic message
-    die('Database query failed: ' . mysqli_error($con));
-}
-
-$row = mysqli_fetch_assoc($ret);
-
-// Concatenate first and last name to form the full name
-$userName = $row['FirstName'] . ' ' . $row['LastName'];
-
-// Ensure the QR code path exists
-$qrCodePath = $row['QRCodePath']; // Ensure this path is set correctly
-
-// Check if session is valid
-if (empty($_SESSION['vpmsuid'])) {
-    header('location:logout.php');
-    exit; // Ensure script stops executing after redirection
-}
-?>
+error_reporting(0);
+include('includes/dbconnection.php');
+if (strlen($_SESSION['vpmsuid']==0)) {
+  header('location:logout.php');
+  } else{
 
 
+
+  ?>
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -179,20 +149,19 @@ body{
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                           <!-- QR CODE IMG -->
-<div class="col-md-3">
-    <?php if (!empty($qrCodePath) && file_exists($qrCodePath)) { ?>
-        <p style="margin: 0;"><strong><?php echo htmlspecialchars($userName); ?></strong></p> <!-- Display user's full name -->
-        <p style="margin: 0;"><strong>Download QR Code</strong></p>
-        <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-        <a href="<?php echo htmlspecialchars($qrCodePath); ?>" 
-           download="<?php echo htmlspecialchars($userName . '_QRCode.png'); ?>" class="download-icon">
-            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-        </a>
-    <?php } else { ?>
-        <p>QR Code image not found</p>
-    <?php } ?>
-</div>
+                                            <!-- QR CODE IMG -->
+                                            <div class="col-md-3">
+                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
+                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
+                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
+                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <p>QR Code image not found</p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
