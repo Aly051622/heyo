@@ -80,24 +80,20 @@ if ($userExists > 0) {
     file_put_contents($qrImagePath, $qrCodeContent);
 
     // Create a new image with the name and QR code
-    $outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png";
-    $qrImage = imagecreatefrompng($qrImagePath);
-    $width = imagesx($qrImage);
-    $height = imagesy($qrImage);
+$outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; // Define the final image path
+$qrImage = imagecreatefrompng($qrImagePath); // Load the QR code image
 
-    // Create an image canvas (increased height to accommodate text)
-    $outputImage = imagecreatetruecolor($width, $height + 50);
-    $white = imagecolorallocate($outputImage, 255, 255, 255);
-    $black = imagecolorallocate($outputImage, 0, 0, 0);
-    imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
+$qrWidth = imagesx($qrImage); // Get the width of the QR code image
+$qrHeight = imagesy($qrImage); // Get the height of the QR code image
 
-  // Add the full name text above the QR code
+// Create an image canvas (increased height to accommodate text)
+$outputImage = imagecreatetruecolor($qrWidth, $qrHeight + 50); // Increase the height for text
+$white = imagecolorallocate($outputImage, 255, 255, 255); // Allocate the white color
+$black = imagecolorallocate($outputImage, 0, 0, 0); // Allocate the black color
+imagefilledrectangle($outputImage, 0, 0, $qrWidth, $qrHeight + 50, $white); // Fill the background with white
+
+// Add the full name text above the QR code
 $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-
-// Check if font exists
-if (!file_exists($fontPath)) {
-    die('Font file not found');
-}
 
 // Split the full name into lines of maximum 20 characters
 $maxLength = 20;
@@ -109,18 +105,8 @@ while (strlen($fullName) > $maxLength) {
 }
 $lines[] = $fullName; // Add any remaining part
 
-// Create a new image with padding (2px)
-$padding = 2; // 2px padding
-$width = $qrWidth + (2 * $padding); // Add padding to width
-$height = $qrHeight + (2 * $padding); // Add padding to height
-$outputImage = imagecreatetruecolor($width, $height); // Create the image with padding
-
-// Fill the background with white color
-$white = imagecolorallocate($outputImage, 255, 255, 255);
-imagefill($outputImage, 0, 0, $white);
-
 // Add text with padding and space between text and image
-$black = imagecolorallocate($outputImage, 0, 0, 0);
+$padding = 2; // 2px padding
 $yPosition = $padding + 20; // Starting Y position for text with padding
 foreach ($lines as $line) {
     imagettftext($outputImage, 10, 0, $padding, $yPosition, $black, $fontPath, $line); // Add each line of text
@@ -130,18 +116,16 @@ foreach ($lines as $line) {
 // Add space between text and QR code
 $yPosition += 10; // Add space between text and QR code
 
-// Check if QR image resource is valid
-if (!$qrImage) {
-    die('QR Image creation failed');
-}
-
-// Copy the QR code into the image with padding
-imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); // Copy QR code with padding
+// Copy QR code below the text
+imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); // Adjusted to fit QR code below text
 
 // Save the final image with QR code and full name
-imagepng($outputImage, $outputImagePath);
+imagepng($outputImage, $outputImagePath); // Save the final image
+
+// Clean up resources
 imagedestroy($qrImage);
 imagedestroy($outputImage);
+
 
 // Now insert vehicle data into the database along with the generated QR code image path
 $inTime = date('Y-m-d H:i:s');
@@ -167,10 +151,10 @@ if (mysqli_query($con, $query)) {
 } else {
     echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
 }
+
 } else {
     echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
-
 
 
         }
