@@ -79,7 +79,7 @@ if ($userExists > 0) {
     $qrCodeContent = file_get_contents($qrCodeUrl);
     file_put_contents($qrImagePath, $qrCodeContent);
 
-   // Create a new image with the name and QR code
+  // Create a new image with the name and QR code
 $outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; // Define the final image path
 $qrImage = imagecreatefrompng($qrImagePath); // Load the QR code image
 
@@ -110,6 +110,12 @@ $lines[] = $fullName; // Add any remaining part
 $padding = 2; 
 $textSpacing = 5; // Space between text and QR code
 $yPosition = $padding + 15; // Initial vertical position for the text
+
+$qrWidth = (int)imagesx($qrImage); // Explicit cast to integer
+$qrHeight = (int)imagesy($qrImage); // Explicit cast to integer
+
+// Create an image canvas with adjusted height
+$outputImage = imagecreatetruecolor($qrWidth, (int)($qrHeight + 50)); // Ensure this is an integer
 
 foreach ($lines as $line) {
     // Calculate text bounding box to center-align
@@ -156,8 +162,6 @@ if (mysqli_query($con, $query)) {
 } else {
     echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
-
-
 
         }
     }
