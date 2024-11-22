@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 error_reporting(E_ALL); // Enable error reporting for debugging
@@ -149,7 +150,7 @@ imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="css/responsive.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <style>
@@ -188,6 +189,136 @@ imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
             color: black;
             text-decoration: none;
             cursor: pointer;
+        }
+        html, body {
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            
+            background: whitesmoke;
+        }
+
+        body {
+            background: whitesmoke;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        /* Breadcrumb styles */
+        .breadcrumbs {
+            width: 90%;
+            background-color: #ffffff;
+            padding: 7px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-left: 5em;
+        }
+
+        .breadcrumbs .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: black;
+        }
+
+        .breadcrumb .active {
+            color: #6c757d;
+        }
+
+        /* Card and button styles */
+        .card,
+        .card-header {
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        }
+
+        #printbtn:hover,
+        #viewbtn:hover, .download-icon:hover {
+            background-color: darkblue;
+            border: solid blue;
+        }
+
+        #printbtn, #viewbtn, .download-icon {
+            border-radius: 9px;
+            background-color: rgb(53, 97, 255);
+            color: white;
+            border: solid;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .download-icon {
+            margin-top: 5px;
+            display: inline-block;
+            padding: 6px 7px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-icon:hover {
+            color: white;
+        }
+        .text-right{
+            color: gray;
+        }
+
+        /* Table responsive adjustments for mobile */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Improve table styling for mobile */
+        .table-responsive table {
+            width: 100%;
+            table-layout: auto;
+            word-wrap: break-word;
+        }
+
+        .table-responsive th, .table-responsive td {
+            white-space: nowrap;
+            padding: 8px;
+            text-align: left;
+        }
+
+        @media (max-width: 480px) {
+            .table-responsive th, .table-responsive td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            .table-responsive tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+            }
+            .table-responsive td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+        .clearfix{
+            background: whitesmoke; 
         }
     </style>
     

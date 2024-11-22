@@ -57,8 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body>
 <style>
+    .navbar-header{
+        position:fixed;
+        z-index: 1;
+    }
 #printbtn:hover,
 #viewbtn:hover {
     background: orange;
@@ -159,7 +162,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
             </div>
         </div>
     </div>
-</header>
 </div>
 
 <?php if ($uploadSuccess): ?>
