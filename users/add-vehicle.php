@@ -85,10 +85,20 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $black = imagecolorallocate($outputImage, 0, 0, 0);
                 imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-                // Add the text and QR code to the canvas
-                $fontPath = '../fonts/arial.ttf'; // Path to your font file
-                imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName);
-                imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
+               // Set the default system font using the built-in font
+$fontPath = ''; // Default system font (no need to specify a file)
+$fontSize = 10; // Set your desired font size
+$angle = 0;     // Text angle (0 means horizontal)
+$x = 10;         // X-coordinate for text
+$y = 20;         // Y-coordinate for text
+$black = imagecolorallocate($outputImage, 0, 0, 0); // Text color (black)
+
+// Add the text and QR code to the canvas using default font
+imagettftext($outputImage, $fontSize, $angle, $x, $y, $black, $fontPath, $fullName);
+
+// Copy the QR code image onto the canvas
+imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
+
 
                 // Save the final image
                 imagepng($outputImage, $outputImagePath);
