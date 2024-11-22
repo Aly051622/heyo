@@ -89,6 +89,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">   
+    <link rel="stylesheet" href="css/responsive.css">   
     <!-- Include Bootstrap CSS (required for styling) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -134,15 +135,15 @@ body{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             top: 50%;
                  }
-                 .btn{
-                border: solid lightgray;
-                border-radius: 10px;
-                padding: 10px;
-                background-color: rgb(53, 97, 255);
-                color: white;
-                cursor: pointer;
-                font-family: 'Monsterrat', sans-serif;
-                font-weight: bolder;
+                 .btn-sm{
+                    padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: solid white;
+            cursor: pointer;
+            border-radius: 9px;
+            margin-left: 10px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
 
            .btn:hover{
@@ -200,7 +201,7 @@ body{
    <?php include_once('includes/header.php');?>
 
     <!-- Notification system -->
-   <!-- Notification system -->
+<div class="right-panel">
 <div id="notification">
     <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
     <button id="notification-close">&times;</button>
@@ -292,6 +293,7 @@ while ($row = mysqli_fetch_array($ret)) {
             </div>
         </div>
     </div>
+</div>
 </div>
 
 
