@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -208,6 +207,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <body>
     <?php include_once('includes/sidebar.php'); ?>
     <?php include_once('includes/header.php'); ?>
+    <?php include_once('includes/userheader.php'); ?>
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
