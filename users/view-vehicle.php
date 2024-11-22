@@ -239,20 +239,62 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                            <!-- QR CODE IMG -->
-                                            <div class="col-md-3">
-                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="QR Code with Name" style="width:150px;height:auto;" class="img-fluid" />
-<a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>" class="download-icon">
-    <i class="fa fa-download" aria-hidden="true"></i> Download QR Code
-</a>
+                                           <!-- QR CODE IMG -->
+<div class="col-md-3">
+    <?php if (!empty($row['QRCodePath']) && file_exists($row['QRCodePath'])) { ?>
+        <!-- Display Name -->
+        <p style="margin: 0; font-family: Arial, sans-serif; font-weight: bold;">
+            Name: <?php echo htmlspecialchars($row['OwnerName']); ?>
+        </p>
+        
+        <!-- QR Code Image -->
+        <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="QR Code with Name" style="width:150px;height:auto;" class="img-fluid" />
 
-                                                <?php } else { ?>
-                                                    <p>QR Code image not found</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
+        <!-- Combine Name and QR Code for Download -->
+        <?php
+        // Combine Name and QR Code into a single image and make it downloadable
+        $qrCodePath = htmlspecialchars($row['QRCodePath']);
+        $ownerName = htmlspecialchars($row['OwnerName']);
+
+        // Path for combined image
+        $combinedImagePath = '../admin/qrcodes/combined_' . basename($qrCodePath);
+
+        // Load QR code image
+        $qrImage = imagecreatefrompng($qrCodePath);
+
+        // Create a canvas for combined image (QR code + name)
+        $width = imagesx($qrImage);
+        $height = imagesy($qrImage);
+        $combinedImage = imagecreatetruecolor($width, $height + 50); // Add space for the name
+        $white = imagecolorallocate($combinedImage, 255, 255, 255);
+        $black = imagecolorallocate($combinedImage, 0, 0, 0);
+        imagefilledrectangle($combinedImage, 0, 0, $width, $height + 50, $white);
+
+        // Copy QR code onto the new image
+        imagecopy($combinedImage, $qrImage, 0, 50, 0, 0, $width, $height);
+
+        // Add text (name) to the canvas
+        $fontPath = '../fonts/arial.ttf'; // Path to your font file
+        imagettftext($combinedImage, 12, 0, 10, 20, $black, $fontPath, $ownerName);
+
+        // Save combined image
+        imagepng($combinedImage, $combinedImagePath);
+
+        // Clean up
+        imagedestroy($qrImage);
+        imagedestroy($combinedImage);
+        ?>
+
+        <!-- Download Combined Image -->
+        <a href="<?php echo htmlspecialchars($combinedImagePath); ?>" download="<?php echo basename($combinedImagePath); ?>" class="download-icon">
+            <i class="fa fa-download" aria-hidden="true"></i> Download QR Code with Name
+        </a>
+
+    <?php } else { ?>
+        <p>QR Code image not found</p>
+    <?php } ?>
+</div>
+
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
