@@ -93,6 +93,12 @@ if ($userExists > 0) {
 
   // Add the full name text above the QR code
 $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
+
+// Check if font exists
+if (!file_exists($fontPath)) {
+    die('Font file not found');
+}
+
 // Split the full name into lines of maximum 20 characters
 $maxLength = 20;
 $lines = [];
@@ -123,6 +129,11 @@ foreach ($lines as $line) {
 
 // Add space between text and QR code
 $yPosition += 10; // Add space between text and QR code
+
+// Check if QR image resource is valid
+if (!$qrImage) {
+    die('QR Image creation failed');
+}
 
 // Copy the QR code into the image with padding
 imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); // Copy QR code with padding
