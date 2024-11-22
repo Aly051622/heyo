@@ -97,7 +97,7 @@ $maxWidth = $width - 20; // 10px padding on each side
 
 // Function to adjust the font size
 function adjustFontSize($text, $fontPath, $maxWidth) {
-    $fontSize = 10; // Start with the default font size
+    $fontSize = (int) adjustFontSize($fullName, $fontPath, $maxWidth);
     $textWidth = 0;
 
     // Adjust font size by checking the width of the text
@@ -112,7 +112,7 @@ function adjustFontSize($text, $fontPath, $maxWidth) {
 }
 
 // Adjust font size dynamically based on the text length
-$fontSize = adjustFontSize($fullName, $fontPath, $maxWidth);
+$outputImage = imagecreatetruecolor($width, (int)($height + $textHeight + 20));
 
 // Add the full name text above the QR code
 $bbox = imagettfbbox($fontSize, 0, $fontPath, $fullName);
