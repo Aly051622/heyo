@@ -239,20 +239,20 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                                 <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
                                                 <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
                                             </div>
-                                            <!-- QR CODE IMG -->
                                             <div class="col-md-3">
-                                                <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
-                                                    <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="QR Code with Name" style="width:150px;height:auto;" class="img-fluid" />
-<a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>" class="download-icon">
-    <i class="fa fa-download" aria-hidden="true"></i> Download QR Code
-</a>
+    <?php if (!empty($row['QRCodePath']) && file_exists($row['QRCodePath'])) { ?>
+        <p style="margin: 0; font-family: Arial, sans-serif; font-weight: bold;">
+            Name: <?php echo htmlspecialchars($row['OwnerName']); ?>
+        </p>
+        <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="QR Code" style="width:150px;height:auto;" class="img-fluid" />
+        <a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>" class="download-icon">
+            <i class="fa fa-download" aria-hidden="true"></i> Download QR Code
+        </a>
+    <?php } else { ?>
+        <p>QR Code image not found</p>
+    <?php } ?>
+</div>
 
-                                                <?php } else { ?>
-                                                    <p>QR Code image not found</p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
 
                                         <!-- Action Buttons -->
                                         <div class="mt-2">
