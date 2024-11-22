@@ -1,8 +1,35 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-</head>
+<head>
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head> 
+<style>
+    #sidebar {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100bh;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    z-index: 1;
+    margin-top: -6px;
+}
+
+#sidebar.collapsed {
+    width: 70px;
+}
+
+#toggleSidebar {
+    color: white;
+    border: none;
+    left: 10px;
+    z-index: 11;
+}
+
+</style> 
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
