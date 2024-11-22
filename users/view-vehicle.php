@@ -199,7 +199,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     </div>
                 </div>
             </div>
-        </div>
+       
 
        
         <div class="content">
@@ -281,6 +281,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         </div>
 
         <div class="clearfix"></div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
