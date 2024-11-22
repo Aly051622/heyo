@@ -56,6 +56,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 });</script>";
         } else {
            // Query the database to fetch user details using the contact number
+// Your existing contact number check query
 $checkContactQuery = mysqli_query($con, "SELECT * FROM tblregusers WHERE MobileNumber='$ownercontno'");
 $userExists = mysqli_num_rows($checkContactQuery);
 
@@ -66,10 +67,10 @@ if ($userExists > 0) {
     $lastName = $userData['LastName'];
     $fullName = "$firstName $lastName"; // Full name
 
-    // Prepare QR code content with full name
+    // Prepare QR code content with full name and other vehicle details
     $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $ownercontno\nModel: $model";
-    // Base64 encode the QR code data
-                $encodedData = base64_encode($qrCodeData); // Encode the QR data
+    // Base64 encode the QR code data (optional)
+    $encodedData = base64_encode($qrCodeData); // Encode the QR data
     $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
 
     // Generate the QR code image
@@ -90,10 +91,9 @@ if ($userExists > 0) {
     $black = imagecolorallocate($outputImage, 0, 0, 0);
     imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-    
     // Add the full name text above the QR code
     $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-    imagettftext($outputImage, 10, 10, 0, 10, $black, $fontPath, $fullName); // Adding the full name text
+    imagettftext($outputImage, 10, 0, 0, 20, $black, $fontPath, $fullName); // Adding the full name text
     imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
 
     // Save the final image with QR code and full name
@@ -101,7 +101,7 @@ if ($userExists > 0) {
     imagedestroy($qrImage);
     imagedestroy($outputImage);
 
-    // Now insert vehicle data into the database
+    // Now insert vehicle data into the database along with the generated QR code image path
     $inTime = date('Y-m-d H:i:s');
 
     // Insert query to store vehicle details along with the generated QR code image path
@@ -117,6 +117,7 @@ if ($userExists > 0) {
 } else {
     echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
+
 
         }
     }
