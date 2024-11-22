@@ -339,7 +339,7 @@ function updateModelOptions() {
     <!-- Right Panel -->
 
    <?php include_once('includes/header.php');?>
-
+<div class="right-panel">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
