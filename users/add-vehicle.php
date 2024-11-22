@@ -79,21 +79,24 @@ if ($userExists > 0) {
     $qrCodeContent = file_get_contents($qrCodeUrl);
     file_put_contents($qrImagePath, $qrCodeContent);
 
-    // Create a new image with the name and QR code
-$outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; // Define the final image path
-$qrImage = imagecreatefrompng($qrImagePath); // Load the QR code image
+    /// Define image path
+$outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; 
+$qrImage = imagecreatefrompng($qrImagePath); 
 
-$qrWidth = imagesx($qrImage); // Get the width of the QR code image
-$qrHeight = imagesy($qrImage); // Get the height of the QR code image
+// Get QR code dimensions
+$qrWidth = imagesx($qrImage); 
+$qrHeight = imagesy($qrImage); 
 
-// Create an image canvas (increased height to accommodate text)
-$outputImage = imagecreatetruecolor($qrWidth, $qrHeight + 50); // Increase the height for text
-$white = imagecolorallocate($outputImage, 255, 255, 255); // Allocate the white color
-$black = imagecolorallocate($outputImage, 0, 0, 0); // Allocate the black color
-imagefilledrectangle($outputImage, 0, 0, $qrWidth, $qrHeight + 50, $white); // Fill the background with white
+// Create an image canvas with extra height for text
+$outputImage = imagecreatetruecolor($qrWidth, $qrHeight + 50); 
+$white = imagecolorallocate($outputImage, 255, 255, 255); 
+$black = imagecolorallocate($outputImage, 0, 0, 0); 
+imagefilledrectangle($outputImage, 0, 0, $qrWidth, $qrHeight + 50, $white); 
 
 // Add the full name text above the QR code
-$fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
+$fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; 
+$fontSize = 10; // Adjust font size as needed
+$lineSpacing = 2; // Minimum space between lines
 
 // Split the full name into lines of maximum 20 characters
 $maxLength = 20;
@@ -103,21 +106,28 @@ while (strlen($fullName) > $maxLength) {
     $fullName = substr($fullName, $maxLength);
     $lines[] = $line;
 }
-$lines[] = $fullName; // Add any remaining part
+$lines[] = $fullName; 
 
-// Add text with padding and space between text and image
-$padding = 2; 
-$yPosition = $padding + 5; 
+// Calculate total height of the text block
+$totalTextHeight = (count($lines) * ($fontSize + $lineSpacing)) - $lineSpacing;
+
+// Start drawing text, centered horizontally
+$yPosition = 5; // Start from the top with padding
 foreach ($lines as $line) {
-    imagettftext($outputImage, 5, 10, 5, 10, $padding, $yPosition, $black, $fontPath, $line); 
-    $yPosition += 10; 
+    $textBox = imagettfbbox($fontSize, 0, $fontPath, $line); 
+    $textWidth = $textBox[2] - $textBox[0]; // Calculate text width
+    $xPosition = ($qrWidth - $textWidth) / 2; // Center horizontally
+    imagettftext($outputImage, $fontSize, 0, $xPosition, $yPosition, $black, $fontPath, $line); 
+    $yPosition += $fontSize + $lineSpacing; 
 }
 
 // Add space between text and QR code
-$yPosition += 5;
-imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); 
+$yPosition += 2; // Add 2px minimum spacing
 
-// Save the final image with QR code and full name
+// Add the QR code below the text
+imagecopy($outputImage, $qrImage, 0, $yPosition, 0, 0, $qrWidth, $qrHeight); 
+
+// Save the final image
 imagepng($outputImage, $outputImagePath); 
 imagedestroy($qrImage);
 imagedestroy($outputImage);
