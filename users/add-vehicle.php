@@ -90,53 +90,7 @@ if ($userExists > 0) {
     $black = imagecolorallocate($outputImage, 0, 0, 0);
     imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-// Function to wrap text into multiple lines based on the width
-function wrapText($text, $fontPath, $maxWidth, $fontSize) {
-    $lines = [];
-    $words = explode(' ', $text); // Split the text into words
-    $currentLine = '';
     
-    foreach ($words as $word) {
-        // Append the word to the current line
-        $testLine = $currentLine ? $currentLine . ' ' . $word : $word;
-        $bbox = imagettfbbox($fontSize, 0, $fontPath, $testLine); // Get bounding box for the line
-        $textWidth = $bbox[2] - $bbox[0]; // Calculate width of the line
-        
-        // If the line exceeds the max width, start a new line
-        if ($textWidth > $maxWidth) {
-            if (!empty($currentLine)) {
-                $lines[] = $currentLine; // Add the current line to the lines array
-            }
-            $currentLine = $word; // Start a new line with the current word
-        } else {
-            $currentLine = $testLine; // Continue with the current line
-        }
-    }
-
-    // Add the last line
-    if (!empty($currentLine)) {
-        $lines[] = $currentLine;
-    }
-
-    return $lines;
-}
-
-// Now, wrap the text
-$wrappedText = wrapText($fullName, $fontPath, $maxWidth, $fontSize);
-
-// Initialize vertical position for text
-$yPosition = 20; // Starting y position for the first line of text
-
-foreach ($wrappedText as $line) {
-    // Draw each line of wrapped text
-    imagettftext($outputImage, $fontSize, 0, 10, $yPosition, $black, $fontPath, $line);
-    $bbox = imagettfbbox($fontSize, 0, $fontPath, $line); // Get the height of the current line
-    $textHeight = $bbox[1] - $bbox[7]; // Calculate the height of the text line
-    $yPosition += $textHeight + 5; // Move the y position for the next line, with some spacing
-}
-
-
-
     // Add the full name text above the QR code
     $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
     imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName); // Adding the full name text
