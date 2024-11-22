@@ -110,15 +110,17 @@ $lines[] = $fullName; // Add any remaining part
 $padding = 2; 
 $textSpacing = 5; // Space between text and QR code
 $yPosition = $padding + 15; // Initial vertical position for the text
-
 foreach ($lines as $line) {
     // Calculate text bounding box to center-align
     $textBox = imagettfbbox($fontSize, 0, $fontPath, $line);
     $textWidth = abs($textBox[4] - $textBox[0]);
-    $xPosition = ($qrWidth - $textWidth) / 2; // Center-align horizontally
+    $xPosition = (int)(($qrWidth - $textWidth) / 2); // Center-align horizontally, cast to int
 
-    imagettftext($outputImage, $fontSize, 0, $xPosition, $yPosition, $black, $fontPath, $line); 
-    $yPosition += $fontSize + 2; // Adjust vertical spacing between lines
+    // Render text on the image
+    imagettftext($outputImage, $fontSize, 0, $xPosition, (int)$yPosition, $black, $fontPath, $line); 
+
+    // Increment the Y position for the next line
+    $yPosition += (int)($fontSize + 2); // Cast to int
 }
 
 // Add space between text and QR code
