@@ -111,6 +111,12 @@ $padding = 2;
 $textSpacing = 5; // Space between text and QR code
 $yPosition = $padding + 15; // Initial vertical position for the text
 
+$qrWidth = (int)imagesx($qrImage); // Explicit cast to integer
+$qrHeight = (int)imagesy($qrImage); // Explicit cast to integer
+
+// Create an image canvas with adjusted height
+$outputImage = imagecreatetruecolor($qrWidth, (int)($qrHeight + 50)); // Ensure this is an integer
+
 foreach ($lines as $line) {
     // Calculate text bounding box to center-align
     $textBox = imagettfbbox($fontSize, 0, $fontPath, $line);
