@@ -243,10 +243,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                             <div class="col-md-3">
                                                 <?php if (!empty($row['QRCodePath']) && file_exists($qrCodePath)) { ?>
                                                     <p style="margin: 0;"><strong>Download QR Code</strong></p>
-                                                    <img src="<?php echo htmlspecialchars($qrCodePath); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-                                                    <a href="<?php echo htmlspecialchars($qrCodePath); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>.png" class="download-icon">
-                                                        <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-                                                    </a>
+                                                    <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="QR Code with Name" style="width:150px;height:auto;" class="img-fluid" />
+<a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename(htmlspecialchars($row['QRCodePath'])); ?>" class="download-icon">
+    <i class="fa fa-download" aria-hidden="true"></i> Download QR Code
+</a>
+
                                                 <?php } else { ?>
                                                     <p>QR Code image not found</p>
                                                 <?php } ?>
