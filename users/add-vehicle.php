@@ -56,66 +56,71 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     showModal('Plate Number already exists'); 
                 });</script>";
         } else {
-           // Query the database to fetch user details using the contact number
-$checkContactQuery = mysqli_query($con, "SELECT * FROM tblregusers WHERE MobileNumber='$ownercontno'");
-$userExists = mysqli_num_rows($checkContactQuery);
+            $checkContactQuery = mysqli_query($con, "SELECT * FROM tblregusers WHERE MobileNumber='$ownercontno'");
+            $userExists = mysqli_num_rows($checkContactQuery);
 
-if ($userExists > 0) {
-    // Fetch the user data
-    $userData = mysqli_fetch_assoc($checkContactQuery);
-    $firstName = $userData['FirstName'];
-    $lastName = $userData['LastName'];
-    $fullName = "$firstName $lastName"; // Full name
+            if ($userExists > 0) {
+                $userData = mysqli_fetch_assoc($checkContactQuery);
+                $firstName = $userData['FirstName'];
+                $lastName = $userData['LastName'];
+                $contactno = $userData['MobileNumber'];
+                $fullName = "$firstName $lastName";
 
-    // Prepare QR code content with full name
-    $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $ownercontno\nModel: $model";
-    $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
+                $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $contactno\nModel: $model";
+                $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
 
-    // Generate the QR code image
-    $qrImageName = "qr" . $vehreno . "_" . time() . ".png";
-    $qrImagePath = "../admin/qrcodes/" . $qrImageName;
-    $qrCodeContent = file_get_contents($qrCodeUrl);
-    file_put_contents($qrImagePath, $qrCodeContent);
+                $qrImageName = "qr" . $vehreno . "_" . time() . ".png";
+                $qrImagePath = "../admin/qrcodes/" . $qrImageName;
+                $qrCodeContent = file_get_contents($qrCodeUrl);
+                file_put_contents($qrImagePath, $qrCodeContent);
 
-    // Create a new image with the name and QR code
-    $outputImagePath = "../admin/qrcodes/qr_with_name_" . $vehreno . ".png";
-    $qrImage = imagecreatefrompng($qrImagePath);
-    $width = imagesx($qrImage);
-    $height = imagesy($qrImage);
+                // Create a new image with the name and QR code
+                $outputImagePath = "../admin/qrcodes/qr_with_name_" . $vehreno . ".png";
+                $qrImage = imagecreatefrompng($qrImagePath);
+                $width = imagesx($qrImage);
+                $height = imagesy($qrImage);
 
-    // Create an image canvas (increased height to accommodate text)
-    $outputImage = imagecreatetruecolor($width, $height + 50);
-    $white = imagecolorallocate($outputImage, 255, 255, 255);
-    $black = imagecolorallocate($outputImage, 0, 0, 0);
-    imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
+                // Create an image canvas
+                $outputImage = imagecreatetruecolor($width, $height + 50);
+                $white = imagecolorallocate($outputImage, 255, 255, 255);
+                $black = imagecolorallocate($outputImage, 0, 0, 0);
+                imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-    // Add the full name text above the QR code
-    $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-    imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName); // Adding the full name text
-    imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
+               // Set the default system font using the built-in font
+$fontPath = ''; // Default system font (no need to specify a file)
+$fontSize = 10; // Set your desired font size
+$angle = 0;     // Text angle (0 means horizontal)
+$x = 10;         // X-coordinate for text
+$y = 20;         // Y-coordinate for text
+$black = imagecolorallocate($outputImage, 0, 0, 0); // Text color (black)
 
-    // Save the final image with QR code and full name
-    imagepng($outputImage, $outputImagePath);
-    imagedestroy($qrImage);
-    imagedestroy($outputImage);
+// Add the text and QR code to the canvas using default font
+imagettftext($outputImage, $fontSize, $angle, $x, $y, $black, $fontPath, $fullName);
 
-    // Now insert vehicle data into the database
-    $inTime = date('Y-m-d H:i:s');
+// Copy the QR code image onto the canvas
+imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
 
-    // Insert query to store vehicle details along with the generated QR code image path
-    $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
-              VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
 
-    if (mysqli_query($con, $query)) {
-        echo "<script>alert('Vehicle Entry Detail has been added');</script>";
-        echo "<script>window.location.href ='view-vehicle.php'</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
-    }
-} else {
-    echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
-}
+                // Save the final image
+                imagepng($outputImage, $outputImagePath);
+                imagedestroy($qrImage);
+                imagedestroy($outputImage);
 
+                $inTime = date('Y-m-d H:i:s');
+
+                // Update INSERT query to include the ImagePath column
+                $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
+                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
+
+                if (mysqli_query($con, $query)) {
+                    echo "<script>alert('Vehicle Entry Detail has been added');</script>";
+                    echo "<script>window.location.href ='view-vehicle.php'</script>";
+                } else {
+                    echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+                }
+            } else {
+                echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
+            }
         }
     }
 ?>
@@ -145,7 +150,7 @@ if ($userExists > 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <style>
@@ -184,136 +189,6 @@ if ($userExists > 0) {
             color: black;
             text-decoration: none;
             cursor: pointer;
-        }
-        html, body {
-            font-family: 'Poppins', sans-serif;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            
-            background: whitesmoke;
-        }
-
-        body {
-            background: whitesmoke;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 7px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: 5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
-
-        /* Card and button styles */
-        .card,
-        .card-header {
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-        }
-
-        #printbtn:hover,
-        #viewbtn:hover, .download-icon:hover {
-            background-color: darkblue;
-            border: solid blue;
-        }
-
-        #printbtn, #viewbtn, .download-icon {
-            border-radius: 9px;
-            background-color: rgb(53, 97, 255);
-            color: white;
-            border: solid;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-
-        .download-icon {
-            margin-top: 5px;
-            display: inline-block;
-            padding: 6px 7px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .download-icon:hover {
-            color: white;
-        }
-        .text-right{
-            color: gray;
-        }
-
-        /* Table responsive adjustments for mobile */
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Improve table styling for mobile */
-        .table-responsive table {
-            width: 100%;
-            table-layout: auto;
-            word-wrap: break-word;
-        }
-
-        .table-responsive th, .table-responsive td {
-            white-space: nowrap;
-            padding: 8px;
-            text-align: left;
-        }
-
-        @media (max-width: 480px) {
-            .table-responsive th, .table-responsive td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 10px;
-            }
-            .table-responsive tr {
-                display: block;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-            }
-            .table-responsive td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-            }
-        }
-        .clearfix{
-            background: whitesmoke; 
         }
     </style>
     

@@ -26,7 +26,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
       <link rel="stylesheet" href="../admin/assets/css/style.css">
-      <link rel="stylesheet" href="css/responsive.css">
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800" rel="stylesheet" type="text/css">
       
   

@@ -1,5 +1,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <?php
 session_start();
 error_reporting(0);
@@ -21,6 +20,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
 <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
 <link rel="stylesheet" href="../admin/assets/css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
 <link rel="apple-touch-icon" href="ctul.png">
 <link rel="shortcut icon" href="ctul.png">
@@ -354,6 +354,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
  <?php include_once('includes/sidebar.php');?>
  <?php include_once('includes/header.php');?>
 
+ <div class="right-panel">
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
@@ -441,7 +442,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             </div>
         </div>
     </div>
-
+</div>
 </body>
 
 <!-- Scripts -->
