@@ -1,9 +1,8 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sliding Images</title>
     <style>
         /* General Styles */
         body {
@@ -134,7 +133,7 @@
 
 <!-- Section 3 -->
 <div class="section">
-    <div class="title">PROPOSE PARING AREAS</div>
+    <div class="title">PROPOSE PARKING AREAS</div>
     <div class="slider-container">
         <div class="slider" id="slider3">
             <img src="images/6.png" alt="Slide 1" class="landscape">
@@ -152,24 +151,29 @@
     <div class="title">ADMIN AND CLIENT FEATURES</div>
     <div class="portrait-section">
         <div class="portrait-container hover-yellow">
-            <img src="images/pw.png" alt="Section 4">
-            <img src="images/pw.png" alt="Section 4">
-            <img src="images/pw.png" alt="Section 4">
+            <img src="images/admin1.png" alt="Section 4">
+            <img src="images/admin2.png" alt="Section 4">
+            <img src="images/admin3.png" alt="Section 4">
+            <img src="images/admin4.png" alt="Section 4">
         </div>
         <div class="portrait-container hover-orange">
-            <img src="images/pw.png" alt="Section 5">
-            <img src="images/pw.png" alt="Section 5">
-            <img src="images/pw.png" alt="Section 5">
+            <img src="images/admin5.png" alt="Section 5">
+            <img src="images/admin6.png" alt="Section 5">
+            <img src="images/admin7.png" alt="Section 5">
+            <img src="images/admin8.png" alt="Section 5">
+
         </div>
         <div class="portrait-container hover-skyblue">
-            <img src="images/pw.png" alt="Section 6">
-            <img src="images/pw.png" alt="Section 6">
-            <img src="images/pw.png" alt="Section 6">
+            <img src="images/user1.png" alt="Section 6">
+            <img src="images/user2.png" alt="Section 6">
+            <img src="images/user3.png" alt="Section 6">
+            <img src="images/user4.png" alt="Section 6">
         </div>
         <div class="portrait-container hover-lightred">
-            <img src="images/pw.png" alt="Section 7">
-            <img src="images/pw.png" alt="Section 7">
-            <img src="images/pw.png" alt="Section 7">
+            <img src="images/user5.png" alt="Section 7">
+            <img src="images/user6.png" alt="Section 7">
+            <img src="images/user7.png" alt="Section 7">
+            <img src="images/user8.png" alt="Section 7">
         </div>
     </div>
 </div>

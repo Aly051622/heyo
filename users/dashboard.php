@@ -86,8 +86,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="path-to-your-pe-icon-styles.css">
-<link rel="stylesheet" href="park.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -95,7 +93,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <style>
         body{
             overflow-x: auto;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            z-index: -1;
         }
         /* Carousel container and styling */
         .carousel-container {
@@ -207,8 +206,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 </head>
 
 <body>
+
+<?php include_once('includes/header.php'); ?>
     <?php include_once('includes/sidebar.php'); ?>
-    <?php include_once('includes/header.php'); ?>
+    <div class="right-panel">
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
@@ -220,7 +221,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <div class="row">
                     <div class="col-lg-1">
                             <div class="card-body " id="notificationCard">
-                                <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
+                                <h2>Welcome <?php echo $firstName; $lastName;?> <?php echo $lastName; ?> !</h2>
                         </div>
                     </div>
                 </div>
@@ -255,7 +256,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <!-- Footer -->
 
 <?php include_once('includes/footer.php'); ?>
-
+        </div>
 <!-- /#right-panel -->
 
 <!-- Scripts -->
@@ -265,7 +266,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../admin/assets/js/main.js"></script>
-
 
 <script>
 const carousel = document.querySelector('.carousel');
