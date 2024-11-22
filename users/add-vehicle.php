@@ -90,51 +90,62 @@ if ($userExists > 0) {
     $black = imagecolorallocate($outputImage, 0, 0, 0);
     imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-    $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-
-// Maximum width available for the text (based on image width)
-$maxWidth = $width - 20; // 10px padding on each side
-
-// Function to adjust the font size
-function adjustFontSize($text, $fontPath, $maxWidth) {
-    $fontSize = (int) adjustFontSize($fullName, $fontPath, $maxWidth);
-    $textWidth = 0;
-
-    // Adjust font size by checking the width of the text
-    while ($textWidth < $maxWidth && $fontSize < 40) { // Limit max font size to 40
-        $bbox = imagettfbbox($fontSize, 0, $fontPath, $text);
-        $textWidth = $bbox[2] - $bbox[0]; // Get width of the text
-        $fontSize++;
+// Function to wrap text into multiple lines based on the width
+function wrapText($text, $fontPath, $maxWidth, $fontSize) {
+    $lines = [];
+    $words = explode(' ', $text); // Split the text into words
+    $currentLine = '';
+    
+    foreach ($words as $word) {
+        // Append the word to the current line
+        $testLine = $currentLine ? $currentLine . ' ' . $word : $word;
+        $bbox = imagettfbbox($fontSize, 0, $fontPath, $testLine); // Get bounding box for the line
+        $textWidth = $bbox[2] - $bbox[0]; // Calculate width of the line
+        
+        // If the line exceeds the max width, start a new line
+        if ($textWidth > $maxWidth) {
+            if (!empty($currentLine)) {
+                $lines[] = $currentLine; // Add the current line to the lines array
+            }
+            $currentLine = $word; // Start a new line with the current word
+        } else {
+            $currentLine = $testLine; // Continue with the current line
+        }
     }
 
-    // If the font size is too large, reduce it by 1
-    return $fontSize - 1;
+    // Add the last line
+    if (!empty($currentLine)) {
+        $lines[] = $currentLine;
+    }
+
+    return $lines;
 }
 
-// Adjust font size dynamically based on the text length
-$outputImage = imagecreatetruecolor($width, (int)($height + $textHeight + 20));
+// Now, wrap the text
+$wrappedText = wrapText($fullName, $fontPath, $maxWidth, $fontSize);
 
-// Add the full name text above the QR code
-$bbox = imagettfbbox($fontSize, 0, $fontPath, $fullName);
-$textHeight = $bbox[1] - $bbox[7]; // Get the height of the text
+// Initialize vertical position for text
+$yPosition = 20; // Starting y position for the first line of text
 
-// Create an image canvas (increased height to accommodate text)
-$outputImage = imagecreatetruecolor($width, $height + $textHeight + 20); // Adjust the height for text
-$white = imagecolorallocate($outputImage, 255, 255, 255);
-$black = imagecolorallocate($outputImage, 0, 0, 0);
-imagefilledrectangle($outputImage, 0, 0, $width, $height + $textHeight + 20, $white);
+foreach ($wrappedText as $line) {
+    // Draw each line of wrapped text
+    imagettftext($outputImage, $fontSize, 0, 10, $yPosition, $black, $fontPath, $line);
+    $bbox = imagettfbbox($fontSize, 0, $fontPath, $line); // Get the height of the current line
+    $textHeight = $bbox[1] - $bbox[7]; // Calculate the height of the text line
+    $yPosition += $textHeight + 5; // Move the y position for the next line, with some spacing
+}
 
-// Add the full name text with the adjusted font size
-imagettftext($outputImage, $fontSize, 0, 10, 20 + $textHeight / 2, $black, $fontPath, $fullName); // Center the text vertically
 
-// Copy the QR code below the text
-imagecopy($outputImage, $qrImage, 0, $textHeight + 20, 0, 0, $width, $height); // Copy QR code below the text
 
-// Save the final image with QR code and full name
-imagepng($outputImage, $outputImagePath);
-imagedestroy($qrImage);
-imagedestroy($outputImage);
+    // Add the full name text above the QR code
+    $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
+    imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName); // Adding the full name text
+    imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
 
+    // Save the final image with QR code and full name
+    imagepng($outputImage, $outputImagePath);
+    imagedestroy($qrImage);
+    imagedestroy($outputImage);
 
     // Now insert vehicle data into the database
     $inTime = date('Y-m-d H:i:s');
