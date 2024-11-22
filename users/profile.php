@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Check if user is logged in
 if (empty($_SESSION['vpmsuid'])) {
@@ -135,15 +135,15 @@ body{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             top: 50%;
                  }
-                 .btn-sm{
-                    padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
-            border: solid white;
-            cursor: pointer;
-            border-radius: 9px;
-            margin-left: 10px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                 .btn{
+                border: solid lightgray;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: rgb(53, 97, 255);
+                color: white;
+                cursor: pointer;
+                font-family: 'Monsterrat', sans-serif;
+                font-weight: bolder;
         }
 
            .btn:hover{
@@ -201,6 +201,7 @@ body{
    <?php include_once('includes/header.php');?>
 
     <!-- Notification system -->
+   <!-- Notification system -->
 <div class="right-panel">
 <div id="notification">
     <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
@@ -276,6 +277,14 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Place</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
+                                    </div>
+
+<div class="row form-group">
+    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
+    <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
 </form>
 
 <!-- Bootstrap Modal -->
@@ -293,7 +302,6 @@ while ($row = mysqli_fetch_array($ret)) {
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
