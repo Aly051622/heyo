@@ -63,8 +63,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $firstName = $userData['FirstName'];
                 $lastName = $userData['LastName'];
                 $contactno = $userData['MobileNumber'];
+                $fullName = "$firstName $lastName";
 
-                $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $firstName $lastName\nContact Number: $contactno \nModel: $model";
+                $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $contactno\nModel: $model";
                 $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
 
                 $qrImageName = "qr" . $vehreno . "_" . time() . ".png";
@@ -72,11 +73,33 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $qrCodeContent = file_get_contents($qrCodeUrl);
                 file_put_contents($qrImagePath, $qrCodeContent);
 
+                // Create a new image with the name and QR code
+                $outputImagePath = "../admin/qrcodes/qr_with_name_" . $vehreno . ".png";
+                $qrImage = imagecreatefrompng($qrImagePath);
+                $width = imagesx($qrImage);
+                $height = imagesy($qrImage);
+
+                // Create an image canvas
+                $outputImage = imagecreatetruecolor($width, $height + 50);
+                $white = imagecolorallocate($outputImage, 255, 255, 255);
+                $black = imagecolorallocate($outputImage, 0, 0, 0);
+                imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
+
+                // Add the text and QR code to the canvas
+                $fontPath = '../fonts/arial.ttf'; // Path to your font file
+                imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName);
+                imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height);
+
+                // Save the final image
+                imagepng($outputImage, $outputImagePath);
+                imagedestroy($qrImage);
+                imagedestroy($outputImage);
+
                 $inTime = date('Y-m-d H:i:s');
 
                 // Update INSERT query to include the ImagePath column
                 $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
-                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$qrImagePath', '$imagePath', '$inTime')";
+                          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
 
                 if (mysqli_query($con, $query)) {
                     echo "<script>alert('Vehicle Entry Detail has been added');</script>";
@@ -90,6 +113,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         }
     }
 ?>
+
 
 
 
