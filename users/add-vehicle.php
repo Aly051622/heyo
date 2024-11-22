@@ -89,7 +89,7 @@ if ($userExists > 0) {
     imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
     // Add the full name text above the QR code
-    $fontPath = '../fonts/arial.ttf'; // Path to your font file
+    $fontPath = '../fonts/VintageMintageFreeDemo.otf'; // Path to your font file
     imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName); // Adding the full name text
     imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
 
