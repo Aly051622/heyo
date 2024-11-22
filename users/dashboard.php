@@ -207,7 +207,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <body>
     <?php include_once('includes/sidebar.php'); ?>
     <?php include_once('includes/header.php'); ?>
-    <?php include_once('includes/userheader.php'); ?>
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
