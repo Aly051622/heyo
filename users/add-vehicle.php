@@ -93,7 +93,7 @@ if ($userExists > 0) {
     
     // Add the full name text above the QR code
     $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-    imagettftext($outputImage, 10, 0, 20, 20, $black, $fontPath, $fullName); // Adding the full name text
+    imagettftext($outputImage, 10, 10, 0, 10, $black, $fontPath, $fullName); // Adding the full name text
     imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
 
     // Save the final image with QR code and full name
