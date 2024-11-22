@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include('../DBconnection/dbconnection.php');
+include('includes/dbconnection.php');
 
 if (!isset($_SESSION['vpmsuid'])) {
     echo '<p>Debug: User ID not found in session.</p>';
