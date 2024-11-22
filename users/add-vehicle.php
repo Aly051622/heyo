@@ -90,15 +90,51 @@ if ($userExists > 0) {
     $black = imagecolorallocate($outputImage, 0, 0, 0);
     imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
 
-    // Add the full name text above the QR code
     $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-    imagettftext($outputImage, 10, 0, 10, 20, $black, $fontPath, $fullName); // Adding the full name text
-    imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
 
-    // Save the final image with QR code and full name
-    imagepng($outputImage, $outputImagePath);
-    imagedestroy($qrImage);
-    imagedestroy($outputImage);
+// Maximum width available for the text (based on image width)
+$maxWidth = $width - 20; // 10px padding on each side
+
+// Function to adjust the font size
+function adjustFontSize($text, $fontPath, $maxWidth) {
+    $fontSize = 10; // Start with the default font size
+    $textWidth = 0;
+
+    // Adjust font size by checking the width of the text
+    while ($textWidth < $maxWidth && $fontSize < 40) { // Limit max font size to 40
+        $bbox = imagettfbbox($fontSize, 0, $fontPath, $text);
+        $textWidth = $bbox[2] - $bbox[0]; // Get width of the text
+        $fontSize++;
+    }
+
+    // If the font size is too large, reduce it by 1
+    return $fontSize - 1;
+}
+
+// Adjust font size dynamically based on the text length
+$fontSize = adjustFontSize($fullName, $fontPath, $maxWidth);
+
+// Add the full name text above the QR code
+$bbox = imagettfbbox($fontSize, 0, $fontPath, $fullName);
+$textHeight = $bbox[1] - $bbox[7]; // Get the height of the text
+
+// Create an image canvas (increased height to accommodate text)
+$outputImage = imagecreatetruecolor($width, $height + $textHeight + 20); // Adjust the height for text
+$white = imagecolorallocate($outputImage, 255, 255, 255);
+$black = imagecolorallocate($outputImage, 0, 0, 0);
+imagefilledrectangle($outputImage, 0, 0, $width, $height + $textHeight + 20, $white);
+
+// Add the full name text with the adjusted font size
+imagettftext($outputImage, $fontSize, 0, 10, 20 + $textHeight / 2, $black, $fontPath, $fullName); // Center the text vertically
+
+// Copy the QR code below the text
+imagecopy($outputImage, $qrImage, 0, $textHeight + 20, 0, 0, $width, $height); // Copy QR code below the text
+
+// Save the final image with QR code and full name
+imagepng($outputImage, $outputImagePath);
+imagedestroy($qrImage);
+imagedestroy($outputImage);
+
 
     // Now insert vehicle data into the database
     $inTime = date('Y-m-d H:i:s');
