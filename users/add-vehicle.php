@@ -103,14 +103,29 @@ while (strlen($fullName) > $maxLength) {
 }
 $lines[] = $fullName; // Add any remaining part
 
-// Now write the lines of text
-$yPosition = 20; // Starting Y position for text
+// Create a new image with padding (2px)
+$padding = 2; // 2px padding
+$width = $qrWidth + (2 * $padding); // Add padding to width
+$height = $qrHeight + (2 * $padding); // Add padding to height
+$outputImage = imagecreatetruecolor($width, $height); // Create the image with padding
+
+// Fill the background with white color
+$white = imagecolorallocate($outputImage, 255, 255, 255);
+imagefill($outputImage, 0, 0, $white);
+
+// Add text with padding and space between text and image
+$black = imagecolorallocate($outputImage, 0, 0, 0);
+$yPosition = $padding + 20; // Starting Y position for text with padding
 foreach ($lines as $line) {
-    imagettftext($outputImage, 10, 0, 0, $yPosition, $black, $fontPath, $line); // Add each line of text
+    imagettftext($outputImage, 10, 0, $padding, $yPosition, $black, $fontPath, $line); // Add each line of text
     $yPosition += 15; // Increase Y position for the next line
 }
 
-imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
+// Add space between text and QR code
+$yPosition += 10; // Add space between text and QR code
+
+// Copy the QR code into the image with padding
+imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); // Copy QR code with padding
 
 // Save the final image with QR code and full name
 imagepng($outputImage, $outputImagePath);
