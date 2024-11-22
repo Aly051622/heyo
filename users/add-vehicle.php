@@ -69,7 +69,7 @@ if ($userExists > 0) {
     // Prepare QR code content with full name
     $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $ownercontno\nModel: $model";
     // Base64 encode the QR code data
-                $encodedData = base64_encode($qrCodeData); // Encode the QR data
+              
     $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
 
     // Generate the QR code image
