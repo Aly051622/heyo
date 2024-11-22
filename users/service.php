@@ -20,7 +20,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
 <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
 <link rel="stylesheet" href="../admin/assets/css/style.css">
-<link rel="stylesheet" href="css/responsive.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
 <link rel="apple-touch-icon" href="ctul.png">
 <link rel="shortcut icon" href="ctul.png">
@@ -264,87 +263,112 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: #6c757d;
         }
     
-        /*responsiveness sa all*/
+      /*sa tanan na ni*/
+#right-panel {
+    margin-left: 100px;
+    transition: margin-left 0.3s ease;
+}
+.card,
+.card-header {
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-    #chat-box {
-        width: 90%;
-        height: 350px;
+/* Improve table styling for mobile */
+.table-responsive table {
+    width: 100%;
+    table-layout: auto;
+    word-wrap: break-word;
+}
+
+.table-responsive th, .table-responsive td {
+    white-space: nowrap;
+    padding: 8px;
+    text-align: left;
+}
+
+@media (max-width: 480px) {
+    .table-responsive th, .table-responsive td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
     }
-
-    #message-input {
-        width: calc(100% - 250px);
-        margin-left: 5em;
+    .table-responsive tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+    .table-responsive td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
     }
 }
 
-@media (max-width: 924px) {
-    .container {
-        margin-left: 1em;
-    }
 
-    h1 {
-        margin-left: 18em;
-        font-size: 28px;
-    }
 
-    #message-input {
-        width: calc(100% - 220px);
+/*for all the braeadcrumbs for users*/
+@media (max-width: 1024px) {
+    .breadcrumbs {
+        width: 95%;
         margin-left: 3em;
     }
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-        margin-left: 15em;
+@media (max-width: 954px) {
+    .breadcrumbs {
+        width: 90%;
+        margin-left: 2em;
     }
 
-    #message-input {
-        width: calc(100% - 200px);
-        margin-left: 2em;
+    #printbtn,
+    #viewbtn {
+        padding: 8px 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 780px) {
+    .breadcrumbs {
+        width: 85%;
+        margin-left: 1.5em;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 7px 12px;
+        font-size: 0.9rem;
     }
 }
 
 @media (max-width: 500px) {
-    h1 {
-        font-size: 20px;
-        margin-left: 10em;
+    .breadcrumbs {
+        width: auto;
+        margin-left: -2em;
+        padding: 5px;
+        display: none;
     }
 
-    #chat-box {
-        height: 300px;
-        padding: 20px;
+    #printbtn,
+    #viewbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
     }
 
-    #message-input {
-        width: calc(100% - 150px);
-        margin-left: 1em;
-    }
-
-    .faq-item {
-        font-size: 10px;
-        width: 85%;
+    body {
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 300px) {
-    h1 {
-        font-size: 16px;
-        margin-left: 5em;
-    }
-
-    #message-input {
-        width: calc(100% - 120px);
-        margin-left: 0.5em;
-    }
-
-    .faq-item {
-        font-size: 8px;
-        width: 90%;
-    }
-}
 @media (max-width: 480px) {
     
     .breadcrumbs {
@@ -375,6 +399,221 @@ if (strlen($_SESSION['vpmsuid']==0)) {
  
 }
 
+
+@media (max-width: 300px) {
+    .breadcrumbs {
+        width: 100%;
+        margin-left: 0.5em;
+        padding: 4px;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    body {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
+/* Responsive Styles for header na ni */
+
+@media (max-width: 1024px) {
+    .navbar-header {
+        padding: 5px;
+    }
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .active-indicator {
+        bottom: 3em;
+        right: 10px;
+    }
+    .user-area img {
+        margin-right: 12px;
+        margin-top: -4em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 780px) {
+    .navbar-header {
+        padding: 4px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .active-indicator {
+        bottom: 2.8em;
+        right: 8px;
+    }
+    .user-area img {
+        margin-right: 10px;
+        margin-top: -3em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -2em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+@media (max-width: 480px){
+    body{
+        overflow-x: auto;
+    }
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+        height: 68px;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -5em;
+    } 
+    
+    .dropdown{
+        margin-top: -82px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 300px) {
+    .navbar-header {
+        padding: 2px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 20px;
+        width: 20px;
+        margin-top: 10px;
+    }
+    .active-indicator {
+        bottom: 2em;
+        right: 4px;
+        font-size: 9px;
+    }
+    .user-area img {
+        margin-right: 6px;
+        margin-top: -1.5em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+
+
+/*sidebarrrrr */
+
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px;
+    }
+
+    #sidebar.collapsed {
+        left: 0;
+    }
+
+    #toggleSidebar {
+        display: block;
+    }
+
+    #right-panel {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        width: 200px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
     </style>
 </head>
 <body>
