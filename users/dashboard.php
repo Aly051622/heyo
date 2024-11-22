@@ -1,5 +1,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -71,7 +70,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <head>
     
     <title>Client Dashboard | CTU DANAO Parking System</title>
-
+   
 <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
 <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -88,7 +87,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="path-to-your-pe-icon-styles.css">
 <link rel="stylesheet" href="park.css">
-<link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -96,7 +94,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <style>
         body{
             overflow-x: auto;
-            font-family:'Poppins', sans-serif
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
         }
         /* Carousel container and styling */
         .carousel-container {
@@ -208,11 +206,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 </head>
 
 <body>
-      
-<?php include_once('includes/sidebar.php'); ?>
-        
-<?php include_once('includes/header.php'); ?>
-
+    <?php include_once('includes/sidebar.php'); ?>
+    <?php include_once('includes/header.php'); ?>
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
