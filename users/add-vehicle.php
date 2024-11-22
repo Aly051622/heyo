@@ -79,7 +79,7 @@ if ($userExists > 0) {
     file_put_contents($qrImagePath, $qrCodeContent);
 
     // Create a new image with the name and QR code
-    $outputImagePath = "../admin/qrcodes/My_QR" . $vehreno . ".png";
+    $outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png";
     $qrImage = imagecreatefrompng($qrImagePath);
     $width = imagesx($qrImage);
     $height = imagesy($qrImage);
