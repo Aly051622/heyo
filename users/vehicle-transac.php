@@ -95,13 +95,14 @@ body{
 
      <?php include_once('includes/header.php');?>
 
+     <div class="right-panel">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Vehicle Logs</h1>
+                                <h3>Vehicle Logs</h3>
                             </div>
                         </div>
                     </div>
@@ -110,8 +111,8 @@ body{
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
-                                    <li class="active">View Vehicle Parking Details</li>
+                                    <li><a href="view-vehicle.php">View Vehicle</a></li>
+                                    <li class="active">View Vehicle details</li>
                                 </ol>
                             </div>
                         </div>
