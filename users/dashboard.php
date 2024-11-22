@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(0);
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 error_reporting(0);
 if (strlen($_SESSION['vpmsuid']==0)) {
   header('location:logout.php');
@@ -69,7 +69,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <head>
     
     <title>Client Dashboard | CTU DANAO Parking System</title>
-   
+
 <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
 <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -85,7 +85,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="path-to-your-pe-icon-styles.css">
-<link rel="stylesheet" href="park.css">
+<link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -135,20 +135,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             opacity: 0.8;
         }
 
-        .scrollable-images {
-            margin-top: 20px;
-            overflow-y: auto;
-            align-items: center;
-        }
-
-        .scrollable-images img {
-            border-radius: 20px;
-            width: 99%;
-            height: 500px;
-            margin: 5px;
-            border: 1px solid #ddd;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
         .section-divider {
             border-top: 10px groove; 
             margin: 20px 0; 
@@ -207,7 +193,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <body>
     <?php include_once('includes/sidebar.php'); ?>
     <?php include_once('includes/header.php'); ?>
-    <?php include_once('includes/userheader.php'); ?>
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
@@ -219,7 +204,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <div class="row">
                     <div class="col-lg-1">
                             <div class="card-body " id="notificationCard">
-                                <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
+                                <h2>Welcome <?php echo $firstName; $lastName;?> <?php echo $lastName; ?> !</h2>
                         </div>
                     </div>
                 </div>

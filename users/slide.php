@@ -153,23 +153,23 @@
     <div class="portrait-section">
         <div class="portrait-container hover-yellow">
             <img src="images/pw.png" alt="Section 4">
-            <img src="images/vis.png" alt="Section 4">
-            <img src="images/stud.png" alt="Section 4">
+            <img src="images/pw.png" alt="Section 4">
+            <img src="images/pw.png" alt="Section 4">
         </div>
         <div class="portrait-container hover-orange">
-            <img src="images/h_logo.png" alt="Section 5">
-            <img src="images/asean.png" alt="Section 5">
-            <img src="images/ctu.png" alt="Section 5">
+            <img src="images/pw.png" alt="Section 5">
+            <img src="images/pw.png" alt="Section 5">
+            <img src="images/pw.png" alt="Section 5">
         </div>
         <div class="portrait-container hover-skyblue">
-            <img src="images/teach.png" alt="Section 6">
-            <img src="images/iso.png" alt="Section 6">
-            <img src="images/ctul.png" alt="Section 6">
+            <img src="images/pw.png" alt="Section 6">
+            <img src="images/pw.png" alt="Section 6">
+            <img src="images/pw.png" alt="Section 6">
         </div>
         <div class="portrait-container hover-lightred">
-            <img src="images/tempo.png" alt="Section 7">
-            <img src="images/tempor.png" alt="Section 7">
-            <img src="images/tempora.png" alt="Section 7">
+            <img src="images/pw.png" alt="Section 7">
+            <img src="images/pw.png" alt="Section 7">
+            <img src="images/pw.png" alt="Section 7">
         </div>
     </div>
 </div>
