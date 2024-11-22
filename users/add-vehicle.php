@@ -56,6 +56,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 });</script>";
         } else {
            // Query the database to fetch user details using the contact number
+// Your existing contact number check query
 $checkContactQuery = mysqli_query($con, "SELECT * FROM tblregusers WHERE MobileNumber='$ownercontno'");
 $userExists = mysqli_num_rows($checkContactQuery);
 
@@ -66,10 +67,10 @@ if ($userExists > 0) {
     $lastName = $userData['LastName'];
     $fullName = "$firstName $lastName"; // Full name
 
-    // Prepare QR code content with full name
+    // Prepare QR code content with full name and other vehicle details
     $qrCodeData = "Vehicle Type: $catename\nPlate Number: $vehreno\nName: $fullName\nContact Number: $ownercontno\nModel: $model";
-    // Base64 encode the QR code data
-                $encodedData = base64_encode($qrCodeData); // Encode the QR data
+    // Base64 encode the QR code data (optional)
+    $encodedData = base64_encode($qrCodeData); // Encode the QR data
     $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" . urlencode($qrCodeData) . "&size=150x150";
 
     // Generate the QR code image
@@ -78,45 +79,85 @@ if ($userExists > 0) {
     $qrCodeContent = file_get_contents($qrCodeUrl);
     file_put_contents($qrImagePath, $qrCodeContent);
 
-    // Create a new image with the name and QR code
-    $outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png";
-    $qrImage = imagecreatefrompng($qrImagePath);
-    $width = imagesx($qrImage);
-    $height = imagesy($qrImage);
+   // Create a new image with the name and QR code
+$outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; // Define the final image path
+$qrImage = imagecreatefrompng($qrImagePath); // Load the QR code image
 
-    // Create an image canvas (increased height to accommodate text)
-    $outputImage = imagecreatetruecolor($width, $height + 50);
-    $white = imagecolorallocate($outputImage, 255, 255, 255);
-    $black = imagecolorallocate($outputImage, 0, 0, 0);
-    imagefilledrectangle($outputImage, 0, 0, $width, $height + 50, $white);
+$qrWidth = imagesx($qrImage); // Get the width of the QR code image
+$qrHeight = imagesy($qrImage); // Get the height of the QR code image
 
-    
-    // Add the full name text above the QR code
-    $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
-    imagettftext($outputImage, 10, 0, 20, 20, $black, $fontPath, $fullName); // Adding the full name text
-    imagecopy($outputImage, $qrImage, 0, 50, 0, 0, $width, $height); // Copy QR code below the text
+// Create an image canvas (increased height to accommodate text)
+$outputImage = imagecreatetruecolor($qrWidth, $qrHeight + 50); // Increase the height for text
+$white = imagecolorallocate($outputImage, 255, 255, 255); // Allocate the white color
+$black = imagecolorallocate($outputImage, 0, 0, 0); // Allocate the black color
+imagefilledrectangle($outputImage, 0, 0, $qrWidth, $qrHeight + 50, $white); // Fill the background with white
 
-    // Save the final image with QR code and full name
-    imagepng($outputImage, $outputImagePath);
-    imagedestroy($qrImage);
-    imagedestroy($outputImage);
+// Add the full name text above the QR code
+$fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
+$fontSize = 10; // Adjust font size for better visibility
 
-    // Now insert vehicle data into the database
-    $inTime = date('Y-m-d H:i:s');
+// Split the full name into lines of maximum 20 characters
+$maxLength = 20;
+$lines = [];
+while (strlen($fullName) > $maxLength) {
+    $line = substr($fullName, 0, $maxLength);
+    $fullName = substr($fullName, $maxLength);
+    $lines[] = $line;
+}
+$lines[] = $fullName; // Add any remaining part
 
-    // Insert query to store vehicle details along with the generated QR code image path
-    $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
-              VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
+// Add text with padding and ensure text is center-aligned
+$padding = 2; 
+$textSpacing = 5; // Space between text and QR code
+$yPosition = $padding + 15; // Initial vertical position for the text
 
-    if (mysqli_query($con, $query)) {
-        echo "<script>alert('Vehicle Entry Detail has been added');</script>";
-        echo "<script>window.location.href ='view-vehicle.php'</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
-    }
+foreach ($lines as $line) {
+    // Calculate text bounding box to center-align
+    $textBox = imagettfbbox($fontSize, 0, $fontPath, $line);
+    $textWidth = abs($textBox[4] - $textBox[0]);
+    $xPosition = ($qrWidth - $textWidth) / 2; // Center-align horizontally
+
+    imagettftext($outputImage, $fontSize, 0, $xPosition, $yPosition, $black, $fontPath, $line); 
+    $yPosition += $fontSize + 2; // Adjust vertical spacing between lines
+}
+
+// Add space between text and QR code
+$yPosition += $textSpacing;
+imagecopy($outputImage, $qrImage, ($qrWidth - $qrWidth) / 2, $yPosition, 0, 0, $qrWidth, $qrHeight); 
+
+// Save the final image with QR code and full name
+imagepng($outputImage, $outputImagePath); 
+imagedestroy($qrImage);
+imagedestroy($outputImage);
+$inTime = date('Y-m-d H:i:s');
+
+// Sanitize input values to avoid SQL injection (for security)
+$catename = mysqli_real_escape_string($con, $catename);
+$vehcomp = mysqli_real_escape_string($con, $vehcomp);
+$model = mysqli_real_escape_string($con, $model);
+$color = mysqli_real_escape_string($con, $color);
+$vehreno = mysqli_real_escape_string($con, $vehreno);
+$ownername = mysqli_real_escape_string($con, $ownername);
+$ownercontno = mysqli_real_escape_string($con, $ownercontno);
+$outputImagePath = mysqli_real_escape_string($con, $outputImagePath);
+$imagePath = mysqli_real_escape_string($con, $imagePath);
+
+// Insert query to store vehicle details along with the generated QR code image path
+$query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
+          VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
+
+if (mysqli_query($con, $query)) {
+    echo "<script>alert('Vehicle Entry Detail has been added');</script>";
+    echo "<script>window.location.href ='view-vehicle.php'</script>";
+} else {
+    echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+}
+
 } else {
     echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
+
+
 
         }
     }
