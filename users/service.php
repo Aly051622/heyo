@@ -345,6 +345,35 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         width: 90%;
     }
 }
+@media (max-width: 480px) {
+    
+    .breadcrumbs {
+        width: 90%;
+        margin-right: 20em;
+        padding: 5px;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    body {
+        font-size: 12px;
+        height: 100vh;
+        overflow-x: auto;
+    }
+    .card, .card-header, .card-body, .tables{
+        width: 330px;
+        font-size:12px;
+        
+    }
+    .tables thead{
+        padding: 2px;
+    }
+ 
+}
 
     </style>
 </head>
