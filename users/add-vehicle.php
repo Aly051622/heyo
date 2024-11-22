@@ -106,28 +106,21 @@ while (strlen($fullName) > $maxLength) {
 $lines[] = $fullName; // Add any remaining part
 
 // Add text with padding and space between text and image
-$padding = 2; // 2px padding
-$yPosition = $padding + 20; // Starting Y position for text with padding
+$padding = 2; 
+$yPosition = $padding + 5; 
 foreach ($lines as $line) {
-    imagettftext($outputImage, 10, 0, $padding, $yPosition, $black, $fontPath, $line); // Add each line of text
-    $yPosition += 15; // Increase Y position for the next line
+    imagettftext($outputImage, 5, 10, 5, 10, $padding, $yPosition, $black, $fontPath, $line); 
+    $yPosition += 10; 
 }
 
 // Add space between text and QR code
-$yPosition += 10; // Add space between text and QR code
-
-// Copy QR code below the text
-imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); // Adjusted to fit QR code below text
+$yPosition += 5;
+imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); 
 
 // Save the final image with QR code and full name
-imagepng($outputImage, $outputImagePath); // Save the final image
-
-// Clean up resources
+imagepng($outputImage, $outputImagePath); 
 imagedestroy($qrImage);
 imagedestroy($outputImage);
-
-
-// Now insert vehicle data into the database along with the generated QR code image path
 $inTime = date('Y-m-d H:i:s');
 
 // Sanitize input values to avoid SQL injection (for security)
