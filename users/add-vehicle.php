@@ -1,4 +1,3 @@
-@ -1,644 +0,0 @@
 <?php
 session_start();
 error_reporting(E_ALL); // Enable error reporting for debugging
