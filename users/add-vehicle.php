@@ -106,6 +106,151 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 } elseif ($model === 'Others, please specify') {
                     $imagePath = '../admin/vehicles/benelli/leoncino500.png';
             }
+            } elseif ($vehcomp === 'CFMoto') {
+                if ($model === 'CFMoto 300SR') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                } elseif ($model === 'CFMoto 400NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
+                } elseif ($model === 'CFMoto 650NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+            }
+            } elseif ($vehcomp === 'Changhe') {
+                if ($model === 'CFMoto 300SR') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                } elseif ($model === 'CFMoto 400NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
+                } elseif ($model === 'CFMoto 650NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+            }
+            } elseif ($vehcomp === 'Changan') {
+                if ($model === 'CFMoto 300SR') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                } elseif ($model === 'CFMoto 400NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
+                } elseif ($model === 'CFMoto 650NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+            }
+            } elseif ($vehcomp === 'Chery') {
+                if ($model === 'CFMoto 300SR') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                } elseif ($model === 'CFMoto 400NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
+                } elseif ($model === 'CFMoto 650NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+            }
+            } elseif ($vehcomp === 'Dongfeng') {
+                if ($model === 'CFMoto 300SR') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                } elseif ($model === 'CFMoto 400NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
+                } elseif ($model === 'CFMoto 650NK') {
+                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+            }
+            } elseif ($vehcomp === 'Kawasaki') {
+                if ($model === 'Kawasaki Barako II') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Barako II.jpg';
+                } elseif ($model === 'Kawasaki CT100') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki CT100.jpg';
+                } elseif ($model === 'Kawasaki Dominar 400') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Dominar 400.jpg';
+                } elseif ($model === 'Kawasaki Ninja 400') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Ninja 400.jpg';
+                } elseif ($model === 'Kawasaki Ninja ZX-25R') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Ninja ZX-25R.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Barako II.png';
+            }
+            } elseif ($vehcomp === 'Kymco') {
+                if ($model === 'Kymco Super 8') {
+                    $imagePath = '../admin/vehicles/kymco/Kymco Super 8.jpg';
+                } elseif ($model === 'Kymco Xciting 300i') {
+                    $imagePath = '../admin/vehicles/kymco/Kymco Xciting 300i.jpg';
+                } elseif ($model === 'Kymco AK550') {
+                    $imagePath = '../admin/vehicles/kymco/Kymco AK550.jpg';
+                } elseif ($model === 'Kymco Like 150i') {
+                    $imagePath = '../admin/vehicles/kymco/Kymco Like 150i.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/kymco/Kymco Like 150i.jpg';
+            }
+            } elseif ($vehcomp === 'Piaggio') {
+                if ($model === 'MotorStar MSX200-II') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+                } elseif ($model === 'MotorStar Xplorer X200R') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar Xplorer X200R.jpg';
+                } elseif ($model === 'MotorStar Nicess 110') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar Nicess 110.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+            }
+            } elseif ($vehcomp === 'Racal') {
+                if ($model === 'MotorStar MSX200-II') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+                } elseif ($model === 'MotorStar Xplorer X200R') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar Xplorer X200R.jpg';
+                } elseif ($model === 'MotorStar Nicess 110') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar Nicess 110.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+            }
+            } elseif ($vehcomp === 'Rusi') {
+                if ($model === 'Rusi Classic 250') {
+                    $imagePath = '../admin/vehicles/rusi/Rusi Classic 250.jpg';
+                } elseif ($model === 'Rusi Flash 150') {
+                    $imagePath = '../admin/vehicles/rusi/Rusi Flash 150.jpg';
+                } elseif ($model === 'Rusi Mojo 200') {
+                    $imagePath = '../admin/vehicles/rusi/Rusi Mojo 200.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/rusi/Rusi Classic 250.jpg';
+            }
+            } elseif ($vehcomp === 'Suzuki Motors') {
+                if ($model === 'Suzuki Raider R150') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Raider R150.jpg';
+                } elseif ($model === 'Suzuki Skydrive') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Skydrive.jpg';
+                } elseif ($model === 'Suzuki Burgman Street') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Burgman Street.jpg';
+                } elseif ($model === 'Suzuki Smash 115') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Smash 115.jpg';
+                } elseif ($model === 'Suzuki GSX-R150') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki GSX-R150.jpg';
+                } elseif ($model === 'Suzuki Gixxer') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Gixxer.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/suzuki motors/Suzuki Raider R150.jpg';
+                }
+            } elseif ($vehcomp === 'SYM') {
+                if ($model === 'SYM Maxsym 400i') {
+                    $imagePath = '../admin/vehicles/sym/SYM Maxsym 400i.jpg';
+                } elseif ($model === 'SYM Bonus X') {
+                    $imagePath = '../admin/vehicles/sym/SYM Bonus X.jpg';
+                } elseif ($model === 'SYM RV1-2') {
+                    $imagePath = '../admin/vehicles/sym/SYM RV1-2.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/sym/SYM Maxsym 400i.jpg';
+                }
+            } elseif ($vehcomp === 'TVS') {
+                if ($model === 'TVS Apache RTR 200", ') {
+                    $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 200.jpg';
+                } elseif ($model === 'TVS Apache RTR 160') {
+                    $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 160.jpg';
+                } elseif ($model === 'TVS Dazz') {
+                    $imagePath = '../admin/vehicles/tvs/TVS Dazz.jpg';
+                } elseif ($model === 'TVS XL100') {
+                    $imagePath = '../admin/vehicles/tvs/TVS XL100.jpg';
+                } elseif ($model === 'Others, please specify') {
+                    $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 200.jpg';
+                }
+            
 }
 
         $checkPlateQuery = mysqli_query($con, "SELECT * FROM tblvehicle WHERE RegistrationNumber='$vehreno'");
@@ -321,7 +466,7 @@ function updateMakeBrandOptions() {
     const otherMakeInput = document.getElementById("otherMake");
     vehcomp.innerHTML = '<option value="">Select Make/Brand</option>';
     const options = {
-        "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
+        "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio", "Racal", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
         "Four Wheeler Vehicle": ["Changhe", "Changan", "Chery", "Chevrolet", "Dongfeng", "Ford", "Foton", "GAC", "Geely", "Honda", "Hyundai", "Isuzu", "Kia", "Lexus", "Mazda", "MG (Morris Garages)", "Mitsubishi", "Nissan", "Peugeot", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Others, please specify"],
         "Bicycles": ["Battle", "Brusko", "Cannondale", "GT", "Hiland", "Kona", "Nakto", "RoyalBaby", "Others, please specify"]
     };
@@ -346,7 +491,7 @@ function updateModelOptions() {
     model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
-        "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650MT", "Others, please specify"],
+        "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650NK", "Others, please specify"],
         "Changhe": ["Changhe A6", "Changhe Journey MPV M60", "Others, please specify"], //WALA PANI
         "Changan": ["Changan CS15", "Changan Alsvin", "Changan CS35 Plus", "Changan Uni-T", "Others, please specify"], //WALA PANI
         "Chery": ["Chery Tiggo 2 Pro", "Chery Tiggo 5X Pro", "Chery Tiggo 7 Pro", "Chery Tiggo 8 Pro", "Others, please specify"], //WALA PANI
@@ -356,6 +501,7 @@ function updateModelOptions() {
         "Kymco": ["Kymco Super 8", "Kymco Xciting 300i", "Kymco AK550", "Kymco Like 150i", "Others, please specify"],
         "MotorStar": ["MotorStar MSX200-II", "MotorStar Xplorer X200R", "MotorStar Nicess 110", "Others, please specify"],
         "Piaggio": ["Piaggio Vespa Primavera", "Piaggio Vespa GTS", "Others, please specify"],
+        "Racal" : ["Racal 115", "Racal King 175", "Racal Raptor 250", "Racal Classic 150", "Racal KRZ 150", "Racal Adventure 200", "Racal 160", "Others, please specify"], //WALA PASAAAAD
         "Rusi": ["Rusi Flash 150", "Rusi Mojo 200", "Rusi Classic 250", "Others, please specify"],
         "Suzuki Motors": ["Suzuki Raider R150", "Suzuki Skydrive", "Suzuki Burgman Street", "Suzuki Smash 115", "Suzuki GSX-R150", "Suzuki Gixxer", "Others, please specify"],
         "SYM": ["SYM Maxsym 400i", "SYM Bonus X", "SYM RV1-2", "Others, please specify"],
