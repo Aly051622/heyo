@@ -435,6 +435,9 @@ if (mysqli_query($con, $query)) {
             text-decoration: none;
             cursor: pointer;
         }
+        #otherModelInput {
+            display: none;
+        }
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -471,22 +474,29 @@ function updateMakeBrandOptions() {
     };
 
     if (options[catename]) {
-        options[catename].forEach(make => {
+        vehcomp.disabled = false;
+        options[catename].forEach(brand => {
             const option = document.createElement("option");
-            option.value = make;
-            option.text = make;
+            option.value = brand;
+            option.text = brand;
             vehcomp.appendChild(option);
         });
+    } else {
+        vehcomp.disabled = true;
     }
-
-    vehcomp.addEventListener("change", () => {
-        otherMakeInput.style.display = vehcomp.value === "Others, please specify" ? "block" : "none";
-    });
+    vehcomp.onchange = function() {
+        if (vehcomp.value === "Others, please specify") {
+            otherMakeInput.style.display = "block";
+        } else {
+            otherMakeInput.style.display = "none";
+        }
+    };
 }
 
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
+    const otherModelInput = document.getElementById("otherModelInput");
     model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
@@ -543,6 +553,13 @@ function updateModelOptions() {
             option.text = modelOption;
             model.appendChild(option);
         });
+    }
+
+    // Show or hide the custom input based on the selection
+    if (modelDropdown.value === "Others, please specify") {
+        otherModelInput.style.display = "block";
+    } else {
+        otherModelInput.style.display = "none";
     }
 }
 </script>
