@@ -43,9 +43,55 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             }
         } elseif ($vehcomp === 'Honda Motors') {
             if ($model === 'DIO') {
-                $imagePath = '../admin/vehicles/honda motors/honda_dio.png';
-            }
-        }
+                $imagePath = '../admin/vehicles/honda motors/honda dio.png';
+            } elseif ($model === 'Click 125') {
+                $imagePath = '../admin/vehicles/honda motors/click125.png';
+            } elseif ($model === 'Click 125 (Special Edition)') {
+                $imagePath = '../admin/vehicles/honda motors/click125 sepecial.png';
+            } elseif ($model === 'Honda Click 150i') {
+                $imagePath = '../admin/vehicles/honda motors/click150.png';
+            } elseif ($model === 'Wave RSX (DISC)') {
+                $imagePath = '../admin/vehicles/honda motors/waversx (disc).png';
+            } elseif ($model === 'ADV160') {
+                $imagePath = '../admin/vehicles/honda motors/adv160.png';
+            } elseif ($model === 'Beat (Playful)') {
+                $imagePath = '../admin/vehicles/honda motors/beatplayful.png';
+            } elseif ($model === 'Beat (Premium)') {
+                $imagePath = '../admin/vehicles/honda motors/beatpremium.png';
+            } elseif ($model === 'CBR150R') {
+                $imagePath = '../admin/vehicles/honda motors/cbr150r.png';
+            } elseif ($model === 'PCX160 - CBS') {
+                $imagePath = '../admin/vehicles/honda motors/pcx160 cbs.png';
+            } elseif ($model === 'Winner X (Standard)') {
+                $imagePath = '../admin/vehicles/honda motors/winnerx (standard).png';
+            } elseif ($model === 'XRM125 DS') {
+                $imagePath = '../admin/vehicles/honda motors/xrm125 ds.png';
+            } elseif ($model === 'CRF150L') {
+                $imagePath = '../admin/vehicles/honda motors/cr150l.png';
+            } elseif ($model === 'TMX125 Alpha') {
+                $imagePath = '../admin/vehicles/honda motors/tmx125 alpha.png';
+            } elseif ($model === 'AirBlade160') {
+                $imagePath = '../admin/vehicles/honda motors/airblade160.png';
+            } elseif ($model === 'Winner X (ABS Premium)') {
+                $imagePath = '../admin/vehicles/honda motors/winnerx (abs premium).png';
+            } elseif ($model === 'Wave RSX (Drum)') {
+                $imagePath = '../admin/vehicles/honda motors/waversx (drum).png';
+            } elseif ($model === 'XRM125 MOTARD') {
+                $imagePath = '../admin/vehicles/honda motors/xrm125 motard.png';
+            } elseif ($model === 'RS125') {
+                $imagePath = '../admin/vehicles/honda motors/rs125.png';
+            } elseif ($model === 'XR150L') {
+                $imagePath = '../admin/vehicles/honda motors/xr150l.png';
+            } elseif ($model === 'CRF300L') {
+                $imagePath = '../admin/vehicles/honda motors/crf300l.png';
+            } elseif ($model === 'NX500') {
+                $imagePath = '../admin/vehicles/honda motors/nx500.png';
+            } elseif ($model === 'EM1 e') {
+                $imagePath = '../admin/vehicles/honda motors/em1e.png';
+            } elseif ($model === 'CRF1100L Africa Twin') {
+                $imagePath = '../admin/vehicles/honda motors/crf1100 africatwin.png';
+    }
+}
 
         $checkPlateQuery = mysqli_query($con, "SELECT * FROM tblvehicle WHERE RegistrationNumber='$vehreno'");
         $plateExists = mysqli_num_rows($checkPlateQuery);
@@ -290,7 +336,7 @@ function updateModelOptions() {
         "Changan": ["Changan CS15", "Changan Alsvin", "Changan CS35 Plus", "Changan Uni-T", "Others, please specify"], //WALA PANI
         "Chery": ["Chery Tiggo 2 Pro", "Chery Tiggo 5X Pro", "Chery Tiggo 7 Pro", "Chery Tiggo 8 Pro", "Others, please specify"], //WALA PANI
         "Dongfeng": ["Dongfeng M-HERO", "Dongfeng Rich 6 EV 450", "Dongfeng Aeolus Huge", "Others, please specify"], //WALA PANI
-        "Honda Motors": ["Click 125", "Click 125 (Special Edition)", "Honda Click 150i", "DIO","AirBlade160", "Beat (Playful)", "Beat (Premium)", "PCX160 - CBS", "PCX160 - ABS", "ADV160", "CBR150R", "CB150X", "Winner X (ABS Premium)", "Wave RSX (DISC)", "Wave RSX (Drum)", "Winner X (Standard)", "Winner X (ABS Premium)", "Winner X (ABS Racing Type)", "XRM125 DS", "XRM125 DSX", "XRM125 MOTARD", "RS125", "XR150L", "CRF150L", "CRF300L", "CRF300 Rally", "XL750 Transalp", "X-ADV", "NX500", "CRF1100L Africa Twin", "CRF1100L Africa Twin Adventure Sports", "EM1 e", "TMX125 Alpha", "TMX SUPREMO", "Others, please specify"],
+        "Honda Motors": ["Click 125", "Click 125 (Special Edition)", "Honda Click 150i", "DIO","AirBlade160", "Beat (Playful)", "Beat (Premium)", "PCX160 - CBS", "PCX160 - ABS", "ADV160", "CBR150R", "CB150X", "Winner X (ABS Premium)", "Wave RSX (DISC)", "Wave RSX (Drum)", "Winner X (Standard)", "Winner X (ABS Premium)", "XRM125 DS", "XRM125 MOTARD", "RS125", "XR150L", "CRF150L", "CRF300L", "CRF300 Rally", "X-ADV", "NX500", "CRF1100L Africa Twin", "EM1 e", "TMX125 Alpha", "Others, please specify"],
         "Kawasaki": [ "Kawasaki Rouser NS200", "Kawasaki Rouser RS200", "Kawasaki Barako II", "Kawasaki CT100", "Kawasaki Dominar 400", "Kawasaki Ninja 400", "Kawasaki Ninja ZX-25R", "Others, please specify"],
         "Kymco": ["Kymco Super 8", "Kymco Xciting 300i", "Kymco AK550", "Kymco Like 150i", "Others, please specify"],
         "MotorStar": ["MotorStar MSX200-II", "MotorStar Xplorer X200R", "MotorStar Nicess 110", "Others, please specify"],
