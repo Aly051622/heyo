@@ -116,44 +116,46 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/cfmoto/300sr.png';
             }
             } elseif ($vehcomp === 'Changhe') {
-                if ($model === 'CFMoto 300SR') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
-                } elseif ($model === 'CFMoto 400NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
-                } elseif ($model === 'CFMoto 650NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
+                if ($model === 'Changhe A6') {
+                    $imagePath = '../admin/vehicles/changhe/Changhe A6.png';
+                } elseif ($model === 'Changhe Journey MPV M60') {
+                    $imagePath = '../admin/vehicles/changhe/Changhe Journey MPV M60.png';
                 } else {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                    $imagePath = '../admin/vehicles/changhe/Changhe A6.png';
             }
             } elseif ($vehcomp === 'Changan') {
-                if ($model === 'CFMoto 300SR') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
-                } elseif ($model === 'CFMoto 400NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
-                } elseif ($model === 'CFMoto 650NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
-                } elseif ($model === 'Others, please specify') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                if ($model === 'Changan CS15') {
+                    $imagePath = '../admin/vehicles/changan/Changan CS15.png';
+                } elseif ($model === 'Changan Alsvin') {
+                    $imagePath = '../admin/vehicles/changan/Changan Alsvin.png';
+                } elseif ($model === 'Changan CS35 Plus') {
+                    $imagePath = '../admin/vehicles/changan/Changan CS35 Plus.png';
+                } elseif ($model === 'Changan Uni-T') {
+                    $imagePath = '../admin/vehicles/changan/Changan Uni-T.png';
+                } else {
+                    $imagePath = '../admin/vehicles/changan/Changan CS15.png';
             }
             } elseif ($vehcomp === 'Chery') {
-                if ($model === 'CFMoto 300SR') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
-                } elseif ($model === 'CFMoto 400NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
-                } elseif ($model === 'CFMoto 650NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
-                } elseif ($model === 'Others, please specify') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                if ($model === 'Chery Tiggo 2 Pro') {
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.png';
+                } elseif ($model === 'Chery Tiggo 5X Pro') {
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 5X Pro.png';
+                } elseif ($model === 'Chery Tiggo 7 Pro') {
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 7 Pro.png';
+                } elseif ($model === 'Chery Tiggo 8 Pro') {
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 8 Pro.png';
+                } else {
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.png';
             }
             } elseif ($vehcomp === 'Dongfeng') {
-                if ($model === 'CFMoto 300SR') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
-                } elseif ($model === 'CFMoto 400NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/400nk.png';
-                } elseif ($model === 'CFMoto 650NK') {
-                    $imagePath = '../admin/vehicles/cfmoto/650nk.png';
-                } elseif ($model === 'Others, please specify') {
-                    $imagePath = '../admin/vehicles/cfmoto/300sr.png';
+                if ($model === 'Dongfeng M-HERO') {
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.png';
+                } elseif ($model === 'Dongfeng Rich 6 EV 450') {
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Rich 6 EV 450.png';
+                } elseif ($model === 'Dongfeng Aeolus Huge') {
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Aeolus Huge.png';
+                } else {
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.png';
             }
             } elseif ($vehcomp === 'Kawasaki') {
                 if ($model === 'Kawasaki Barako II') {
@@ -178,28 +180,34 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/kymco/Kymco AK550.jpg';
                 } elseif ($model === 'Kymco Like 150i') {
                     $imagePath = '../admin/vehicles/kymco/Kymco Like 150i.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/kymco/Kymco Like 150i.jpg';
             }
             } elseif ($vehcomp === 'Piaggio') {
-                if ($model === 'MotorStar MSX200-II') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
-                } elseif ($model === 'MotorStar Xplorer X200R') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar Xplorer X200R.jpg';
-                } elseif ($model === 'MotorStar Nicess 110') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar Nicess 110.jpg';
-                } elseif ($model === 'Others, please specify') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+                if ($model === 'Piaggio Vespa Primavera') {
+                    $imagePath = '../admin/vehicles/piaggio/Piaggio Vespa Primavera.jpg';
+                } elseif ($model === 'Piaggio Vespa GTS') {
+                    $imagePath = '../admin/vehicles/piaggio/Piaggio Vespa GTS.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/piaggio/Piaggio Vespa Primavera.jpg';
             }
             } elseif ($vehcomp === 'Racal') {
-                if ($model === 'MotorStar MSX200-II') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
-                } elseif ($model === 'MotorStar Xplorer X200R') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar Xplorer X200R.jpg';
-                } elseif ($model === 'MotorStar Nicess 110') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar Nicess 110.jpg';
-                } elseif ($model === 'Others, please specify') {
-                    $imagePath = '../admin/vehicles/motorstar/MotorStar MSX200-II.jpg';
+                if ($model === 'Racal 115') {
+                    $imagePath = '../admin/vehicles/racal/Racal 115.jpg';
+                } elseif ($model === 'Racal King 175') {
+                    $imagePath = '../admin/vehicles/racal/Racal King 175.jpg';
+                } elseif ($model === 'Racal Raptor 250') {
+                    $imagePath = '../admin/vehicles/racal/Racal Raptor 250.jpg';
+                } elseif ($model === 'Racal Classic 150') {
+                    $imagePath = '../admin/vehicles/racal/Racal Classic 150.jpg';
+                } elseif ($model === 'Racal KRZ 150') {
+                    $imagePath = '../admin/vehicles/racal/Racal KRZ 150.jpg';
+                } elseif ($model === 'Racal Adventure 200') {
+                    $imagePath = '../admin/vehicles/racal/Racal Adventure 200.jpg';
+                } elseif ($model === 'Racal 160') {
+                    $imagePath = '../admin/vehicles/racal/Racal 160.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/racal/Racal Classic 150.jpg';
             }
             } elseif ($vehcomp === 'Rusi') {
                 if ($model === 'Rusi Classic 250') {
@@ -208,7 +216,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/rusi/Rusi Flash 150.jpg';
                 } elseif ($model === 'Rusi Mojo 200') {
                     $imagePath = '../admin/vehicles/rusi/Rusi Mojo 200.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/rusi/Rusi Classic 250.jpg';
             }
             } elseif ($vehcomp === 'Suzuki Motors') {
@@ -224,7 +232,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/suzuki motors/Suzuki GSX-R150.jpg';
                 } elseif ($model === 'Suzuki Gixxer') {
                     $imagePath = '../admin/vehicles/suzuki motors/Suzuki Gixxer.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/suzuki motors/Suzuki Raider R150.jpg';
                 }
             } elseif ($vehcomp === 'SYM') {
@@ -234,11 +242,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/sym/SYM Bonus X.jpg';
                 } elseif ($model === 'SYM RV1-2') {
                     $imagePath = '../admin/vehicles/sym/SYM RV1-2.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/sym/SYM Maxsym 400i.jpg';
                 }
             } elseif ($vehcomp === 'TVS') {
-                if ($model === 'TVS Apache RTR 200", ') {
+                if ($model === 'TVS Apache RTR 200') {
                     $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 200.jpg';
                 } elseif ($model === 'TVS Apache RTR 160') {
                     $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 160.jpg';
@@ -246,9 +254,326 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/tvs/TVS Dazz.jpg';
                 } elseif ($model === 'TVS XL100') {
                     $imagePath = '../admin/vehicles/tvs/TVS XL100.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/tvs/TVS Apache RTR 200.jpg';
                 }
+            } elseif ($vehcomp === 'Yamaha') {
+                if ($model === 'Yamaha Mio Aerox') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Mio Aerox.jpg';
+                } elseif ($model === 'Yamaha Mio Soul i 125') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Mio Soul i 125.jpg';
+                } elseif ($model === 'Yamaha Mio i 125') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Mio i 125.jpg';
+                } elseif ($model === 'Yamaha Mio Sporty') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Mio Sporty.jpg';
+                } elseif ($model === 'Yamaha NMAX') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha NMAX.jpg';
+                } elseif ($model === 'Yamaha XMAX') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha XMAX.jpg';
+                } elseif ($model === 'Yamaha FZi') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha FZi.jpg';
+                } elseif ($model === 'Yamaha YZF-R15') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha YZF-R15.jpg';
+                } elseif ($model === 'Yamaha Sniper 155') {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Sniper 155.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/yamaha/Yamaha Mio Aerox.jpg';
+                }
+            } elseif ($vehcomp === 'Ford') {
+                if ($model === 'EcoSport') {
+                    $imagePath = '../admin/vehicles/ford/EcoSport.jpg';
+                } elseif ($model === 'Everest') {
+                    $imagePath = '../admin/vehicles/ford/Everest.jpg';
+                } elseif ($model === 'Mustang') {
+                    $imagePath = '../admin/vehicles/ford/Mustang.jpg';
+                } elseif ($model === 'Ranger') {
+                    $imagePath = '../admin/vehicles/ford/Ranger.jpg';
+                } elseif ($model === 'Expedition') {
+                    $imagePath = '../admin/vehicles/ford/Expedition.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/ford/EcoSport.jpg';
+                }
+            } elseif ($vehcomp === 'Foton') {
+                if ($model === 'Foton Thunder') {
+                    $imagePath = '../admin/vehicles/foton/Foton Thunder.jpg';
+                } elseif ($model === 'Foton Tunland V9') {
+                    $imagePath = '../admin/vehicles/foton/Foton Tunland V9.jpg';
+                } elseif ($model === 'Foton Toplander') {
+                    $imagePath = '../admin/vehicles/foton/Foton Toplander.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/foton/EcoSport.jpg';
+                }
+            } elseif ($vehcomp === 'GAC') {
+                if ($model === 'GAC Emkoo') {
+                    $imagePath = '../admin/vehicles/gac/GAC Emkoo.jpg';
+                } elseif ($model === 'GAC Empow') {
+                    $imagePath = '../admin/vehicles/gac/GAC Empow.jpg';
+                } elseif ($model === 'GAC GS3 Emzoom') {
+                    $imagePath = '../admin/vehicles/gac/GAC GS3 Emzoom.jpg';
+                } elseif ($model === 'GAC M6 Pro') {
+                    $imagePath = '../admin/vehicles/gac/GAC M6 Pro.jpg';
+                } elseif ($model === 'GAC GS8') {
+                    $imagePath = '../admin/vehicles/gac/GAC GS8.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/gac/GAC Emkoo.jpg';
+                }
+            } elseif ($vehcomp === 'Geely') {
+                if ($model === 'Geely Azkarra') {
+                    $imagePath = '../admin/vehicles/geely/Geely Azkarra.jpg';
+                } elseif ($model === 'Geely Coolray') {
+                    $imagePath = '../admin/vehicles/geely/Geely Coolray.jpg';
+                } elseif ($model === 'Geely Emgrand') {
+                    $imagePath = '../admin/vehicles/geely/Geely Emgrand.jpg';
+                } elseif ($model === 'Geely GX3 Pro') {
+                    $imagePath = '../admin/vehicles/geely/Geely GX3 Pro.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/geely/Geely Azkarra.jpg';
+                }
+            } elseif ($vehcomp === 'Honda') {
+                if ($model === 'Accord') {
+                    $imagePath = '../admin/vehicles/honda/Accord.jpg';
+                } elseif ($model === 'Brio') {
+                    $imagePath = '../admin/vehicles/honda/Brio.jpg';
+                } elseif ($model === 'Civic') {
+                    $imagePath = '../admin/vehicles/honda/Civic.jpg';
+                } elseif ($model === 'City') {
+                    $imagePath = '../admin/vehicles/honda/City.jpg';
+                } elseif ($model === 'CR-V') {
+                    $imagePath = '../admin/vehicles/honda/CR-V.jpg';
+                } elseif ($model === 'HR-V') {
+                    $imagePath = '../admin/vehicles/honda/HR-V.jpg';
+                } elseif ($model === 'Pilot') {
+                    $imagePath = '../admin/vehicles/honda/Pilot.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/honda/Accord.jpg';
+                }
+            } elseif ($vehcomp === 'Hyundai') {
+                if ($model === 'Accent') {
+                    $imagePath = '../admin/vehicles/hyundai/Accent.jpg';
+                } elseif ($model === 'Kona') {
+                    $imagePath = '../admin/vehicles/hyundai/Kona.jpg';
+                } elseif ($model === 'Santa Fe') {
+                    $imagePath = '../admin/vehicles/hyundai/Santa Fe.jpg';
+                } elseif ($model === 'Tucson') {
+                    $imagePath = '../admin/vehicles/hyundai/Tucson.jpg';
+                } elseif ($model === 'Elantra') {
+                    $imagePath = '../admin/vehicles/hyundai/Elantra.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/hyundai/Accent.jpg';
+                }
+            } elseif ($vehcomp === 'Isuzu') {
+                if ($model === 'Alterra') {
+                    $imagePath = '../admin/vehicles/isuzu/Alterra.jpg';
+                } elseif ($model === 'D-Max') {
+                    $imagePath = '../admin/vehicles/isuzu/D-Max.jpg';
+                } elseif ($model === 'MU-X') {
+                    $imagePath = '../admin/vehicles/isuzu/MU-X.jpg';
+                } elseif ($model === 'N-Series (Truck)') {
+                    $imagePath = '../admin/vehicles/isuzu/N-Series (Truck).jpg';
+                } elseif ($model === 'F-Series (Truck)') {
+                    $imagePath = '../admin/vehicles/isuzu/F-Series (Truck).jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/isuzu/Alterra.jpg';
+                }
+            } elseif ($vehcomp === 'Kia') {
+                if ($model === 'Carnival') {
+                    $imagePath = '../admin/vehicles/kia/Carnival.jpg';
+                } elseif ($model === 'Picanto') {
+                    $imagePath = '../admin/vehicles/kia/Picanto.jpg';
+                } elseif ($model === 'Seltos') {
+                    $imagePath = '../admin/vehicles/kia/Seltos.jpg';
+                } elseif ($model === 'Sportage') {
+                    $imagePath = '../admin/vehicles/kia/Sportage.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/kia/Carnival.jpg';
+                }
+            } elseif ($vehcomp === 'Lexus') {
+                if ($model === 'ES') {
+                    $imagePath = '../admin/vehicles/lexus/ES.jpg';
+                } elseif ($model === 'NX') {
+                    $imagePath = '../admin/vehicles/lexus/NX.jpg';
+                } elseif ($model === 'RX') {
+                    $imagePath = '../admin/vehicles/lexus/RX.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/lexus/ES.jpg';
+                }
+            } elseif ($vehcomp === 'Mazda') {
+                if ($model === 'Carnival') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda BT-50.jpg';
+                } elseif ($model === 'Mazda CX-3') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda CX-3.jpg';
+                } elseif ($model === 'Mazda CX-30') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda CX-30.jpg';
+                } elseif ($model === 'Mazda CX-5') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda CX-5.jpg';
+                } elseif ($model === 'Mazda CX-60') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda CX-60.jpg';
+                } elseif ($model === 'Mazda CX-8') {
+                    $imagePath = '../admin/vehicles/mazda/Mazda CX-8.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/mazda/Mazda BT-50.jpg';
+                }
+            } elseif ($vehcomp === 'MG (Morris Garages)') {
+                if ($model === 'ES') {
+                    $imagePath = '../admin/vehicles/mg/MG6.jpg';
+                } elseif ($model === 'RX5') {
+                    $imagePath = '../admin/vehicles/mg/RX5.jpg';
+                } elseif ($model === 'ZS') {
+                    $imagePath = '../admin/vehicles/mg/ZS.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/mg/MG6.jpg';
+                }
+            } elseif ($vehcomp === 'Mitsubishi') {
+                if ($model === 'Lancer') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Lancer.jpg';
+                } elseif ($model === 'Mirage') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Mirage.jpg';
+                } elseif ($model === 'Montero Sport') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Montero Sport.jpg';
+                } elseif ($model === 'Outlander') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Outlander.jpg';
+                } elseif ($model === 'Strada') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Strada.jpg';
+                } elseif ($model === 'Xpander') {
+                    $imagePath = '../admin/vehicles/mitsubishi/Xpander.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/mitsubishi/Lancer.jpg';
+                }
+            } elseif ($vehcomp === 'Nissan') {
+                if ($model === 'Almera') {
+                    $imagePath = '../admin/vehicles/nissan/Almera.jpg';
+                } elseif ($model === 'Juke') {
+                    $imagePath = '../admin/vehicles/nissan/Juke.jpg';
+                } elseif ($model === 'Livina') {
+                    $imagePath = '../admin/vehicles/nissan/Livina.jpg';
+                } elseif ($model === 'Navara') {
+                    $imagePath = '../admin/vehicles/nissan/Navara.jpg';
+                } elseif ($model === 'Patrol') {
+                    $imagePath = '../admin/vehicles/nissan/Patrol.jpg';
+                } elseif ($model === 'Terra') {
+                    $imagePath = '../admin/vehicles/nissan/Terra.jpg';
+                } elseif ($model === 'X-Trail') {
+                    $imagePath = '../admin/vehicles/nissan/X-Trail.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/nissan/Almera.jpg';
+                }
+            } elseif ($vehcomp === 'Peugeot') {
+                if ($model === '308') {
+                    $imagePath = '../admin/vehicles/peugeot/308.jpg';
+                } elseif ($model === '3008') {
+                    $imagePath = '../admin/vehicles/peugeot/3008.jpg';
+                } elseif ($model === '5008') {
+                    $imagePath = '../admin/vehicles/peugeot/5008.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/peugeot/308.jpg';
+                }
+            } elseif ($vehcomp === 'Subaru') {
+                if ($model === 'Forester') {
+                    $imagePath = '../admin/vehicles/subaru/Forester.jpg';
+                } elseif ($model === 'Legacy') {
+                    $imagePath = '../admin/vehicles/subaru/Legacy.jpg';
+                } elseif ($model === 'Outback') {
+                    $imagePath = '../admin/vehicles/subaru/Outback.jpg';
+                } elseif ($model === 'XV') {
+                    $imagePath = '../admin/vehicles/subaru/XV.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/subaru/Forester.jpg';
+                }
+            } elseif ($vehcomp === 'Suzuki') {
+                if ($model === 'Celerio') {
+                    $imagePath = '../admin/vehicles/suzuki/Celerio.jpg';
+                } elseif ($model === 'Ertiga') {
+                    $imagePath = '../admin/vehicles/suzuki/Ertiga.jpg';
+                } elseif ($model === 'Jimny') {
+                    $imagePath = '../admin/vehicles/suzuki/Jimny.jpg';
+                } elseif ($model === 'S-Presso') {
+                    $imagePath = '../admin/vehicles/suzuki/S-Presso.jpg';
+                } elseif ($model === 'Swift') {
+                    $imagePath = '../admin/vehicles/suzuki/Swift.jpg';
+                } elseif ($model === 'Vitara') {
+                    $imagePath = '../admin/vehicles/suzuki/Vitara.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/suzuki/Celerio.jpg';
+                }
+            } elseif ($vehcomp === 'Toyota') {
+                if ($model === 'Corolla') {
+                    $imagePath = '../admin/vehicles/toyota/Corolla.jpg';
+                } elseif ($model === 'Fortuner') {
+                    $imagePath = '../admin/vehicles/toyota/Fortuner.jpg';
+                } elseif ($model === 'Innova') {
+                    $imagePath = '../admin/vehicles/toyota/Innova.jpg';
+                } elseif ($model === 'Land Cruiser') {
+                    $imagePath = '../admin/vehicles/toyota/Land Cruiser.jpg';
+                } elseif ($model === 'RAV4') {
+                    $imagePath = '../admin/vehicles/toyota/RAV4.jpg';
+                } elseif ($model === 'Vios') {
+                    $imagePath = '../admin/vehicles/toyota/Vios.jpg';
+                } elseif ($model === 'Avanza') {
+                    $imagePath = '../admin/vehicles/toyota/Avanza.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/toyota/Corolla.jpg';
+                }
+            } elseif ($vehcomp === 'Volkswagen') {
+                if ($model === 'Golf') {
+                    $imagePath = '../admin/vehicles/volkswagen/Golf.jpg';
+                } elseif ($model === 'Jetta') {
+                    $imagePath = '../admin/vehicles/volkswagen/Jetta.jpg';
+                } elseif ($model === 'Passat') {
+                    $imagePath = '../admin/vehicles/volkswagen/Passat.jpg';
+                } elseif ($model === 'Tiguan') {
+                    $imagePath = '../admin/vehicles/volkswagen/Tiguan.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/volkswagen/Golf.jpg';
+                }
+            } elseif ($vehcomp === 'Battle') {
+                if ($model === 'Battle Excellence-870 Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Battle Excellence-870 Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Battle Excellence-870 Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'Brusko') {
+                if ($model === 'Brusko Arrow Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Brusko Arrow Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Brusko Arrow Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'Cannondale') {
+                if ($model === 'Cannondale Trail 7 Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Cannondale Trail 7 Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Cannondale Trail 7 Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'GT') {
+                if ($model === 'GT Avalanche Elite Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/GT Avalanche Elite Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/GT Avalanche Elite Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'Hiland') {
+                if ($model === 'Hiland 26er Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Hiland 26er Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Hiland 26er Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'Kona') {
+                if ($model === 'Kona Lava Dome Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Kona Lava Dome Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Kona Lava Dome Mountain Bike.jpg';
+                }
+            } elseif ($vehcomp === 'Nakto') {
+                if ($model === 'Nakto Ranger Electric Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/Nakto Ranger Electric Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/Nakto Ranger Electric Bike.jpg';
+                }
+            } elseif ($vehcomp === 'RoyalBaby') {
+                if ($model === 'RoyalBaby Freestyle Kids Mountain Bike') {
+                    $imagePath = '../admin/vehicles/bicycle/RoyalBaby Freestyle Kids Mountain Bike.jpg';
+                } else {
+                    $imagePath = '../admin/vehicles/bicycle/RoyalBaby Freestyle Kids Mountain Bike.jpg';
+                }
+
             
 }
 
@@ -522,7 +847,7 @@ function updateModelOptions() {
         "Lexus": ["ES", "NX", "RX", "Others, please specify"],
         "Mazda": ["Mazda BT-50", "Mazda CX-3", "Mazda CX-30", "Mazda CX-5", "Mazda CX-60", "Mazda CX-8", "Others, please specify"], //wla pani picture
         "MG (Morris Garages)": ["MG6", "RX5", "ZS", "Others, please specify"],
-        "Mitsubishi": ["Lancer", "Mirage", "Mirage G4", "Montero Sport", "Outlander", "Strada", "Xpander", "L300", "Others, please specify"],
+        "Mitsubishi": ["Lancer", "Mirage", "Montero Sport", "Outlander", "Strada", "Xpander", "Others, please specify"],
         "Nissan": ["Almera", "Juke", "Livina", "Navara", "Patrol", "Terra", "X-Trail", "Others, please specify"],
         "Peugeot": ["308", "3008", "5008", "Others, please specify"],
         "Subaru": ["Forester", "Legacy", "Outback", "XV", "Others, please specify"],
