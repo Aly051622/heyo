@@ -250,7 +250,7 @@ function updateMakeBrandOptions() {
     vehcomp.innerHTML = '<option value="">Select Make/Brand</option>';
     const options = {
         "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
-        "Four Wheeler Vehicle": ["Chevrolet", "Ford", "Honda", "Hyundai", "Isuzu", "Kia", "Lexus", "MG (Morris Garages)", "Mitsubishi", "Nissan", "Peugeot", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Others, please specify"],
+        "Four Wheeler Vehicle": ["Changhe", "Changan", "Chery", "Chevrolet", "Dongfeng", "Ford", "Foton", "GAC", "Geely", "Honda", "Hyundai", "Isuzu", "Kia", "Lexus", "Mazda", "MG (Morris Garages)", "Mitsubishi", "Nissan", "Peugeot", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Others, please specify"],
         "Bicycles": ["Battle", "Brusko", "Cannondale", "GT", "Hiland", "Kona", "Nakto", "RoyalBaby", "Others, please specify"]
     };
 
@@ -274,40 +274,48 @@ function updateModelOptions() {
     model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli 3025", "Others, please specify"],
-        "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650MT"],
-        "Honda Motors": ["Click 125", "Click 125 (Special Edition)", "Honda Click 150i", "DIO","AirBlade160", "Beat (Playful)", "Beat (Premium)", "PCX160 - CBS", "PCX160 - ABS", "ADV160", "CBR150R", "CB150X", "Winner X (ABS Premium)", "Wave RSX (DISC)", "Wave RSX (Drum)", "Winner X (Standard)", "Winner X (ABS Premium)", "Winner X (ABS Racing Type)", "XRM125 DS", "XRM125 DSX", "XRM125 MOTARD", "RS125", "XR150L", "CRF150L", "CRF300L", "CRF300 Rally", "XL750 Transalp", "X-ADV", "NX500", "CRF1100L Africa Twin", "CRF1100L Africa Twin Adventure Sports", "EM1 e", "TMX125 Alpha", "TMX SUPREMO"],
-        "Kawasaki": [ "Kawasaki Rouser NS200", "Kawasaki Rouser RS200", "Kawasaki Barako II", "Kawasaki CT100", "Kawasaki Dominar 400", "Kawasaki Ninja 400", "Kawasaki Ninja ZX-25R"],
-        "Kymco": ["Kymco Super 8", "Kymco Xciting 300i", "Kymco AK550", "Kymco Like 150i"],
-        "MotorStar": ["MotorStar MSX200-II", "MotorStar Xplorer X200R", "MotorStar Nicess 110"],
-        "Piaggio": ["Piaggio Vespa Primavera", "Piaggio Vespa GTS"],
-        "Rusi": ["Rusi Flash 150", "Rusi Mojo 200", "Rusi Classic 250"],
-        "Suzuki Motors": ["Suzuki Raider R150", "Suzuki Skydrive", "Suzuki Burgman Street", "Suzuki Smash 115", "Suzuki GSX-R150", "Suzuki Gixxer"],
-        "SYM": ["SYM Maxsym 400i", "SYM Bonus X", "SYM RV1-2"],
-        "TVS": ["TVS Apache RTR 200", "TVS Apache RTR 160", "TVS Dazz", "TVS XL100"],
-        "Yamaha": ["Yamaha Mio Aerox", "Yamaha Mio Soul i 125", "Yamaha Mio i 125", "Yamaha Mio Sporty", "Yamaha NMAX", "Yamaha XMAX", "Yamaha FZi", "Yamaha YZF-R15", "Yamaha Sniper 155"],
-        "Chevrolet": ["Colorado", "Spark", "Trailblazer", "Tracker", "Trax", "Tahoe", "Suburban", "Corvette", "Camaro", "Captiva"],
-        "Ford": ["EcoSport", "Everest", "Mustang", "Ranger", "Expedition"],
-        "Honda": ["Accord", "Brio", "Civic", "City", "CR-V", "HR-V", "Pilot"],
-        "Hyundai": ["Accent", "Kona", "Santa Fe", "Tucson", "Elantra"],
-        "Isuzu": ["Alterra", "D-Max", "MU-X", "N-Series (Truck)", "F-Series (Truck)"],
-        "Kia": ["Carnival", "Picanto", "Rio", "Seltos", "Sportage"],
-        "Lexus": ["ES", "NX", "RX"],
-        "MG (Morris Garages)": ["MG6", "RX5", "ZS"],
-        "Mitsubishi": ["Lancer", "Mirage", "Mirage G4", "Montero Sport", "Outlander", "Strada", "Xpander", "L300"],
-        "Nissan": ["Almera", "Juke", "Livina", "Navara", "Patrol", "Terra", "X-Trail"],
-        "Peugeot": ["308", "3008", "5008"],
-        "Subaru": ["Forester", "Legacy", "Outback", "XV"],
-        "Suzuki": ["Celerio", "Ertiga", "Jimny", "S-Presso", "Swift", "Vitara"],
-        "Toyota": ["Corolla", "Fortuner", "Innova", "Land Cruiser", "RAV4", "Vios"],
-        "Volkswagen": ["Golf", "Jetta", "Passat", "Tiguan"],
-        "Battle": ["Battle Excellence-870 Mountain Bike"],
-        "Brusko": ["Brusko Arrow Mountain Bike"],
-        "Cannondale": ["Cannondale Trail 7 Mountain Bike"],
-        "GT": ["GT Avalanche Elite Mountain Bike"],
-        "Hiland": ["Hiland 26er Mountain Bike"],
-        "Kona": ["Kona Lava Dome Mountain Bike"],
-        "Nakto": ["Nakto Ranger Electric Bike"],
-        "RoyalBaby": ["RoyalBaby Freestyle Kids Mountain Bike"]
+        "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650MT", "Others, please specify"],
+        "Changhe": ["Changhe A6", "Changhe Journey MPV M60", "Others, please specify"], //WALA PANI
+        "Changan": ["Changan CS15", "Changan Alsvin", "Changan CS35 Plus", "Changan Uni-T", "Others, please specify"], //WALA PANI
+        "Chery": ["Chery Tiggo 2 Pro", "Chery Tiggo 5X Pro", "Chery Tiggo 7 Pro", "Chery Tiggo 8 Pro", "Others, please specify"], //WALA PANI
+        "Dongfeng": ["Dongfeng M-HERO", "Dongfeng Rich 6 EV 450", "Dongfeng Aeolus Huge", "Others, please specify"], //WALA PANI
+        "Honda Motors": ["Click 125", "Click 125 (Special Edition)", "Honda Click 150i", "DIO","AirBlade160", "Beat (Playful)", "Beat (Premium)", "PCX160 - CBS", "PCX160 - ABS", "ADV160", "CBR150R", "CB150X", "Winner X (ABS Premium)", "Wave RSX (DISC)", "Wave RSX (Drum)", "Winner X (Standard)", "Winner X (ABS Premium)", "Winner X (ABS Racing Type)", "XRM125 DS", "XRM125 DSX", "XRM125 MOTARD", "RS125", "XR150L", "CRF150L", "CRF300L", "CRF300 Rally", "XL750 Transalp", "X-ADV", "NX500", "CRF1100L Africa Twin", "CRF1100L Africa Twin Adventure Sports", "EM1 e", "TMX125 Alpha", "TMX SUPREMO", "Others, please specify"],
+        "Kawasaki": [ "Kawasaki Rouser NS200", "Kawasaki Rouser RS200", "Kawasaki Barako II", "Kawasaki CT100", "Kawasaki Dominar 400", "Kawasaki Ninja 400", "Kawasaki Ninja ZX-25R", "Others, please specify"],
+        "Kymco": ["Kymco Super 8", "Kymco Xciting 300i", "Kymco AK550", "Kymco Like 150i", "Others, please specify"],
+        "MotorStar": ["MotorStar MSX200-II", "MotorStar Xplorer X200R", "MotorStar Nicess 110", "Others, please specify"],
+        "Piaggio": ["Piaggio Vespa Primavera", "Piaggio Vespa GTS", "Others, please specify"],
+        "Rusi": ["Rusi Flash 150", "Rusi Mojo 200", "Rusi Classic 250", "Others, please specify"],
+        "Suzuki Motors": ["Suzuki Raider R150", "Suzuki Skydrive", "Suzuki Burgman Street", "Suzuki Smash 115", "Suzuki GSX-R150", "Suzuki Gixxer", "Others, please specify"],
+        "SYM": ["SYM Maxsym 400i", "SYM Bonus X", "SYM RV1-2", "Others, please specify"],
+        "TVS": ["TVS Apache RTR 200", "TVS Apache RTR 160", "TVS Dazz", "TVS XL100", "Others, please specify"],
+        "Yamaha": ["Yamaha Mio Aerox", "Yamaha Mio Soul i 125", "Yamaha Mio i 125", "Yamaha Mio Sporty", "Yamaha NMAX", "Yamaha XMAX", "Yamaha FZi", "Yamaha YZF-R15", "Yamaha Sniper 155", "Others, please specify"],
+        "Chevrolet": ["Colorado", "Spark", "Trailblazer", "Tracker", "Trax", "Tahoe", "Suburban", "Corvette", "Camaro", "Captiva", "Others, please specify"],
+        "Foton": ["Foton Thunder", "Foton Tunland V9", "Foton Toplander", "Others, please specify"], //WAALA
+        "Ford": ["EcoSport", "Everest", "Mustang", "Ranger", "Expedition", "Others, please specify"],
+        "GAC": ["GAC Emkoo", "GAC Empow", "GAC GS3 Emzoom", "GAC M6 Pro", "GAC GS8", "Others, please specify"], //WALA PANI
+        "Geely": ["Geely Azkarra", "Geely Coolray", "Geely Emgrand", "Geely GX3 Pro", "Others, please specify"], //WALA PANI
+        "Honda": ["Accord", "Brio", "Civic", "City", "CR-V", "HR-V", "Pilot", "Others, please specify"],
+        "Hyundai": ["Accent", "Kona", "Santa Fe", "Tucson", "Elantra", "Others, please specify"],
+        "Isuzu": ["Alterra", "D-Max", "MU-X", "N-Series (Truck)", "F-Series (Truck)", "Others, please specify"],
+        "Kia": ["Carnival", "Picanto", "Rio", "Seltos", "Sportage", "Others, please specify"],
+        "Lexus": ["ES", "NX", "RX", "Others, please specify"],
+        "Mazda": ["Mazda BT-50", "Mazda CX-3", "Mazda CX-30", "Mazda CX-5", "Mazda CX-60", "Mazda CX-8", "Others, please specify"], //wla pani picture
+        "MG (Morris Garages)": ["MG6", "RX5", "ZS", "Others, please specify"],
+        "Mitsubishi": ["Lancer", "Mirage", "Mirage G4", "Montero Sport", "Outlander", "Strada", "Xpander", "L300", "Others, please specify"],
+        "Nissan": ["Almera", "Juke", "Livina", "Navara", "Patrol", "Terra", "X-Trail", "Others, please specify"],
+        "Peugeot": ["308", "3008", "5008", "Others, please specify"],
+        "Subaru": ["Forester", "Legacy", "Outback", "XV", "Others, please specify"],
+        "Suzuki": ["Celerio", "Ertiga", "Jimny", "S-Presso", "Swift", "Vitara", "Others, please specify"],
+        "Toyota": ["Corolla", "Fortuner", "Innova", "Land Cruiser", "RAV4", "Vios", "Avanza", "Others, please specify"],
+        "Volkswagen": ["Golf", "Jetta", "Passat", "Tiguan", "Others, please specify"],
+        "Battle": ["Battle Excellence-870 Mountain Bike", "Others, please specify"],
+        "Brusko": ["Brusko Arrow Mountain Bike", "Others, please specify"],
+        "Cannondale": ["Cannondale Trail 7 Mountain Bike", "Others, please specify"],
+        "GT": ["GT Avalanche Elite Mountain Bike", "Others, please specify"],
+        "Hiland": ["Hiland 26er Mountain Bike", "Others, please specify"],
+        "Kona": ["Kona Lava Dome Mountain Bike", "Others, please specify"],
+        "Nakto": ["Nakto Ranger Electric Bike", "Others, please specify"],
+        "RoyalBaby": ["RoyalBaby Freestyle Kids Mountain Bike", "Others, please specify"]
 
     };
 
