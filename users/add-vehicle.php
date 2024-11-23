@@ -486,22 +486,12 @@ function updateMakeBrandOptions() {
     });
 } */
 
-function toggleOtherModelInput() {
-    const modelDropdown = document.getElementById("model");
-    const otherModelInput = document.getElementById("otherModel");
-
-    if (modelDropdown.value === "Others, please specify") {
-        otherModelInput.style.display = "block"; // Show the hidden input field for model
-    } else {
-        otherModelInput.style.display = "none"; // Hide the input field
-    }
-}
-
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
     const otherModelInput = document.getElementById("otherModel");
-    modelDropdown.innerHTML = '<option value="">Select Model</option>';
+
+    model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
         "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650NK", "Others, please specify"],
@@ -551,16 +541,27 @@ function updateModelOptions() {
     };
 
     if (models[vehcomp]) {
-        models[vehcomp].forEach(model => {
+        models[vehcomp].forEach(modelOption => {
             const option = document.createElement("option");
-            option.value = model;
-            option.text = model;
-            modelDropdown.appendChild(option);
+            option.value = modelOption;
+            option.text = modelOption;
+            model.appendChild(option);
         });
     }
 
-    // Show or hide the "Other Model" input field based on selection
-    modelDropdown.addEventListener("change", toggleOtherModelInput);
+    otherModelInput.style.display = "none"; // Hide by default
+    model.addEventListener("change", toggleOtherModelInput);
+}
+
+function toggleOtherModelInput() {
+    const modelDropdown = document.getElementById("model");
+    const otherModelInput = document.getElementById("otherModel");
+
+    if (modelDropdown.value === "Others, please specify") {
+        otherModelInput.style.display = "block"; // Show input field
+    } else {
+        otherModelInput.style.display = "none"; // Hide input field
+    }
 }
 </script>
 
@@ -641,46 +642,43 @@ function updateModelOptions() {
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                             
 
-                        <!-- Vehicle Category Dropdown (Type Vehicle) -->
+                        <!-- Vehicle Type Dropdown -->
 <div class="row form-group">
-<div class="col col-md-3"><label for="select" class="form-control-label">Vehicle Type</label></div>
-<div class="col-12 col-md-9">
-<select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
-    <option value="0">Select Vehicle Type</option>
-    <?php 
-    $query = mysqli_query($con, "SELECT * FROM tblcategory");
-    while ($row = mysqli_fetch_array($query)) { ?>    
-        <option value="<?php echo $row['VehicleCat'];?>"><?php echo $row['VehicleCat'];?></option>
-    <?php } ?> 
-</select>
-</div>
+    <div class="col col-md-3"><label for="catename" class="form-control-label">Vehicle Type</label></div>
+    <div class="col-12 col-md-9">
+        <select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
+            <option value="0">Select Vehicle Type</option>
+            <?php 
+            $query = mysqli_query($con, "SELECT * FROM tblcategory");
+            while ($row = mysqli_fetch_array($query)) { ?>    
+                <option value="<?php echo $row['VehicleCat']; ?>"><?php echo $row['VehicleCat']; ?></option>
+            <?php } ?> 
+        </select>
+    </div>
 </div>
 
-<!-- Make/Brand Dropdown (Make/Brand) - Initially empty -->
+<!-- Make/Brand Dropdown -->
 <div class="row form-group">
     <div class="col col-md-3"><label for="vehcomp" class="form-control-label">Make/Brand</label></div>
     <div class="col-12 col-md-9">
-        <select id="vehcomp" name="vehcomp" class="form-control" required="true" onchange="updateModelOptions()">
+        <select id="vehcomp" name="vehcomp" class="form-control" onchange="updateModelOptions()">
             <option value="">Select Make/Brand</option>
-            </select>
-
-        <!-- Custom input for Make/Brand -->
-<input type="text" id="otherMake" name="otherMake" class="form-control" placeholder="Please specify Make/Brand" style="display:none; margin-top:10px;">
-</div>
+        </select>
+        <input type="text" id="otherMake" name="otherMake" class="form-control mt-2" placeholder="Specify Make/Brand" style="display:none;">
+    </div>
 </div>
 
 <!-- Model Dropdown -->
 <div class="row form-group">
-    <div class="col col-md-3">
-        <label for="model" class="form-control-label">Model</label>
-    </div>
+    <div class="col col-md-3"><label for="model" class="form-control-label">Model</label></div>
     <div class="col-12 col-md-9">
-        <select name="model" id="model" class="form-control" onchange="toggleOtherModelInput()">
+        <select id="model" name="model" class="form-control">
             <option value="">Select Model</option>
         </select>
-        <input type="text" name="otherModel" id="otherModel" placeholder="Specify Model" class="form-control mt-2" style="display:none;">
+        <input type="text" id="otherModel" name="otherModel" class="form-control mt-2" placeholder="Specify Model" style="display:none;">
     </div>
 </div>
+
 
         <!-- Color Input Field with Autocomplete -->
 <div class="row form-group">
