@@ -40,7 +40,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $imagePath = '../admin/vehicles/chevrolet/captiva.png';
             } elseif ($model === 'Camaro') {
                 $imagePath = '../admin/vehicles/chevrolet/camaro.png';
-            } elseif ($model === 'Others, please specify') {
+            } else {
                 $imagePath = '../admin/vehicles/chevrolet/camaro.png';
             }
         } elseif ($vehcomp === 'Honda Motors') {
@@ -92,7 +92,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $imagePath = '../admin/vehicles/honda motors/em1e.png';
             } elseif ($model === 'CRF1100L Africa Twin') {
                 $imagePath = '../admin/vehicles/honda motors/crf1100 africatwin.png';
-            } elseif ($model === 'Others, please specify') {
+            } else {
                 $imagePath = '../admin/vehicles/honda motors/click125.png';
                 }
             } elseif ($vehcomp === 'Benelli') {
@@ -102,7 +102,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/benelli/tnt135.png';
                 } elseif ($model === 'Benelli TNT302s') {
                     $imagePath = '../admin/vehicles/benelli/tnt302s.png';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/benelli/leoncino500.png';
             }
             } elseif ($vehcomp === 'CFMoto') {
@@ -112,7 +112,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/cfmoto/400nk.png';
                 } elseif ($model === 'CFMoto 650NK') {
                     $imagePath = '../admin/vehicles/cfmoto/650nk.png';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/cfmoto/300sr.png';
             }
             } elseif ($vehcomp === 'Changhe') {
@@ -122,7 +122,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/cfmoto/400nk.png';
                 } elseif ($model === 'CFMoto 650NK') {
                     $imagePath = '../admin/vehicles/cfmoto/650nk.png';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/cfmoto/300sr.png';
             }
             } elseif ($vehcomp === 'Changan') {
@@ -166,7 +166,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     $imagePath = '../admin/vehicles/kawasaki/Kawasaki Ninja 400.jpg';
                 } elseif ($model === 'Kawasaki Ninja ZX-25R') {
                     $imagePath = '../admin/vehicles/kawasaki/Kawasaki Ninja ZX-25R.jpg';
-                } elseif ($model === 'Others, please specify') {
+                } else {
                     $imagePath = '../admin/vehicles/kawasaki/Kawasaki Barako II.png';
             }
             } elseif ($vehcomp === 'Kymco') {
