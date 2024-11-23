@@ -167,7 +167,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 } elseif ($model === 'Kawasaki Ninja ZX-25R') {
                     $imagePath = '../admin/vehicles/kawasaki/Kawasaki Ninja ZX-25R.jpg';
                 } else {
-                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Barako II.png';
+                    $imagePath = '../admin/vehicles/kawasaki/Kawasaki Barako II.jpg';
             }
             } elseif ($vehcomp === 'Kymco') {
                 if ($model === 'Kymco Super 8') {
