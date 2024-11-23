@@ -79,7 +79,7 @@ if ($userExists > 0) {
     $qrCodeContent = file_get_contents($qrCodeUrl);
     file_put_contents($qrImagePath, $qrCodeContent);
 
-    // Create a new image with the name and QR code
+   // Create a new image with the name and QR code
 $outputImagePath = "../admin/qrcodes/My_QR" . $lastName . ".png"; // Define the final image path
 $qrImage = imagecreatefrompng($qrImagePath); // Load the QR code image
 
@@ -94,6 +94,7 @@ imagefilledrectangle($outputImage, 0, 0, $qrWidth, $qrHeight + 50, $white); // F
 
 // Add the full name text above the QR code
 $fontPath = '../fonts/VintageMintageFreeDemo-LVPK4.otf'; // Path to your font file
+$fontSize = 10; // Adjust font size for better visibility
 
 // Split the full name into lines of maximum 20 characters
 $maxLength = 20;
@@ -105,17 +106,26 @@ while (strlen($fullName) > $maxLength) {
 }
 $lines[] = $fullName; // Add any remaining part
 
-// Add text with padding and space between text and image
+// Add text with padding and ensure text is center-aligned
 $padding = 2; 
-$yPosition = $padding + 5; 
+$textSpacing = 5; // Space between text and QR code
+$yPosition = $padding + 15; // Initial vertical position for the text
 foreach ($lines as $line) {
-    imagettftext($outputImage, 5, 10, 5, 10, $padding, $yPosition, $black, $fontPath, $line); 
-    $yPosition += 10; 
+    // Calculate text bounding box to center-align
+    $textBox = imagettfbbox($fontSize, 0, $fontPath, $line);
+    $textWidth = abs($textBox[4] - $textBox[0]);
+    $xPosition = (int)(($qrWidth - $textWidth) / 2); // Center-align horizontally, cast to int
+
+    // Render text on the image
+    imagettftext($outputImage, $fontSize, 0, $xPosition, (int)$yPosition, $black, $fontPath, $line); 
+
+    // Increment the Y position for the next line
+    $yPosition += (int)($fontSize + 2); // Cast to int
 }
 
 // Add space between text and QR code
-$yPosition += 5;
-imagecopy($outputImage, $qrImage, $padding, $yPosition, 0, 0, $qrWidth, $qrHeight); 
+$yPosition += $textSpacing;
+imagecopy($outputImage, $qrImage, ($qrWidth - $qrWidth) / 2, $yPosition, 0, 0, $qrWidth, $qrHeight); 
 
 // Save the final image with QR code and full name
 imagepng($outputImage, $outputImagePath); 
@@ -148,6 +158,7 @@ if (mysqli_query($con, $query)) {
 } else {
     echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
+
 
 
         }
@@ -336,7 +347,7 @@ function updateModelOptions() {
     <!-- Right Panel -->
 
    <?php include_once('includes/header.php');?>
-
+<div class="right-panel">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">

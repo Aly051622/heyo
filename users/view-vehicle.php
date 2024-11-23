@@ -199,7 +199,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     </div>
                 </div>
             </div>
-        </div>
+       
 
        
         <div class="content">

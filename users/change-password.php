@@ -56,6 +56,7 @@ if (strlen($_SESSION['vpmsuid']) == 0) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="css/responsive/.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
@@ -71,14 +72,29 @@ return true;
 } 
 
 </script>
-
+<style>
+    .btn-sm{
+        padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: solid white;
+            cursor: pointer;
+            border-radius: 9px;
+            margin-left: 10px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    .btn-sm:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
+    </style>
 </head>
 <body>
    <?php include_once('includes/sidebar.php');?>
     <!-- Right Panel -->
 
-   <?php include_once('userheader.php');?>
-
+   <?php include_once('includes/header.php');?>
+<div class="right-panel">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -166,9 +182,7 @@ return true;
     </div><!-- .content -->
 
     <div class="clearfix"></div>
-
-   <?php include_once('includes/footer.php');?>
-
+</div>
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->

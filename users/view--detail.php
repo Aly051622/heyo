@@ -33,7 +33,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-
+    <link rel="stylesheet" href="css/responsive.css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
@@ -63,7 +63,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <!-- Right Panel -->
 
      <?php include_once('includes/header.php');?>
-
+<div class="right-panel">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">

@@ -89,6 +89,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">   
+    <link rel="stylesheet" href="css/responsive.css">   
     <!-- Include Bootstrap CSS (required for styling) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -201,6 +202,7 @@ body{
 
     <!-- Notification system -->
    <!-- Notification system -->
+<div class="right-panel">
 <div id="notification">
     <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
     <button id="notification-close">&times;</button>
@@ -275,6 +277,14 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Place</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
+                                    </div>
+
+<div class="row form-group">
+    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
+    <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
 </form>
 
 <!-- Bootstrap Modal -->
