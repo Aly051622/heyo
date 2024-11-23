@@ -479,11 +479,12 @@ function updateMakeBrandOptions() {
             vehcomp.appendChild(option);
         });
     }
+}
 
-    vehcomp.addEventListener("change", () => {
+    /*vehcomp.addEventListener("change", () => {
         otherMakeInput.style.display = vehcomp.value === "Others, please specify" ? "block" : "none";
     });
-}
+} */
 
 function toggleOtherModelInput() {
     const modelDropdown = document.getElementById("model");
