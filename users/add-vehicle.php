@@ -474,29 +474,22 @@ function updateMakeBrandOptions() {
     };
 
     if (options[catename]) {
-        vehcomp.disabled = false;
-        options[catename].forEach(brand => {
+        options[catename].forEach(make => {
             const option = document.createElement("option");
-            option.value = brand;
-            option.text = brand;
+            option.value = make;
+            option.text = make;
             vehcomp.appendChild(option);
         });
-    } else {
-        vehcomp.disabled = true;
     }
-    vehcomp.onchange = function() {
-        if (vehcomp.value === "Others, please specify") {
-            otherMakeInput.style.display = "block";
-        } else {
-            otherMakeInput.style.display = "none";
-        }
-    };
+
+    vehcomp.addEventListener("change", () => {
+        otherMakeInput.style.display = vehcomp.value === "Others, please specify" ? "block" : "none";
+    });
 }
 
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
-    const otherModelInput = document.getElementById("otherModelInput");
     model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
@@ -553,13 +546,6 @@ function updateModelOptions() {
             option.text = modelOption;
             model.appendChild(option);
         });
-    }
-
-    // Show or hide the custom input based on the selection
-    if (modelDropdown.value === "Others, please specify") {
-        otherModelInput.style.display = "block";
-    } else {
-        otherModelInput.style.display = "none";
     }
 }
 </script>
