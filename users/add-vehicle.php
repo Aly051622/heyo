@@ -487,10 +487,22 @@ function updateMakeBrandOptions() {
     });
 }
 
+function toggleOtherModelInput() {
+    const modelDropdown = document.getElementById("model");
+    const otherModelInput = document.getElementById("otherModel");
+
+    if (modelDropdown.value === "Others, please specify") {
+        otherModelInput.style.display = "block"; // Show the hidden input field for model
+    } else {
+        otherModelInput.style.display = "none"; // Hide the input field
+    }
+}
+
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
-    model.innerHTML = '<option value="">Select Model</option>';
+    const otherModelInput = document.getElementById("otherModel");
+    modelDropdown.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
         "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650NK", "Others, please specify"],
@@ -540,13 +552,16 @@ function updateModelOptions() {
     };
 
     if (models[vehcomp]) {
-        models[vehcomp].forEach(modelOption => {
+        models[vehcomp].forEach(model => {
             const option = document.createElement("option");
-            option.value = modelOption;
-            option.text = modelOption;
-            model.appendChild(option);
+            option.value = model;
+            option.text = model;
+            modelDropdown.appendChild(option);
         });
     }
+
+    // Show or hide the "Other Model" input field based on selection
+    modelDropdown.addEventListener("change", toggleOtherModelInput);
 }
 </script>
 
@@ -657,16 +672,17 @@ function updateModelOptions() {
 
 <!-- Model Dropdown -->
 <div class="row form-group">
-    <div class="col col-md-3"><label for="model" class="form-control-label">Model</label></div>
+    <div class="col col-md-3">
+        <label for="model" class="form-control-label">Model</label>
+    </div>
     <div class="col-12 col-md-9">
-        <select id="model" name="model" class="form-control" required="true">
+        <select name="model" id="model" class="form-control" onchange="toggleOtherModelInput()">
             <option value="">Select Model</option>
         </select>
-        
-        <!-- Custom input for Model -->
-<input type="text" id="otherModelInput" name="otherModel" class="form-control" placeholder="Please specify Model" style="display:none; margin-top:10px;">
+        <input type="text" name="otherModel" id="otherModel" placeholder="Specify Model" class="form-control mt-2" style="display:none;">
+    </div>
 </div>
-</div>
+
 
         <!-- Color Input Field with Autocomplete -->
 <div class="row form-group">
