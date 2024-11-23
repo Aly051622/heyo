@@ -502,7 +502,7 @@ function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
     const otherModelInput = document.getElementById("otherModel");
-    modelDropdown.innerHTML = '<option value="">Select Model</option>';
+    model.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
         "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650NK", "Others, please specify"],
@@ -682,7 +682,6 @@ function updateModelOptions() {
         <input type="text" name="otherModel" id="otherModel" placeholder="Specify Model" class="form-control mt-2" style="display:none;">
     </div>
 </div>
-
 
         <!-- Color Input Field with Autocomplete -->
 <div class="row form-group">
