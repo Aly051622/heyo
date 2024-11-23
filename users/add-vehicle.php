@@ -40,6 +40,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $imagePath = '../admin/vehicles/chevrolet/captiva.png';
             } elseif ($model === 'Camaro') {
                 $imagePath = '../admin/vehicles/chevrolet/camaro.png';
+            } elseif ($model === 'Others, please specify') {
+                $imagePath = '../admin/vehicles/chevrolet/camaro.png';
             }
         } elseif ($vehcomp === 'Honda Motors') {
             if ($model === 'DIO') {
@@ -90,6 +92,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 $imagePath = '../admin/vehicles/honda motors/em1e.png';
             } elseif ($model === 'CRF1100L Africa Twin') {
                 $imagePath = '../admin/vehicles/honda motors/crf1100 africatwin.png';
+            } elseif ($model === 'Others, please specify') {
+                $imagePath = '../admin/vehicles/honda motors/click125.png';
     }
 }
 
