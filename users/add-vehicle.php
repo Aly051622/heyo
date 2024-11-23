@@ -20,7 +20,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
         if ($_POST['model'] === "Others, please specify") {
             $model = $_POST['otherModel'];
-        }
+        }      
 
         $imagePath = '';
         if ($vehcomp === 'Chevrolet') {
@@ -435,9 +435,7 @@ if (mysqli_query($con, $query)) {
             text-decoration: none;
             cursor: pointer;
         }
-        #otherModelInput {
-            display: none;
-        }
+
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -502,7 +500,7 @@ function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
     const otherModelInput = document.getElementById("otherModel");
-    model.innerHTML = '<option value="">Select Model</option>';
+    modelDropdown.innerHTML = '<option value="">Select Model</option>';
     const models = {
         "Benelli": ["Benelli Leoncino 500", "Benelli TNT135", "Benelli TNT302s", "Others, please specify"],
         "CFMoto": ["CFMoto 300SR", "CFMoto 400NK", "CFMoto 650NK", "Others, please specify"],
