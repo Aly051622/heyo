@@ -411,12 +411,12 @@ input[type="text"]:hover, input[type="password"]:hover {
             <div class="form-group field space">
             <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
             <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
-            <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 8px; cursor: pointer; color: black;"></i>
+            <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 5px; cursor: pointer; color: black;"></i>
         </div>
         <div class="form-group field space">
             <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
             <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
-            <i class="fa fa-eye-slash" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 8px; cursor: pointer; color: black;"></i>
+            <i class="fa fa-eye-slash" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 5px; cursor: pointer; color: black;"></i>
         </div>
 
 
