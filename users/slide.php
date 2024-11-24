@@ -121,7 +121,7 @@
     <div class="title">AUDIENCE AND SCOPE</div>
     <div class="slider-container">
         <div class="slider" id="slider2">
-            <img src="users/images/1.png" alt="Slide 1" class="landscape">
+            <img src="images/1.png" alt="Slide 1" class="landscape">
             <img src="images/2.png" alt="Slide 2" class="landscape">
             <img src="images/3.png" alt="Slide 3" class="landscape">
             <img src="images/4.png" alt="Slide 4" class="landscape">
