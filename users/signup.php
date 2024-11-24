@@ -407,16 +407,18 @@ input[type="text"]:hover, input[type="password"]:hover {
                 <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
                 <input type="email" name="email" placeholder="Email address" required class="form-control">
             </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
-                <i class="fa fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer;"></i>
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
-                <i class="fa fa-eye" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer;"></i>
-            </div>
+            <!-- Inside the Password Field -->
+          <div class="form-group field space">
+              <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
+              <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
+              <i class="fa fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: red;"></i>
+          </div>
+          <div class="form-group field space">
+              <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
+              <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
+              <i class="fa fa-eye" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: red;"></i>
+          </div>
+
 
             <div class="checkbox">
                 <label class="pull-right">
@@ -473,18 +475,21 @@ input[type="text"]:hover, input[type="password"]:hover {
     }
 
     document.getElementById('togglePassword').addEventListener('click', function () {
-        const passwordField = document.getElementById('password');
-        const type = passwordField.type === 'password' ? 'text' : 'password';
-        passwordField.type = type;
-        this.classList.toggle('fa-eye-slash');
-    });
+    const passwordField = document.getElementById('password');
+    const isPasswordVisible = passwordField.type === 'password';
+    passwordField.type = isPasswordVisible ? 'text' : 'password';
+    this.classList.toggle('fa-eye-slash'); // Toggle slashed icon
+    this.classList.toggle('fa-eye'); // Toggle normal icon
+});
 
-    document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
-        const repeatPasswordField = document.getElementById('repeatpassword');
-        const type = repeatPasswordField.type === 'password' ? 'text' : 'password';
-        repeatPasswordField.type = type;
-        this.classList.toggle('fa-eye-slash');
-    });
+document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
+    const repeatPasswordField = document.getElementById('repeatpassword');
+    const isPasswordVisible = repeatPasswordField.type === 'password';
+    repeatPasswordField.type = isPasswordVisible ? 'text' : 'password';
+    this.classList.toggle('fa-eye-slash'); // Toggle slashed icon
+    this.classList.toggle('fa-eye'); // Toggle normal icon
+});
+
 </script>
 
 
