@@ -1,79 +1,66 @@
 <?php
 session_start();
-include('includes/dbconnection.php'); // Ensure this path is correct
-
-// Enable error reporting to debug issues
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+include('includes/dbconnection.php');// Ensure this path is correct
 
 if (isset($_POST['submit'])) {
-    // Retrieve form inputs
-    $fname = trim($_POST['firstname']);
-    $lname = trim($_POST['lastname']);
-    $contno = trim($_POST['mobilenumber']);
-    $email = trim($_POST['email']);
-    $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT); // Encrypt password
-
-    // Validate required fields
-    if (empty($fname) || empty($lname) || empty($contno) || empty($email) || empty($_POST['password'])) {
-        echo '<script>alert("All fields are required. Please fill out the form completely.")</script>';
-        exit();
-    }
-
-    // Check for duplicates (Email or Mobile Number)
-    $stmt = mysqli_prepare($con, "SELECT Email FROM tblregusers WHERE Email = ? OR MobileNumber = ?");
-    if (!$stmt) {
-        die("SQL Error: " . mysqli_error($con));
-    }
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $contno = $_POST['mobilenumber'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $userType = $_POST['userType'];
+    $place = $_POST['place'];
+    $LicenseNumber = $_POST['LicenseNumber'];
+    
+    // Use the correct variable name
+    $stmt = mysqli_prepare($con, "SELECT Email FROM tblregusers WHERE Email=? OR MobileNumber=?");
     mysqli_stmt_bind_param($stmt, "ss", $email, $contno);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
 
     if (mysqli_stmt_num_rows($stmt) > 0) {
-        echo '<script>alert("This email or contact number is already associated with another account.")</script>';
+        echo '<script>alert("This email or Contact Number is already associated with another account")</script>';
     } else {
-        // Insert new user into tblregusers
-        $insert_query = mysqli_prepare($con, 
-            "INSERT INTO tblregusers 
-            (FirstName, LastName, MobileNumber, Email, Password, user_type, place, registration_status, verification_status, status) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-        );
-
-        if ($insert_query) {
-            // Define default values for columns
-            $user_type = 'user';
-            $place = 'Unknown';
-            $registration_status = 'pending';
-            $verification_status = 'pending';
-            $status = 'inactive';
-
-            mysqli_stmt_bind_param($insert_query, "ssisssssss", 
-                $fname, $lname, $contno, $email, $password, 
-                $user_type, $place, $registration_status, $verification_status, $status
+        // Initialize $query
+        $query = mysqli_prepare($con, "INSERT INTO tblregusers(FirstName, LastName, MobileNumber, Email, Password, user_type, place, LicenseNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        
+        if ($query) { // Check if the statement was prepared successfully
+            mysqli_stmt_bind_param(
+                $query,
+                "ssssssss",
+                $fname,
+                $lname,
+                $contno,
+                $email,
+                $password,
+                $userType,
+                $place,
+                $LicenseNumber
             );
 
-            if (mysqli_stmt_execute($insert_query)) {
-                // Success: Redirect to verification page
+            if (mysqli_stmt_execute($query)) {
+                // Send verification code after successful registration
                 $_SESSION['verification_email'] = $email; // Store email in session
                 echo '<script>
                     alert("A verification code has been sent to your email.");
-                    window.location.href = "send_verification_code.php";
+                    window.location.href = "send_verification_code.php"; // Redirect to send verification code
                 </script>';
             } else {
-                echo '<script>alert("Something went wrong. Please try again.")</script>';
+                echo '<script>alert("Something Went Wrong. Please try again")</script>';
             }
 
-            mysqli_stmt_close($insert_query);
+            mysqli_stmt_close($query); // Close the prepared statement
         } else {
-            echo '<script>alert("Failed to prepare the SQL statement.")</script>';
+            echo '<script>alert("Failed to prepare the SQL statement")</script>';
         }
     }
 
-    mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt); // Close the first prepared statement
     mysqli_close($con);
 }
 ?>
+
+
 
 <style>
    .success-dialog {
@@ -374,97 +361,121 @@ input[type="text"]:hover, input[type="password"]:hover {
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
 
-            <div class="login-form">
-    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
-        <!-- Page 1 -->
-        <div id="page1">
-            <div class="form-group field space">
-                <span class="fa bi bi-person-vcard-fill" style="font-size: 20px"></span>
-                <input type="text" name="firstname" placeholder="Your First Name..." required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-person-vcard" style="font-size: 20px"></span>
-                <input type="text" name="lastname" placeholder="Your Last Name..." required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-telephone-fill" style="font-size: 20px"></span>
-                <input type="text" name="mobilenumber" maxlength="11" pattern="[0-9]{11}" placeholder="Mobile Number" required class="form-control">
-            </div><br>
-            <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">
-                Next <i class="bi bi-caret-right-square-fill"></i>
-            </button>
-        </div>
-
-        <!-- Page 2 -->
-        <div id="page2" style="display: none;">
-            <div class="form-group field space">
-                <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
-                <input type="email" name="email" placeholder="Email address" required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
-            </div>
-            <div class="checkbox">
-                <label class="pull-right">
-                    <a href="forgot-password.php" id="astyle">Forgot Password?</a>
-                </label>
-                <label class="pull-left">
-                    <a href="login.php" id="astyle">Sign in</a>
-                </label><br>
-            </div>
-            <div>
-                <input type="submit" name="submit" class="field submitbtn btn-success btn-flat m-b-30 m-t-30" id="submitBtn" value="REGISTER">
-            </div><br>
-            <button type="button" onclick="prevPage('page1')" class="nextbtn">
-                <i class="bi bi-caret-left-square-fill"></i> Previous
-            </button>
-        </div>
-    </form>
+                <div class="login-form">
+                  
+                    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
+                       <!-- Page 1 -->
+<div id="page1">
+    <div class="form-group field space">
+        <span class="fa bi bi-person-vcard-fill" style="font-size: 20px"></span>
+        <input type="text" name="firstname" placeholder="Your First Name..." required="true" class="form-control">
+    </div>
+    <div class="form-group field space" style="font-size: 20px">
+        <span class="fa bi bi-person-vcard"></span>
+        <input type="text" name="lastname" placeholder="Your Last Name..." required="true" class="form-control">
+    </div>
+    <div class="form-group field space">
+        <span class="fa bi bi-telephone-fill" style="font-size: 20px"></span>
+        <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" placeholder="Mobile Number" required="true" class="form-control">
+    </div><br>
+    <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">Next <i class="bi bi-caret-right-square-fill"></i></button>
 </div>
 
-<script>
+    
+
+<!-- Page 3 -->
+<div id="page2" style="display: none;">
+    <div class="form-group field space">
+        <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
+        <input type="email" name="email" placeholder="Email address" required="true" class="form-control">
+    </div>
+
+    <div class="form-group field space">
+        <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
+        <input type="password" name="password" placeholder="Enter password" required="true" class="form-control">
+    </div>
+
+    <div class="form-group field space">
+        <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
+        <input type="password" name="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
+    </div>
+
+    <div class="checkbox">
+        <label class="pull-right">
+            <a href="forgot-password.php" id="astyle">Forgot Password?</a>
+        </label>
+        <label class="pull-left">
+            <a href="login.php"id="astyle">Sign in</a>
+        </label><br>
+    </div>
+    <div>
+    <input type="submit" name="submit" class="field submitbtn btn-success btn-flat m-b-30 m-t-30" id="submitBtn" value="REGISTER">
+</input>
+    <div><br>
+    <button type="button" onclick="prevPage('page1')" class="nextbtn"><i class="bi bi-caret-left-square-fill"></i> Previous</button>
+      </div>
+      
+</div>
+
+                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>rc="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="../admin/assets/js/main.js"></script>
+    <script>
     let currentPage = 1;
 
+    function updatePlace() {
+        var userTypeSelect = document.getElementById('userType');
+        var placeInput = document.getElementById('place');
+
+        switch (userTypeSelect.value) {
+            case 'faculty':
+            case 'staff':
+                placeInput.value = "Beside Kadasig Gym";
+                break;
+            case 'student':
+                placeInput.value = "Beside the CME Building";
+                break;
+            case 'visitor':
+                placeInput.value = "Front";
+                break;
+            default:
+                placeInput.value = "";
+                break;
+        }
+    }
+
+   
     function nextPage(nextPageId) {
         const currentForm = document.getElementById(`page${currentPage}`);
         const nextForm = document.getElementById(nextPageId);
 
-        if (nextForm) {
-            currentForm.style.display = 'none';
-            nextForm.style.display = 'block';
-            currentPage++;
+        if (currentPage === 1) {
+            // Validation logic for Page 1 remains unchanged
+        } else if (currentPage === 2) {
+            // Validation logic for the newly created Page 2
         }
+
+        currentForm.style.display = 'none';
+        nextForm.style.display = 'block';
+        currentPage++;
     }
 
     function prevPage(prevPageId) {
         const currentForm = document.getElementById(`page${currentPage}`);
         const prevForm = document.getElementById(prevPageId);
 
-        if (prevForm) {
-            currentForm.style.display = 'none';
-            prevForm.style.display = 'block';
-            currentPage--;
-        }
-    }
-
-    function checkpass() {
-        const password = document.getElementById('password').value;
-        const repeatPassword = document.getElementById('repeatpassword').value;
-
-        if (password !== repeatPassword) {
-            alert('Passwords do not match.');
-            return false;
-        }
-        return true;
+        currentForm.style.display = 'none';
+        prevForm.style.display = 'block';
+        currentPage--;
     }
 </script>
-
-
-
 </body>
 </html>
