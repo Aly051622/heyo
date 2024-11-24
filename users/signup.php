@@ -369,7 +369,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     </style>
    
    
-    </head>
+   </head>
     <body>
    <div style="text-align:center;margin-top:40px;">
       <div class="bg-img">
@@ -379,59 +379,67 @@ input[type="text"]:hover, input[type="password"]:hover {
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
 
-            <div class="login-form">
-    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
-        <!-- Page 1 -->
-        <div id="page1">
-            <div class="form-group field space">
-                <span class="fa bi bi-person-vcard-fill" style="font-size: 20px"></span>
-                <input type="text" name="firstname" placeholder="Your First Name..." required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-person-vcard" style="font-size: 20px"></span>
-                <input type="text" name="lastname" placeholder="Your Last Name..." required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-telephone-fill" style="font-size: 20px"></span>
-                <input type="text" name="mobilenumber" maxlength="11" pattern="[0-9]{11}" placeholder="Mobile Number" required class="form-control">
-            </div><br>
-            <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">
-                Next <i class="bi bi-caret-right-square-fill"></i>
-            </button>
-        </div>
+                <div class="login-form">
+                  
+                    <form method="post" action="" id="registrationForm" onsubmit="return checkpass();">
+                       <!-- Page 1 -->
+<div id="page1">
+    <div class="form-group field space">
+        <span class="fa bi bi-person-vcard-fill" style="font-size: 20px"></span>
+        <input type="text" name="firstname" placeholder="Your First Name..." required="true" class="form-control">
+    </div>
+    <div class="form-group field space" style="font-size: 20px">
+        <span class="fa bi bi-person-vcard"></span>
+        <input type="text" name="lastname" placeholder="Your Last Name..." required="true" class="form-control">
+    </div>
+    <div class="form-group field space">
+        <span class="fa bi bi-telephone-fill" style="font-size: 20px"></span>
+        <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" placeholder="Mobile Number" required="true" class="form-control">
+    </div><br>
+    <button type="button" onclick="nextPage('page2')" class="nextbtn" id="nextBtnPage1">Next <i class="bi bi-caret-right-square-fill"></i></button>
+</div>
+    
 
-        <!-- Page 2 -->
-        <div id="page2" style="display: none;">
-            <div class="form-group field space">
-                <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
-                <input type="email" name="email" placeholder="Email address" required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
-            </div>
-            <div class="form-group field space">
-                <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-                <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
-            </div>
-            <div class="checkbox">
-                <label class="pull-right">
-                    <a href="forgot-password.php" id="astyle">Forgot Password?</a>
-                </label>
-                <label class="pull-left">
-                    <a href="login.php" id="astyle">Sign in</a>
-                </label><br>
-            </div>
-            <div>
-                <input type="submit" name="submit" class="field submitbtn btn-success btn-flat m-b-30 m-t-30" id="submitBtn" value="REGISTER">
-            </div><br>
-            <button type="button" onclick="prevPage('page1')" class="nextbtn">
-                <i class="bi bi-caret-left-square-fill"></i> Previous
-            </button>
-        </div>
-    </form>
+<!-- Page 3 -->
+<div id="page3" style="display: none;">
+    <div class="form-group field space">
+        <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
+        <input type="email" name="email" placeholder="Email address" required="true" class="form-control">
+    </div>
+
+    <div class="form-group field space">
+        <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
+        <input type="password" name="password" placeholder="Enter password" required="true" class="form-control">
+    </div>
+
+    <div class="form-group field space">
+        <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
+        <input type="password" name="repeatpassword" placeholder="Enter repeat password" required="true" class="form-control">
+    </div>
+
+    <div class="checkbox">
+        <label class="pull-right">
+            <a href="forgot-password.php" id="astyle">Forgot Password?</a>
+        </label>
+        <label class="pull-left">
+            <a href="login.php"id="astyle">Sign in</a>
+        </label><br>
+    </div>
+    <div>
+    <input type="submit" name="submit" class="field submitbtn btn-success btn-flat m-b-30 m-t-30" id="submitBtn" value="REGISTER">
+</input>
+    <div><br>
+    <button type="button" onclick="prevPage('page2')" class="nextbtn"><i class="bi bi-caret-left-square-fill"></i> Previous</button>
+      </div>
+      
 </div>
 
+                     </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <script>
     let currentPage = 1;
 
