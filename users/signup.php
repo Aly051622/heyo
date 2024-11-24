@@ -401,7 +401,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     
 
 <!-- Page 3 -->
-<div id="page3" style="display: none;">
+<div id="page2" style="display: none;">
     <div class="form-group field space">
         <span class="fa bi bi-person-fill" style="font-size: 20px"></span>
         <input type="email" name="email" placeholder="Email address" required="true" class="form-control">
