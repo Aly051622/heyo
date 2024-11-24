@@ -100,78 +100,6 @@
     </style>
 </head>
 <body>
-    <?php include_once('includes/sidebar.php'); ?>
-    <?php include_once('includes/header.php'); ?>
-    <?php include_once('includes/userheader.php'); ?>
-    <?php if ($licenseStatusMessage): ?>
-                            <div class="notification"><?php echo $licenseStatusMessage; ?></div>
-                        <?php endif; ?>
-        <!-- Content -->
-        <div class="content">
-            <!-- Animated -->
-            <div class="animated fadeIn">
-                <!-- Widgets  -->
-                <div class="row">
-                    <div class="col-lg-1">
-                            <div class="card-body " id="notificationCard">
-                                <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Widgets -->
-            </div>
-            <!-- .animated -->
-        </div>
-
-        <!-- Notification card with disappearing effect -->
-        <?php if ($regValidityStatus == 0): ?>
-            <div  class="notification" style="margin-left: 25em; position: absolute;">
-                <?php echo $licenseStatusMessage; ?>
-            </div>
-        <?php endif; ?>
-
-    <div class="carousel-container"style="margin-top: -70px;">
-        <div class="carousel">
-            <img src="images/tem.png" alt="Slide 1">
-            <img src="images/temp.png" alt="Slide 2">
-            <img src="images/tempo.png" alt="Slide 3">
-            <img src="images/tempor.png" alt="Slide 4">
-            <img src="images/tempora.png" alt="Slide 5">
-        </div>
-        <!-- Progress bar with slide number -->
-        <div class="progress-bar">
-            <div class="slide-number">1 / 5</div> 
-        </div>
-    </div>
-
-   <!-- <div class="scrollable-images">
-    <h2> PROPOSED PARKING AREAS</h2>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/allArea.png" alt="Image 6">
-
-    <hr class="section-divider"> 
-
-    <h4> Area A</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaA.png" alt="Image 7">
-    <hr class="section-divider"> 
-
-    <h4> Area B</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaB.png" alt="Image 8">
-
-    <hr class="section-divider"> 
-
-    <h4> Area C</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaC.png" alt="Image 9">
-
-    <hr class="section-divider"> 
-
-    <h4> Area D</h4>
-    <p> This is the proposed open parking space to be approved by Dr. Rosemary Almacen-CTU Danao Campus Director. The source of this parking areas is the </p>
-    <img src="images/areaD.png" alt="Image 10">
-</div> -->
 
 <!-- Section 1 -->
 <div class="section">
@@ -250,74 +178,9 @@
     </div>
 </div>
 
-
-    <div class="clearfix"></div>
-<!-- Footer -->
-<?php include_once('includes/footer.php'); ?>
-</div>
-
-<!-- /#right-panel -->
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
-<script src="../admin/assets/js/main.js"></script>
-
 <script>
-const carousel = document.querySelector('.carousel');
-const carouselContainer = document.querySelector('.carousel-container');
-const images = document.querySelectorAll('.carousel img');
-const progressBar = document.querySelector('.progress-bar');
-const slideNumber = document.querySelector('.slide-number');
-const intervalTime = 5000; 
-let index = 0;
-let intervalId; 
-
-function startSlideshow() {
-    intervalId = setInterval(() => {
-        index++;
-        if (index >= images.length) {
-            index = 0; 
-        }
-
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-
-        const progress = ((index + 1) / images.length) * 100;
-        progressBar.style.width = `${progress}%`;
-
-        slideNumber.textContent = `${index + 1} / ${images.length}`;
-    }, intervalTime);
-}
-
-function pauseSlideshow() {
-    clearInterval(intervalId);
-}
-
-startSlideshow();
-
-carouselContainer.addEventListener('mouseenter', pauseSlideshow);
-carouselContainer.addEventListener('mouseleave', startSlideshow);
-
-// Hide and remove the notification card after 10 seconds
-setTimeout(function() {
-    var notificationCard = document.getElementById('notificationCard');
-    if (notificationCard) {
-        notificationCard.style.transition = 'opacity 0.5s'; // Add transition effect
-        notificationCard.style.opacity = '0'; // Fade out the card
-
-        // After the fade-out effect, remove the element from the DOM
-        setTimeout(function() {
-            notificationCard.remove(); // Remove the card element
-        }, 500); // Wait for the fade-out effect before removing
-    }
-}, 10000); // 10 seconds in milliseconds
-
-// Automatic Sliding Functionality for Sections 1-3
-const sliders = document.querySelectorAll('.slider');
+    // Automatic Sliding Functionality for Sections 1-3
+    const sliders = document.querySelectorAll('.slider');
     sliders.forEach(slider => {
         let idx = 0;
         setInterval(() => {
