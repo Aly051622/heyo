@@ -410,11 +410,14 @@ input[type="text"]:hover, input[type="password"]:hover {
             <div class="form-group field space">
                 <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
                 <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
+                <i class="fa fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer;"></i>
             </div>
             <div class="form-group field space">
                 <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
                 <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
+                <i class="fa fa-eye" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer;"></i>
             </div>
+
             <div class="checkbox">
                 <label class="pull-right">
                     <a href="forgot-password.php" id="astyle">Forgot Password?</a>
@@ -468,6 +471,20 @@ input[type="text"]:hover, input[type="password"]:hover {
         }
         return true;
     }
+
+    document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordField = document.getElementById('password');
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+        this.classList.toggle('fa-eye-slash');
+    });
+
+    document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
+        const repeatPasswordField = document.getElementById('repeatpassword');
+        const type = repeatPasswordField.type === 'password' ? 'text' : 'password';
+        repeatPasswordField.type = type;
+        this.classList.toggle('fa-eye-slash');
+    });
 </script>
 
 
