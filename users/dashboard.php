@@ -95,6 +95,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             overflow-x: auto;
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             z-index: -1;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: whitesmoke;
+            height: 100vh;
         }
         /* Carousel container and styling */
         .carousel-container {
