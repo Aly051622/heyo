@@ -314,7 +314,7 @@
             // Redirect to welcome.php
             setTimeout(() => {
                 window.location.href = "welcome.php";
-            }, 1000); // Ensure fade-out completes
+            }, 1500); // Ensure fade-out completes
         }, redirectDelay);
     }
 
