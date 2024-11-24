@@ -131,20 +131,20 @@
     </div>
 </div>
 
-<!-- Section 3 
+<!-- Section 3 -->
 <div class="section">
     <div class="title">PROPOSE PARKING AREAS</div>
     <div class="slider-container">
         <div class="slider" id="slider3">
-            <img src="images/6.png" alt="Slide 1" class="landscape">
-            <img src="images/5.png" alt="Slide 2" class="landscape">
-            <img src="images/4.png" alt="Slide 3" class="landscape">
-            <img src="images/3.png" alt="Slide 4" class="landscape">
-            <img src="images/2.png" alt="Slide 5" class="landscape">
-            <img src="images/1.png" alt="Slide 6" class="landscape">
+            <img src="../images/6.png" alt="Slide 1" class="landscape">
+            <img src="../images/5.png" alt="Slide 2" class="landscape">
+            <img src="../images/4.png" alt="Slide 3" class="landscape">
+            <img src="../images/3.png" alt="Slide 4" class="landscape">
+            <img src="../images/2.png" alt="Slide 5" class="landscape">
+            <img src="../images/1.png" alt="Slide 6" class="landscape">
         </div>
     </div>
-</div> -->
+</div>
 
 <!-- Sections 4-7 -->
 <div class="section">
