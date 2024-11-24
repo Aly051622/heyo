@@ -408,16 +408,16 @@ input[type="text"]:hover, input[type="password"]:hover {
                 <input type="email" name="email" placeholder="Email address" required class="form-control">
             </div>
             <!-- Inside the Password Field -->
-          <div class="form-group field space">
-              <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-              <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
-              <i class="fa fa-eye" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: red;"></i>
-          </div>
-          <div class="form-group field space">
-              <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
-              <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
-              <i class="fa fa-eye" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: red;"></i>
-          </div>
+            <div class="form-group field space">
+            <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
+            <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
+            <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: black;"></i>
+        </div>
+        <div class="form-group field space">
+            <span class="fa bi bi-shield-lock-fill" style="font-size: 20px"></span>
+            <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
+            <i class="fa fa-eye-slash" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 12px; cursor: pointer; color: black;"></i>
+        </div>
 
 
             <div class="checkbox">
@@ -474,22 +474,32 @@ input[type="text"]:hover, input[type="password"]:hover {
         return true;
     }
 
+     // Password toggle function
+     function togglePasswordVisibility(toggleIconId, passwordFieldId) {
+        const toggleIcon = document.getElementById(toggleIconId);
+        const passwordField = document.getElementById(passwordFieldId);
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text'; // Show password
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
+            toggleIcon.style.color = 'red'; // Change color to red
+        } else {
+            passwordField.type = 'password'; // Hide password
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+            toggleIcon.style.color = 'black'; // Change color back to black
+        }
+    }
+
+    // Event listeners for both password fields
     document.getElementById('togglePassword').addEventListener('click', function () {
-    const passwordField = document.getElementById('password');
-    const isPasswordVisible = passwordField.type === 'password';
-    passwordField.type = isPasswordVisible ? 'text' : 'password';
-    this.classList.toggle('fa-eye-slash'); // Toggle slashed icon
-    this.classList.toggle('fa-eye'); // Toggle normal icon
-});
+        togglePasswordVisibility('togglePassword', 'password');
+    });
 
-document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
-    const repeatPasswordField = document.getElementById('repeatpassword');
-    const isPasswordVisible = repeatPasswordField.type === 'password';
-    repeatPasswordField.type = isPasswordVisible ? 'text' : 'password';
-    this.classList.toggle('fa-eye-slash'); // Toggle slashed icon
-    this.classList.toggle('fa-eye'); // Toggle normal icon
-});
-
+    document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
+        togglePasswordVisibility('toggleRepeatPassword', 'repeatpassword');
+    });
 </script>
 
 
