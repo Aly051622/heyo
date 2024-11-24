@@ -131,7 +131,7 @@
     </div>
 </div>
 
-<!-- Section 3 -->
+<!-- Section 3 
 <div class="section">
     <div class="title">PROPOSE PARKING AREAS</div>
     <div class="slider-container">
@@ -144,7 +144,7 @@
             <img src="images/1.png" alt="Slide 6" class="landscape">
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Sections 4-7 -->
 <div class="section">
