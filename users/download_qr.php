@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('DBconnection/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Function to securely validate the token
 function isValidToken($vehid, $token) {

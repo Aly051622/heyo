@@ -2,7 +2,7 @@
 session_start();
 date_default_timezone_set('Asia/Manila');
 error_reporting(0);
-include('DBconnection/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 if (strlen($_SESSION['vpmsaid']==0)) {
     header('location:logout.php');
   } else {

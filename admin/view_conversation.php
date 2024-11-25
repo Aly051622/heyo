@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include('DBconnection/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Get the username from the URL
 $username = $_GET['username'];

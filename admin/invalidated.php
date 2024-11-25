@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('DBconnection/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Fetch invalidated clients (validity = 0) without duplicates based on email
 $queryInvalidated = "

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('DBconnection/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Check if the user has registered a fingerprint
 $userId = $_SESSION['vpmsaid'] ?? null; // Assuming you can retrieve the user ID some other way
