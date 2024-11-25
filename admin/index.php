@@ -1,28 +1,36 @@
 <?php
 session_start();
 include('DBconnection/dbconnection.php');
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if (isset($_POST['login'])) {
     $adminuser = trim($_POST['username']);
-    $password = md5(trim($_POST['password']));
+    $password = md5(trim($_POST['password'])); // MD5 hashing (though not recommended for new applications)
 
     // Secure prepared statement
-    $stmt = $con->prepare("SELECT ID, AdminName FROM tbladmin WHERE UserName = ? AND Password = ?");
-    $stmt->bind_param("ss", $adminuser, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    if ($stmt = $con->prepare("SELECT ID, AdminName FROM tbladmin WHERE UserName = ? AND Password = ?")) {
+        $stmt->bind_param("ss", $adminuser, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $admin = $result->fetch_assoc();
-        $_SESSION['vpmsaid'] = $admin['ID']; // Admin ID
-        $_SESSION['admin_name'] = $admin['AdminName']; // Optional: Admin name
-        header('location: dashboard.php');
-        exit;
+        if ($result->num_rows > 0) {
+            $admin = $result->fetch_assoc();
+            $_SESSION['vpmsaid'] = $admin['ID']; // Admin ID
+            $_SESSION['admin_name'] = $admin['AdminName']; // Admin name
+            header('location: dashboard.php');
+            exit;
+        } else {
+            echo "<script>alert('Invalid username or password.');</script>";
+        }
+
+        $stmt->close();
     } else {
-        echo "<script>alert('Invalid username or password.');</script>";
+        die("Error preparing statement: " . $con->error);
     }
-
-    $stmt->close();
 }
+
 $con->close();
 ?>
 
