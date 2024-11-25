@@ -1,44 +1,67 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include('includes/dbconnection.php');
+error_reporting(0);
+include('../DBconnection/dbconnection.php');
+error_reporting(0);
+if (strlen($_SESSION['vpmsuid']==0)) {
+  header('location:logout.php');
+  } else{ 
+    
+    $uid = $_SESSION['vpmsuid'];
 
-if (strlen($_SESSION['vpmsuid'] == 0)) {
-    header('location:logout.php');
-    exit();
-}
+    // Fetch user information and validity status using email to join the uploads table
+    $userQuery = mysqli_query($con, "SELECT u.*, up.validity AS upload_validity, up.expiration_date FROM tblregusers u LEFT JOIN uploads up ON u.email = up.email WHERE u.ID='$uid'");
 
-$uid = $_SESSION['vpmsuid'];
+    if (!$userQuery) {
+        die("Error in query: " . mysqli_error($con)); // Add error handling for debugging
+    }
 
-$userQuery = mysqli_query($con, "SELECT u.*, up.validity AS upload_validity, up.expiration_date 
-    FROM tblregusers u 
-    LEFT JOIN uploads up ON u.email = up.email 
-    WHERE u.ID='$uid'");
+    $userData = mysqli_fetch_array($userQuery);
 
-if (!$userQuery) {
-    die("Error in query: " . mysqli_error($con));
-}
+    // Debug: Check if user data is fetched successfully
+    if (!$userData) {
+        die("Error fetching user data: " . mysqli_error($con));
+    }
 
-$userData = mysqli_fetch_array($userQuery);
-$currentDate = date('Y-m-d');
-$expirationDate = $userData['expiration_date'] ?? null;
-$expirationTimestamp = $expirationDate ? strtotime($expirationDate) : null;
-$currentTimestamp = strtotime($currentDate);
-$regValidityStatus = $userData['validity'] ?? 0;
-$uploadValidityStatus = $userData['upload_validity'] ?? 0;
+    // Get the expiration date
+    $currentDate = date('Y-m-d');
+    $expirationDate = $userData['expiration_date'];
 
-$licenseStatusMessage = "";
+    // Check if expiration date is valid
+    $expirationTimestamp = $expirationDate ? strtotime($expirationDate) : null; // Check if expiration_date is not null
+    $currentTimestamp = strtotime($currentDate);
 
-if ($regValidityStatus == 0 || $uploadValidityStatus == 0) {
-    $licenseStatusMessage = "Your driver's license is expired. Please renew it.";
-} elseif ($expirationTimestamp && $expirationTimestamp < $currentTimestamp && $expirationTimestamp >= strtotime("-3 months", $currentTimestamp)) {
-    $licenseStatusMessage = "Your driver's license has expired. You have 3 months to renew it before your account is voided.";
-}
+    // Determine validity status
+    $regValidityStatus = $userData['validity']; // Validity from tblregusers
+    $uploadValidityStatus = $userData['upload_validity']; // Validity from uploads table
+    $licenseStatusMessage = "";
 
-$firstName = htmlspecialchars($userData['FirstName'] ?? 'User', ENT_QUOTES, 'UTF-8');
-$lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
-?>
+    // Check if the license is expired and set the notification message
+    if ($regValidityStatus == 0) {
+        // Validity is 0 means the license is invalid
+        $licenseStatusMessage = "Your driver's license is expired. Please renew it.";
+    } elseif ($regValidityStatus == -2) {
+        // User is unvalidated, do not show license messages
+        $licenseStatusMessage = ""; // Explicitly set to empty for clarity
+    } elseif ($uploadValidityStatus == 0) {
+        // Check validity in uploads for invalidated clients
+        $licenseStatusMessage = "Your driver's license is expired. Please renew it.";
+    } elseif ($uploadValidityStatus == -2) {
+        // Unvalidated users do not receive notifications
+        $licenseStatusMessage = ""; // Explicitly set to empty for clarity
+    } elseif ($expirationTimestamp && $expirationTimestamp < $currentTimestamp && $expirationTimestamp >= strtotime("-3 months", $currentTimestamp)) {
+        // License expired but within 3 months grace period
+        $licenseStatusMessage = "Your driver's license has expired. You have 3 months to renew it before your account is voided.";
+    }
+
+    // Sanitize user data for output
+    $firstName = isset($userData['FirstName']) ? htmlspecialchars($userData['FirstName'], ENT_QUOTES, 'UTF-8') : 'User';
+    $lastName = isset($userData['LastName']) ? htmlspecialchars($userData['LastName'], ENT_QUOTES, 'UTF-8') : '';
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
