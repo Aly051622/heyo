@@ -103,6 +103,9 @@
 <body>
   <footer class="footer">
     <div class="footer-icons">
+    <button class="icon-btn" id="slide-btn">
+      <i class="bi bi-gear-fill"></i> User Manual
+      </button>
       <button class="icon-btn" id="privacy-btn">
       <i class="bi bi-house-gear-fill"></i> Privacy Policy
       </button>
@@ -115,6 +118,13 @@
     </div>
   </footer>
 
+    <!-- Slide Modal -->
+  <div id="terms-modal" class="modal">
+    <div class="modal-content">
+      <iframe src="slide.php" class="iframe-content"></iframe>
+      <button class="close-btn" id="close-terms">&times;</button>
+    </div>
+  </div>
   <!-- Privacy Policy Modal -->
   <div id="privacy-modal" class="modal">
     <div class="modal-content">
@@ -136,6 +146,7 @@
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
 const privacyBtn = document.getElementById('privacy-btn');
+const privacyBtn = document.getElementById('slide-btn');
 const termsBtn = document.getElementById('terms-btn');
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
