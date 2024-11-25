@@ -63,96 +63,56 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
+<!doctype html>
+
+ <html class="no-js" lang="">
 <head>
-<title>Client Dashboard | CTU DANAO Parking System</title>
+    
+    <title>Client Dashboard | CTU DANAO Parking System</title>
    
-   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-   <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-   <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-   <link rel="stylesheet" href="../admin/assets/css/style.css">
-   <link rel="stylesheet" href="css/responsive.css">
-   <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-   
+<link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+<link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+<link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+<link rel="stylesheet" href="../admin/assets/css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            overflow-x: hidden;
+        body{
+            overflow-x: auto;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            z-index: -1;
         }
+        /* Carousel container and styling */
         .carousel-container {
-            width: 100%;
-            margin: 20px auto;
-            overflow: hidden;
+            width: 75%;
+            margin: 0 auto;
             position: relative;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
+
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
+
         .carousel img {
             width: 100%;
-            height: auto;
-        }
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #ffeb3b;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            font-weight: bold;
-        }
-        .content {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .slider img {
-            max-width: 100%;
-            object-fit: cover;
-        }
-        .section {
-            margin: 20px 0;
-            padding: 10px;
-            text-align: center;
-        }
-        .portrait-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .portrait-container {
-            flex: 1 1 calc(25% - 20px);
-            overflow: hidden;
-            border-radius: 10px;
-        }
-        .portrait-container img {
-            width: 100%;
-            transition: transform 0.3s ease-in-out;
-        }
-        .portrait-container:hover img {
-            transform: scale(1.1);
-        }
-        @media (max-width: 768px) {
-            .portrait-container {
-                flex: 1 1 100%;
-            }
+            height: 100%;
         }
 
         /* Progress bar styling */
@@ -328,103 +288,19 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 flex-basis: 100%;
             }
         }
-        .section {
-            margin: 20px 0;
-            padding: 10px;
-        }
-        .title {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .slider-container {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            height: auto;
-        }
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slider img {
-            width: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
-        /* Hover to pause */
-        .slider-container:hover .slider {
-            animation-play-state: paused;
-        }
-        /* Landscape Slides */
-        .slider img.landscape {
-            height: 225px;
-            width: 100vw;
-        }
-        /* Portrait Sections (Sections 4-7) */
-        .portrait-section {
-            display: flex;
-            gap: 10px;
-            justify-content: space-between;
-        }
-        .portrait-container {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .portrait-container img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .portrait-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-collection-play-fill" viewBox="0 0 16 16"><path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"/></svg>') 16 16, auto;
-        }
-     
-        .portrait-container {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .portrait-container:hover img {
-            transform: scale(1.05);
-        }
-        .hover-yellow:hover { background-color: #FFFACD; }
-        .hover-orange:hover { background-color: #FFDAB9; }
-        .hover-skyblue:hover { background-color: #ADD8E6; }
-        .hover-lightred:hover { background-color: #FFC0CB; }
-        /* Responsive */
-        @media (max-width: 768px) {
-            .portrait-section {
-                flex-wrap: wrap;
-            }
-            .portrait-container {
-                flex-basis: 100%;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <?php include_once('includes/header.php'); ?>
-    <?php include_once('includes/sidebar.php'); ?>
-<div class="right-panel">
-    <?php if ($licenseStatusMessage): ?>
-        <div class="notification"><?php echo $licenseStatusMessage; ?></div>
-    <?php endif; ?>
 
-     <!-- Content -->
-     <div class="content">
+<?php include_once('includes/header.php'); ?>
+    <?php include_once('includes/sidebar.php'); ?>
+    <div class="right-panel">
+    <?php if ($licenseStatusMessage): ?>
+                            <div class="notification"><?php echo $licenseStatusMessage; ?></div>
+                        <?php endif; ?>
+        <!-- Content -->
+        <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
@@ -440,6 +316,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <!-- .animated -->
         </div>
 
+        <!-- Notification card with disappearing effect -->
+        <?php if ($regValidityStatus == 0): ?>
+            <div  class="notification" style="margin-left: 25em; position: absolute;">
+                <?php echo $licenseStatusMessage; ?>
+            </div>
+        <?php endif; ?>
+
     <div class="carousel-container"style="margin-top: -70px;">
         <div class="carousel">
             <img src="images/tem.png" alt="Slide 1">
@@ -451,49 +334,17 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         <!-- Progress bar with slide number -->
         <div class="progress-bar">
             <div class="slide-number">1 / 5</div> 
+            
         </div>
     </div>
 
-        <!-- Section 1 -->
-    <div class="section">
-        <div class="title">CTU DANAO PARKING SYSTEM OVERVIEW</div>
-        <div class="slider-container">
-            <div class="slider" id="slider1">
-                <img src="images/allArea.png" alt="Slide 1" class="landscape">
-                <img src="images/areaA.png" alt="Slide 2" class="landscape">
-                <img src="images/areaB.png" alt="Slide 3" class="landscape">
-                <img src="images/areaC.png" alt="Slide 4" class="landscape">
-                <img src="images/areaD.png" alt="Slide 5" class="landscape">
-                <img src="images/clienthc.png" alt="Slide 6" class="landscape">
-            </div>
+    <div class="clearfix"></div>
+<!-- Footer -->
+
+<?php include_once('includes/footer.php'); ?>
         </div>
-    </div>
+<!-- /#right-panel -->
 
-    <!-- Section 2 -->
-    <div class="section">
-        <div class="title">AUDIENCE AND SCOPE</div>
-        <div class="slider-container">
-            <div class="slider" id="slider2">
-                <img src="images/1.png" alt="Slide 1" class="landscape">
-                <img src="images/2.png" alt="Slide 2" class="landscape">
-                <img src="images/3.png" alt="Slide 3" class="landscape">
-                <img src="images/4.png" alt="Slide 4" class="landscape">
-                <img src="images/5.png" alt="Slide 5" class="landscape">
-                <img src="images/6.png" alt="Slide 6" class="landscape">
-            </div>
-        </div>
-
-    <script>
-        const carousel = document.querySelector('.carousel');
-        let index = 0;
-        setInterval(() => {
-            index = (index + 1) % carousel.children.length;
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }, 5000);
-    </script>
-
-    <?php include_once('includes/footer.php'); ?>
- 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
@@ -519,12 +370,12 @@ function startSlideshow() {
             index = 0; 
         }
 
-        carousel.style.transform = translateX(-${index * 100}%);
+        carousel.style.transform = `translateX(-${index * 100}%)`;
 
         const progress = ((index + 1) / images.length) * 100;
-        progressBar.style.width = ${progress}%;
+        progressBar.style.width = `${progress}%`;
 
-        slideNumber.textContent = ${index + 1} / ${images.length};
+        slideNumber.textContent = `${index + 1} / ${images.length}`;
     }, intervalTime);
 }
 
