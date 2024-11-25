@@ -89,28 +89,70 @@ if (strlen($_SESSION['vpmsuid']==0)) {
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
    
     <style>
-        body{
-            overflow-x: auto;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            z-index: -1;
+        body {
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
         }
-        /* Carousel container and styling */
         .carousel-container {
-            width: 75%;
-            margin: 0 auto;
-            position: relative;
+            width: 100%;
+            margin: 20px auto;
             overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            position: relative;
         }
-
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-
         .carousel img {
             width: 100%;
-            height: 100%;
+            height: auto;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ffeb3b;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .slider img {
+            max-width: 100%;
+            object-fit: cover;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 10px;
+            text-align: center;
+        }
+        .portrait-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .portrait-container {
+            flex: 1 1 calc(25% - 20px);
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .portrait-container img {
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .portrait-container:hover img {
+            transform: scale(1.1);
+        }
+        @media (max-width: 768px) {
+            .portrait-container {
+                flex: 1 1 100%;
+            }
         }
 
         /* Progress bar styling */
