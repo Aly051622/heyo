@@ -1,7 +1,6 @@
-
 <?php
 session_start();
-include('../DBconnection/dbconnection.php');
+include('includes/dbconnection.php');
 
 if (isset($_POST['login'])) {
     $adminuser = trim($_POST['username']);
