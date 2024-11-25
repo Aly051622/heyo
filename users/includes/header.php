@@ -1,5 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -7,6 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 include('includes/dbconnection.php');
 
+// Ensure user is logged in
 if (!isset($_SESSION['vpmsuid'])) {
     echo '<p>Debug: User ID not found in session.</p>';
     exit;
@@ -14,50 +13,49 @@ if (!isset($_SESSION['vpmsuid'])) {
 
 $userId = $_SESSION['vpmsuid'];
 
+// Fetch the user's profile picture
 $query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
 $result = mysqli_query($con, $query);
 
-if (!$result) {
-    $profilePicturePath = '../admin/images/images.png';
-} else {
+$profilePicturePath = '../admin/images/images.png'; // Default avatar
+if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $profilePicture = $row['profile_pictures'] ?? '';
     $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture)) 
         ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8') 
-        : '../admin/images/images.png';
+        : $profilePicturePath;
 }
 
 $uploadSuccess = false;
 
+// Handle image upload
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] == 0) {
+    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
         $uploadsDir = '../uploads/profile_uploads/';
         $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
         $targetFilePath = $uploadsDir . $fileName;
 
+        // Create the uploads directory if it doesn't exist
         if (!is_dir($uploadsDir)) {
             mkdir($uploadsDir, 0777, true);
         }
 
+        // Move the uploaded file and update the database
         if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
             $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
             if (mysqli_query($con, $updateQuery)) {
                 $uploadSuccess = true;
-                $profilePicturePath = $targetFilePath;
+                $profilePicturePath = $targetFilePath; // Update the displayed picture path
+            } else {
+                error_log("Database update failed: " . mysqli_error($con));
             }
+        } else {
+            error_log("File upload failed for: " . $targetFilePath);
         }
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
 <style>
     .navbar-header{
         position: fixed;
@@ -141,6 +139,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         margin-top: 30px;
     }
 </style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<style>
+    /* Add relevant styles here */
+</style>
 <body>
     <div class="navbar-header">
         <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
@@ -148,17 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         <div class="user-area dropdown">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">
-                    <?php
-                    if (!empty($profilePicture) && file_exists($profilePicturePath)) {
-                        echo '<img class="user-avatar" src="' . htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '" alt="User Avatar">';
-                    } else {
-                        echo '<img class="user-avatar" src="../admin/images/images.png" alt="Default Avatar">';
-                    }
-                    ?>
+                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
                     <span class="active-indicator"></span>
                 </div>
             </a>
-            <div class="user-menu dropdown-menu" id="hh">
+            <div class="user-menu dropdown-menu">
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
@@ -185,36 +189,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         </div>
     </div>
 
+    <!-- Success Modal -->
     <?php if ($uploadSuccess): ?>
     <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadSuccessModalLabel"><i class="bi bi-check-circle-fill"></i> Success</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     Profile picture uploaded successfully.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="okButton">OK</button>
+                    <button type="button" class="btn btn-primary" onclick="location.reload();">OK</button>
                 </div>
             </div>
         </div>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
         var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
         successModal.show();
-
-        document.getElementById('closeModalButton').addEventListener('click', function() {
-            window.location.href = 'dashboard.php';
-        });
-
-        document.getElementById('okButton').addEventListener('click', function() {
-            window.location.href = 'dashboard.php';
-        });
-    });
     </script>
     <?php endif; ?>
 
