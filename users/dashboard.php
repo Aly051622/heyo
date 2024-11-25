@@ -66,70 +66,285 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
    
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            overflow-x: hidden;
-            margin-top: 1em;
+        body{
+            overflow-x: auto;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            z-index: -1;
         }
+        /* Carousel container and styling */
         .carousel-container {
-            width: 100%;
-            margin: 20px auto;
-            overflow: hidden;
+            width: 75%;
+            margin: 0 auto;
             position: relative;
+            overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
+
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
+
         .carousel img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Progress bar styling */
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: orange;
+            margin-top: 7px;
+            position: relative;
+        }
+
+        /* Slide number indicator */
+        .slide-number {
+            position: absolute;
+            top: -25px;
+            right: 0;
+            background-color: blue;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            opacity: 0.8;
+        }
+
+        .scrollable-images {
+            margin-top: 20px;
+            overflow-y: auto;
+            align-items: center;
+        }
+
+        .scrollable-images img {
+            border-radius: 20px;
+            width: 99%;
+            height: 500px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+        .section-divider {
+            border-top: 10px groove; 
+            margin: 20px 0; 
+        }
+        h4{
+            text-align:center;
+            font-weight: bold;
+        }
+        h2{
+            text-align: center;
+            text-shadow: #FC0 1px 0 10px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 16px;         
+            line-height: 1.6;        
+            color: #333;              
+            padding: 0;                
+            text-align: justify;       
+            font-family: Arial, sans-serif;  
+            margin-left: 20px;
+        }
+            /* Card-specific styles */
+        .notification {
+            max-width: 300px;
+            height: auto;
+            padding: 4px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            color: #333;
+            z-index: 1005;
+            position: absolute;
+            border-radius: 9px;
+            text-align: center;
+            margin-top: -10px;
+            color: green;
+            font-weight: bold;
+            position: absolute;
+        }
+            .content{
+                background-color: transparent;
+                margin-top: -30px;
+            }
+            #notificationCard {
+                opacity: 1;
+                transition: opacity 0.5s ease-in-out;
+                padding: 5px;
+                margin-left: 35em;
+                max-width: 1000px;
+                width: auto;
+                height: auto;
+                border: none;
+                }
+
+
+                .section {
+            margin: 20px 0;
+            padding: 10px;
+        }
+        .title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .slider-container {
+            overflow: hidden;
+            position: relative;
             width: 100%;
             height: auto;
         }
-        .notification {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: #ffeb3b;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            font-weight: bold;
-        }
-        .content {
-            margin-top: 20px;
-            text-align: center;
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
         .slider img {
-            max-width: 100%;
+            width: 100%;
             object-fit: cover;
+            pointer-events: none;
+        }
+        /* Hover to pause */
+        .slider-container:hover .slider {
+            animation-play-state: paused;
+        }
+        /* Landscape Slides */
+        .slider img.landscape {
+            height: 225px;
+            width: 100vw;
+        }
+        /* Portrait Sections (Sections 4-7) */
+        .portrait-section {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .portrait-container {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .portrait-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .portrait-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-collection-play-fill" viewBox="0 0 16 16"><path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"/></svg>') 16 16, auto;
+        }
+     
+        .portrait-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .portrait-container:hover img {
+            transform: scale(1.05);
+        }
+        .hover-yellow:hover { background-color: #FFFACD; }
+        .hover-orange:hover { background-color: #FFDAB9; }
+        .hover-skyblue:hover { background-color: #ADD8E6; }
+        .hover-lightred:hover { background-color: #FFC0CB; }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .portrait-section {
+                flex-wrap: wrap;
+            }
+            .portrait-container {
+                flex-basis: 100%;
+            }
         }
         .section {
             margin: 20px 0;
             padding: 10px;
-            text-align: center;
         }
+        .title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .slider-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: auto;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img {
+            width: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        /* Hover to pause */
+        .slider-container:hover .slider {
+            animation-play-state: paused;
+        }
+        /* Landscape Slides */
+        .slider img.landscape {
+            height: 225px;
+            width: 100vw;
+        }
+        /* Portrait Sections (Sections 4-7) */
         .portrait-section {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            justify-content: space-between;
         }
         .portrait-container {
-            flex: 1 1 calc(25% - 20px);
-            overflow: hidden;
+            flex: 1;
             border-radius: 10px;
+            overflow: hidden;
+            position: relative;
         }
         .portrait-container img {
             width: 100%;
-            transition: transform 0.3s ease-in-out;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
         }
+
+        .portrait-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-collection-play-fill" viewBox="0 0 16 16"><path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437"/></svg>') 16 16, auto;
+        }
+     
+        .portrait-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
         .portrait-container:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
+        .hover-yellow:hover { background-color: #FFFACD; }
+        .hover-orange:hover { background-color: #FFDAB9; }
+        .hover-skyblue:hover { background-color: #ADD8E6; }
+        .hover-lightred:hover { background-color: #FFC0CB; }
+        /* Responsive */
         @media (max-width: 768px) {
+            .portrait-section {
+                flex-wrap: wrap;
+            }
             .portrait-container {
-                flex: 1 1 100%;
+                flex-basis: 100%;
             }
         }
     </style>
@@ -143,34 +358,65 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
         <div class="notification"><?php echo $licenseStatusMessage; ?></div>
     <?php endif; ?>
 
-    <div class="content">
-        <h2>Welcome, <?php echo $firstName . ' ' . $lastName; ?>!</h2>
-    </div>
+     <!-- Content -->
+     <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-1">
+                            <div class="card-body " id="notificationCard">
+                                <h2>Welcome <?php echo $firstName; $lastName;?> <?php echo $lastName; ?> !</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widgets -->
+            </div>
+            <!-- .animated -->
+        </div>
 
-    <div class="carousel-container">
+    <div class="carousel-container"style="margin-top: -70px;">
         <div class="carousel">
             <img src="images/tem.png" alt="Slide 1">
             <img src="images/temp.png" alt="Slide 2">
             <img src="images/tempo.png" alt="Slide 3">
+            <img src="images/tempor.png" alt="Slide 4">
+            <img src="images/tempora.png" alt="Slide 5">
+        </div>
+        <!-- Progress bar with slide number -->
+        <div class="progress-bar">
+            <div class="slide-number">1 / 5</div> 
         </div>
     </div>
 
+        <!-- Section 1 -->
     <div class="section">
-        <h3>Overview</h3>
-        <div class="slider">
-            <img src="images/allArea.png" alt="Area Overview">
-            <img src="images/areaA.png" alt="Area A">
+        <div class="title">CTU DANAO PARKING SYSTEM OVERVIEW</div>
+        <div class="slider-container">
+            <div class="slider" id="slider1">
+                <img src="images/allArea.png" alt="Slide 1" class="landscape">
+                <img src="images/areaA.png" alt="Slide 2" class="landscape">
+                <img src="images/areaB.png" alt="Slide 3" class="landscape">
+                <img src="images/areaC.png" alt="Slide 4" class="landscape">
+                <img src="images/areaD.png" alt="Slide 5" class="landscape">
+                <img src="images/clienthc.png" alt="Slide 6" class="landscape">
+            </div>
         </div>
     </div>
 
-    <div class="section portrait-section">
-        <div class="portrait-container">
-            <img src="images/admin1.png" alt="Admin Feature 1">
+    <!-- Section 2 -->
+    <div class="section">
+        <div class="title">AUDIENCE AND SCOPE</div>
+        <div class="slider-container">
+            <div class="slider" id="slider2">
+                <img src="images/1.png" alt="Slide 1" class="landscape">
+                <img src="images/2.png" alt="Slide 2" class="landscape">
+                <img src="images/3.png" alt="Slide 3" class="landscape">
+                <img src="images/4.png" alt="Slide 4" class="landscape">
+                <img src="images/5.png" alt="Slide 5" class="landscape">
+                <img src="images/6.png" alt="Slide 6" class="landscape">
+            </div>
         </div>
-        <div class="portrait-container">
-            <img src="images/user1.png" alt="User Feature 1">
-        </div>
-    </div>
 
     <script>
         const carousel = document.querySelector('.carousel');
@@ -182,7 +428,67 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
     </script>
 
     <?php include_once('includes/footer.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../admin/assets/js/main.js"></script>
+
+<script>
+const carousel = document.querySelector('.carousel');
+const carouselContainer = document.querySelector('.carousel-container');
+const images = document.querySelectorAll('.carousel img');
+const progressBar = document.querySelector('.progress-bar');
+const slideNumber = document.querySelector('.slide-number');
+const intervalTime = 5000; 
+let index = 0;
+let intervalId; 
+
+function startSlideshow() {
+    intervalId = setInterval(() => {
+        index++;
+        if (index >= images.length) {
+            index = 0; 
+        }
+
+        carousel.style.transform = translateX(-${index * 100}%);
+
+        const progress = ((index + 1) / images.length) * 100;
+        progressBar.style.width = ${progress}%;
+
+        slideNumber.textContent = ${index + 1} / ${images.length};
+    }, intervalTime);
+}
+
+function pauseSlideshow() {
+    clearInterval(intervalId);
+}
+
+startSlideshow();
+
+carouselContainer.addEventListener('mouseenter', pauseSlideshow);
+carouselContainer.addEventListener('mouseleave', startSlideshow);
+
+// Hide and remove the notification card after 10 seconds
+setTimeout(function() {
+    var notificationCard = document.getElementById('notificationCard');
+    if (notificationCard) {
+        notificationCard.style.transition = 'opacity 0.5s'; // Add transition effect
+        notificationCard.style.opacity = '0'; // Fade out the card
+
+        // After the fade-out effect, remove the element from the DOM
+        setTimeout(function() {
+            notificationCard.remove(); // Remove the card element
+        }, 500); // Wait for the fade-out effect before removing
+    }
+}, 10000); // 10 seconds in milliseconds
+
+
+</script>
+
 </body>
-    </div>
 </html>
+<?php } ?>
