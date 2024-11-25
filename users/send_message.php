@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Ensure the script only handles POST requests
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -2,7 +2,7 @@
 session_start();
 
 // Include the database connection file
-require_once 'includes/dbconnection.php'; // Adjust the path if necessary
+include('../DBconnection/dbconnection.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the email was verified

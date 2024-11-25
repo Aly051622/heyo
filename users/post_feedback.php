@@ -2,7 +2,7 @@
 // Include the database connectionerror_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Check if form data is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

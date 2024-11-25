@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Check if user is logged in
 if (empty($_SESSION['vpmsuid'])) {

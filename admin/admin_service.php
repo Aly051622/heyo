@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/auth_check.php'); // Ensure admin is logged in
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 // Ensure admin is logged in by checking the correct session variable 'vpmsaid'
 if (!isset($_SESSION['vpmsaid'])) {
