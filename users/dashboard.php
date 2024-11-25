@@ -69,6 +69,7 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
         body {
             font-family: 'Open Sans', sans-serif;
             overflow-x: hidden;
+            margin-top: 1em;
         }
         .carousel-container {
             width: 100%;
@@ -86,7 +87,7 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
         }
         .notification {
             position: fixed;
-            top: 20px;
+            top: 100px;
             right: 20px;
             background: #ffeb3b;
             padding: 10px 20px;
@@ -137,7 +138,7 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
 <body>
     <?php include_once('includes/header.php'); ?>
     <?php include_once('includes/sidebar.php'); ?>
-
+<div class="right-panel">
     <?php if ($licenseStatusMessage): ?>
         <div class="notification"><?php echo $licenseStatusMessage; ?></div>
     <?php endif; ?>
@@ -183,5 +184,5 @@ $lastName = htmlspecialchars($userData['LastName'] ?? '', ENT_QUOTES, 'UTF-8');
     <?php include_once('includes/footer.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
+    </div>
 </html>
