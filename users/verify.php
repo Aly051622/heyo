@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../vendor/autoload.php';
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

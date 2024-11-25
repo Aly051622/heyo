@@ -1,6 +1,6 @@
 <?php
 // Include the database connection
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

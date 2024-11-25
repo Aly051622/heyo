@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $userId = $_SESSION['user_id'] ?? null;

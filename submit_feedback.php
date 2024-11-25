@@ -1,6 +1,6 @@
 <?php
 // Correct the path to dbconnection.php based on its actual location
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($con, $_POST['name']);

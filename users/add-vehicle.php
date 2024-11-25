@@ -4,7 +4,7 @@ error_reporting(E_ALL); // Enable error reporting for debugging
 ini_set('display_errors', 1);
 date_default_timezone_set('Asia/Manila');
 
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid']==0)) {
     header('location:logout.php');

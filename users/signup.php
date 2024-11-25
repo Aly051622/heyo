@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 // Enable error reporting to debug issues
 ini_set('display_errors', 1);

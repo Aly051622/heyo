@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 header('Content-Type: application/json');
 
 // Include database connection
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 // Check if the connection is valid
 if (!$con) {

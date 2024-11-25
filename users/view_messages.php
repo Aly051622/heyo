@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin_id'])) {

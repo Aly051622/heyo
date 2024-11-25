@@ -1,5 +1,5 @@
 <?php
-include('../DBconnection/dbconnection.php');
+include('DBconnection/dbconnection.php');
 
 $query = "SELECT * FROM parkingz.registration_data"; // Modify this query as needed
 $result = mysqli_query($con, $query);
