@@ -162,133 +162,115 @@ if (strlen($_SESSION['vpmsuid']==0)) {
           }
       </style>
   </head>
-<body>
+  <body>
     <!-- Left Panel -->
-
-  <?php include_once('includes/sidebar.php');?>
-
+    <?php include_once('includes/sidebar.php'); ?>
     <!-- Left Panel -->
 
     <!-- Right Panel -->
-
-     <?php include_once('includes/header.php');?>
-
-
-            
-    <div id="right-panel">
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h3>Owned Vehicles</h3>
-                            </div>
+    <?php include_once('includes/header.php'); ?>
+<div class="right-panel">
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h3>Owned Vehicles</h3>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a>&nbsp;/&nbsp;</li> 
+                                <li><a href="dashboard.php">Dashboard</a>&nbsp;/&nbsp;</li>
                                 <li><a href="view-vehicle.php">View Vehicle Parking Details</a>&nbsp;/&nbsp;</li>
                                 <li class="active">View Vehicle Parking Details</li>
                             </ol>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-       
+        </div>
+    </div>
 
-       
-        <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">View Vehicle Parking Details</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                        <?php
-                            $ownerno = $_SESSION['vpmsumn'];
-                            $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">View Vehicle Parking Details</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <?php
+                                $ownerno = $_SESSION['vpmsumn'];
+                                $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
 
-                            while ($row = mysqli_fetch_array($ret)) {
-                                $imagePath = $row['ImagePath'];
-                                $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
-                                    ? '../admin/qrcodes/' . $row['QRCodePath'] 
-                                    : '../admin/' . $row['QRCodePath'];
-                                $fullImagePath = __DIR__ . '/' . $imagePath; // Full path on the server
-                            ?>
-                                <div class="d-flex align-items-center border rounded p-3 mb-3">
-                                    <div class="flex-shrink-0 mr-3">
-                                        <?php if (!empty($imagePath) && file_exists($fullImagePath)) { ?>
-                                            <img src="<?php echo $imagePath; ?>" alt="Vehicle Image" style="width: 170px; height: 100px;" />
-                                        <?php } else { ?>
-                                            <div class="image-placeholder">Image not found</div>
-                                        <?php } ?>
-                                    </div>
-
-                                    <div class="flex-grow-1">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <p><strong>Plate Number:</strong> <?php echo $row['RegistrationNumber']; ?></p>
-                                                <p><strong>Make/Brand:</strong> <?php echo $row['VehicleCompanyname']; ?></p>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
-                                                <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
-                                            </div>
-                                       <!-- QR CODE IMG -->
-<div class="col-md-3">
-    <?php if (!empty($row['QRCodePath']) && file_exists($row['QRCodePath'])) { ?>
-        <p style="margin: 0;"><strong>Download QR Code</strong></p>
-
-        <!-- Display user's full name -->
-
-        <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
-        <a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename($row['QRCodePath']); ?>" class="download-icon">
-            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
-        </a>
-    <?php } else { ?>
-        <p>QR Code image not found</p>
-    <?php } ?>
-</div>
-
-
-                                            </div>
+                                while ($row = mysqli_fetch_array($ret)) {
+                                    $imagePath = $row['ImagePath'];
+                                    $qrCodePath = !empty($row['QRCodePath']) && strpos($row['QRCodePath'], 'qrcodes/') === false 
+                                        ? '../admin/qrcodes/' . $row['QRCodePath'] 
+                                        : '../admin/' . $row['QRCodePath'];
+                                    $fullImagePath = __DIR__ . '/' . $imagePath;
+                                ?>
+                                    <div class="d-flex align-items-center border rounded p-3 mb-3">
+                                        <div class="flex-shrink-0 mr-3">
+                                            <?php if (!empty($imagePath) && file_exists($fullImagePath)) { ?>
+                                                <img src="<?php echo $imagePath; ?>" alt="Vehicle Image" style="width: 170px; height: 100px;" />
+                                            <?php } else { ?>
+                                                <div class="image-placeholder">Image not found</div>
+                                            <?php } ?>
                                         </div>
-
-                                        <!-- Action Buttons -->
-                                        <div class="mt-2">
+                                        <div class="flex-grow-1">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <p><strong>Plate Number:</strong> <?php echo $row['RegistrationNumber']; ?></p>
+                                                    <p><strong>Make/Brand:</strong> <?php echo $row['VehicleCompanyname']; ?></p>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p><strong>Model:</strong> <?php echo $row['Model']; ?></p>
+                                                    <p><strong>Color:</strong> <?php echo $row['Color']; ?></p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <?php if (!empty($row['QRCodePath']) && file_exists($row['QRCodePath'])) { ?>
+                                                        <p style="margin: 0;"><strong>Download QR Code</strong></p>
+                                                        <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
+                                                        <a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename($row['QRCodePath']); ?>" class="download-icon">
+                                                            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+                                                        </a>
+                                                    <?php } else { ?>
+                                                        <p>QR Code image not found</p>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
                                                 <a href="view--detail.php?viewid=<?php echo $row['vehid']; ?>" class="btn btn-primary mr-2" id="viewbtn">🖹 View</a>
                                                 <a href="print.php?vid=<?php echo $row['vehid']; ?>" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
                                             </div>
-                                            </div>
                                         </div>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="clearfix"></div>
     </div>
+
+    <div class="clearfix"></div>
+                                                    
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="../admin/assets/js/main.js"></script>
-
 </body>
 </html>
+
 <?php } ?>
