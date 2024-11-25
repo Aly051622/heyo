@@ -1,18 +1,5 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: whitesmoke;
-            height: 100vh;
-        }
         .section {
             margin: 20px 0;
             padding: 10px;
@@ -98,8 +85,7 @@
             }
         }
     </style>
-</head>
-<body>
+
 
 <!-- Section 1 -->
 <div class="section">
@@ -227,5 +213,3 @@
     });
 </script>
 
-</body>
-</html>
