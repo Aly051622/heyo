@@ -145,21 +145,29 @@
     // Select Elements
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
-const termsModal = document.getElementById('slide-modal');
-const slideBtn = document.getElementById('privacy-btn');
-const privacyBtn = document.getElementById('slide-btn');
+const slideModal = document.getElementById('slide-modal');
+const slideBtn = document.getElementById('slide-btn');
+const privacyBtn = document.getElementById('privacy-btn');
 const termsBtn = document.getElementById('terms-btn');
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
-const closeTerms = document.getElementById('close-slide');
+const closeSlide = document.getElementById('close-slide');
 
 // Event Listeners
+slideBtn.addEventListener('click', () => {
+  slideModal.style.display = 'flex';
+});
+
 privacyBtn.addEventListener('click', () => {
   privacyModal.style.display = 'flex';
 });
 
 termsBtn.addEventListener('click', () => {
   termsModal.style.display = 'flex';
+});
+
+closeSlide.addEventListener('click', () => {
+  slideModal.style.display = 'none';
 });
 
 closePrivacy.addEventListener('click', () => {
@@ -175,9 +183,10 @@ window.addEventListener('click', (e) => {
     privacyModal.style.display = 'none';
   } else if (e.target === termsModal) {
     termsModal.style.display = 'none';
+  } else if (e.target === slideModal) {
+    slideModal.style.display = 'none';
   }
 });
-
   </script>
 </body>
 </html>
