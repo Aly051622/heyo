@@ -1,102 +1,3 @@
-<style>
-
-/* Custom Alert Message */
-.alert-message {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #d9534f;
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    z-index: 9999;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.alert-message.success {
-    background-color: #5bc0de;
-}
-
-.alert-message.error {
-    background-color: #d9534f;
-}
-
-/* Modal for logout */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-.modal-content {
-    background: whitesmoke;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 300px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content button {
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: black;
-    font-size: 18px;
-    letter-spacing: 1px;
-    font-weight: 600;
-    background: whitesmoke;
-    border: 1px solid white;
-}
-
-.modal-content button:first-of-type {
-    background-color: #2691d9;
-    color: white;
-}
-
-.modal-content button:last-of-type {
-    background-color: #2691d9;
-    color: white;
-}
-
-.modal-content button:first-of-type:hover,
-.modal-content button:last-of-type:hover {
-    background-color: darkblue;
-    border: solid 1px blue;
-}
-
-
-</style>
-
-<script>
-
-
-
-window.onload = function() {
-        var alertMessage = document.querySelector('.alert-message');
-        if (alertMessage) {
-            alertMessage.style.display = 'block';
-            setTimeout(function() {
-                alertMessage.style.display = 'none';
-            }, 3000); // Hide after 3 seconds
-        }
-    }
-
-
-
-
-</script>
 <?php
 session_start();
 error_reporting(E_ALL); // Enable error reporting for debugging
@@ -772,23 +673,22 @@ $ownername = mysqli_real_escape_string($con, $ownername);
 $ownercontno = mysqli_real_escape_string($con, $ownercontno);
 $outputImagePath = mysqli_real_escape_string($con, $outputImagePath);
 $imagePath = mysqli_real_escape_string($con, $imagePath);
+
 // Insert query to store vehicle details along with the generated QR code image path
 $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
           VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
 
 if (mysqli_query($con, $query)) {
-    // Success message
-    echo "<div class='alert-message success'>Vehicle Entry Detail has been added</div>";
+    echo "<script>alert('Vehicle Entry Detail has been added');</script>";
     echo "<script>window.location.href ='view-vehicle.php'</script>";
 } else {
-    // Error message
-    echo "<div class='alert-message error'>Error: " . mysqli_error($con) . "</div>";
+    echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
 }
 
 } else {
-    // Contact number error message
-    echo "<div class='alert-message error'>Contact number not found in the user database. Please ensure the contact number is registered.</div>";
+    echo "<script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script>";
 }
+
 
 
         }
@@ -860,7 +760,6 @@ if (mysqli_query($con, $query)) {
             text-decoration: none;
             cursor: pointer;
         }
-
 
     </style>
     
