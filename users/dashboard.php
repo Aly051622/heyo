@@ -337,10 +337,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             
         </div>
     </div>
-    <?php include_once('slide.php'); ?>
+ 
     <div class="clearfix"></div>
 <!-- Footer -->
-
+<?php include_once('slide.php'); ?>
 <?php include_once('includes/footer.php'); ?>
         </div>
 <!-- /#right-panel -->
