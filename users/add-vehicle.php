@@ -886,6 +886,16 @@ function updateMakeBrandOptions() {
     });
 } */
 
+window.onload = function() {
+        var alertMessage = document.querySelector('.alert-message');
+        if (alertMessage) {
+            alertMessage.style.display = 'block';
+            setTimeout(function() {
+                alertMessage.style.display = 'none';
+            }, 3000); // Hide after 3 seconds
+        }
+    }
+
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
     const model = document.getElementById("model");
