@@ -772,22 +772,23 @@ $ownername = mysqli_real_escape_string($con, $ownername);
 $ownercontno = mysqli_real_escape_string($con, $ownercontno);
 $outputImagePath = mysqli_real_escape_string($con, $outputImagePath);
 $imagePath = mysqli_real_escape_string($con, $imagePath);
-
 // Insert query to store vehicle details along with the generated QR code image path
 $query = "INSERT INTO tblvehicle (VehicleCategory, VehicleCompanyname, Model, Color, RegistrationNumber, OwnerName, OwnerContactNumber, QRCodePath, ImagePath, InTime) 
           VALUES ('$catename', '$vehcomp', '$model', '$color', '$vehreno', '$ownername', '$ownercontno', '$outputImagePath', '$imagePath', '$inTime')";
 
 if (mysqli_query($con, $query)) {
-    echo "<div class='alert-message success'> <script>alert('Vehicle Entry Detail has been added');</script> </div>";
+    // Success message
+    echo "<div class='alert-message success'>Vehicle Entry Detail has been added</div>";
     echo "<script>window.location.href ='view-vehicle.php'</script>";
 } else {
-    echo "<div class='alert-message error'><script>alert('Error: " . mysqli_error($con) . "');</script></div>";
+    // Error message
+    echo "<div class='alert-message error'>Error: " . mysqli_error($con) . "</div>";
 }
 
 } else {
-    echo "<div class='alert-message error'><script>alert('Contact number not found in the user database. Please ensure the contact number is registered.');</script></div>";
+    // Contact number error message
+    echo "<div class='alert-message error'>Contact number not found in the user database. Please ensure the contact number is registered.</div>";
 }
-
 
 
         }
