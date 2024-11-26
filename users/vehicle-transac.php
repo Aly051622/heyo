@@ -309,7 +309,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             </div>
         </header>
 
-    <div class ="container">
+
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
@@ -319,7 +319,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                             <h1>Vehicle Logs</h1>
                         </div>
                     </div>
-                </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="page-header float-right">
@@ -338,7 +337,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <div class="content">
         <div class="animated fadeIn">
-            <div class="row">
+            < class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
@@ -381,7 +380,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
