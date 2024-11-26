@@ -52,33 +52,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         exit;
     }
     
-    
-    // Handle image upload
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-        if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
-            $uploadsDir = '../uploads/profile_uploads/';
-            $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
-            $targetFilePath = $uploadsDir . $fileName;
-    
-            // Create the uploads directory if it doesn't exist
-            if (!is_dir($uploadsDir)) {
-                mkdir($uploadsDir, 0777, true);
-            }
-    
-            // Move the uploaded file and update the database
-            if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
-                $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
-                if (mysqli_query($con, $updateQuery)) {
-                    $uploadSuccess = true;
-                    $profilePicturePath = $targetFilePath; // Update the displayed picture path
-                } else {
-                    error_log("Database update failed: " . mysqli_error($con));
-                }
-            } else {
-                error_log("File upload failed for: " . $targetFilePath);
-            }
-        }
-    }
 ?>
 
 <!doctype html>
