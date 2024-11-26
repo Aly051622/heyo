@@ -97,23 +97,237 @@ else {
 
 </head>
 <style>
-       .clearfix{ 
-        background-color: #f9fcff;
-        background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
-         }
-         .card, .card-header{
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-         }
-         .btn:hover{
-            background: orange;
-         }
+       html, body {
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            
+            background: whitesmoke;
+        }
+
+        body {
+            background: whitesmoke;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        /* Breadcrumb styles */
+        .breadcrumbs {
+            width: 90%;
+            background-color: #ffffff;
+            padding: 7px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-left: 5em;
+        }
+
+        .breadcrumbs .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .breadcrumb a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: black;
+        }
+
+        .breadcrumb .active {
+            color: #6c757d;
+        }
+
+        /* Card and button styles */
+        .card,
+        .card-header {
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+        }
+
+        #printbtn:hover,
+        #viewbtn:hover, .download-icon:hover {
+            background-color: darkblue;
+            border: solid blue;
+        }
+
+        #printbtn, #viewbtn, .download-icon {
+            border-radius: 9px;
+            background-color: rgb(53, 97, 255);
+            color: white;
+            border: solid;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+
+        .download-icon {
+            margin-top: 5px;
+            display: inline-block;
+            padding: 6px 7px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-icon:hover {
+            color: white;
+        }
+        .text-right{
+            color: gray;
+        }
+
+        /* Table responsive adjustments for mobile */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Improve table styling for mobile */
+        .table-responsive table {
+            width: 100%;
+            table-layout: auto;
+            word-wrap: break-word;
+        }
+
+        .table-responsive th, .table-responsive td {
+            white-space: nowrap;
+            padding: 8px;
+            text-align: left;
+        }
+
+        @media (max-width: 480px) {
+            .table-responsive th, .table-responsive td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            .table-responsive tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+            }
+            .table-responsive td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+        .clearfix{
+            background: whitesmoke; 
+        }
+        .text-center {
+    color: red;
+    font-weight: bold;
+}
+
+        #header{
+        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    .nav-link:hover{
+        background-image: transparent;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+       
+    }
+    #hh{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        font: 20px;
+        font-weight: bold;
+           }
+        .user-avatar{
+            height: 35px;
+            width: 27px;
+        }
     </style>
 <body>
-    <!-- Left Panel -->
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="dashboard.php">
+                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="view-vehicle.php">
+                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    </a>
+                </li>
+                <li>
+                    <a href="vehicle-transac.php">
+                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
+                    </a>
+                </li>
+                <li>
+                    <a href="add-vehicle.php">
+                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                    </a>
+                </li>
+                <li>
+                    <a href="service.php">
+                        <i class="menu-icon fa fa-headset"></i>Chat Concern
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
 
-  <?php include_once('includes/sidebar.php');?>
+<!--HEADER -->
+<div id="right-panel" class="right-panel">
+<header id="header" class="header">
+            <div class="top-left">
+            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
+                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        
+                        <div class="form-inline">
+                           
+                        </div>
 
-    <!-- Left Panel -->
+                     
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu" id="hh">
+                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
+                            </i></a>
+
+                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
+                            </i></a>
+
+                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
+                            </i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
 
 
         <div class="breadcrumbs">
