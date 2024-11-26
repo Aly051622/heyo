@@ -1,6 +1,8 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL); // Enable error reporting for debugging
+ini_set('display_errors', 1); // Display errors
+
 include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
@@ -34,8 +36,14 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     if (!$result) {
         // Log SQL error message if the query fails
-        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
+        echo "<script>console.error('SQL Error: " . mysqli_error($con) . "');</script>";
+        die("SQL query failed. Please check the logs.");
     }
+
+    // Debugging: Log the number of rows returned
+    $row_count = mysqli_num_rows($result);
+    echo "<script>console.log('Number of rows returned: $row_count');</script>";
+}
 ?>
 <!doctype html>
 
@@ -143,7 +151,12 @@ body{
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
+                                <?php
+                                    // Debugging: Show an empty table message if no rows are found
+                                    if ($row_count == 0) {
+                                        echo "<script>console.warn('No data found for contact number: $ownerno');</script>";
+                                    }
+
                                     $cnt = 1;
                                     while ($row = mysqli_fetch_array($result)) { ?>
                                         <tr>
@@ -152,11 +165,8 @@ body{
                                             <td><?php echo $row['OwnerName']; ?></td>
                                             <td><?php echo $row['VehiclePlateNumber']; ?></td>
                                             <td>
-                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
-
-                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-
-
+                                                <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
+                                                <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
                                             </td>
                                         </tr>
                                     <?php
@@ -190,4 +200,4 @@ body{
 
 </body>
 </html>
-<?php }  ?>
+<?php } ?>
