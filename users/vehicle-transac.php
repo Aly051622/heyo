@@ -46,7 +46,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     // Debug query execution
     if (!$result) {
-        error_log("SQL Error in TRANSAC.PHP: " . $stmt->error, 3, "error_log.txt");
+        error_log("SQL Error in TRANSAC.PHP: " . $stmt->error, 3, "log.txt");
         die("Error fetching data. Debug message: " . $stmt->error);
     }
     ?>
