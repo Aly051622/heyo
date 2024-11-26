@@ -17,7 +17,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     $ownerno = $_SESSION['vpmsumn'];
 
-    // Test session value
+    // Debug session value
     // Uncomment for debugging: echo "Owner Number: $ownerno";
 
     // Parameterized query
@@ -44,9 +44,10 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     $stmt->execute();
     $result = $stmt->get_result();
 
+    // Debug query execution
     if (!$result) {
         error_log("SQL Error in TRANSAC.PHP: " . $stmt->error, 3, "error_log.txt");
-        die("Error fetching data.");
+        die("Error fetching data. Debug message: " . $stmt->error);
     }
     ?>
 <!doctype html>
@@ -273,7 +274,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                     </tr>
                                 </thead>
                                 <tbody>
-    <?php
+                                <?php
     $cnt = 1;
     if ($result->num_rows > 0) {
         // Fetch and display data if there are records
@@ -298,9 +299,13 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
     }
     ?>
-</tbody>
-
-                            </table>
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <strong>Debug Info:</strong><br>
+                                    Total Rows: <?php echo $result->num_rows; ?><br>
+                                    Owner Number: <?php echo $ownerno; ?>
+                                </div>
                     </div>
                 </div>
             </div>
