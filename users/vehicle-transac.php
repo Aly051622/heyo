@@ -13,7 +13,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     // Fetch data directly from tblqr_login and tblmanual_login
     $query = "
-        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblqr_login.OwnerName, 
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblqr_login.Name, 
                tblqr_login.VehiclePlateNumber
         FROM tblqr_login
         WHERE tblqr_login.ContactNumber = '$ownerno'
