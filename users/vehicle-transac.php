@@ -261,39 +261,48 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                        <thead>
-                                        <tr>
-                                            <th>S.NO</th>
-                                            <th>Parking Slot</th>
-                                            <th>Owner Name</th>
-                                            <th>Vehicle Plate Number</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    $cnt = 1;
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>
-                                                <td>{$cnt}</td>
-                                                <td>{$row['ParkingSlot']}</td>
-                                                <td>{$row['OwnerName']}</td>
-                                                <td>{$row['VehiclePlateNumber']}</td>
-                                                <td>
-                                                    <a href='view--transac.php?viewid={$row['LoginID']}&source={$row['Source']}' class='btn btn-primary'>🖹 View</a>
-                                                    <a href='print.php?vid={$row['LoginID']}&source={$row['Source']}' target='_blank' class='btn btn-warning'>🖶 Print</a>
-                                                </td>
-                                            </tr>";
-                                            $cnt++;
-                                        }
-                                    } else {
-                                        echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
-                                    }
-                                    ?>
+                               <thead>
+                                    <tr>
+                                        <th>S.NO</th>
+                                        <th>Passdrking Slot</th>
+                                        <th>Owner Name</th>
+                                        <th>Vehicle Plate Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+$cnt = 1;
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        // Debug row structure
+        // var_dump($row);  // Uncomment to inspect
+
+        echo "<tr>
+            <td>{$cnt}</td>
+            <td>{$row['ParkingSlot']}</td>
+            <td>{$row['OwnerName']}</td>
+            <td>{$row['VehiclePlateNumber']}</td>
+            <td>
+                <a href='view--transac.php?viewid={$row['LoginID']}&source={$row['Source']}' 
+                   class='btn btn-primary' id='viewbtn'>🖹 View</a>
+                <a href='print.php?vid={$row['LoginID']}&source={$row['Source']}' 
+                   style='cursor:pointer' target='_blank' class='btn btn-warning' id='printbtn'>🖶 Print</a>
+            </td>
+        </tr>";
+        $cnt++;
+    }
+} else {
+    echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
+}
+?>
                                     </tbody>
                                 </table>
-                                <div><strong>Debug Info:</strong><br>Total Rows: <?php echo $result->num_rows; ?><br>Owner Number: <?php echo $ownerno; ?></div>
+                                <div>
+                                    <strong>Debug Info:</strong><br>
+                                    Total Rows: <?php echo $result->num_rows; ?><br>
+                                    Owner Number: <?php echo $ownerno; ?>
+                                </div>
                     </div>
                 </div>
             </div>
