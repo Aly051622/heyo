@@ -110,7 +110,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
             margin-bottom: 10px;
             margin-top: 10px;
-            margin-left: 1em;
+            margin-left: -0.5em;
         }
 
         .breadcrumbs .breadcrumb {
