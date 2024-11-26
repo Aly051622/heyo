@@ -90,124 +90,6 @@ WHERE tblqr_login.ContactNumber = '88888888888' ";
             transition: all 0.3s ease;
         }
 
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 7px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: 5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
-
-        /* Card and button styles */
-        .card,
-        .card-header {
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-        }
-
-        #printbtn:hover,
-        #viewbtn:hover, .download-icon:hover {
-            background-color: darkblue;
-            border: solid blue;
-        }
-
-        #printbtn, #viewbtn, .download-icon {
-            border-radius: 9px;
-            background-color: rgb(53, 97, 255);
-            color: white;
-            border: solid;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-
-        .download-icon {
-            margin-top: 5px;
-            display: inline-block;
-            padding: 6px 7px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .download-icon:hover {
-            color: white;
-        }
-        .text-right{
-            color: gray;
-        }
-
-        /* Table responsive adjustments for mobile */
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Improve table styling for mobile */
-        .table-responsive table {
-            width: 100%;
-            table-layout: auto;
-            word-wrap: break-word;
-        }
-
-        .table-responsive th, .table-responsive td {
-            white-space: nowrap;
-            padding: 8px;
-            text-align: left;
-        }
-
-        @media (max-width: 480px) {
-            .table-responsive th, .table-responsive td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 10px;
-            }
-            .table-responsive tr {
-                display: block;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-            }
-            .table-responsive td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-            }
-        }
-        .clearfix{
-            background: whitesmoke; 
-        }
-        .text-center {
-    color: red;
-    font-weight: bold;
-}
 
     </style>
 </head>
@@ -321,7 +203,7 @@ WHERE tblqr_login.ContactNumber = '88888888888' ";
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-
+<script src="../admin/assets/js/main.js"></script>
 
 
 </body>
