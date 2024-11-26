@@ -333,7 +333,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-7">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">View Vehicle Parking Details</strong>
