@@ -353,7 +353,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
-                            <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
+                            <!--<a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> -->
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -376,7 +376,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                                     <td>{$row['VehiclePlateNumber']}</td>
                                                     <td>
                                                         <a href='view--transac.php?viewid={$row['qrLoginID']}&source={$row['Source']}' class='btn btn-primary' id='viewbtn'>🖹 View</a> 
-                                                        <a href='print.php?vid={$row['qrLoginID']}&source={$row['Source']}' style='cursor:pointer' target='_blank' class='btn btn-warning' id='printbtn'>🖶 Print</a>
+                                               
                                                     </td>
                                                   </tr>";
                                             $cnt++;
