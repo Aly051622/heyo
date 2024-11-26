@@ -56,7 +56,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     if ($row_count == 0) {
         echo "<script>console.warn('No matching records found for contact number: $ownerno');</script>";
     }
-}
+
 ?>
 
 
@@ -215,4 +215,4 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
 </body>
 </html>
-<?php  ?>
+<?php } ?>
