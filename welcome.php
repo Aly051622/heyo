@@ -586,8 +586,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="container">
           
         <a class="navbar-item" href="users/service.php" id="surbtn"><i class=""></i></a>
-        
-            <div class="navbar-menu" style="color:white; position: absolute; margin-left: 3.5em;">   
+          
+            <div class="navbar-menu">   
                <!-- <a class="navbar-item" href="admin/index.php">Admin</a>-->
                 <a class="navbar-item" href="users/login.php">Client</a>
                 <a class="navbar-item" href="index.html">About</a>
