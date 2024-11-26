@@ -227,6 +227,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             height: 35px;
             width: 27px;
         }
+        .content{
+            position: absolute;
+        }
     </style>
 </head>
 <aside id="left-panel" class="left-panel">
@@ -332,7 +335,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
-                <div class="col-lg-15">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">View Vehicle Parking Details</strong>
