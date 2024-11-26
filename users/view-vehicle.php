@@ -48,7 +48,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
   
           /* Breadcrumb styles */
           .breadcrumbs {
-              width: 50%;
+              width: 30%;
               background-color: #ffffff;
               padding: 3px;
               border-radius: 5px;
