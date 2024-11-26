@@ -214,17 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     <?php include_once('includes/sidebar.php'); ?>
 
     <!-- Left Panel -->
-    <div class="navbar-header">
-        <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
-        <a href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top: -30px; margin-left: 20px;"></a>
-        <div class="user-area dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="profile-container">
-                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
-                    <span class="active-indicator"></span>
-                </div>
-            </a>
-            
+
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
