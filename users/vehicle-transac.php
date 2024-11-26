@@ -13,6 +13,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         die("Error: Owner number not found in session.");
     }
 
+    // Collect errors in an array to display in the console
+    $errors = [];
+
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
@@ -35,10 +38,15 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     $result = mysqli_query($con, $query);
     if (!$result) {
-        error_log("SQL Error: " . mysqli_error($con), 3, "error_log.txt");
-        die("Database query error. Check logs for details.");
+        $errors[] = "SQL Error: " . mysqli_error($con);
+    }
+
+    // Convert errors to JavaScript console output
+    if (!empty($errors)) {
+        echo "<script>console.error('PHP Errors: " . json_encode($errors) . "');</script>";
     }
 ?>
+
 <!doctype html>
 
 <html class="no-js" lang="">
