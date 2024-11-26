@@ -3,13 +3,16 @@ session_start();
 error_reporting(E_ALL); // Enable error reporting for debugging
 ini_set('display_errors', 1); // Display errors
 
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
     // Get the current user's contact number from the session
     $ownerno = $_SESSION['vpmsumn'];
+
+    // Debug: Check the session variable value
+    echo "<script>console.log('Session Contact Number: $ownerno');</script>";
 
     // Fetch data directly from tblqr_login and tblmanual_login
     $query = "
@@ -34,10 +37,13 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         die("SQL query failed. Please check the logs.");
     }
 
-    // Debugging: Log the number of rows returned
+    // Debug: Check if the query is returning any results
     $row_count = mysqli_num_rows($result);
     echo "<script>console.log('Number of rows returned: $row_count');</script>";
 
+    if ($row_count == 0) {
+        echo "<script>console.warn('No records found for contact number: $ownerno');</script>";
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -127,31 +133,23 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                 </thead>
                                 <tbody>
                                 <?php
-                                    // Debugging: Show an empty table message if no rows are found
-                                    if ($row_count == 0) {
-                                        echo "<script>console.warn('No data found for contact number: $ownerno');</script>";
+                                    if ($row_count > 0) {
+                                        $cnt = 1;
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo "<tr>
+                                                    <td>$cnt</td>
+                                                    <td>{$row['ParkingSlot']}</td>
+                                                    <td>{$row['OwnerName']}</td>
+                                                    <td>{$row['VehiclePlateNumber']}</td>
+                                                    <td>
+                                                        <a href='view--transac.php?viewid={$row['qrLoginID']}&source={$row['Source']}' class='btn btn-primary' id='viewbtn'>🖹 View</a> 
+                                                        <a href='print.php?vid={$row['qrLoginID']}&source={$row['Source']}' style='cursor:pointer' target='_blank' class='btn btn-warning' id='printbtn'>🖶 Print</a>
+                                                    </td>
+                                                  </tr>";
+                                            $cnt++;
+                                        }
                                     }
-
-                                    $cnt = 1;
-                                    while ($row = mysqli_fetch_array($result)) {
-                                        // Debugging: Print the row structure
-                                        echo "<pre>";
-                                        var_dump($row);
-                                        echo "</pre>";
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $row['ParkingSlot']; ?></td>
-                                            <td><?php echo $row['OwnerName']; ?></td>
-                                            <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                                            <td>
-                                                <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
-                                                <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                        $cnt++;
-                                    } ?>
+                                ?>
                                 </tbody>
                             </table>
                         </div>
