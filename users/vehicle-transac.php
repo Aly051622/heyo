@@ -329,4 +329,4 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
 </body>
 </html>
-<?php  ?>
+<?php } ?>
