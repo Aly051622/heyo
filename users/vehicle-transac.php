@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 error_reporting(E_ALL);
@@ -7,46 +6,63 @@ date_default_timezone_set('Asia/Manila');
 include('../DBconnection/dbconnection.php');
 
 // Check session and redirect if necessary
-if (strlen($_SESSION['vpmsuid'] == 0)) {
+if (empty($_SESSION['vpmsuid'])) {
     header('location:logout.php');
-} else {
-    // Validate and retrieve owner number
-    if (!isset($_SESSION['vpmsumn']) || empty($_SESSION['vpmsumn'])) {
-        die("Error: Owner number not set in session.");
-    }
+    exit;
+}
 
-    $ownerno = $_SESSION['vpmsumn'];
+// Validate and retrieve owner number
+if (empty($_SESSION['vpmsumn'])) {
+    die("Error: Owner number not set in session.");
+}
 
-    // Parameterized query with consistent aliases
-    $stmt = $con->prepare("
-        SELECT 'QR' AS Source, tblqr_login.ID AS LoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblqr_login.VehiclePlateNumber, tblqr_login.TIMEIN
-        FROM tblqr_login
-        INNER JOIN tblvehicle 
-        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = ?
-        
-        UNION
-        
-        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber AS VehiclePlateNumber, tblmanual_login.TimeIn
-        FROM tblmanual_login
-        INNER JOIN tblvehicle 
-        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
-        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblmanual_login.OwnerContactNumber = ?
-    ");
-    $stmt->bind_param("ss", $ownerno, $ownerno);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$ownerno = $_SESSION['vpmsumn'];
 
-    // Debug query execution
-    if (!$result) {
-        error_log("SQL Error: " . $stmt->error, 3, "error_log.txt");
-        die("Error fetching data. Debug message: " . $stmt->error);
-    }
-    ?>
+// Debugging: Validate database connection
+if (!$con) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
+
+// Parameterized query with consistent aliases
+$stmt = $con->prepare("
+    SELECT 'QR' AS Source, tblqr_login.ID AS LoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+           tblqr_login.VehiclePlateNumber, tblqr_login.TIMEIN
+    FROM tblqr_login
+    INNER JOIN tblvehicle 
+    ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+    AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
+    WHERE tblqr_login.ContactNumber = ?
+    
+    UNION
+    
+    SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
+           tblmanual_login.RegistrationNumber AS VehiclePlateNumber, tblmanual_login.TimeIn
+    FROM tblmanual_login
+    INNER JOIN tblvehicle 
+    ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+    AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
+    WHERE tblmanual_login.OwnerContactNumber = ?
+");
+if (!$stmt) {
+    die("SQL statement preparation failed: " . $con->error);
+}
+
+$stmt->bind_param("ss", $ownerno, $ownerno);
+
+if (!$stmt->execute()) {
+    error_log("SQL Execution Error: " . $stmt->error, 3, "error_log.txt");
+    die("SQL execution failed. Check error log for details.");
+}
+
+$result = $stmt->get_result();
+
+// Debugging: Check if query ran successfully
+if (!$result) {
+    error_log("Result Fetch Error: " . $stmt->error, 3, "error_log.txt");
+    die("Error fetching data. Debug message: " . $stmt->error);
+}
+
+?>
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -261,43 +277,43 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                               <thead>
-                                    <tr>
-                                        <th>S.NO</th>
-                                        <th>Passdrking Slot</th>
-                                        <th>Owner Name</th>
-                                        <th>Vehicle Plate Number</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-    $cnt = 1;
-    if ($result->num_rows > 0) {
-        // Fetch and display data if there are records
-        while ($row = $result->fetch_assoc()) { ?>
-            <tr>
-                <td><?php echo $cnt; ?></td>
-                <td><?php echo $row['ParkingSlot']; ?></td>
-                <td><?php echo $row['OwnerName']; ?></td>
-                <td><?php echo $row['VehiclePlateNumber']; ?></td>
-   
-            </tr>
-        <?php
-            $cnt++;
-        }
-    } else {
-        // Show message when no records are found
-        echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
-    }
-    ?>
-                                    </tbody>
-                                </table>
-                                <div>
-                                    <strong>Debug Info:</strong><br>
-                                    Total Rows: <?php echo $result->num_rows; ?><br>
-                                    Owner Number: <?php echo $ownerno; ?>
-                                </div>
+                        <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>Parking Slot</th>
+                    <th>Owner Name</th>
+                    <th>Vehicle Plate Number</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $cnt = 1;
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                            <td>{$cnt}</td>
+                            <td>{$row['ParkingSlot']}</td>
+                            <td>{$row['OwnerName']}</td>
+                            <td>{$row['VehiclePlateNumber']}</td>
+                            <td>
+                                <a href='view--transac.php?viewid={$row['LoginID']}&source={$row['Source']}' class='btn btn-primary'>🖹 View</a>
+                                <a href='print.php?vid={$row['LoginID']}&source={$row['Source']}' target='_blank' class='btn btn-warning'>🖶 Print</a>
+                            </td>
+                        </tr>";
+                        $cnt++;
+                    }
+                } else {
+                    echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+        <div class="alert alert-info mt-3">
+            <strong>Debug Info:</strong><br>
+            Total Rows: <?php echo $result->num_rows; ?><br>
+            Owner Number: <?php echo htmlspecialchars($ownerno); ?>
+        </div>
                     </div>
                 </div>
             </div>
@@ -324,4 +340,4 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
 </body>
 </html>
-<?php }  ?>
+<?php ?>
