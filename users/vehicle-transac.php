@@ -16,13 +16,11 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     // Collect errors in an array to display in the console
     $errors = [];
 
-    // SQL Query for fetching data from tblqr_login only
+    // SQL Query for fetching data from tblqr_login (no join to tblvehicle for OwnerName)
     $query = "
-        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblqr_login.Name AS OwnerName, 
                tblqr_login.VehiclePlateNumber
         FROM tblqr_login
-        INNER JOIN tblvehicle 
-        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
         WHERE tblqr_login.ContactNumber = '$ownerno'
     ";
 
