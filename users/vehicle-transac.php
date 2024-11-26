@@ -337,7 +337,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <div class="content">
         <div class="animated fadeIn">
-            < class="row">
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
@@ -345,7 +345,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                         <div class="card-body">
                             <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
-                            <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
