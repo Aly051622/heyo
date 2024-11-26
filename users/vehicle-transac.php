@@ -248,41 +248,39 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                        <thead>
-            <tr>
-                <th>S.NO</th>
-                <th>Parking Slot</th>
-                <th>Owner Name</th>
-                <th>Vehicle Plate Number</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+                                <thead>
+                                    <tr>
+                                        <th>S.NO</th>
+                                        <th>Parking Slot</th>
+                                        <th>Owner Name</th>
+                                        <th>Vehicle Plate Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
         <?php
+                                    echo "<div class='breadcrumbs'>";
+                                    echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
+                                    echo "</div>";
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($result)) { ?>
+                                        <tr>
+                                            <td><?php echo $cnt; ?></td>
+                                            <td><?php echo $row['ParkingSlot']; ?></td>
+                                            <td><?php echo $row['OwnerName']; ?></td>
+                                            <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                                            <td>
+                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
 
-echo "<div class='breadcrumbs'>";
-echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
-echo "</div>";
-                                        $cnt = 1;
-                                        if (mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($result)) { ?>
-                                                <tr>
-                                                    <td><?= $cnt; ?></td>
-                                                    <td><?= $row['ParkingSlot']; ?></td>
-                                                    <td><?= $row['Name']; ?></td>
-                                                    <td><?= $row['VehiclePlateNumber']; ?></td>
-                                                    <td>
-                                                        <a href="view--transac.php?viewid=<?= $row['ID']; ?>" class="btn btn-primary">View</a>
-                                                        <a href="print.php?vid=<?= $row['ID']; ?>" target="_blank" class="btn btn-warning">Print</a>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                                $cnt++;
-                                            }
-                                        } else {
-                                            echo "<tr><td colspan='5'>No records found.</td></tr>";
-                                        }
-                                        ?>
+                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+
+
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        $cnt++;
+                                    }
+                                     ?>
             </tbody>
         </table>
 
