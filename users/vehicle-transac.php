@@ -332,14 +332,14 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-15">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
                             <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
-                            <table class="table-responsive">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>S.NO</th>
