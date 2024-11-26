@@ -329,7 +329,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         </div>
     </div>
 
-    <center>
+    <>
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
@@ -377,12 +377,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
-    </center>
+
     <div class="clearfix"></div>
 
 </div><!-- /#right-panel -->
 <!-- Right Panel -->
-
+</center>
 <!-- Scripts -->
 
 </body>
