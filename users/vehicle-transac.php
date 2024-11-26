@@ -81,7 +81,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            overflow-x: auto;
             
             background: whitesmoke;
         }
@@ -320,7 +320,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                     </div>
                 </div>
-                
+                </div>
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
@@ -379,7 +379,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
