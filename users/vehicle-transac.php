@@ -10,6 +10,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 } else {
     // Get the current user's contact number from the session
     $ownerno = $_SESSION['vpmsumn'];
+    
 
     // Debug: Check the session variable value
     echo "<script>console.log('Session Contact Number: $ownerno');</script>";
@@ -50,7 +51,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         exit;
     }
     
-    $userId = $_SESSION['vpmsuid'];
+   
     
     // Fetch the user's profile picture
     $query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
