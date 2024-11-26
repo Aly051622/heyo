@@ -233,7 +233,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             width: 27px;
         }
         .content{
-            margin-left: 100vh;
+            margin-left: 50vh;
         }
     </style>
 </head>
