@@ -258,32 +258,44 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                                <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Source</th>
-                            <th>Parking Slot</th>
-                            <th>Owner Name</th>
-                            <th>Vehicle Plate Number</th>
-                            <th>Time In</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $cnt = 1;
-                        while ($row = $result->fetch_assoc()): ?>
-                            <tr>
-                                <td><?php echo $cnt++; ?></td>
-                                <td><?php echo htmlspecialchars($row['Source']); ?></td>
-                                <td><?php echo htmlspecialchars($row['ParkingSlot']); ?></td>
-                                <td><?php echo htmlspecialchars($row['OwnerName']); ?></td>
-                                <td><?php echo htmlspecialchars($row['VehiclePlateNumber']); ?></td>
-                                <td><?php echo htmlspecialchars($row['TIMEIN']); ?></td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
-     
+                               <thead>
+                                    <tr>
+                                        <th>S.NO</th>
+                                        <th>Parking Slot</th>
+                                        <th>Owner Name</th>
+                                        <th>Vehicle Plate Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+    <?php
+    $cnt = 1;
+    if ($result->num_rows > 0) {
+        // Fetch and display data if there are records
+        while ($row = $result->fetch_assoc()) { ?>
+            <tr>
+                <td><?php echo $cnt; ?></td>
+                <td><?php echo $row['ParkingSlot']; ?></td>
+                <td><?php echo $row['OwnerName']; ?></td>
+                <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                <td>
+                    <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
+                       class="btn btn-primary" id="viewbtn">🖹 View</a>
+                    <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
+                       style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                </td>
+            </tr>
+        <?php
+            $cnt++;
+        }
+    } else {
+        // Show message when no records are found
+        echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
+    }
+    ?>
+</tbody>
+
+                            </table>
                     </div>
                 </div>
             </div>
