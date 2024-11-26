@@ -18,7 +18,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     // SQL Query for fetching data only from tblqr_login
     $query = "
-        SELECT ID AS qrLoginID, ParkingSlot, VehiclePlateNumber
+        SELECT ID, ParkingSlot, VehiclePlateNumber
         FROM tblqr_login
         WHERE ContactNumber = '$ownerno'
     ";
@@ -268,8 +268,8 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                                     <td><?= $row['OwnerName']; ?></td>
                                                     <td><?= $row['VehiclePlateNumber']; ?></td>
                                                     <td>
-                                                        <a href="view--transac.php?viewid=<?= $row['qrLoginID']; ?>" class="btn btn-primary">View</a>
-                                                        <a href="print.php?vid=<?= $row['qrLoginID']; ?>" target="_blank" class="btn btn-warning">Print</a>
+                                                        <a href="view--transac.php?viewid=<?= $row['ID']; ?>" class="btn btn-primary">View</a>
+                                                        <a href="print.php?vid=<?= $row['ID']; ?>" target="_blank" class="btn btn-warning">Print</a>
                                                     </td>
                                                 </tr>
                                             <?php
