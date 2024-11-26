@@ -172,8 +172,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <div class="right-panel">
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-5">
+            <div class="row m-3">
+                <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
                             <h3>Owned Vehicles</h3>
