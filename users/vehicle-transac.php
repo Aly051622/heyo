@@ -248,7 +248,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                                <thead>
+                        <thead>
                                     <tr>
                                         <th>S.NO</th>
                                         <th>Parking Slot</th>
