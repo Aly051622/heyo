@@ -307,7 +307,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
-                <div class="col-sm-7">
+                <div class="col-sm-3">
                     <div class="page-header float-left">
                         <div class="page-title">
                             <h1>Vehicle Logs</h1>
