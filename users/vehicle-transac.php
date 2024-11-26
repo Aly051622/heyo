@@ -1,8 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL); // Enable error reporting for debugging
-ini_set('display_errors', 1); // Display errors
-
+error_reporting(0);
 include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
@@ -11,21 +9,24 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     // Get the current user's contact number from the session
     $ownerno = $_SESSION['vpmsumn'];
 
-    // Debug: Check the session variable value
-    echo "<script>console.log('Session Contact Number: $ownerno');</script>";
-
-    // Fetch data directly from tblqr_login and tblmanual_login
+    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
     $query = "
-        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblqr_login.Name, 
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
         FROM tblqr_login
+        INNER JOIN tblvehicle 
+        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
         WHERE tblqr_login.ContactNumber = '$ownerno'
         
         UNION
         
-        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblmanual_login.OwnerName, 
-               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
+        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblmanual_login.RegistrationNumber
         FROM tblmanual_login
+        INNER JOIN tblvehicle 
+        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
         WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
 
@@ -33,16 +34,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     if (!$result) {
         // Log SQL error message if the query fails
-        echo "<script>console.error('SQL Error: " . mysqli_error($con) . "');</script>";
-        die("SQL query failed. Please check the logs.");
-    }
-
-    // Debug: Check if the query is returning any results
-    $row_count = mysqli_num_rows($result);
-    echo "<script>console.log('Number of rows returned: $row_count');</script>";
-
-    if ($row_count == 0) {
-        echo "<script>console.warn('No records found for contact number: $ownerno');</script>";
+        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
     }
 ?>
 <!doctype html>
