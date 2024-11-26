@@ -903,14 +903,13 @@ function toggleOtherModelInput() {
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Add Vehicle</h1>
+                        <h3>Add Vehicle</h3>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
+                    <div class="page-header float-right">
+                        <div class="page-title">
                             <li><a href="dashboard.php">Dashboard</a></li>
                             <li><a href="add-vehicle.php">Vehicle</a></li>
                             <li class="active">Add Vehicle</li>
