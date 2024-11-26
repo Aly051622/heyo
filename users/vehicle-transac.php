@@ -16,14 +16,11 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     // Collect errors in an array to display in the console
     $errors = [];
 
-    // SQL Query for fetching data from tblqr_login only
+    // SQL Query for fetching data from tblqr_login
     $query = "
-        SELECT tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblqr_login.VehiclePlateNumber,
-               tblvehicle.OwnerName
+        SELECT ID, ParkingSlot, VehiclePlateNumber, ContactNumber
         FROM tblqr_login
-        INNER JOIN tblvehicle 
-        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber
-        WHERE tblqr_login.ContactNumber = '$ownerno'
+        WHERE ContactNumber = '$ownerno'
     ";
 
     $result = mysqli_query($con, $query);
@@ -271,8 +268,8 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                                     <td><?= $row['OwnerName']; ?></td>
                                                     <td><?= $row['VehiclePlateNumber']; ?></td>
                                                     <td>
-                                                        <a href="view--transac.php?viewid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" class="btn btn-primary">View</a>
-                                                        <a href="print.php?vid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" target="_blank" class="btn btn-warning">Print</a>
+                                                        <a href="view--transac.php?viewid=<?= $row['ID']; ?>" class="btn btn-primary">View</a>
+                                                        <a href="print.php?vid=<?= $row['ID']; ?>" target="_blank" class="btn btn-warning">Print</a>
                                                     </td>
                                                 </tr>
                                             <?php
