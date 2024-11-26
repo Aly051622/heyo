@@ -7,7 +7,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
     // Get the current user's contact number from the session
-    $ownerno = $_SESSION['vpmsumn'];
+    $ownerno = mysqli_real_escape_string($con, $_SESSION['vpmsumn']);
 
     // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
     $query = "
@@ -33,8 +33,8 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     $result = mysqli_query($con, $query);
 
     if (!$result) {
-        // Log SQL error message if the query fails
-        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
+        // Send SQL error to the browser console
+        echo "<script>console.error('SQL Error: " . mysqli_error($con) . "');</script>";
     }
 ?>
 
@@ -262,29 +262,30 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                     </tr>
                                 </thead>
                                 <tbody>
-        <?php
-                                    echo "<div class='breadcrumbs'>";
-                                    echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
-                                    echo "</div>";
-                                    $cnt = 1;
-                                    while ($row = mysqli_fetch_array($result)) { ?>
-                                        <tr>
-                                            <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $row['ParkingSlot']; ?></td>
-                                            <td><?php echo $row['OwnerName']; ?></td>
-                                            <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                                            <td>
-                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
-
-                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-
-
-                                            </td>
-                                        </tr>
-                                    <?php
-                                        $cnt++;
-                                    }
-                                     ?>
+                                <?php
+                                        echo "<div class='breadcrumbs'>";
+                                        echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
+                                        echo "</div>";
+                                        $cnt = 1;
+                                        if ($result && mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_array($result)) { ?>
+                                                <tr>
+                                                    <td><?php echo $cnt; ?></td>
+                                                    <td><?php echo $row['ParkingSlot']; ?></td>
+                                                    <td><?php echo $row['OwnerName']; ?></td>
+                                                    <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                                                    <td>
+                                                        <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a>
+                                                        <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                                $cnt++;
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
+                                        }
+                                        ?>
             </tbody>
         </table>
 
