@@ -31,7 +31,54 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
 
-   
+    $result = mysqli_query($con, $query);
+
+    if (!$result) {
+        // Log SQL error message if the query fails
+        echo "<script>console.error('SQL Error: " . mysqli_error($con) . "');</script>";
+        die("SQL query failed. Please check the logs.");
+    }
+
+    // Debug: Check if the query is returning any results
+    $row_count = mysqli_num_rows($result);
+    echo "<script>console.log('Number of rows returned: $row_count');</script>";
+
+    if ($row_count == 0) {
+        echo "<script>console.warn('No records found for contact number: $ownerno');</script>";
+    }
+    
+    if (!isset($_SESSION['vpmsuid'])) {
+        echo '<p>Debug: User ID not found in session.</p>';
+        exit;
+    }
+    
+    
+    // Handle image upload
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
+        if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
+            $uploadsDir = '../uploads/profile_uploads/';
+            $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
+            $targetFilePath = $uploadsDir . $fileName;
+    
+            // Create the uploads directory if it doesn't exist
+            if (!is_dir($uploadsDir)) {
+                mkdir($uploadsDir, 0777, true);
+            }
+    
+            // Move the uploaded file and update the database
+            if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
+                $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
+                if (mysqli_query($con, $updateQuery)) {
+                    $uploadSuccess = true;
+                    $profilePicturePath = $targetFilePath; // Update the displayed picture path
+                } else {
+                    error_log("Database update failed: " . mysqli_error($con));
+                }
+            } else {
+                error_log("File upload failed for: " . $targetFilePath);
+            }
+        }
+    }
 ?>
 
 <!doctype html>
@@ -274,7 +321,44 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 <?php include_once('includes/sidebar.php'); ?>
 
 <!--HEADER -->
-<?php include_once('includes/header.php'); ?>
+<div id="right-panel" class="right-panel">
+<header id="header" class="header">
+            <div class="top-left">
+            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
+                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        
+                        <div class="form-inline">
+                           
+                        </div>
+
+                     
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu" id="hh">
+                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
+                            </i></a>
+
+                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
+                            </i></a>
+
+                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
+                            </i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
