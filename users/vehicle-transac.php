@@ -138,7 +138,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                             echo "<tr>
                                                     <td>$cnt</td>
                                                     <td>{$row['ParkingSlot']}</td>
-                                                    <td>{$row['OwnerName']}</td>
+                                                    <td>{$row['Name']}</td>
                                                     <td>{$row['VehiclePlateNumber']}</td>
                                                     <td>
                                                         <a href='view--transac.php?viewid={$row['qrLoginID']}&source={$row['Source']}' class='btn btn-primary' id='viewbtn'>🖹 View</a> 
