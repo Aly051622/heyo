@@ -253,13 +253,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             height: 35px;
             width: 27px;
         }
-
-        .no-data-message {
-            font-size: 16px;
-            color: red;
-            text-align: center;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -372,11 +365,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                         <div class="card-body">
                             <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
-                            <?php
-                            if (mysqli_num_rows($result) == 0) {
-                                echo '<div class="no-data-message">Please register your vehicle on "Register Vehicle" found in the sidebar, please fill up your details HONESTLY.</div>';
-                            } else {
-                            ?>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -408,7 +396,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                 ?>
                                 </tbody>
                             </table>
-                            <?php } ?>
                         </div>
                     </div>
                 </div>
