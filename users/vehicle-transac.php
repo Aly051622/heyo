@@ -1,50 +1,41 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1); // Display errors for debugging
+error_reporting(0);
 include('../DBconnection/dbconnection.php');
 
-if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
+if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
-    $ownerno = $_SESSION['vpmsumn'] ?? '';
+    // Get the current user's contact number from the session
+    $ownerno = $_SESSION['vpmsumn'];
 
-    if (!$ownerno) {
-        echo "<script>console.error('Error: Session variable \"vpmsumn\" is empty or not set.');</script>";
-        die();
-    }
-
-    // Debug: Log owner number
-    echo "<script>console.log('Session Owner Number: " . htmlspecialchars($ownerno) . "');</script>";
-
-    // SQL query
+    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
     $query = "
-       SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-       tblqr_login.VehiclePlateNumber
-FROM tblqr_login
-INNER JOIN tblvehicle 
-ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-WHERE tblqr_login.ContactNumber = '88888888888' ";
-
-
-    // Debug: Log query
-    echo "<script>console.log('SQL Query: " . htmlspecialchars($query) . "');</script>";
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblqr_login.VehiclePlateNumber
+        FROM tblqr_login
+        INNER JOIN tblvehicle 
+        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
+        WHERE tblqr_login.ContactNumber = '$ownerno'
+        
+        UNION
+        
+        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblmanual_login.RegistrationNumber
+        FROM tblmanual_login
+        INNER JOIN tblvehicle 
+        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
+        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
+    ";
 
     $result = mysqli_query($con, $query);
 
     if (!$result) {
-        // Log SQL error to the browser console
-        $error_message = mysqli_real_escape_string($con, mysqli_error($con));
-        echo "<script>console.error('SQL Error: $error_message');</script>";
-        die("SQL Query failed. Check the console for details.");
+        // Log SQL error message if the query fails
+        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
     }
-
-    // Check if query returns any rows
-    if (mysqli_num_rows($result) === 0) {
-        echo "<script>console.warn('No records found for owner: $ownerno');</script>";
-    }
-
 ?>
 
 
@@ -154,31 +145,25 @@ WHERE tblqr_login.ContactNumber = '88888888888' ";
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <?php
-                                            echo "<div class='breadcrumbs'>";
-                                            echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
-                                            echo "</div>";
-                                            $cnt = 1;
-                                            if ($result && mysqli_num_rows($result) > 0) {
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                    echo "<script>console.log('Row Data: " . json_encode($row) . "');</script>"; ?>
-                                                    <tr>
-                                                        <td><?php echo $cnt; ?></td>
-                                                        <td><?php echo $row['ParkingSlot']; ?></td>
-                                                        <td><?php echo $row['OwnerName']; ?></td>
-                                                        <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                                                        <td>
-                                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a>
-                                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php
-                                                    $cnt++;
-                                                }
-                                            } else {
-                                                echo "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
-                                            }
-                                        ?>
+                                <?php
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($result)) { ?>
+                                        <tr>
+                                            <td><?php echo $cnt; ?></td>
+                                            <td><?php echo $row['ParkingSlot']; ?></td>
+                                            <td><?php echo $row['OwnerName']; ?></td>
+                                            <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                                            <td>
+                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
+
+                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+
+
+                                            </td>
+                                        </tr>
+                                    <?php
+                                        $cnt++;
+                                    } ?>
                                     </tbody>
         </table>
 
