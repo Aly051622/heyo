@@ -48,7 +48,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     if (mysqli_num_rows($result) === 0) {
         echo "<script>console.warn('No records found for owner: $ownerno');</script>";
     }
-}
+
 ?>
 
 
