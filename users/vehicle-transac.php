@@ -37,8 +37,8 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
         WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
 
-    // Debugging: Log query
-    echo "<script>console.log('SQL Query: " . htmlspecialchars($query) . "');</script>";
+    // Debugging: Log query using json_encode to safely escape
+    echo "<script>console.log('SQL Query: " . json_encode($query) . "');</script>";
 
     $result = mysqli_query($con, $query);
 
@@ -56,8 +56,10 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     if ($row_count == 0) {
         echo "<script>console.warn('No matching records found for contact number: $ownerno');</script>";
     }
-
+}
 ?>
+
+
 
 
 
@@ -215,4 +217,4 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
 </body>
 </html>
-<?php } ?>
+<?php ?>
