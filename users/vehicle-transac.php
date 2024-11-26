@@ -1,15 +1,20 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1); // Display errors for debugging
 include('../DBconnection/dbconnection.php');
 
-if (strlen($_SESSION['vpmsuid'] == 0)) {
+if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     header('location:logout.php');
 } else {
-    // Get the current user's contact number from the session
-    $ownerno = mysqli_real_escape_string($con, $_SESSION['vpmsumn']);
+    $ownerno = $_SESSION['vpmsumn'] ?? '';
 
-    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
+    if (!$ownerno) {
+        echo "<script>console.error('Error: Session variable \"vpmsumn\" is empty or not set.');</script>";
+        die();
+    }
+
+    // SQL query
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
@@ -22,7 +27,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         UNION
         
         SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber
+               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
         FROM tblmanual_login
         INNER JOIN tblvehicle 
         ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
@@ -33,10 +38,19 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     $result = mysqli_query($con, $query);
 
     if (!$result) {
-        // Send SQL error to the browser console
-        echo "<script>console.error('SQL Error: " . mysqli_error($con) . "');</script>";
+        // Log SQL error to the browser console
+        $error_message = mysqli_real_escape_string($con, mysqli_error($con));
+        echo "<script>console.error('SQL Error: $error_message');</script>";
+        die("SQL Query failed. Check the console for details.");
     }
+
+    // Check if query returns any rows
+    if (mysqli_num_rows($result) === 0) {
+        echo "<script>console.warn('No records found for owner: $ownerno');</script>";
+    }
+}
 ?>
+
 
 <!doctype html>
 
@@ -315,4 +329,4 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
 </body>
 </html>
-<?php } ?>
+<?php  ?>
