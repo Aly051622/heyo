@@ -1,22 +1,15 @@
 <?php
 session_start();
-error_reporting(E_ALL); // Display all errors for debugging
-ini_set('display_errors', 1);
-
+error_reporting(0);
 include('../DBconnection/dbconnection.php');
 
-if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
+if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
-    // Debugging: Check session variable
-    if (!isset($_SESSION['vpmsumn']) || empty($_SESSION['vpmsumn'])) {
-        echo "<script>console.error('Session variable \"vpmsumn\" is not set or empty.');</script>";
-        die("Session error. Please log in again.");
-    }
-
+    // Get the current user's contact number from the session
     $ownerno = $_SESSION['vpmsumn'];
 
-    // SQL query (using UNION to get results from both tblqr_login and tblmanual_login)
+    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
@@ -24,46 +17,26 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
         INNER JOIN tblvehicle 
         ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
         AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = '88888888888'
-
+        WHERE tblqr_login.ContactNumber = '$ownerno'
+        
         UNION
-
+        
         SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
+               tblmanual_login.RegistrationNumber
         FROM tblmanual_login
         INNER JOIN tblvehicle 
         ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
         AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblmanual_login.OwnerContactNumber = '88888888888'
+        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
-
-    // Debugging: Log query using json_encode to safely escape
-    echo "<script>console.log(" . json_encode("SQL Query: " . $query) . ");</script>";
 
     $result = mysqli_query($con, $query);
 
     if (!$result) {
-        // Log SQL error
-        $error_message = mysqli_real_escape_string($con, mysqli_error($con));
-        echo "<script>console.error('SQL Error: $error_message');</script>";
-        die("SQL query failed. Please check the logs.");
+        // Log SQL error message if the query fails
+        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
     }
-
-    // Debugging: Check if query returned rows
-    $row_count = mysqli_num_rows($result);
-    echo "<script>console.log('Number of rows returned: $row_count');</script>";
-
-    if ($row_count == 0) {
-        echo "<script>console.warn('No matching records found for contact number: $ownerno');</script>";
-    }
-}
 ?>
-
-
-
-
-
-
 <!doctype html>
 
 <html class="no-js" lang="">
@@ -89,25 +62,26 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     <link rel="stylesheet" href="../admin/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <style>
-      html, body {
-            font-family: 'Poppins', sans-serif;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            
-            background: whitesmoke;
-        }
+<style>
+    #printbtn:hover,
+#viewbtn:hover {
+    background: orange;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+body{
+    height: 100vh;
+    background: whitesmoke;
+    overflow: auto;
+}
 
-        body {
-            background: whitesmoke;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
+#printbtn {
+    background: yellowgreen;
+    color: white;
+}
 
-
-    </style>
+</style>
 </head>
 <body>
     <!-- Left Panel -->
@@ -120,14 +94,13 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
      <?php include_once('includes/header.php');?>
 
-     <div class="right-panel">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h3>Vehicle Logs</h3>
+                                <h1>Vehicle Logs</h1>
                             </div>
                         </div>
                     </div>
@@ -136,8 +109,8 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle</a></li>
-                                    <li class="active">View Vehicle details</li>
+                                    <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                                    <li class="active">View Vehicle Parking Details</li>
                                 </ol>
                             </div>
                         </div>
@@ -170,7 +143,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
+                                    <?php
                                     $cnt = 1;
                                     while ($row = mysqli_fetch_array($result)) { ?>
                                         <tr>
@@ -189,9 +162,8 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
                                     <?php
                                         $cnt++;
                                     } ?>
-                                    </tbody>
-        </table>
-
+                                </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
@@ -218,4 +190,4 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
 </body>
 </html>
-<?php ?>
+<?php }  ?>
