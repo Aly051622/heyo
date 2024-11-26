@@ -272,30 +272,30 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                 </thead>
                                 <tbody>
                                 <?php
-$cnt = 1;
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        // Debug row structure
-        // var_dump($row);  // Uncomment to inspect
-
-        echo "<tr>
-            <td>{$cnt}</td>
-            <td>{$row['ParkingSlot']}</td>
-            <td>{$row['OwnerName']}</td>
-            <td>{$row['VehiclePlateNumber']}</td>
-            <td>
-                <a href='view--transac.php?viewid={$row['LoginID']}&source={$row['Source']}' 
-                   class='btn btn-primary' id='viewbtn'>🖹 View</a>
-                <a href='print.php?vid={$row['LoginID']}&source={$row['Source']}' 
-                   style='cursor:pointer' target='_blank' class='btn btn-warning' id='printbtn'>🖶 Print</a>
-            </td>
-        </tr>";
-        $cnt++;
+    $cnt = 1;
+    if ($result->num_rows > 0) {
+        // Fetch and display data if there are records
+        while ($row = $result->fetch_assoc()) { ?>
+            <tr>
+                <td><?php echo $cnt; ?></td>
+                <td><?php echo $row['ParkingSlot']; ?></td>
+                <td><?php echo $row['OwnerName']; ?></td>
+                <td><?php echo $row['VehiclePlateNumber']; ?></td>
+               <!-- <td>
+                    <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
+                       class="btn btn-primary" id="viewbtn">🖹 View</a>
+                    <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
+                       style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                </td> -->
+            </tr>
+        <?php
+            $cnt++;
+        }
+    } else {
+        // Show message when no records are found
+        echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
     }
-} else {
-    echo "<tr><td colspan='5' class='text-center'>No records found for this user.</td></tr>";
-}
-?>
+    ?>
                                     </tbody>
                                 </table>
                                 <div>
