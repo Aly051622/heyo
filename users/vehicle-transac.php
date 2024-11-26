@@ -19,24 +19,14 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
     // SQL query
     $query = "
-        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblqr_login.VehiclePlateNumber
-        FROM tblqr_login
-        INNER JOIN tblvehicle 
-        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = '$ownerno'
-        
-        UNION
-        
-        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
-        FROM tblmanual_login
-        INNER JOIN tblvehicle 
-        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
-        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
-    ";
+       SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+       tblqr_login.VehiclePlateNumber
+FROM tblqr_login
+INNER JOIN tblvehicle 
+ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
+WHERE tblqr_login.ContactNumber = '88888888888' ";
+
 
     // Debug: Log query
     echo "<script>console.log('SQL Query: " . htmlspecialchars($query) . "');</script>";
