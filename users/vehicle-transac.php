@@ -17,34 +17,31 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     $errors = [];
 
     $query = "
-        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblqr_login.VehiclePlateNumber
-        FROM tblqr_login
-        INNER JOIN tblvehicle 
-        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = '$ownerno'
-        
-        UNION
-        
-        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
-        FROM tblmanual_login
-        INNER JOIN tblvehicle 
-        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
-        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
-    ";
+    SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+           tblqr_login.VehiclePlateNumber
+    FROM tblqr_login
+    INNER JOIN tblvehicle 
+    ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+    AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
+    WHERE tblqr_login.ContactNumber = '$ownerno'
+";
 
-    $result = mysqli_query($con, $query);
+$result = mysqli_query($con, $query);
     if (!$result) {
         $errors[] = "SQL Error: " . mysqli_error($con);
+    }
+
+    // Debugging: Check if rows are returned
+    $numRows = mysqli_num_rows($result);
+    if ($numRows === 0) {
+        $errors[] = "No data returned for the query.";
     }
 
     // Convert errors to JavaScript console output
     if (!empty($errors)) {
         echo "<script>console.error('PHP Errors: " . json_encode($errors) . "');</script>";
     }
+    
 ?>
 
 <!doctype html>
