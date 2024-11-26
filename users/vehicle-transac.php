@@ -319,13 +319,14 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         </header>
 
 
+        <div class="right-panel">
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
-            <div class="row m-0">
+            <div class="row m-1">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Vehicle Logs</h1>
+                            <h3>Owned Vehicles</h3>
                         </div>
                     </div>
                 </div>
