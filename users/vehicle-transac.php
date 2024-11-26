@@ -303,7 +303,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             </div>
         </header>
 
-<center>
+
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
@@ -329,6 +329,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         </div>
     </div>
 
+    <center>
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
