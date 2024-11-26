@@ -16,32 +16,25 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     // Collect errors in an array to display in the console
     $errors = [];
 
+    // SQL Query for fetching data from tblqr_login only
     $query = "
-    SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-           tblqr_login.VehiclePlateNumber
-    FROM tblqr_login
-    INNER JOIN tblvehicle 
-    ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-    AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-    WHERE tblqr_login.ContactNumber = '$ownerno'
-";
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblqr_login.VehiclePlateNumber
+        FROM tblqr_login
+        INNER JOIN tblvehicle 
+        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+        WHERE tblqr_login.ContactNumber = '$ownerno'
+    ";
 
-$result = mysqli_query($con, $query);
+    $result = mysqli_query($con, $query);
     if (!$result) {
         $errors[] = "SQL Error: " . mysqli_error($con);
-    }
-
-    // Debugging: Check if rows are returned
-    $numRows = mysqli_num_rows($result);
-    if ($numRows === 0) {
-        $errors[] = "No data returned for the query.";
     }
 
     // Convert errors to JavaScript console output
     if (!empty($errors)) {
         echo "<script>console.error('PHP Errors: " . json_encode($errors) . "');</script>";
     }
-    
 ?>
 
 <!doctype html>
@@ -268,27 +261,27 @@ $result = mysqli_query($con, $query);
             </tr>
         </thead>
         <tbody>
-            <?php
-            $cnt = 1;
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <tr>
-                        <td><?= $cnt; ?></td>
-                        <td><?= $row['ParkingSlot']; ?></td>
-                        <td><?= $row['OwnerName']; ?></td>
-                        <td><?= $row['VehiclePlateNumber']; ?></td>
-                        <td>
-                            <a href="view--transac.php?viewid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" class="btn btn-primary">View</a>
-                            <a href="print.php?vid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" target="_blank" class="btn btn-warning">Print</a>
-                        </td>
-                    </tr>
-                <?php
-                    $cnt++;
-                }
-            } else {
-                echo "<tr><td colspan='5'>No records found.</td></tr>";
-            }
-            ?>
+        <?php
+                                        $cnt = 1;
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                                <tr>
+                                                    <td><?= $cnt; ?></td>
+                                                    <td><?= $row['ParkingSlot']; ?></td>
+                                                    <td><?= $row['OwnerName']; ?></td>
+                                                    <td><?= $row['VehiclePlateNumber']; ?></td>
+                                                    <td>
+                                                        <a href="view--transac.php?viewid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" class="btn btn-primary">View</a>
+                                                        <a href="print.php?vid=<?= $row['qrLoginID']; ?>&source=<?= $row['Source']; ?>" target="_blank" class="btn btn-warning">Print</a>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $cnt++;
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='5'>No records found.</td></tr>";
+                                        }
+                                        ?>
             </tbody>
         </table>
 
