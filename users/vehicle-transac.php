@@ -16,7 +16,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
 
     $ownerno = $_SESSION['vpmsumn'];
 
-    // SQL query (only from tblqr_login)
+    // SQL query (using UNION to get results from both tblqr_login and tblmanual_login)
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
@@ -24,7 +24,17 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
         INNER JOIN tblvehicle 
         ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
         AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = '$ownerno'
+        WHERE tblqr_login.ContactNumber = '88888888888'
+
+        UNION
+
+        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
+        FROM tblmanual_login
+        INNER JOIN tblvehicle 
+        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
+        WHERE tblmanual_login.OwnerContactNumber = '88888888888'
     ";
 
     // Debugging: Log query using json_encode to safely escape
