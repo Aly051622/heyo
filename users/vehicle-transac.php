@@ -357,7 +357,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>S.NO</th>
+                                        <th>No.</th>
                                         <th>Parking Slot</th>
                                         <!--<th>Owner Name</th> -->
                                         <th>Vehicle Plate Number</th>
