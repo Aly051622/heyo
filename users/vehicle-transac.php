@@ -286,11 +286,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             ?>
             </tbody>
         </table>
-        <div class="alert alert-info mt-3">
-            <strong>Debug Info:</strong><br>
-            Total Rows: <?php echo $result->num_rows; ?><br>
-            Owner Number: <?php echo htmlspecialchars($ownerno); ?>
-        </div>
+
                     </div>
                 </div>
             </div>
