@@ -229,7 +229,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         }
     </style>
 </head>
-<body>
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -307,7 +306,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
-            <div class="row m-0">
+            <div class="row m-1">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
@@ -333,7 +332,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="content">
         <div class="animated fadeIn">
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">View Vehicle Parking Details</strong>
@@ -381,7 +380,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <div class="clearfix"></div>
 
 </div><!-- /#right-panel -->
-
 <!-- Right Panel -->
 
 <!-- Scripts -->
