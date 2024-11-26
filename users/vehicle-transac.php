@@ -14,6 +14,9 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
         die();
     }
 
+    // Debug: Log owner number
+    echo "<script>console.log('Session Owner Number: " . htmlspecialchars($ownerno) . "');</script>";
+
     // SQL query
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
@@ -34,6 +37,9 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
         AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
         WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
+
+    // Debug: Log query
+    echo "<script>console.log('SQL Query: " . htmlspecialchars($query) . "');</script>";
 
     $result = mysqli_query($con, $query);
 
@@ -276,31 +282,32 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php
-                                        echo "<div class='breadcrumbs'>";
-                                        echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
-                                        echo "</div>";
-                                        $cnt = 1;
-                                        if ($result && mysqli_num_rows($result) > 0) {
-                                            while ($row = mysqli_fetch_array($result)) { ?>
-                                                <tr>
-                                                    <td><?php echo $cnt; ?></td>
-                                                    <td><?php echo $row['ParkingSlot']; ?></td>
-                                                    <td><?php echo $row['OwnerName']; ?></td>
-                                                    <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                                                    <td>
-                                                        <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a>
-                                                        <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                                $cnt++;
+                                        <?php
+                                            echo "<div class='breadcrumbs'>";
+                                            echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
+                                            echo "</div>";
+                                            $cnt = 1;
+                                            if ($result && mysqli_num_rows($result) > 0) {
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    echo "<script>console.log('Row Data: " . json_encode($row) . "');</script>"; ?>
+                                                    <tr>
+                                                        <td><?php echo $cnt; ?></td>
+                                                        <td><?php echo $row['ParkingSlot']; ?></td>
+                                                        <td><?php echo $row['OwnerName']; ?></td>
+                                                        <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                                                        <td>
+                                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a>
+                                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                    $cnt++;
+                                                }
+                                            } else {
+                                                echo "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
                                             }
-                                        } else {
-                                            echo "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
-                                        }
                                         ?>
-            </tbody>
+                                    </tbody>
         </table>
 
                     </div>
