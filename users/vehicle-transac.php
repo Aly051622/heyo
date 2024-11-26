@@ -45,6 +45,54 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         echo "<script>console.warn('No records found for contact number: $ownerno');</script>";
     }
     
+    if (!isset($_SESSION['vpmsuid'])) {
+        echo '<p>Debug: User ID not found in session.</p>';
+        exit;
+    }
+    
+    $userId = $_SESSION['vpmsuid'];
+    
+    // Fetch the user's profile picture
+    $query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
+    $result = mysqli_query($con, $query);
+    
+    $profilePicturePath = '../admin/images/images.png'; // Default avatar
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $profilePicture = $row['profile_pictures'] ?? '';
+        $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture)) 
+            ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8') 
+            : $profilePicturePath;
+    }
+    
+    $uploadSuccess = false;
+    
+    // Handle image upload
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
+        if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
+            $uploadsDir = '../uploads/profile_uploads/';
+            $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
+            $targetFilePath = $uploadsDir . $fileName;
+    
+            // Create the uploads directory if it doesn't exist
+            if (!is_dir($uploadsDir)) {
+                mkdir($uploadsDir, 0777, true);
+            }
+    
+            // Move the uploaded file and update the database
+            if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
+                $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
+                if (mysqli_query($con, $updateQuery)) {
+                    $uploadSuccess = true;
+                    $profilePicturePath = $targetFilePath; // Update the displayed picture path
+                } else {
+                    error_log("Database update failed: " . mysqli_error($con));
+                }
+            } else {
+                error_log("File upload failed for: " . $targetFilePath);
+            }
+        }
+    }
 ?>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!doctype html>
