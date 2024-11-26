@@ -1,15 +1,22 @@
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL); // Display all errors for debugging
+ini_set('display_errors', 1);
+
 include('../DBconnection/dbconnection.php');
 
-if (strlen($_SESSION['vpmsuid'] == 0)) {
+if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     header('location:logout.php');
 } else {
-    // Get the current user's contact number from the session
+    // Debugging: Check session variable
+    if (!isset($_SESSION['vpmsumn']) || empty($_SESSION['vpmsumn'])) {
+        echo "<script>console.error('Session variable \"vpmsumn\" is not set or empty.');</script>";
+        die("Session error. Please log in again.");
+    }
+
     $ownerno = $_SESSION['vpmsumn'];
 
-    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
+    // SQL query
     $query = "
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
@@ -22,7 +29,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         UNION
         
         SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber
+               tblmanual_login.RegistrationNumber AS VehiclePlateNumber
         FROM tblmanual_login
         INNER JOIN tblvehicle 
         ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
@@ -30,13 +37,28 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
 
+    // Debugging: Log query
+    echo "<script>console.log('SQL Query: " . htmlspecialchars($query) . "');</script>";
+
     $result = mysqli_query($con, $query);
 
     if (!$result) {
-        // Log SQL error message if the query fails
-        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
+        // Log SQL error
+        $error_message = mysqli_real_escape_string($con, mysqli_error($con));
+        echo "<script>console.error('SQL Error: $error_message');</script>";
+        die("SQL query failed. Please check the logs.");
     }
+
+    // Debugging: Check if query returned rows
+    $row_count = mysqli_num_rows($result);
+    echo "<script>console.log('Number of rows returned: $row_count');</script>";
+
+    if ($row_count == 0) {
+        echo "<script>console.warn('No matching records found for contact number: $ownerno');</script>";
+    }
+}
 ?>
+
 
 
 <!doctype html>
@@ -193,4 +215,4 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
 </body>
 </html>
-<?php } ?>
+<?php  ?>
