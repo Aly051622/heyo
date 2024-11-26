@@ -228,7 +228,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             width: 27px;
         }
         .content{
-            position: absolute;
+            margin-left: -10em;
         }
     </style>
 </head>
