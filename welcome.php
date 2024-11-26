@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="container">
           
         <a class="navbar-item" href="users/service.php" id="surbtn"><i class=""></i></a>
-          <a class="navbar-brand" id="title" style="display: hidden; margin-bottom:5px;">CTU Danao Parking System</a>
+          <a class="navbar-brand" id="title" style="display: hidden; margin-bottom:5px; margin-left: 3.5em;">CTU Danao Parking System</a>
             <div class="navbar-menu">   
                <!-- <a class="navbar-item" href="admin/index.php">Admin</a>-->
                 <a class="navbar-item" href="users/login.php">Client</a>
