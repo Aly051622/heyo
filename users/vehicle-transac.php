@@ -43,7 +43,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     // Debugging: Log the number of rows returned
     $row_count = mysqli_num_rows($result);
     echo "<script>console.log('Number of rows returned: $row_count');</script>";
-}
+
 ?>
 <!doctype html>
 
@@ -200,4 +200,4 @@ body{
 
 </body>
 </html>
-<?php  ?>
+<?php } ?>
