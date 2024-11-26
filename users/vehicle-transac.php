@@ -321,44 +321,66 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 <?php include_once('includes/sidebar.php'); ?>
 
 <!--HEADER -->
-<div id="right-panel" class="right-panel">
-<header id="header" class="header">
-            <div class="top-left">
-            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
-                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
+<div class="navbar-header">
+        <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
+        <a href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top: -30px; margin-left: 20px;"></a>
+        <div class="user-area dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="profile-container">
+                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
+                    <span class="active-indicator"></span>
+                </div>
+            </a>
+            <div class="user-menu dropdown-menu">
+                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
+                <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="profilePic" accept="image/*" required>
+                        <button type="submit" name="upload" class="btn btn-primary mt-2">Upload</button>
+                    </form>
                 </div>
             </div>
-            <div class="top-right">
-                <div class="header-menu">
-                    <div class="header-left">
-                        
-                        <div class="form-inline">
-                           
-                        </div>
+        </div>
+    </div>
 
-                     
-                    </div>
-
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu" id="hh">
-                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
-                            </i></a>
-
-                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
-                            </i></a>
-
-                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
-                            </i></a>
-                        </div>
-                    </div>
-
+    <!-- Success Modal -->
+    <?php if ($uploadSuccess): ?>
+    <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadSuccessModalLabel"><i class="bi bi-check-circle-fill"></i> Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Profile picture uploaded successfully.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="location.reload();">OK</button>
                 </div>
             </div>
-        </header>
+        </div>
+    </div>
+    <script>
+        var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
+        successModal.show();
+    </script>
+    <?php endif; ?>
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
