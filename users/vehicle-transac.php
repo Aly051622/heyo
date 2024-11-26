@@ -1,8 +1,6 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 error_reporting(0);
-date_default_timezone_set('Asia/Manila');
 include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
@@ -64,138 +62,26 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <link rel="stylesheet" href="../admin/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-    <style>
-      html, body {
-            font-family: 'Poppins', sans-serif;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            
-            background: whitesmoke;
-        }
+<style>
+    #printbtn:hover,
+#viewbtn:hover {
+    background: orange;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+body{
+    height: 100vh;
+    background: whitesmoke;
+    overflow: auto;
+}
 
-        body {
-            background: whitesmoke;
-            font-family: 'Poppins', sans-serif;
-            transition: all 0.3s ease;
-        }
+#printbtn {
+    background: yellowgreen;
+    color: white;
+}
 
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 7px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: 5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
-
-        /* Card and button styles */
-        .card,
-        .card-header {
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-        }
-
-        #printbtn:hover,
-        #viewbtn:hover, .download-icon:hover {
-            background-color: darkblue;
-            border: solid blue;
-        }
-
-        #printbtn, #viewbtn, .download-icon {
-            border-radius: 9px;
-            background-color: rgb(53, 97, 255);
-            color: white;
-            border: solid;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-
-        .download-icon {
-            margin-top: 5px;
-            display: inline-block;
-            padding: 6px 7px;
-            text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-        }
-
-        .download-icon:hover {
-            color: white;
-        }
-        .text-right{
-            color: gray;
-        }
-
-        /* Table responsive adjustments for mobile */
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Improve table styling for mobile */
-        .table-responsive table {
-            width: 100%;
-            table-layout: auto;
-            word-wrap: break-word;
-        }
-
-        .table-responsive th, .table-responsive td {
-            white-space: nowrap;
-            padding: 8px;
-            text-align: left;
-        }
-
-        @media (max-width: 480px) {
-            .table-responsive th, .table-responsive td {
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 10px;
-            }
-            .table-responsive tr {
-                display: block;
-                margin-bottom: 15px;
-                border: 1px solid #ddd;
-            }
-            .table-responsive td::before {
-                content: attr(data-label);
-                font-weight: bold;
-                display: block;
-                margin-bottom: 5px;
-            }
-        }
-        .clearfix{
-            background: whitesmoke; 
-        }
-    </style>
+</style>
 </head>
 <body>
     <!-- Left Panel -->
@@ -208,14 +94,13 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
      <?php include_once('includes/header.php');?>
 
-     <div class="right-panel">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h3>Vehicle Logs</h3>
+                                <h1>Vehicle Logs</h1>
                             </div>
                         </div>
                     </div>
@@ -224,8 +109,8 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle</a></li>
-                                    <li class="active">View Vehicle details</li>
+                                    <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                                    <li class="active">View Vehicle Parking Details</li>
                                 </ol>
                             </div>
                         </div>
@@ -248,7 +133,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         <div class="card-body">
                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
                         <table class="table">
-                        <thead>
+                                <thead>
                                     <tr>
                                         <th>S.NO</th>
                                         <th>Parking Slot</th>
