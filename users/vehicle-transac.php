@@ -10,7 +10,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 } else {
     // Get the current user's contact number from the session
     $ownerno = $_SESSION['vpmsumn'];
-    
+
 
     // Debug: Check the session variable value
     echo "<script>console.log('Session Contact Number: $ownerno');</script>";
@@ -51,22 +51,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         exit;
     }
     
-   
-    
-    // Fetch the user's profile picture
-    $query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
-    $result = mysqli_query($con, $query);
-    
-    $profilePicturePath = '../admin/images/images.png'; // Default avatar
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $profilePicture = $row['profile_pictures'] ?? '';
-        $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture)) 
-            ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8') 
-            : $profilePicturePath;
-    }
-    
-    $uploadSuccess = false;
     
     // Handle image upload
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
