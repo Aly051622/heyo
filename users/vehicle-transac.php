@@ -83,8 +83,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <?php include_once('includes/sidebar.php'); ?>
 
     <!-- Left Panel -->
-    <!-- Right Panel -->
-    <?php include_once('includes/header.php'); ?>
+
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
