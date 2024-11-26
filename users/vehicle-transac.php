@@ -232,6 +232,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             height: 35px;
             width: 27px;
         }
+        .content{
+            align-items: center;
+        }
     </style>
 </head>
 <aside id="left-panel" class="left-panel">
