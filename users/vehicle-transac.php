@@ -77,21 +77,14 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
         html, body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-    background: whitesmoke;
-}
-.container {
-    padding: 15px;
-}
-.card {
-    margin: 10px 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
-}
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            
+            background: whitesmoke;
+        }
 
         body {
             background: whitesmoke;
@@ -101,9 +94,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
         /* Breadcrumb styles */
         .breadcrumbs {
-            width: 90%;
+            width: 30%;
             background-color: #ffffff;
-            padding: 10px;
+            padding: 3px;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
             margin-bottom: 10px;
