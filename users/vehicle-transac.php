@@ -126,87 +126,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
             background: yellowgreen;
             color: white;
         }
-        .navbar-header{
-        position: fixed;
-        width: 100vh;
-        z-index: 1;
-    }
-    #printbtn:hover,
-    #viewbtn:hover {
-        background: orange;
-    }
-
-    .navbar-header {
+        #header{
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
             rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
             rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        padding: 13px;
-        width: 100vw;
-        border-bottom: groove;
     }
-
-    .profile-container {
-        position: relative;
-        display: inline-block;
+    .nav-link:hover{
+        background-image: transparent;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+       
     }
-
-    .user-avatar {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-        text-shadow: 0px 4px 4px gray;
-        border: groove 2px white;
-        z-index: 5;
-    }
-
-    .user-avatar:hover {
-        border: groove 1px orange;
-    }
-
-    .active-indicator {
-        position: absolute;
-        bottom: -3px;
-        right: -3px;
-        background-color: #28a745;
-        color: white;
-        border: 2px solid white;
-        font-size: 11px;
-        border-radius: 50%;
-        width: 12px;
-        height: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-    }
-
-    .user-area {
-        display: flex;
-        align-items: center;
-    }
-    .dropdown {
-        margin-top: -85px;
-        margin-right: 40px;
-    }
- 
-    .dropdown-toggle {
-        margin-top: 50px;
-    }
-
-    .user-area img {
-        margin-right: -2px;
-        margin-top: 10px;
-    }
-
-    .menuToggle {
-        margin-top: 5px;
-        margin-left: 12em;
-    }
-    #hh {
-        margin-top: 30px;
-    }
+    #hh{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        font: 20px;
+        font-weight: bold;
+           }
+        .user-avatar{
+            height: 35px;
+            width: 27px;
+        }
     </style>
 </head>
 <body>
@@ -214,7 +154,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     <?php include_once('includes/sidebar.php'); ?>
 
     <!-- Left Panel -->
+    <div id="right-panel" class="right-panel">
+<header id="header" class="header">
+            <div class="top-left">
+            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
+                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        
+                        <div class="form-inline">
+                           
+                        </div>
 
+                     
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu" id="hh">
+                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
+                            </i></a>
+
+                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
+                            </i></a>
+
+                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
+                            </i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
