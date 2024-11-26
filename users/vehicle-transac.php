@@ -1,25 +1,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
-error_reporting(0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 date_default_timezone_set('Asia/Manila');
 include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
-    // Get the current user's contact number from the session
+    // Ensure session variable exists
+    if (!isset($_SESSION['vpmsumn'])) {
+        die("Error: Owner number not set in session.");
+    }
+
     $ownerno = $_SESSION['vpmsumn'];
 
-    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
-    $query = "
+    // Parameterized query for security
+    $stmt = $con->prepare("
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
                tblqr_login.VehiclePlateNumber
         FROM tblqr_login
         INNER JOIN tblvehicle 
         ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
         AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblqr_login.ContactNumber = '$ownerno'
+        WHERE tblqr_login.ContactNumber = ?
         
         UNION
         
@@ -29,14 +34,16 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         INNER JOIN tblvehicle 
         ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
         AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
-        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
-    ";
-
-    $result = mysqli_query($con, $query);
+        WHERE tblmanual_login.OwnerContactNumber = ?
+    ");
+    $stmt->bind_param("ss", $ownerno, $ownerno);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if (!$result) {
-        // Log SQL error message if the query fails
-        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
+        // Log error if the query fails
+        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . $stmt->error, 3, "error_log.txt");
+        die("Error fetching data.");
     }
 ?>
 <!doctype html>
@@ -258,26 +265,28 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    $cnt = 1;
-                                    while ($row = mysqli_fetch_array($result)) { ?>
-                                        <tr>
-                                            <td><?php echo $cnt; ?></td>
-                                            <td><?php echo $row['ParkingSlot']; ?></td>
-                                            <td><?php echo $row['OwnerName']; ?></td>
-                                            <td><?php echo $row['VehiclePlateNumber']; ?></td>
-                                            <td>
-                                            <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a> 
-
-                                            <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-
-
-                                            </td>
-                                        </tr>
-                                    <?php
-                                        $cnt++;
-                                    } ?>
-                                </tbody>
+                                        <?php
+                                        $cnt = 1;
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) { ?>
+                                                <tr>
+                                                    <td><?php echo $cnt; ?></td>
+                                                    <td><?php echo $row['ParkingSlot']; ?></td>
+                                                    <td><?php echo $row['OwnerName']; ?></td>
+                                                    <td><?php echo $row['VehiclePlateNumber']; ?></td>
+                                                    <td>
+                                                        <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" class="btn btn-primary" id="viewbtn">🖹 View</a>
+                                                        <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                $cnt++;
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='5'>No vehicle logs found.</td></tr>";
+                                        }
+                                        ?>
+                                    </tbody>
                             </table>
                     </div>
                 </div>
