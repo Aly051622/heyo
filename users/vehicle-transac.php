@@ -77,14 +77,21 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
         html, body {
-            font-family: 'Poppins', sans-serif;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            
-            background: whitesmoke;
-        }
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    background: whitesmoke;
+}
+.container {
+    padding: 15px;
+}
+.card {
+    margin: 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+}
 
         body {
             background: whitesmoke;
@@ -94,14 +101,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
         /* Breadcrumb styles */
         .breadcrumbs {
-            width: 30%;
+            width: 90%;
             background-color: #ffffff;
-            padding: 3px;
+            padding: 10px;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: 1em;
+            margin: auto;
         }
 
         .breadcrumbs .breadcrumb {
@@ -309,7 +314,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             </div>
         </header>
 
-
+    <div class ="container">
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
@@ -320,6 +325,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
@@ -345,6 +351,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                         </div>
                         <div class="card-body">
                             <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a>
+                            <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -378,7 +385,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                             </table>
                         </div>
                     </div>
+                    </div>
                 </div>
+            </div>
             </div>
         </div><!-- .animated -->
     </div><!-- .content -->
