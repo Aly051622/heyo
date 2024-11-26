@@ -266,7 +266,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                <thead>
                                     <tr>
                                         <th>S.NO</th>
-                                        <th>Parking Slot</th>
+                                        <th>Passdrking Slot</th>
                                         <th>Owner Name</th>
                                         <th>Vehicle Plate Number</th>
                                         <th>Action</th>
