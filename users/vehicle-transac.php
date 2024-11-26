@@ -101,8 +101,44 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     </style>
 </head>
 <body>
-    <!-- Left Panel -->
-    <?php include_once('includes/sidebar.php'); ?>
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="dashboard.php">
+                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="view-vehicle.php">
+                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    </a>
+                </li>
+                <li>
+                    <a href="vehicle-transac.php">
+                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
+                    </a>
+                </li>
+                <li>
+                    <a href="add-vehicle.php">
+                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                    </a>
+                </li>
+                <li>
+                    <a href="maps.php">
+                        <i class="menu-icon fa fa-map-location-dot"></i>Maps
+                    </a>
+                </li>
+                <li>
+                    <a href="service.php">
+                        <i class="menu-icon fa fa-headset"></i>Chat Concern
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
 
     <!-- Left Panel -->
     <div id="right-panel" class="right-panel">
