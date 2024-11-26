@@ -205,6 +205,11 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         .clearfix{
             background: whitesmoke; 
         }
+        .text-center {
+    color: red;
+    font-weight: bold;
+}
+
     </style>
 </head>
 <body>
