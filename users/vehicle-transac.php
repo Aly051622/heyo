@@ -57,8 +57,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../admin/assets/css/style.css">
+
     <style>
         #printbtn:hover,
         #viewbtn:hover {
@@ -79,12 +78,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     </style>
 </head>
 <body>
-    <!-- Left Panel -->
-    <?php include_once('includes/sidebar.php'); ?>
 
-    <!-- Left Panel -->
-    <!-- Right Panel -->
-    <?php include_once('includes/header.php'); ?>
 
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
@@ -166,11 +160,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
 
 </body>
 </html>
