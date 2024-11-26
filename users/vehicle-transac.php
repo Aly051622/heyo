@@ -281,12 +281,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                 <td><?php echo $row['ParkingSlot']; ?></td>
                 <td><?php echo $row['OwnerName']; ?></td>
                 <td><?php echo $row['VehiclePlateNumber']; ?></td>
-               <!-- <td>
-                    <a href="view--transac.php?viewid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
-                       class="btn btn-primary" id="viewbtn">🖹 View</a>
-                    <a href="print.php?vid=<?php echo $row['qrLoginID']; ?>&source=<?php echo $row['Source']; ?>" 
-                       style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
-                </td> -->
+   
             </tr>
         <?php
             $cnt++;
