@@ -265,7 +265,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                                                 <tr>
                                                     <td><?= $cnt; ?></td>
                                                     <td><?= $row['ParkingSlot']; ?></td>
-                                                    <td><?= $row['OwnerName']; ?></td>
+                                                    <td><?= $row['Name']; ?></td>
                                                     <td><?= $row['VehiclePlateNumber']; ?></td>
                                                     <td>
                                                         <a href="view--transac.php?viewid=<?= $row['ID']; ?>" class="btn btn-primary">View</a>
