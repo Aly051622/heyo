@@ -18,7 +18,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     // SQL Query for fetching data only from tblqr_login
     $query = "
-        SELECT ID, ParkingSlot, VehiclePlateNumber
+        SELECT ID, ParkingSlot, Name, VehiclePlateNumber
         FROM tblqr_login
         WHERE ContactNumber = '$ownerno'
     ";
