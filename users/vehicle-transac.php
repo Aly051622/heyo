@@ -180,45 +180,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             margin-top: 10px;
         }
 
-        .table th, .table td {
-    padding: 12px;
-    text-align: left;
-}
-
-@media (max-width: 768px) {
-    .card {
-        margin: 10px;
-        padding: 10px;
-    }
-
-    .breadcrumbs {
-        width: 95%;
-    }
-
-    .table th, .table td {
-        display: block;
-        text-align: right;
-        padding: 10px;
-        border: none;
-    }
-
-    .table td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        float: left;
-        text-transform: capitalize;
-    }
-
-    .table th {
-        display: none;
-    }
-
-    .btn {
-        width: 100%;
-        margin: 5px 0;
-    }
-}
-
         /* Improve table styling for mobile */
         .table-responsive table {
             width: 100%;
@@ -277,9 +238,8 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         font-weight: bold;
            }
         .user-avatar{
-            width: 35px;
-    height: auto;
-    border-radius: 50%;
+            height: 35px;
+            width: 27px;
         }
 
     </style>
