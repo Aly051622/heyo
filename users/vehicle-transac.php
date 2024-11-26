@@ -259,6 +259,10 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         </thead>
         <tbody>
         <?php
+
+echo "<div class='breadcrumbs'>";
+echo "<h4>Owner Number: " . htmlspecialchars($ownerno) . "</h4>";
+echo "</div>";
                                         $cnt = 1;
                                         if (mysqli_num_rows($result) > 0) {
                                             while ($row = mysqli_fetch_assoc($result)) { ?>
