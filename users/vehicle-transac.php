@@ -38,7 +38,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     ";
 
     // Debugging: Log query using json_encode to safely escape
-    echo "<script>console.log('SQL Query: " . json_encode($query) . "');</script>";
+    echo "<script>console.log(" . json_encode("SQL Query: " . $query) . ");</script>";
 
     $result = mysqli_query($con, $query);
 
@@ -58,6 +58,7 @@ if (strlen($_SESSION['vpmsuid'] ?? '') == 0) {
     }
 }
 ?>
+
 
 
 
