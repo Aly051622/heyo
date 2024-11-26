@@ -6,20 +6,24 @@ ini_set('display_errors', 1);
 date_default_timezone_set('Asia/Manila');
 include('../DBconnection/dbconnection.php');
 
+// Check session and redirect if necessary
 if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
-    // Ensure session variable exists
-    if (!isset($_SESSION['vpmsumn'])) {
+    // Validate and retrieve owner number
+    if (!isset($_SESSION['vpmsumn']) || empty($_SESSION['vpmsumn'])) {
         die("Error: Owner number not set in session.");
     }
 
     $ownerno = $_SESSION['vpmsumn'];
 
-    // Parameterized query for security
+    // Test session value
+    // Uncomment for debugging: echo "Owner Number: $ownerno";
+
+    // Parameterized query
     $stmt = $con->prepare("
         SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblqr_login.VehiclePlateNumber
+               tblqr_login.VehiclePlateNumber, tblqr_login.TIMEIN
         FROM tblqr_login
         INNER JOIN tblvehicle 
         ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
@@ -29,7 +33,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         UNION
         
         SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
-               tblmanual_login.RegistrationNumber
+               tblmanual_login.RegistrationNumber AS VehiclePlateNumber, tblmanual_login.TimeIn
         FROM tblmanual_login
         INNER JOIN tblvehicle 
         ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
@@ -41,11 +45,10 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     $result = $stmt->get_result();
 
     if (!$result) {
-        // Log error if the query fails
-        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . $stmt->error, 3, "error_log.txt");
+        error_log("SQL Error in TRANSAC.PHP: " . $stmt->error, 3, "error_log.txt");
         die("Error fetching data.");
     }
-?>
+    ?>
 <!doctype html>
 
 <html class="no-js" lang="">
