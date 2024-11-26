@@ -335,13 +335,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         <div class="progress-bar">
             <div class="slide-number">1 / 5</div> 
             
-<?php include_once('includes/slide.html'); ?>
         </div>
     </div>
-
+ 
     <div class="clearfix"></div>
 <!-- Footer -->
-
 <?php include_once('includes/footer.php'); ?>
         </div>
 <!-- /#right-panel -->

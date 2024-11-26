@@ -103,6 +103,9 @@
 <body>
   <footer class="footer">
     <div class="footer-icons">
+    <button class="icon-btn" id="slide-btn">
+      <i class="bi bi-gear-fill"></i> User Manual
+      </button>
       <button class="icon-btn" id="privacy-btn">
       <i class="bi bi-house-gear-fill"></i> Privacy Policy
       </button>
@@ -115,6 +118,13 @@
     </div>
   </footer>
 
+    <!-- Slide Modal -->
+  <div id="slide-modal" class="modal">
+    <div class="modal-content">
+      <iframe src="slide.php" class="iframe-content"></iframe>
+      <button class="close-btn" id="close-slide">&times;</button>
+    </div>
+  </div>
   <!-- Privacy Policy Modal -->
   <div id="privacy-modal" class="modal">
     <div class="modal-content">
@@ -135,18 +145,29 @@
     // Select Elements
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
+const slideModal = document.getElementById('slide-modal');
+const slideBtn = document.getElementById('slide-btn');
 const privacyBtn = document.getElementById('privacy-btn');
 const termsBtn = document.getElementById('terms-btn');
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
+const closeSlide = document.getElementById('close-slide');
 
 // Event Listeners
+slideBtn.addEventListener('click', () => {
+  slideModal.style.display = 'flex';
+});
+
 privacyBtn.addEventListener('click', () => {
   privacyModal.style.display = 'flex';
 });
 
 termsBtn.addEventListener('click', () => {
   termsModal.style.display = 'flex';
+});
+
+closeSlide.addEventListener('click', () => {
+  slideModal.style.display = 'none';
 });
 
 closePrivacy.addEventListener('click', () => {
@@ -162,9 +183,10 @@ window.addEventListener('click', (e) => {
     privacyModal.style.display = 'none';
   } else if (e.target === termsModal) {
     termsModal.style.display = 'none';
+  } else if (e.target === slideModal) {
+    slideModal.style.display = 'none';
   }
 });
-
   </script>
 </body>
 </html>
