@@ -126,11 +126,6 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                     </a>
                 </li>
                 <li>
-                    <a href="maps.php">
-                        <i class="menu-icon fa fa-map-location-dot"></i>Maps
-                    </a>
-                </li>
-                <li>
                     <a href="service.php">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern
                     </a>
@@ -139,6 +134,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         </div>
     </nav>
 </aside>
+
 
     <!-- Left Panel -->
     <div id="right-panel" class="right-panel">
