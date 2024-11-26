@@ -1,36 +1,40 @@
 <?php
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-date_default_timezone_set('Asia/Manila');
+error_reporting(0);
 include('../DBconnection/dbconnection.php');
 
 if (strlen($_SESSION['vpmsuid'] == 0)) {
     header('location:logout.php');
 } else {
-    $ownerno = $_SESSION['vpmsumn'] ?? '';
-    if (!$ownerno) {
-        die("Error: Owner number not found in session.");
-    }
+    // Get the current user's contact number from the session
+    $ownerno = $_SESSION['vpmsumn'];
 
-    // Collect errors in an array to display in the console
-    $errors = [];
-
-    // SQL Query for fetching data only from tblqr_login
+    // Fetch data from both tblqr_login and tblmanual_login, joining with tblvehicle for details
     $query = "
-        SELECT ID, ParkingSlot, Name, VehiclePlateNumber
+        SELECT 'QR' AS Source, tblqr_login.ID AS qrLoginID, tblqr_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblqr_login.VehiclePlateNumber
         FROM tblqr_login
-        WHERE ContactNumber = '$ownerno'
+        INNER JOIN tblvehicle 
+        ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+        AND tblqr_login.ContactNumber = tblvehicle.OwnerContactNumber
+        WHERE tblqr_login.ContactNumber = '$ownerno'
+        
+        UNION
+        
+        SELECT 'Manual' AS Source, tblmanual_login.id AS LoginID, tblmanual_login.ParkingSlot, tblvehicle.OwnerName, 
+               tblmanual_login.RegistrationNumber
+        FROM tblmanual_login
+        INNER JOIN tblvehicle 
+        ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+        AND tblmanual_login.OwnerContactNumber = tblvehicle.OwnerContactNumber
+        WHERE tblmanual_login.OwnerContactNumber = '$ownerno'
     ";
 
     $result = mysqli_query($con, $query);
-    if (!$result) {
-        $errors[] = "SQL Error: " . mysqli_error($con);
-    }
 
-    // Convert errors to JavaScript console output
-    if (!empty($errors)) {
-        echo "<script>console.error('PHP Errors: " . json_encode($errors) . "');</script>";
+    if (!$result) {
+        // Log SQL error message if the query fails
+        error_log("SQL Error in VEHICLE-TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
     }
 ?>
 
