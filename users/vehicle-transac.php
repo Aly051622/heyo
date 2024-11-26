@@ -233,27 +233,87 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     font-weight: bold;
 }
 
-        #header{
+.navbar-header{
+        position: fixed;
+        width: 100vh;
+        z-index: 1;
+    }
+    #printbtn:hover,
+    #viewbtn:hover {
+        background: orange;
+    }
+
+    .navbar-header {
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
             rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
             rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 13px;
+        width: 100vw;
+        border-bottom: groove;
     }
-    .nav-link:hover{
-        background-image: transparent;
-        border-radius: 4px;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-       
+
+    .profile-container {
+        position: relative;
+        display: inline-block;
     }
-    #hh{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-        font: 20px;
-        font-weight: bold;
-           }
-        .user-avatar{
-            height: 35px;
-            width: 27px;
-        }
+
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        text-shadow: 0px 4px 4px gray;
+        border: groove 2px white;
+        z-index: 5;
+    }
+
+    .user-avatar:hover {
+        border: groove 1px orange;
+    }
+
+    .active-indicator {
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+        background-color: #28a745;
+        color: white;
+        border: 2px solid white;
+        font-size: 11px;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .user-area {
+        display: flex;
+        align-items: center;
+    }
+    .dropdown {
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+ 
+    .dropdown-toggle {
+        margin-top: 50px;
+    }
+
+    .user-area img {
+        margin-right: -2px;
+        margin-top: 10px;
+    }
+
+    .menuToggle {
+        margin-top: 5px;
+        margin-left: 12em;
+    }
+    #hh {
+        margin-top: 30px;
+    }
     </style>
 </head>
 <body>
