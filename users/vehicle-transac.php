@@ -150,8 +150,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     </style>
 </head>
 <body>
-    <!-- Left Panel -->
-    <?php include_once('includes/sidebar.php'); ?>
 
     <!-- Left Panel -->
     <div id="right-panel" class="right-panel">
