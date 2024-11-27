@@ -769,7 +769,11 @@ if (mysqli_query($con, $query)) {
             text-decoration: none;
             cursor: pointer;
         }
-
+        body{
+            height: 100vh;
+            background: whitesmoke;
+            overflow: auto;
+        }
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
