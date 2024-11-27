@@ -59,11 +59,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>CTU- Danao Parking System - View Vehicle Parking Details</title>
-    <link rel="apple-touch-icon" href="images/ctu.png">
-    <link rel="shortcut icon" href="images/ctu.png">
-
-    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+    <link rel="apple-touch-icon" href="images/aa.png">
+<link rel="shortcut icon" href="images/aa.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
