@@ -57,95 +57,88 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 ?>
 
 <style>
- /* Navbar Header */
-.navbar-header {
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    padding: 13px;
-    width: 100%;
-    border-bottom: groove;
-}
+    .navbar-header{
+        position: fixed;
+        width: 100vh;
+        z-index: 1;
+    }
+    #printbtn:hover,
+    #viewbtn:hover {
+        background: orange;
+    }
 
-/* Buttons hover */
-#printbtn:hover,
-#viewbtn:hover {
-    background: orange;
-}
+    .navbar-header {
+        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 13px;
+        width: 100vw;
+        border-bottom: groove;
+    }
 
-/* Profile container */
-.profile-container {
-    position: relative;
-    display: inline-block;
-}
+    .profile-container {
+        position: relative;
+        display: inline-block;
+    }
 
-/* User avatar */
-.user-avatar {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    text-shadow: 0px 4px 4px gray;
-    border: groove 2px white;
-    z-index: 5;
-}
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        text-shadow: 0px 4px 4px gray;
+        border: groove 2px white;
+        z-index: 5;
+    }
 
-.user-avatar:hover {
-    border: groove 1px orange;
-}
+    .user-avatar:hover {
+        border: groove 1px orange;
+    }
 
-/* Active indicator */
-.active-indicator {
-    position: absolute;
-    bottom: -3px;
-    right: -3px;
-    background-color: #28a745;
-    color: white;
-    border: 2px solid white;
-    font-size: 11px;
-    border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
+    .active-indicator {
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+        background-color: #28a745;
+        color: white;
+        border: 2px solid white;
+        font-size: 11px;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
 
-/* User area */
-.user-area {
-    display: flex;
-    align-items: center;
-}
+    .user-area {
+        display: flex;
+        align-items: center;
+    }
+    .dropdown {
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+ 
+    .dropdown-toggle {
+        margin-top: 50px;
+    }
 
-.dropdown {
-    margin-top: -85px;
-    margin-right: 40px;
-}
+    .user-area img {
+        margin-right: -2px;
+        margin-top: 10px;
+    }
 
-/* Dropdown button */
-.dropdown-toggle {
-    margin-top: 50px;
-}
+    .menuToggle {
+        margin-top: 5px;
+        margin-left: 12em;
+    }
+    #hh {
+        margin-top: 30px;
+    }
 
-/* User area image styling */
-.user-area img {
-    margin-right: -2px;
-    margin-top: 10px;
-}
-
-/* Menu toggle */
-.menuToggle {
-    margin-top: 5px;
-    margin-left: 12em;
-}
-
-/* Margin adjustment */
-#hh {
-    margin-top: 30px;
-}
 
 /* Responsive Styles with Media Queries */
 
