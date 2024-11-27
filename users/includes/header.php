@@ -54,6 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         }
     }
 }
+header("Content-Security-Policy: default-src 'self'; img-src 'self' https://example.com");
+
 ?>
 
 <style>
@@ -142,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+    <header>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/responsive.css">
@@ -207,6 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
             </div>
         </div>
     </div>
+    </header>
     <script>
         var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
         successModal.show();
