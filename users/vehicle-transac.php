@@ -88,11 +88,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         body {
             font-family: 'Poppins', sans-serif;
             height: 100vh;
-            margin: 0;
             padding: 0;
             overflow: auto;
             background: whitesmoke;
             transition: all 0.3s ease;
+            
+            margin-top:50px;
         }
         /* Card and button styles */
         .card,
