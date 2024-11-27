@@ -116,21 +116,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-    
+        margin-top: -70px;
+        margin-right: 10px;
         position:fixed;
     }
-    .dropdown {
-        margin-top: -90px;
-        margin-right: 10px;
-    }
- 
     .dropdown-toggle {
         margin-top: 50px;
     }
 
-    .user-area img {
+    .user-avatar img {
         margin-right: -2px;
-        margin-top: 30px;
+        margin-top: 50px;
+        z-index: 1;
     }
 
     .menuToggle {
@@ -270,7 +267,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle" style="width: 120px; height: auto; margin-top: -10px; margin-left: 20px; cursor: pointer; text-shadow: 0px 4px 4px gray"></a>
-        <div class="user-area dropdown">
+        <div class="user-area ">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">
                     <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
@@ -278,10 +275,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
                 </div>
             </a>
             <div class="user-menu dropdown-menu">
+                <div class="hh">
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
                 <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
+                </div>
             </div>
         </div>
     </div>
