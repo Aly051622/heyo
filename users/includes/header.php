@@ -90,7 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         text-shadow: 0px 4px 4px gray;
         border: groove 2px white;
         z-index: 5;
-        position:fixed;
     }
 
     .user-avatar:hover {
@@ -117,10 +116,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
+    
+        position:fixed;
     }
     .dropdown {
-        margin-top: -60px;
-        margin-right: 40px;
+        margin-top: -90px;
+        margin-right: 10px;
     }
  
     .dropdown-toggle {
