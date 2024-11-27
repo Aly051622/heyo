@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         align-items: center;
     }
     .dropdown {
-        margin-top: -35px;
+        margin-top: -60px;
         margin-right: 40px;
     }
  
