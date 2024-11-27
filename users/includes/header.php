@@ -127,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area img {
         margin-right: -2px;
         margin-top: 50px;
+        z-index: 1;
     }
 
     .menuToggle {
