@@ -85,13 +85,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
-        body {
+        html,body {
             font-family: 'Poppins', sans-serif;
             height: 100vh;
             padding: 0;
             overflow: auto;
             background: whitesmoke;
-            transition: all 0.3s ease;
             
             margin-top:50px;
         }
@@ -182,6 +181,201 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 }
 
      
+
+
+/* Responsive Styles for header na ni */
+
+@media (max-width: 1024px) {
+    .navbar-header {
+        padding: 5px;
+    }
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .active-indicator {
+        bottom: 3em;
+        right: 10px;
+    }
+    .user-area img {
+        margin-right: 12px;
+        margin-top: -4em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 780px) {
+    .navbar-header {
+        padding: 4px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .active-indicator {
+        bottom: 2.8em;
+        right: 8px;
+    }
+    .user-area img {
+        margin-right: 10px;
+        margin-top: -3em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -2em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+@media (max-width: 480px){
+    body{
+        overflow-x: auto;
+    }
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+        height: 68px;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -5em;
+    } 
+    
+    .dropdown{
+        margin-top: -82px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 300px) {
+    .navbar-header {
+        padding: 2px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 20px;
+        width: 20px;
+        margin-top: 10px;
+    }
+    .active-indicator {
+        bottom: 2em;
+        right: 4px;
+        font-size: 9px;
+    }
+    .user-area img {
+        margin-right: 6px;
+        margin-top: -1.5em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+
+
+/*sidebarrrrr */
+
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px;
+    }
+
+    #sidebar.collapsed {
+        left: 0;
+    }
+
+    #toggleSidebar {
+        display: block;
+    }
+
+    #right-panel {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        width: 200px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
 
     </style>
     </head>

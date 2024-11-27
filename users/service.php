@@ -357,7 +357,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     body {
         font-size: 12px;
         height: 100vh;
-        overflow-x: auto;
+        overflow: auto;
     }
     .card, .card-header, .card-body, .tables{
         width: 330px;
