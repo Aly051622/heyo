@@ -900,176 +900,181 @@ function toggleOtherModelInput() {
     }
 }
 </script>
-    
 <?php include_once('includes/header.php'); ?>
 <?php include_once('includes/sidebar.php'); ?>
 
 <div class="right-panel">
-<div class="breadcrumbs">
-    <div class="breadcrumbs-inner">
-        <div class="row m-0">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h3>Add Vehicle</h3>
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h3>Add Vehicle</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li><a href="dashboard.php">Dashboard</a></li>
-                            <li><a href="add-vehicle.php">Vehicle</a></li>
-                            <li class="active">Add Vehicle</li>
-                        </ol>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="add-vehicle.php">Vehicle</a></li>
+                                <li class="active">Add Vehicle</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="content">
-    <div class="animated fadeIn">
-        <div class="row">
-
-
-            <!-- Plate Number Exists Modal -->
-<div class="modal fade" id="plateExistsModal" tabindex="-1" role="dialog" aria-labelledby="plateExistsModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="plateExistsModalLabel">Duplicate Plate Number</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        The plate number you entered already exists in the database. Please check your entry.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-      
-
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>Add </strong> Vehicle
-                    </div>
-                    <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            
-
-                        <!-- Vehicle Type Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="catename" class="form-control-label">Vehicle Type</label></div>
-    <div class="col-12 col-md-9">
-        <select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
-            <option value="0">Select Vehicle Type</option>
-            <?php 
-            $query = mysqli_query($con, "SELECT * FROM tblcategory");
-            while ($row = mysqli_fetch_array($query)) { ?>    
-                <option value="<?php echo $row['VehicleCat']; ?>"><?php echo $row['VehicleCat']; ?></option>
-            <?php } ?> 
-        </select>
-    </div>
-</div>
-
-<!-- Make/Brand Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="vehcomp" class="form-control-label">Make/Brand</label></div>
-    <div class="col-12 col-md-9">
-        <select id="vehcomp" name="vehcomp" class="form-control" onchange="updateModelOptions()">
-            <option value="">Select Make/Brand</option>
-        </select>
-        <input type="text" id="otherMake" name="otherMake" class="form-control mt-2" placeholder="Specify Make/Brand" style="display:none;">
-    </div>
-</div>
-
-<!-- Model Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="model" class="form-control-label">Model</label></div>
-    <div class="col-12 col-md-9">
-        <select id="model" name="model" class="form-control">
-            <option value="">Select Model</option>
-        </select>
-        <input type="text" id="otherModel" name="otherModel" class="form-control mt-2" placeholder="Specify Model" style="display:none;">
-    </div>
-</div>
-
-
-        <!-- Color Input Field with Autocomplete -->
-<div class="row form-group">
-<div class="col col-md-3">
-<label for="color" class="form-control-label">Color</label>
-</div>
-<div class="col-12 col-md-9">
-<!-- Color input field with datalist for autocomplete -->
-<input type="text" id="color" name="color" class="form-control" placeholder="Vehicle Color" required="true" list="colorList">
-<!-- Datalist with predefined colors -->
-<datalist id="colorList">
-<option value="Black"></option>
-<option value="White"></option>
-<option value="Blue"></option>
-<option value="Red"></option>
-<option value="Green"></option>
-<option value="Yellow"></option>
-<option value="Gray"></option>
-<option value="Silver"></option>
-<option value="Orange"></option>
-<option value="Pink"></option>
-<option value="Purple"></option>
-<option value="Brown"></option>
-</datalist>
-</div>
-</div>
-
-                         
-                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Plate Number </label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Plate Number" required="true"></div>
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+                <!-- Plate Number Exists Modal -->
+                <div class="modal fade" id="plateExistsModal" tabindex="-1" role="dialog" aria-labelledby="plateExistsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="plateExistsModalLabel">Duplicate Plate Number</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control" placeholder="Owner Name" required="true"></div>
+                            <div class="modal-body">
+                                The plate number you entered already exists in the database. Please check your entry.
                             </div>
-                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Contact Number</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="11" pattern="[0-9]+"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
-                           
-                            
-                            
-                           <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
-                        </form>
-                            </div>
-                            
                         </div>
-                        
                     </div>
-
-                    <div class="col-lg-6">
-                        
-                  
                 </div>
 
-           
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Add </strong> Vehicle
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <!-- Vehicle Type Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="catename" class="form-control-label">Vehicle Type</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
+                                            <option value="0">Select Vehicle Type</option>
+                                            <?php 
+                                                $query = mysqli_query($con, "SELECT * FROM tblcategory");
+                                                while ($row = mysqli_fetch_array($query)) { ?>    
+                                                    <option value="<?php echo $row['VehicleCat']; ?>"><?php echo $row['VehicleCat']; ?></option>
+                                            <?php } ?> 
+                                        </select>
+                                    </div>
+                                </div>
 
+                                <!-- Make/Brand Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="vehcomp" class="form-control-label">Make/Brand</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select id="vehcomp" name="vehcomp" class="form-control" onchange="updateModelOptions()">
+                                            <option value="">Select Make/Brand</option>
+                                        </select>
+                                        <input type="text" id="otherMake" name="otherMake" class="form-control mt-2" placeholder="Specify Make/Brand" style="display:none;">
+                                    </div>
+                                </div>
+
+                                <!-- Model Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="model" class="form-control-label">Model</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select id="model" name="model" class="form-control">
+                                            <option value="">Select Model</option>
+                                        </select>
+                                        <input type="text" id="otherModel" name="otherModel" class="form-control mt-2" placeholder="Specify Model" style="display:none;">
+                                    </div>
+                                </div>
+
+                                <!-- Color Input Field with Autocomplete -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="color" class="form-control-label">Color</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <!-- Color input field with datalist for autocomplete -->
+                                        <input type="text" id="color" name="color" class="form-control" placeholder="Vehicle Color" required="true" list="colorList">
+                                        <!-- Datalist with predefined colors -->
+                                        <datalist id="colorList">
+                                            <option value="Black"></option>
+                                            <option value="White"></option>
+                                            <option value="Blue"></option>
+                                            <option value="Red"></option>
+                                            <option value="Green"></option>
+                                            <option value="Yellow"></option>
+                                            <option value="Gray"></option>
+                                            <option value="Silver"></option>
+                                            <option value="Orange"></option>
+                                            <option value="Pink"></option>
+                                            <option value="Purple"></option>
+                                            <option value="Brown"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+
+                                <!-- Plate Number -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Plate Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Plate Number" required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Owner Name -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Owner Name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ownername" name="ownername" class="form-control" placeholder="Owner Name" required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Owner Contact Number -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Owner Contact Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="11" pattern="[0-9]+">
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <p style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary btn-sm" name="submit">
+                                        <i class="fa fa-plus"> Add</i>
+                                    </button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6"></div>
             </div>
-
-
         </div><!-- .animated -->
     </div><!-- .content -->
 
     <div class="clearfix"></div>
-
-
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
