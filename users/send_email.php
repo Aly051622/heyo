@@ -46,4 +46,3 @@ try {
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo]);
 }
-

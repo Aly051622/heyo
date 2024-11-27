@@ -716,7 +716,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.netz/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -724,18 +724,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 
 <script>
-    // Disable right-click
-  document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-  });
-  
-  // Disable F12 and other developer tools keys
-  document.addEventListener('keydown', function(event) {
-    if (event.keyCode == 123 || // F12
-        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
-        event.preventDefault();
-    }
-  });
     const chatBox = document.getElementById('chat-box');
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');

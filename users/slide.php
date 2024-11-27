@@ -164,18 +164,6 @@
 </div>
 
 <script>
-    // Disable right-click
-  document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-  });
-  
-  // Disable F12 and other developer tools keys
-  document.addEventListener('keydown', function(event) {
-    if (event.keyCode == 123 || // F12
-        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
-        event.preventDefault();
-    }
-  });
     (function() {
         // Automatic Sliding Functionality for Sections 1-3
         const sliders = document.querySelectorAll('#slide-section .slider');

@@ -60,18 +60,6 @@ if (strlen($_SESSION['vpmsuid']) == 0) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 <script type="text/javascript">
-    // Disable right-click
-  document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-  });
-  
-  // Disable F12 and other developer tools keys
-  document.addEventListener('keydown', function(event) {
-    if (event.keyCode == 123 || // F12
-        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
-        event.preventDefault();
-    }
-  });
 function checkpass()
 {
 if(document.changepassword.newpassword.value!=document.changepassword.confirmpassword.value)
