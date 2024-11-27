@@ -85,22 +85,16 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
-        html, body {
+        body {
             font-family: 'Poppins', sans-serif;
             height: 100vh;
             margin: 0;
             padding: 0;
             overflow-x: auto;
             background: whitesmoke;
-        }
-
-        body {
-            background: whitesmoke;
-            font-family: 'Poppins', sans-serif;
+            
             transition: all 0.3s ease;
         }
-
-        
 
         /* Card and button styles */
         .card,
