@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-        margin-top: -80px;
+        margin-top: -70px;
         margin-right: 10px;
         position:fixed;
     }
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         margin-top: 50px;
     }
 
-    .user-area img {
+    img {
         margin-right: -2px;
         margin-top: 50px;
         z-index: 1;
