@@ -354,6 +354,18 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 <script>
     
+// Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
 const carousel = document.querySelector('.carousel');
 const carouselContainer = document.querySelector('.carousel-container');
 const images = document.querySelectorAll('.carousel img');
