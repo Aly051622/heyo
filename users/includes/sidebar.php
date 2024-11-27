@@ -83,7 +83,7 @@
                 </li>
                 <li>
                     <a href="vehicle-transac.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-truck-side"></i>Vehicle Logs
+                        <i class="menu-icon fa fa-truck"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
