@@ -237,34 +237,43 @@ return true;
         </div>
     </div>
     <script>
-      // Password toggle function
-function togglePasswordVisibility(toggleIconId, passwordFieldId) {
-    const toggleIcon = document.getElementById(toggleIconId);
-    const passwordField = document.getElementById(passwordFieldId);
+        // Unified toggle password visibility function
+        function togglePasswordVisibility(toggleIconId, passwordFieldId) {
+            const toggleIcon = document.getElementById(toggleIconId);
+            const passwordField = document.getElementById(passwordFieldId);
 
-    if (passwordField.type === 'password') {
-        passwordField.type = 'text'; // Show password
-        toggleIcon.classList.remove('fa-eye-slash');
-        toggleIcon.classList.add('fa-eye');
-        toggleIcon.style.color = 'red'; // Change color to red
-    } else {
-        passwordField.type = 'password'; // Hide password
-        toggleIcon.classList.remove('fa-eye');
-        toggleIcon.classList.add('fa-eye-slash');
-        toggleIcon.style.color = 'black'; // Change color back to black
-    }
-}
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text'; // Show password
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+                toggleIcon.style.color = 'red'; // Change color to red
+            } else {
+                passwordField.type = 'password'; // Hide password
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+                toggleIcon.style.color = 'black'; // Change color back to black
+            }
+        }
 
-// Event listeners for both password fields
-document.getElementById('togglePassword').addEventListener('click', function () {
-    togglePasswordVisibility('togglePassword', 'newpassword');
-});
+        // Attach event listeners for toggle icons
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            togglePasswordVisibility('togglePassword', 'newpassword');
+        });
 
-document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
-    togglePasswordVisibility('toggleRepeatPassword', 'confirmpassword');
-});
+        document.getElementById('toggleRepeatPassword').addEventListener('click', function () {
+            togglePasswordVisibility('toggleRepeatPassword', 'confirmpassword');
+        });
 
-</script>
+        // Password confirmation check
+        function checkpass() {
+            if (document.changepassword.newpassword.value !== document.changepassword.confirmpassword.value) {
+                alert('New Password and Confirm Password fields do not match');
+                document.changepassword.confirmpassword.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
