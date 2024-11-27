@@ -270,11 +270,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         <div class="user-area ">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">
-                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
+                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar" style="z-index: 1;">
                     <span class="active-indicator"></span>
                 </div>
             </a>
-            <div class="user-menu dropdown-menu">
+            <div class="user-menu dropdown-menu" style="margin-top: 50px;">
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
