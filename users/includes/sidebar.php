@@ -7,8 +7,8 @@
 </head> 
 <style>
     .left-panel{
-        margin-top: 8px;
-        z-index: -1;
+        margin-top: 2px;
+        text-decoration: none;
     }
     #sidebar {
     width: 200px;
