@@ -21,12 +21,26 @@ if (strlen($_SESSION['vpmsuid']==0)) {
       <title>CTU- Danao Parking System - View Vehicle Parking Details</title>
       <link rel="apple-touch-icon" href="images/ctul.png">
       <link rel="shortcut icon" href="images/ctul.png">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-      <link rel="stylesheet" href="../admin/assets/css/style.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700,800" rel="stylesheet" type="text/css">
+      
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
       
   
       <style>
@@ -46,37 +60,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               transition: all 0.3s ease;
           }
   
-          /* Breadcrumb styles */
-          .breadcrumbs {
-              width: 30%;
-              background-color: #ffffff;
-              padding: 1px;
-              border-radius: 5px;
-              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-              margin-bottom: 10px;
-              margin-top: 10px;
-              margin-left: -0.5em;
-          }
-  
-          .breadcrumbs .breadcrumb {
-              background: none;
-              margin: 0;
-              padding: 0;
-          }
-  
-          .breadcrumb a {
-              color: gray;
-              text-decoration: none;
-          }
-  
-          .breadcrumb a:hover {
-              color: black;
-          }
-  
-          .breadcrumb .active {
-              color: #6c757d;
-          }
-  
+         
           /* Card and button styles */
           .card,
           .card-header {

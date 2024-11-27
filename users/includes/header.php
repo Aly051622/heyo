@@ -83,13 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 
     .user-avatar {
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
         border: groove 2px white;
         z-index: 5;
+        position:fixed;
     }
 
     .user-avatar:hover {
@@ -118,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         align-items: center;
     }
     .dropdown {
-        margin-top: -85px;
+        margin-top: -60px;
         margin-right: 40px;
     }
  
@@ -128,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .user-area img {
         margin-right: -2px;
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
     .menuToggle {
@@ -138,6 +139,119 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     #hh {
         margin-top: 30px;
     }
+
+
+/* Responsive Styles with Media Queries */
+
+/* 1600px and larger screens */
+@media (min-width: 1600px) {
+    .navbar-header {
+        padding: 20px;
+    }
+    .user-avatar {
+        height: 50px;
+        width: 50px;
+    }
+    .user-area {
+        margin-right: 20px;
+    }
+}
+
+/* 1200px to 1599px screens */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .navbar-header {
+        padding: 18px;
+    }
+    .user-avatar {
+        height: 45px;
+        width: 45px;
+    }
+    .user-area {
+        margin-right: 15px;
+    }
+}
+
+/* 992px to 1199px screens */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .navbar-header {
+        padding: 15px;
+    }
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+    }
+    .menuToggle {
+        margin-left: 10em;
+    }
+    .dropdown {
+        margin-top: -70px;
+        margin-right: 25px;
+    }
+}
+
+/* 768px to 991px screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-header {
+        padding: 12px;
+    }
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .user-area {
+        margin-right: 10px;
+    }
+    .menuToggle {
+        margin-left: 8em;
+    }
+    .dropdown {
+        margin-top: -60px;
+        margin-right: 15px;
+    }
+}
+
+/* 576px to 767px screens */
+@media (min-width: 576px) and (max-width: 767px) {
+    .navbar-header {
+        padding: 10px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        margin-right: 5px;
+    }
+    .menuToggle {
+        margin-left: 5em;
+    }
+    .dropdown {
+        margin-top: -50px;
+        margin-right: 10px;
+    }
+}
+
+/* 480px to 575px screens */
+@media (max-width: 575px) {
+    .navbar-header {
+        padding: 8px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dropdown {
+        margin-top: -40px;
+        margin-right: 5px;
+    }
+    .menuToggle {
+        margin-left: 3em;
+    }
+}
 </style>
 
 <!DOCTYPE html>
@@ -153,8 +267,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 </style>
 <body>
     <div class="navbar-header">
-        <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
-        <a href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top: -30px; margin-left: 20px;"></a>
+       <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
+        <a ><img src="images/clientlogo.png"  id="menuToggle" style="width: 120px; height: auto; margin-top: -10px; margin-left: 20px; cursor: pointer; text-shadow: 0px 4px 4px gray"></a>
         <div class="user-area dropdown">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">

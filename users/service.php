@@ -233,36 +233,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             height: 30%;
             width: 90%;
         }
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 7px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: -0.5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
     
       /*sa tanan na ni*/
 #right-panel {
@@ -387,7 +357,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     body {
         font-size: 12px;
         height: 100vh;
-        overflow-x: auto;
+        overflow: auto;
     }
     .card, .card-header, .card-body, .tables{
         width: 330px;
