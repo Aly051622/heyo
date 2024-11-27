@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+    <link rel="apple-touch-icon" href="../images/a.png">
+    <link rel="shortcut icon" href="../images/a.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
      
     <!-- jQuery, Bootstrap JS -->
@@ -539,6 +539,18 @@
 }
         </style>
     <script>
+        // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
     // Function to change the vehicle image and move it forward after a specified time
 function moveForward() {
     const vehicleImage = document.getElementById('vehicleImage');
@@ -588,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="navbar-item" href="users/service.php" id="surbtn"><i class=""></i></a>
           <a class="navbar-brand" id="title" style="display: hidden; margin-bottom:5px;  margin-left: 3.5em;">CTU Danao Parking System</a>
             <div class="navbar-menu">   
-               <!-- <a class="navbar-item" href="admin/index.php">Admin</a>-->
+                <!--<a class="navbar-item" href="admin/index.php">Admin</a>-->
                 <a class="navbar-item" href="users/login.php">Client</a>
                 <a class="navbar-item" href="index.html">About</a>
                 <a class="navbar-item btn btn-primary" href="#" id="surbtn" data-toggle="modal" data-target="#commentModal">

@@ -94,7 +94,7 @@ return true;
     <!-- Right Panel -->
 
    <?php include_once('includes/header.php');?>
-<div class="right-panel">
+<div class="right-panel mb-5">
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -124,16 +124,6 @@ return true;
             <div class="animated fadeIn">
 
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            
-                           
-                        </div> <!-- .card -->
-
-                    </div><!--/.col-->
-
-              
 
                     <div class="col-lg-12">
                         <div class="card">

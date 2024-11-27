@@ -92,9 +92,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <style>
         body{
-            overflow-x: auto;
+            background: whitesmoke;
+            height: 100vh;
+            overflow: hidden;
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             z-index: -1;
+            margin-top:50px;
         }
         /* Carousel container and styling */
         .carousel-container {
@@ -353,6 +356,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <script src="../admin/assets/js/main.js"></script>
 
 <script>
+    
 const carousel = document.querySelector('.carousel');
 const carouselContainer = document.querySelector('.carousel-container');
 const images = document.querySelectorAll('.carousel img');

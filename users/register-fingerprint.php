@@ -38,4 +38,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Register Fingerprint</button>
     </form>
 </body>
-</html>
+</html>zz

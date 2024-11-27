@@ -191,6 +191,202 @@ body{
         margin-left: 18px;
         width: 500px;
     }
+    
+
+
+/* Responsive Styles for header na ni */
+
+@media (max-width: 1024px) {
+    .navbar-header {
+        padding: 5px;
+    }
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .active-indicator {
+        bottom: 3em;
+        right: 10px;
+    }
+    .user-area img {
+        margin-right: 12px;
+        margin-top: -4em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 780px) {
+    .navbar-header {
+        padding: 4px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .active-indicator {
+        bottom: 2.8em;
+        right: 8px;
+    }
+    .user-area img {
+        margin-right: 10px;
+        margin-top: -3em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -2em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+@media (max-width: 480px){
+    body{
+        overflow-x: auto;
+    }
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
+        height: 68px;
+    }
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
+    }
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -5em;
+    } 
+    
+    .dropdown{
+        margin-top: -82px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 300px) {
+    .navbar-header {
+        padding: 2px;
+        width: 100vw;
+    }
+    .user-avatar {
+        height: 20px;
+        width: 20px;
+        margin-top: 10px;
+    }
+    .active-indicator {
+        bottom: 2em;
+        right: 4px;
+        font-size: 9px;
+    }
+    .user-area img {
+        margin-right: 6px;
+        margin-top: -1.5em;
+    }
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
+    }
+    
+    .dropdown-toggle{
+        margin-top: 30px;
+    }
+}
+
+
+
+/*sidebarrrrr */
+
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px;
+    }
+
+    #sidebar.collapsed {
+        left: 0;
+    }
+
+    #toggleSidebar {
+        display: block;
+    }
+
+    #right-panel {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        width: 200px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
 </style>
 
 </head>
@@ -208,7 +404,7 @@ body{
     <button id="notification-close">&times;</button>
 </div>
 
-        <div class="breadcrumbs">
+        <div class="breadcrumbs mb-5">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
@@ -273,6 +469,7 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Registration</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="regdate" value="<?php  echo $row['RegDate'];?>"  readonly="true" class="form-control"></div>
                                     </div>
+                                    <!--
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
@@ -285,7 +482,7 @@ while ($row = mysqli_fetch_array($ret)) {
 <div class="row form-group">
     <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
     <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
-</form>
+</form>-->
 
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -514,12 +711,23 @@ while ($row = mysqli_fetch_array($ret)) {
             checkNotification();
         });
 
-        // Prevent form submission if files are missing
-        form.addEventListener('submit', function (event) {
-            if (!checkNotification()) {
-                event.preventDefault();
-            }
-        });
+        const form = document.querySelector('#myForm');
+
+function checkNotification() {
+    const fileInput = document.querySelector('#fileInput');
+    if (!fileInput.files.length) {
+        alert("Please upload a file before submitting!");
+        return false;
+    }
+    return true;
+}
+
+form.addEventListener('submit', function (event) {
+    if (!checkNotification()) {
+        event.preventDefault();
+    }
+});
+
 
         // Close button event listener for the notification
         document.getElementById('notification-close').addEventListener('click', function () {
@@ -532,7 +740,7 @@ while ($row = mysqli_fetch_array($ret)) {
 </script>
 
          <?php } ?>
-                <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" > ⏏ Update</button></p>
+                <!--<p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>-->
                 </form>
             </div>    
                 </div>

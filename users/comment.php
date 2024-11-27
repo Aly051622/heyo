@@ -68,6 +68,7 @@ include('../DBconnection/dbconnection.php');
         </div>
 
     <script>
+        
     // Load existing comments on page load
     document.addEventListener('DOMContentLoaded', function () {
         fetch('../admin/get_comments.php')

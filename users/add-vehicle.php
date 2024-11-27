@@ -702,7 +702,8 @@ if (mysqli_query($con, $query)) {
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-    
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>CTU- Danao Parking Management System- Add Vehicle</title>
    
 
@@ -718,8 +719,16 @@ if (mysqli_query($con, $query)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -760,12 +769,202 @@ if (mysqli_query($con, $query)) {
             text-decoration: none;
             cursor: pointer;
         }
-
+        body{
+            height: 100vh;
+            background: whitesmoke;
+            overflow: auto;
+        }
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    
-    <script>
+    </head>
+<body>
+
+<?php include_once('includes/header.php'); ?>
+<?php include_once('includes/sidebar.php'); ?>
+
+<div class="right-panel">
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                        <div class="page-title">
+                            <h3>Add Vehicle</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right">
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="add-vehicle.php">Vehicle</a></li>
+                                <li class="active">Add Vehicle</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+                <!-- Plate Number Exists Modal -->
+                <div class="modal fade" id="plateExistsModal" tabindex="-1" role="dialog" aria-labelledby="plateExistsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="plateExistsModalLabel">Duplicate Plate Number</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                The plate number you entered already exists in the database. Please check your entry.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Add </strong> Vehicle
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <!-- Vehicle Type Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="catename" class="form-control-label">Vehicle Type</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
+                                            <option value="0">Select Vehicle Type</option>
+                                            <?php 
+                                                $query = mysqli_query($con, "SELECT * FROM tblcategory");
+                                                while ($row = mysqli_fetch_array($query)) { ?>    
+                                                    <option value="<?php echo $row['VehicleCat']; ?>"><?php echo $row['VehicleCat']; ?></option>
+                                            <?php } ?> 
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Make/Brand Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="vehcomp" class="form-control-label">Make/Brand</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select id="vehcomp" name="vehcomp" class="form-control" onchange="updateModelOptions()">
+                                            <option value="">Select Make/Brand</option>
+                                        </select>
+                                        <input type="text" id="otherMake" name="otherMake" class="form-control mt-2" placeholder="Specify Make/Brand" style="display:none;">
+                                    </div>
+                                </div>
+
+                                <!-- Model Dropdown -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="model" class="form-control-label">Model</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select id="model" name="model" class="form-control">
+                                            <option value="">Select Model</option>
+                                        </select>
+                                        <input type="text" id="otherModel" name="otherModel" class="form-control mt-2" placeholder="Specify Model" style="display:none;">
+                                    </div>
+                                </div>
+
+                                <!-- Color Input Field with Autocomplete -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="color" class="form-control-label">Color</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <!-- Color input field with datalist for autocomplete -->
+                                        <input type="text" id="color" name="color" class="form-control" placeholder="Vehicle Color" required="true" list="colorList">
+                                        <!-- Datalist with predefined colors -->
+                                        <datalist id="colorList">
+                                            <option value="Black"></option>
+                                            <option value="White"></option>
+                                            <option value="Blue"></option>
+                                            <option value="Red"></option>
+                                            <option value="Green"></option>
+                                            <option value="Yellow"></option>
+                                            <option value="Gray"></option>
+                                            <option value="Silver"></option>
+                                            <option value="Orange"></option>
+                                            <option value="Pink"></option>
+                                            <option value="Purple"></option>
+                                            <option value="Brown"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+
+                                <!-- Plate Number -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Plate Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Plate Number" required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Owner Name -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Owner Name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ownername" name="ownername" class="form-control" placeholder="Owner Name" required="true">
+                                    </div>
+                                </div>
+
+                                <!-- Owner Contact Number -->
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Owner Contact Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="11" pattern="[0-9]+">
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <p style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary btn-sm" name="submit">
+                                        <i class="fa fa-plus"> Add</i>
+                                    </button>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6"></div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+
+    <div class="clearfix"></div>
+</div><!-- /#right-panel -->
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="../admin/assets/js/main.js"></script>
+        
+<script>
 let modal;
 
 function showModal(message) {
@@ -890,199 +1089,7 @@ function toggleOtherModelInput() {
 }
 </script>
 
-</head>
-<body>
-   <?php include_once('includes/sidebar.php');?>
-    <!-- Right Panel -->
-
-   <?php include_once('includes/header.php');?>
-<div class="right-panel">
-<div class="breadcrumbs">
-    <div class="breadcrumbs-inner">
-        <div class="row m-0">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h3>Add Vehicle</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li><a href="dashboard.php">Dashboard</a></li>
-                            <li><a href="add-vehicle.php">Vehicle</a></li>
-                            <li class="active">Add Vehicle</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="content">
-    <div class="animated fadeIn">
-
-
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    
-                   
-                </div> <!-- .card -->
-
-            </div><!--/.col-->
-
-
-            <!-- Plate Number Exists Modal -->
-<div class="modal fade" id="plateExistsModal" tabindex="-1" role="dialog" aria-labelledby="plateExistsModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="plateExistsModalLabel">Duplicate Plate Number</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        The plate number you entered already exists in the database. Please check your entry.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-      
-
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>Add </strong> Vehicle
-                    </div>
-                    <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            
-
-                        <!-- Vehicle Type Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="catename" class="form-control-label">Vehicle Type</label></div>
-    <div class="col-12 col-md-9">
-        <select name="catename" id="catename" class="form-control" onchange="updateMakeBrandOptions()">
-            <option value="0">Select Vehicle Type</option>
-            <?php 
-            $query = mysqli_query($con, "SELECT * FROM tblcategory");
-            while ($row = mysqli_fetch_array($query)) { ?>    
-                <option value="<?php echo $row['VehicleCat']; ?>"><?php echo $row['VehicleCat']; ?></option>
-            <?php } ?> 
-        </select>
-    </div>
-</div>
-
-<!-- Make/Brand Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="vehcomp" class="form-control-label">Make/Brand</label></div>
-    <div class="col-12 col-md-9">
-        <select id="vehcomp" name="vehcomp" class="form-control" onchange="updateModelOptions()">
-            <option value="">Select Make/Brand</option>
-        </select>
-        <input type="text" id="otherMake" name="otherMake" class="form-control mt-2" placeholder="Specify Make/Brand" style="display:none;">
-    </div>
-</div>
-
-<!-- Model Dropdown -->
-<div class="row form-group">
-    <div class="col col-md-3"><label for="model" class="form-control-label">Model</label></div>
-    <div class="col-12 col-md-9">
-        <select id="model" name="model" class="form-control">
-            <option value="">Select Model</option>
-        </select>
-        <input type="text" id="otherModel" name="otherModel" class="form-control mt-2" placeholder="Specify Model" style="display:none;">
-    </div>
-</div>
-
-
-        <!-- Color Input Field with Autocomplete -->
-<div class="row form-group">
-<div class="col col-md-3">
-<label for="color" class="form-control-label">Color</label>
-</div>
-<div class="col-12 col-md-9">
-<!-- Color input field with datalist for autocomplete -->
-<input type="text" id="color" name="color" class="form-control" placeholder="Vehicle Color" required="true" list="colorList">
-<!-- Datalist with predefined colors -->
-<datalist id="colorList">
-<option value="Black"></option>
-<option value="White"></option>
-<option value="Blue"></option>
-<option value="Red"></option>
-<option value="Green"></option>
-<option value="Yellow"></option>
-<option value="Gray"></option>
-<option value="Silver"></option>
-<option value="Orange"></option>
-<option value="Pink"></option>
-<option value="Purple"></option>
-<option value="Brown"></option>
-</datalist>
-</div>
-</div>
-
-                         
-                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Plate Number </label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Plate Number" required="true"></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Name</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control" placeholder="Owner Name" required="true"></div>
-                            </div>
-                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Contact Number</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="11" pattern="[0-9]+"></div>
-                            </div>
-                           
-                            
-                            
-                           <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
-                        </form>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-
-                    <div class="col-lg-6">
-                        
-                  
-                </div>
-
-           
-
-            </div>
-
-
-        </div><!-- .animated -->
-    </div><!-- .content -->
-
-    <div class="clearfix"></div>
-
-
-</div><!-- /#right-panel -->
-
-<!-- Right Panel -->
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
-
-
 </body>
 </html>
+
 <?php }  ?>
