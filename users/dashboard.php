@@ -92,9 +92,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <style>
         body{
-            overflow-x: auto;
+            background: whitesmoke;
+            height: 100vh;
+            overflow: auto;
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             z-index: -1;
+            margin-top:50px;
         }
         /* Carousel container and styling */
         .carousel-container {
