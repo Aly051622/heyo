@@ -54,92 +54,199 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         }
     }
 }
-header("Content-Security-Policy: default-src 'self'; img-src 'self' https://example.com");
-
 ?>
 
 <style>
-    .navbar-header{
-        position: fixed;
-        width: 100vh;
-        z-index: 1;
-    }
-    #printbtn:hover,
-    #viewbtn:hover {
-        background: orange;
-    }
+ /* Default styles (for larger screens) */
+.navbar-header {
+    position: fixed;
+    width: 100vw; /* Change this to 100% to ensure it fits across all screens */
+    z-index: 1;
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding: 13px;
+    width: 100vw;
+    border-bottom: groove;
+}
 
+.profile-container {
+    position: relative;
+    display: inline-block;
+}
+
+.user-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    text-shadow: 0px 4px 4px gray;
+    border: groove 2px white;
+    z-index: 5;
+}
+
+.user-avatar:hover {
+    border: groove 1px orange;
+}
+
+.active-indicator {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    background-color: #28a745;
+    color: white;
+    border: 2px solid white;
+    font-size: 11px;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown {
+    margin-top: -85px;
+    margin-right: 40px;
+}
+
+.dropdown-toggle {
+    margin-top: 50px;
+}
+
+.user-area img {
+    margin-right: -2px;
+    margin-top: 10px;
+}
+
+.menuToggle {
+    margin-top: 5px;
+    margin-left: 12em;
+}
+
+#hh {
+    margin-top: 30px;
+}
+
+/* Responsive Styles with Media Queries */
+
+/* 1600px and larger screens */
+@media (min-width: 1600px) {
     .navbar-header {
-        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        padding: 13px;
-        width: 100vw;
-        border-bottom: groove;
+        padding: 20px;
     }
-
-    .profile-container {
-        position: relative;
-        display: inline-block;
+    .user-avatar {
+        height: 50px;
+        width: 50px;
     }
+    .user-area {
+        margin-right: 20px;
+    }
+}
 
+/* 1200px to 1599px screens */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .navbar-header {
+        padding: 18px;
+    }
+    .user-avatar {
+        height: 45px;
+        width: 45px;
+    }
+    .user-area {
+        margin-right: 15px;
+    }
+}
+
+/* 992px to 1199px screens */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .navbar-header {
+        padding: 15px;
+    }
     .user-avatar {
         height: 40px;
         width: 40px;
-        border-radius: 50%;
-        object-fit: cover;
-        text-shadow: 0px 4px 4px gray;
-        border: groove 2px white;
-        z-index: 5;
     }
-
-    .user-avatar:hover {
-        border: groove 1px orange;
-    }
-
-    .active-indicator {
-        position: absolute;
-        bottom: -3px;
-        right: -3px;
-        background-color: #28a745;
-        color: white;
-        border: 2px solid white;
-        font-size: 11px;
-        border-radius: 50%;
-        width: 12px;
-        height: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-    }
-
-    .user-area {
-        display: flex;
-        align-items: center;
+    .menuToggle {
+        margin-left: 10em;
     }
     .dropdown {
-        margin-top: -85px;
-        margin-right: 40px;
+        margin-top: -70px;
+        margin-right: 25px;
     }
- 
-    .dropdown-toggle {
-        margin-top: 50px;
-    }
+}
 
-    .user-area img {
-        margin-right: -2px;
-        margin-top: 10px;
+/* 768px to 991px screens */
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-header {
+        padding: 12px;
     }
-
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .user-area {
+        margin-right: 10px;
+    }
     .menuToggle {
-        margin-top: 5px;
-        margin-left: 12em;
+        margin-left: 8em;
     }
-    #hh {
-        margin-top: 30px;
+    .dropdown {
+        margin-top: -60px;
+        margin-right: 15px;
     }
+}
+
+/* 576px to 767px screens */
+@media (min-width: 576px) and (max-width: 767px) {
+    .navbar-header {
+        padding: 10px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        margin-right: 5px;
+    }
+    .menuToggle {
+        margin-left: 5em;
+    }
+    .dropdown {
+        margin-top: -50px;
+        margin-right: 10px;
+    }
+}
+
+/* 480px to 575px screens */
+@media (max-width: 575px) {
+    .navbar-header {
+        padding: 8px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dropdown {
+        margin-top: -40px;
+        margin-right: 5px;
+    }
+    .menuToggle {
+        margin-left: 3em;
+    }
+}
+
 </style>
 
 <!DOCTYPE html>
@@ -154,8 +261,6 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
     /* Add relevant styles here */
 </style>
 <body>
-    
-<header>
     <div class="navbar-header">
         <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
         <a href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top: -30px; margin-left: 20px;"></a>
@@ -193,7 +298,6 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
         </div>
     </div>
 
-    </header>
     <!-- Success Modal -->
     <?php if ($uploadSuccess): ?>
     <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
