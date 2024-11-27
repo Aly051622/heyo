@@ -7,8 +7,7 @@
 </head> 
 <style>
     .left-panel{
-        margin-top: 2px;
-        text-decoration: none;
+        margin-top: 15px;
     }
     #sidebar {
     width: 200px;
@@ -30,9 +29,7 @@
     border: none;
     left: 10px;
 }
-a{
-    text-decoration: none;
-}
+
 
 /*sidebarrrrr */
 
@@ -74,27 +71,27 @@ a{
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="dashboard.php">
+                    <a href="dashboard.php" style="text-decoration: none;">
                         <i class="menu-icon fa fa-laptop"></i>Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="view-vehicle.php">
+                    <a href="view-vehicle.php"  style="text-decoration: none;">
                     <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
-                    <a href="vehicle-transac.php">
+                    <a href="vehicle-transac.php"  style="text-decoration: none;">
                         <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
-                    <a href="add-vehicle.php">
+                    <a href="add-vehicle.php"  style="text-decoration: none;">
                         <i class="menu-icon fa fa-address-book"></i>Register Vehicle
                     </a>
                 </li>
                 <li>
-                    <a href="service.php">
+                    <a href="service.php"  style="text-decoration: none;">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern
                     </a>
                 </li>
