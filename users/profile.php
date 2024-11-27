@@ -514,12 +514,23 @@ while ($row = mysqli_fetch_array($ret)) {
             checkNotification();
         });
 
-        // Prevent form submission if files are missing
-        form.addEventListener('submit', function (event) {
-            if (!checkNotification()) {
-                event.preventDefault();
-            }
-        });
+        const form = document.querySelector('#myForm');
+
+function checkNotification() {
+    const fileInput = document.querySelector('#fileInput');
+    if (!fileInput.files.length) {
+        alert("Please upload a file before submitting!");
+        return false;
+    }
+    return true;
+}
+
+form.addEventListener('submit', function (event) {
+    if (!checkNotification()) {
+        event.preventDefault();
+    }
+});
+
 
         // Close button event listener for the notification
         document.getElementById('notification-close').addEventListener('click', function () {
@@ -532,7 +543,7 @@ while ($row = mysqli_fetch_array($ret)) {
 </script>
 
          <?php } ?>
-                <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" > ⏏ Update</button></p>
+                <p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>
                 </form>
             </div>    
                 </div>
