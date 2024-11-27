@@ -243,82 +243,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         }
 
     </style>
-</head>
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="dashboard.php">
-                        <i class="menu-icon fa fa-laptop"></i>Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="view-vehicle.php">
-                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
-                    </a>
-                </li>
-                <li>
-                    <a href="vehicle-transac.php">
-                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
-                    </a>
-                </li>
-                <li>
-                    <a href="add-vehicle.php">
-                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
-                    </a>
-                </li>
-                <li>
-                    <a href="service.php">
-                        <i class="menu-icon fa fa-headset"></i>Chat Concern
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</aside>
-
-<!--HEADER -->
-<div id="right-panel" class="right-panel">
-<header id="header" class="header">
-            <div class="top-left">
-            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
-                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
-                </div>
-            </div>
-            <div class="top-right">
-                <div class="header-menu">
-                    <div class="header-left">
-                        
-                        <div class="form-inline">
-                           
-                        </div>
-
-                     
-                    </div>
-
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu" id="hh">
-                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
-                            </i></a>
-
-                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
-                            </i></a>
-
-                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
-                            </i></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-
+    </head>
+    <body>
+        
+<?php include_once('includes/header.php'); ?>
+<?php include_once('includes/sidebar.php'); ?>
+        <div class="right-panel">
     <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
