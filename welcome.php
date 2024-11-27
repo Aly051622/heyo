@@ -2,8 +2,16 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="apple-touch-icon" href="images/welcome.png">
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="images/welcome.png">
+<!-- Favicon (32x32 pixels) -->
 <link rel="shortcut icon" href="images/welcome.png">
+<!-- Optional: Provide multiple sizes for better compatibility -->
+<link rel="icon" type="image/png" sizes="32x32" href="images/welcome.png">
+<link rel="icon" type="image/png" sizes="64x64" href="images/welcome.png">
+<link rel="icon" type="image/png" sizes="128x128" href="images/welcome.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
      
