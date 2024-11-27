@@ -767,6 +767,9 @@ if (mysqli_query($con, $query)) {
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     </head>
     <body>
+        
+<?php include_once('includes/header.php'); ?>
+<?php include_once('includes/sidebar.php'); ?>
     <script>
 let modal;
 
@@ -892,9 +895,8 @@ function toggleOtherModelInput() {
 }
 </script>
     
-<?php include_once('includes/header.php'); ?>
-<?php include_once('includes/sidebar.php'); ?>
-    <div class="right-panel">
+
+<div class="right-panel">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
