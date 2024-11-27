@@ -6,9 +6,6 @@
 <link rel="shortcut icon" href="images/aa.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
->>>>>>> 250cdce3e25f5950caf61baf06a0760b9cfdf509
-     
-    <!-- jQuery, Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     
