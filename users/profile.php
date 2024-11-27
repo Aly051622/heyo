@@ -469,6 +469,7 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Registration</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="regdate" value="<?php  echo $row['RegDate'];?>"  readonly="true" class="form-control"></div>
                                     </div>
+                                    <!--
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
@@ -481,7 +482,7 @@ while ($row = mysqli_fetch_array($ret)) {
 <div class="row form-group">
     <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
     <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
-</form>
+</form>-->
 
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
