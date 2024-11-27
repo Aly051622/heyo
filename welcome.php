@@ -539,6 +539,18 @@
 }
         </style>
     <script>
+        // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
     // Function to change the vehicle image and move it forward after a specified time
 function moveForward() {
     const vehicleImage = document.getElementById('vehicleImage');
