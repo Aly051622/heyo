@@ -438,7 +438,7 @@ input[type="text"]:hover, input[type="password"]:hover {
     </form>
 </div>
 
-<script>z
+<script>
     let currentPage = 1;
 
     function nextPage(nextPageId) {
