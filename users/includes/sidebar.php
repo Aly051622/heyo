@@ -6,6 +6,10 @@
 <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head> 
 <style>
+    .left-panel{
+        margin-top: 30px;
+        z-index: -1;
+    }
     #sidebar {
     width: 200px;
     position: fixed;
@@ -13,7 +17,7 @@
     height: 100bh;
     overflow: hidden;
     transition: width 0.3s ease;
-    margin-top: -2px;
+
     z-index: -1;
 }
 

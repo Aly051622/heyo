@@ -101,6 +101,7 @@
 
     body {
         font-size: 0.9rem;
+        margin-top: 20px;
     }
 }
 
@@ -315,38 +316,3 @@
 }
 
 
-
-/*sidebarrrrr */
-
-@media (max-width: 768px) {
-    #sidebar {
-        left: -250px;
-    }
-
-    #sidebar.collapsed {
-        left: 0;
-    }
-
-    #toggleSidebar {
-        display: block;
-    }
-
-    #right-panel {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        width: 200px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
-}
