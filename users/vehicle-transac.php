@@ -94,7 +94,9 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             background: whitesmoke;
             transition: all 0.3s ease;
         }
-
+        .right-panel{
+            background: whitesmoke;
+        }
         /* Card and button styles */
         .card,
         .card-header {
