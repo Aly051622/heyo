@@ -1,0 +1,78 @@
+# Enable mod_rewrite for clean URLs and force HTTPS
+RewriteEngine On
+
+# Enforce HTTPS (force SSL connection)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Disable Directory Listings
+Options -Indexes
+
+# Prevent access to sensitive files like .env, .git, etc.
+<FilesMatch "^(\.ht|\.git|\.env|\.svn)">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# Block access to wp-config.php (or other configuration files)
+<Files "wp-config.php">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# Prevent Clickjacking (Set X-Frame-Options header)
+Header always set X-Frame-Options "DENY"
+
+# Prevent Cross-Site Scripting (XSS) and other attacks by setting content security headers
+Header always set X-XSS-Protection "1; mode=block"
+Header always set X-Content-Type-Options "nosniff"
+
+# Set Referrer Policy
+Header always set Referrer-Policy "no-referrer-when-downgrade"
+
+# Set Permissions Policy (Restrict access to certain features)
+Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
+
+# Prevent access to .htaccess itself
+<Files ".htaccess">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# Block Suspicious User Agents (e.g., Burp Suite, bots, etc.)
+SetEnvIf User-Agent "Burp" bad_bot
+SetEnvIf User-Agent "nikto" bad_bot
+SetEnvIf User-Agent "Wget" bad_bot
+SetEnvIf User-Agent "DirBuster" bad_bot
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
+
+# Prevent image hotlinking (block direct access to images)
+RewriteCond %{HTTP_REFERER} !^https://ctudanaoparksys.icu/ [NC]
+RewriteRule \.(jpg|jpeg|png|gif|bmp)$ - [F]
+
+# Limit Request Methods to POST, GET (to prevent unwanted methods)
+<LimitExcept GET POST>
+  Order Deny,Allow
+  Deny from all
+</LimitExcept>
+
+# Prevent brute-force attacks on login
+RewriteCond %{REQUEST_METHOD} POST
+RewriteCond %{REQUEST_URI} /login.php [NC]
+RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$     # Allow localhost
+RewriteRule ^ - [F,L]
+
+# Optional: Protect Login Page with CAPTCHA or Rate Limiting
+# Example (if using reCAPTCHA):
+<Files "login.php">
+  # Example: Protect login page with CAPTCHA (replace with actual reCAPTCHA code)
+  # Add reCAPTCHA validation check here (server-side logic)
+</Files>
+
+# Prevent Direct Access to Specific Files (such as sensitive images or documents)
+<FilesMatch "\.(doc|xls|pdf|json|csv)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
