@@ -36,8 +36,9 @@ if(isset($_POST['login'])) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Client Login | CTU DANAO Parking System</title>
-      <link rel="apple-touch-icon" href="../images/aa.png">
-      <link rel="shortcut icon" href="../images/aa.png">
+      <link rel="apple-touch-icon" href="images/aa.png">
+      <link rel="shortcut icon" href="images/aa.png">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">

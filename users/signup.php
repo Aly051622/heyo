@@ -109,8 +109,9 @@ if (isset($_POST['submit'])) {
       <title>Client Signup | CTU DANAO Parking System</title>
       <script src="js/signup.js"></script>
 
-      <link rel="apple-touch-icon" href="../images/aa.png">
-    <link rel="shortcut icon" href="../images/aa.png">
+      <link rel="apple-touch-icon" href="images/aa.png">
+      <link rel="shortcut icon" href="images/aa.png">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
