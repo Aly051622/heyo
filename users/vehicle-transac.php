@@ -248,84 +248,83 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
         
 <?php include_once('includes/header.php'); ?>
 <?php include_once('includes/sidebar.php'); ?>
-        <div class="right-panel">
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h3>Vehicle Logs</h3>
-                        </div>
+<div class="right-panel">
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h3>Vehicle Logs</h3>
                     </div>
                 </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
-                                <li class="active">View Vehicle Parking Details</li>
-                            </ol>
-                        </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="dashboard.php">Dashboard</a></li>
+                            <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                            <li class="active">View Vehicle Parking Details</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="content">
-        <div class="animated fadeIn">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">View Vehicle Details</strong>
-                        </div>
-                        <div class="card-body">
-                            <!--<a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> -->
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Parking Slot</th>
-                                        <!--<th>Owner Name</th> -->
-                                        <th>Vehicle Plate Number</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">View Vehicle Details</strong>
+                    </div>
+                    <div class="card-body">
+                        <!-- Uncomment if needed -->
+                        <!-- <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> -->
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Parking Slot</th>
+                                    <!-- <th>Owner Name</th> -->
+                                    <th>Vehicle Plate Number</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <?php
                                     if ($row_count > 0) {
                                         $cnt = 1;
                                         while ($row = mysqli_fetch_array($result)) {
-                                            echo "<tr>
+                                            echo "
+                                                <tr>
                                                     <td>$cnt</td>
                                                     <td>{$row['ParkingSlot']}</td>
-                                                   
                                                     <td>{$row['VehiclePlateNumber']}</td>
                                                     <td>
-                                                        <a href='view--transac.php?viewid={$row['qrLoginID']}&source={$row['Source']}' class='btn btn-primary' id='viewbtn'>🖹 View</a> 
-                                               
+                                                        <a href='view--transac.php?viewid={$row['qrLoginID']}&source={$row['Source']}' class='btn btn-primary' id='viewbtn'>🖹 View</a>
                                                     </td>
-                                                  </tr>";
+                                                </tr>";
                                             $cnt++;
                                         }
                                     }
                                 ?>
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->
 
-    <div class="clearfix"></div>
+<div class="clearfix"></div>
 
-</div><!-- /#right-panel -->
-<!-- Right Panel -->
+    </div>
 
 <!-- Scripts -->
 
