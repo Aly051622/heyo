@@ -87,11 +87,10 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <style>
         html, body {
             font-family: 'Poppins', sans-serif;
-            height: 100%;
+            height: 100vh;
             margin: 0;
             padding: 0;
             overflow-x: auto;
-            
             background: whitesmoke;
         }
 
