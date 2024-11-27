@@ -57,25 +57,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 ?>
 
 <style>
- /* Default styles (for larger screens) */
+ /* Navbar Header */
 .navbar-header {
     position: fixed;
-    width: 100vw; /* Change this to 100% to ensure it fits across all screens */
+    width: 100%;
     z-index: 1;
     background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     padding: 13px;
-    width: 100vw;
+    width: 100%;
     border-bottom: groove;
 }
 
+/* Buttons hover */
+#printbtn:hover,
+#viewbtn:hover {
+    background: orange;
+}
+
+/* Profile container */
 .profile-container {
     position: relative;
     display: inline-block;
 }
 
+/* User avatar */
 .user-avatar {
     height: 40px;
     width: 40px;
@@ -90,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     border: groove 1px orange;
 }
 
+/* Active indicator */
 .active-indicator {
     position: absolute;
     bottom: -3px;
@@ -107,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     z-index: 1;
 }
 
+/* User area */
 .user-area {
     display: flex;
     align-items: center;
@@ -117,20 +125,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     margin-right: 40px;
 }
 
+/* Dropdown button */
 .dropdown-toggle {
     margin-top: 50px;
 }
 
+/* User area image styling */
 .user-area img {
     margin-right: -2px;
     margin-top: 10px;
 }
 
+/* Menu toggle */
 .menuToggle {
     margin-top: 5px;
     margin-left: 12em;
 }
 
+/* Margin adjustment */
 #hh {
     margin-top: 30px;
 }
@@ -246,7 +258,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         margin-left: 3em;
     }
 }
-
 </style>
 
 <!DOCTYPE html>
