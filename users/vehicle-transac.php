@@ -95,7 +95,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             transition: all 0.3s ease;
         }
         .breadcrumbs, .content{
-            background: whitesmoke;
+            background: transparent;
         }
         /* Card and button styles */
         .card,
