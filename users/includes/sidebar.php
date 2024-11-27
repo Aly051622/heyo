@@ -14,8 +14,7 @@
     height: 100bh;
     overflow: hidden;
     transition: width 0.3s ease;
-    z-index: 1;
-    margin-top: -12px;
+    margin-top: -6px;
 }
 
 #sidebar.collapsed {
@@ -26,9 +25,10 @@
     color: white;
     border: none;
     left: 10px;
-    z-index: 11;
 }
-
+a{
+    text-decoration: none;
+}
 </style> 
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
