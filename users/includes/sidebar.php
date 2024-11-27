@@ -9,12 +9,11 @@
     #sidebar {
     width: 200px;
     position: fixed;
-    top: 0;
     left: 0;
     height: 100bh;
     overflow: hidden;
     transition: width 0.3s ease;
-    margin-top: -6px;
+    margin-top: -2px;
 }
 
 #sidebar.collapsed {
