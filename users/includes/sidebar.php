@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <head>
-<link rel="stylesheet" href="css/responsive.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head> 
@@ -14,7 +14,7 @@
     overflow: hidden;
     transition: width 0.3s ease;
     margin-top: -2px;
-    z-index: 1;
+    z-index: -1;
 }
 
 #sidebar.collapsed {
@@ -28,6 +28,41 @@
 }
 a{
     text-decoration: none;
+}
+
+/*sidebarrrrr */
+
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px;
+    }
+
+    #sidebar.collapsed {
+        left: 0;
+    }
+
+    #toggleSidebar {
+        display: block;
+    }
+
+    #right-panel {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        width: 200px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
 }
 </style> 
 <aside id="left-panel" class="left-panel">
