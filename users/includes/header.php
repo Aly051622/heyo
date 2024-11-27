@@ -144,7 +144,6 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
 
 <!DOCTYPE html>
 <html lang="en">
-    <header>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/responsive.css">
@@ -155,6 +154,8 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
     /* Add relevant styles here */
 </style>
 <body>
+    
+<header>
     <div class="navbar-header">
         <a id="menuToggle" class="menutoggle" style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>
         <a href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top: -30px; margin-left: 20px;"></a>
@@ -192,6 +193,7 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
         </div>
     </div>
 
+    </header>
     <!-- Success Modal -->
     <?php if ($uploadSuccess): ?>
     <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
@@ -210,7 +212,6 @@ header("Content-Security-Policy: default-src 'self'; img-src 'self' https://exam
             </div>
         </div>
     </div>
-    </header>
     <script>
         var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
         successModal.show();
