@@ -740,7 +740,7 @@ form.addEventListener('submit', function (event) {
 </script>
 
          <?php } ?>
-                <p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>
+                <!--<p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>-->
                 </form>
             </div>    
                 </div>
