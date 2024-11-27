@@ -101,36 +101,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             transition: all 0.3s ease;
         }
 
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 30%;
-            background-color: #ffffff;
-            padding: 3px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: -0.5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
+        
 
         /* Card and button styles */
         .card,
@@ -220,27 +191,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     font-weight: bold;
 }
 
-        #header{
-        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-    .nav-link:hover{
-        background-image: transparent;
-        border-radius: 4px;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-       
-    }
-    #hh{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-        font: 20px;
-        font-weight: bold;
-           }
-        .user-avatar{
-            height: 35px;
-            width: 27px;
-        }
+     
 
     </style>
     </head>
