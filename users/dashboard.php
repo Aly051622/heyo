@@ -94,7 +94,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         body{
             background: whitesmoke;
             height: 100vh;
-            overflow: auto;
+            overflow: hidden;
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             z-index: -1;
             margin-top:50px;

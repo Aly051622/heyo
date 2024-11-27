@@ -83,13 +83,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 
     .user-avatar {
-        height: 40px;
-        width: 40px;
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
         border: groove 2px white;
         z-index: 5;
+        position:fixed;
     }
 
     .user-avatar:hover {
@@ -118,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         align-items: center;
     }
     .dropdown {
-        margin-top: -85px;
+        margin-top: -35px;
         margin-right: 40px;
     }
  
@@ -128,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .user-area img {
         margin-right: -2px;
-        margin-top: 10px;
+        margin-top: 30px;
     }
 
     .menuToggle {
