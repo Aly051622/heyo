@@ -94,7 +94,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
             background: whitesmoke;
             transition: all 0.3s ease;
         }
-        .right-panel{
+        .breadcrumbs, .content{
             background: whitesmoke;
         }
         /* Card and button styles */
@@ -177,9 +177,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
                 margin-bottom: 5px;
             }
         }
-        .clearfix{
-            background: whitesmoke; 
-        }
+        
         .text-center {
     color: red;
     font-weight: bold;
