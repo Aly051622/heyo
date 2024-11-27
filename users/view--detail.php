@@ -193,7 +193,22 @@ if($row['Status']=="Out")
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="../admin/assets/js/main.js"></script>
 
+<script>
 
+// Disable right-click
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
+
+</script>
 </body>
 </html>
 <?php }  ?>

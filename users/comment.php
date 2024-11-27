@@ -68,6 +68,18 @@ include('../DBconnection/dbconnection.php');
         </div>
 
     <script>
+        // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
     // Load existing comments on page load
     document.addEventListener('DOMContentLoaded', function () {
         fetch('../admin/get_comments.php')

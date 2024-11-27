@@ -272,6 +272,18 @@ if(isset($_POST['login'])) {
 }
         </style>
       <script>
+        // Disable right-click
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+  
+  // Disable F12 and other developer tools keys
+  document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 123 || // F12
+        (event.ctrlKey && event.shiftKey && event.keyCode == 73)) { // Ctrl + Shift + I (Inspect)
+        event.preventDefault();
+    }
+  });
       document.addEventListener('DOMContentLoaded', function() {
         const loginForm = document.querySelector('form');
         const loadingSpinner = document.getElementById('loading-spinner');
