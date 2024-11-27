@@ -7,7 +7,7 @@
 </head> 
 <style>
     .left-panel{
-        margin-top: 10px;
+        margin-top: 8px;
         z-index: -1;
     }
     #sidebar {
