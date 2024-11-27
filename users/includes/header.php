@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         margin-top: 50px;
     }
 
-    img {
+    .user-area img {
         margin-right: -2px;
         margin-top: 50px;
         z-index: 1;
