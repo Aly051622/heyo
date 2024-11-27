@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 
     .user-avatar img {
-        margin-left: 12em;
+        float: right;
         margin-top: 50px;
         z-index: 1;
     }
