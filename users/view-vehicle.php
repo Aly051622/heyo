@@ -19,9 +19,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
   <html lang="">
   <head>
       <title>CTU- Danao Parking System - View Vehicle Parking Details</title>
-      <link rel="apple-touch-icon" href="images/aa.png">
-<link rel="shortcut icon" href="images/aa.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+      <link rel="apple-touch-icon" href="../images/aa.png">
+      <link rel="shortcut icon" href="../images/aa.png">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
       
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
