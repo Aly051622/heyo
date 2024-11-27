@@ -14,6 +14,7 @@
     overflow: hidden;
     transition: width 0.3s ease;
     margin-top: -2px;
+    z-index: 1;
 }
 
 #sidebar.collapsed {
