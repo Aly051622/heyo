@@ -2,14 +2,8 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<<<<<<< HEAD
-<link rel="apple-touch-icon" href="../images/aa.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../images/aa.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-=======
-<link rel="apple-touch-icon" href="images/welcome.png">
-<link rel="shortcut icon" href="images/welcome.png">
+<link rel="apple-touch-icon" href="images/aa.png">
+<link rel="shortcut icon" href="images/aa.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 >>>>>>> 250cdce3e25f5950caf61baf06a0760b9cfdf509
