@@ -14,12 +14,6 @@ Options -Indexes
   Deny from all
 </FilesMatch>
 
-# Block access to wp-config.php (or other configuration files)
-<Files "wp-config.php">
-  Order Allow,Deny
-  Deny from all
-</Files>
-
 # Prevent Clickjacking (Set X-Frame-Options header)
 Header always set X-Frame-Options "DENY"
 
@@ -47,96 +41,3 @@ SetEnvIf User-Agent "DirBuster" bad_bot
 Order Allow,Deny
 Allow from all
 Deny from env=bad_bot
-
-# Prevent image hotlinking (block direct access to images)
-RewriteCond %{HTTP_REFERER} !^https://ctudanaoparksys.icu/ [NC]
-RewriteRule \.(jpg|jpeg|png|gif|bmp)$ - [F]
-
-# Limit Request Methods to POST, GET (to prevent unwanted methods)
-<LimitExcept GET POST>
-  Order Deny,Allow
-  Deny from all
-</LimitExcept>
-
-# Prevent brute-force attacks on login
-RewriteCond %{REQUEST_METHOD} POST
-RewriteCond %{REQUEST_URI} /login.php [NC]
-RewriteCond %{REMOTE_ADDR} !^192\.168\.0\.1$   # Allow specific IP address (if needed, else remove this line)
-RewriteCond %{REMOTE_ADDR} !^127\.0\.0\.1$     # Allow localhost
-RewriteRule ^ - [F,L]
-
-# Prevent Excessive Requests from Same IP (Brute Force Attempts)
-RewriteCond %{REQUEST_METHOD} POST
-RewriteCond %{REQUEST_URI} /login.php [NC] 
-RewriteCond %{REMOTE_ADDR} ^(.+)$
-RewriteCond %{TIME} <X:XX:XX # Set time for requests
-RewriteRule ^ - [F,L]
-
-# Prevent Hotlinking of images (verify domain)
-RewriteCond %{HTTP_REFERER} !^$
-RewriteCond %{HTTP_REFERER} !^https://(www\.)?ctudanaoparksys\.icu [NC]
-RewriteRule \.(jpg|jpeg|png|gif|bmp|tiff|svg|webp)$ - [F]
-
-# Rate Limiting with mod_evasive (optional, depends on your server config)
-<IfModule mod_evasive20.c>
-    DOSHashTableSize    3097
-    DOSPageCount        2
-    DOSSiteCount        10
-    DOSPageInterval     1
-    DOSSiteInterval     1
-    DOSEmailNotify      developershalcyon@gmail.com
-</IfModule>
-
-# Disable ETag Header (helps prevent some types of attack)
-Header unset ETag
-FileETag None
-
-# Set Strict Transport Security (HSTS) for HTTPS sites
-Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-
-# Block access to server status page (alternative to <Location>)
-RewriteCond %{REQUEST_URI} ^/server-status$
-RewriteRule ^ - [F,L]
-
-# Hide the PHP Version
-Header unset X-Powered-By
-
-# Prevent URL Directory Traversal
-RewriteCond %{REQUEST_URI} \.\.\/
-RewriteRule ^ - [F]
-
-# Restrict Access to Admin Panel (if applicable)
-<FilesMatch "^admin">
-  Order Deny,Allow
-  Deny from all
-</FilesMatch>
-
-# Disable HTTP TRACE method
-TraceEnable off
-
-# Restrict Access to Specific Directories with Authentication (Basic Authentication example)
-<FilesMatch "^admin">
-  AuthType Basic
-  AuthName "Restricted Area"
-  AuthUserFile /path/to/.htpasswd
-  Require valid-user
-</FilesMatch>
-
-# Enable Two-Factor Authentication for Critical Pages (Example, can be customized)
-<FilesMatch "^login.php">
-  # Assuming you have 2FA code or mechanism to include, otherwise, integrate via server-side login mechanism
-  # Add your 2FA check mechanism here
-  # Example: Redirect to a 2FA verification page or prompt for 2FA on login
-</FilesMatch>
-
-# Restrict Access to Configuration Files (to protect .env, wp-config, etc.)
-<FilesMatch "^(\.ht|\.git|\.env)">
-  Order Allow,Deny
-  Deny from all
-</FilesMatch>
-
-# Prevent Direct Access to Specific Files (such as sensitive images or documents)
-<FilesMatch "\.(doc|xls|pdf|json|csv)$">
-  Order Allow,Deny
-  Deny from all
-</FilesMatch>
