@@ -8,7 +8,7 @@
 <style>
     .left-panel{
         margin-top: 15px;
-        border-top: groove 1px;
+        border-top: groove 2px;
     }
     #sidebar {
     width: 200px;
