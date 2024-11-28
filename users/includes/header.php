@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         position: fixed;
         width: 100vw;
         z-index: 1;
-        height: 100px;
+        height: 70px;
     }
     #printbtn:hover,
     #viewbtn:hover {
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-        margin-top: -90px;
+        margin-top: -75px;
         margin-right: 10px;
         position:fixed;
     }
