@@ -63,8 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         z-index: 1;
         height: 70px;
     }
+    .btn:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
     #printbtn:hover,
-    #viewbtn:hover {
+    #viewbtn:hover, .btn:hover {
         background: orange;
     }
 
@@ -172,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     width: 80%;
     max-width: 300px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .modal-content button {
@@ -180,9 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    color: black;
+    color: white;
     cursor: pointer;
-      color: white;
       font-size: 18px;
       letter-spacing: 1px;
       font-weight: 600;
@@ -335,6 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 @media (max-width: 480px) {
     .navbar-header {
+        margin-top: 20px;
         padding: 5px;
         width: 100%;
         height: 50px;
@@ -346,6 +350,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 10em;
     }
     .dropdown {
         margin-top: 50px;
@@ -407,12 +412,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                 </div>
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data">
                         <input type="file" name="profilePic" accept="image/*" required>
-                        <button type="submit" name="upload" class="btn btn-primary mt-2">Upload</button>
+                        <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
                     </form>
                 </div>
             </div>
