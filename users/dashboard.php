@@ -316,9 +316,15 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-1">
-                            <div class="card-body " id="notificationCard">
-                                <h2>Welcome <?php echo $firstName; $lastName;?> <?php echo $lastName; ?> !</h2>
-                        </div>
+                    <div class="card-body" id="notificationCard">
+                        <h2 style="text-align: center; font-size: 36px; letter-spacing: 10px;">
+                            W E L C O M E !
+                        </h2>
+                        <h3 style="text-align: center; font-size: 24px; font-weight: bold;">
+                            <?php echo htmlspecialchars($lastName, ENT_QUOTES, 'UTF-8') . ', ' . htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8'); ?>
+                        </h3>
+                    </div>
+
                     </div>
                 </div>
                 <!-- /Widgets -->
