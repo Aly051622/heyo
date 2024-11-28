@@ -303,6 +303,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
     .user-area {
         margin-right: 5px;
+        margin-top: 30em;
     }
     .menuToggle {
         margin-left: 5em;
@@ -327,6 +328,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 40em;
     }
     .dropdown {
         margin-top: 50px;
@@ -338,7 +340,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 @media (max-width: 480px) {
     .navbar-header {
-        margin-top: 20px;
         padding: 5px;
         width: 100%;
         height: 50px;
@@ -350,14 +351,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 10em;
+        margin-top: 30em;
     }
     .dropdown {
         margin-top: 50px;
         margin-right: 100px;
     }
-    .menuToggle {
+    #menuToggle {
         margin-left: 3em;
+        margin-top: 20px;
     }
 }
 </style>

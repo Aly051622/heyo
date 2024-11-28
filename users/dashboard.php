@@ -201,6 +201,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 transition: opacity 0.5s ease-in-out;
                 margin-left: 20em;
                 width: 1000px;
+                width: auto;
+                height: auto;
                 border: none;
                 z-index: 1;
                 text-shadow: 0px 4px 4px white;
