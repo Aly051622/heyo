@@ -296,6 +296,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 html, body{
                     height: 100vh;
                     background: whitesmoke;
+                    overflow: hidden;
                 }
         }
     </style>
