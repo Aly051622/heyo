@@ -292,6 +292,7 @@ body, * {
     }
     .menuToggle {
         margin-left: 8em;
+        margin-top: 10px;
     }
     .dropdown {
         margin-top: -60px;
@@ -314,6 +315,7 @@ body, * {
     }
     .menuToggle {
         margin-left: 5em;
+        margin-top: 10px;
     }
     .dropdown {
         margin-top: -50px;
@@ -343,6 +345,7 @@ body, * {
     }
     .menuToggle {
         margin-left: 3em;
+        margin-top: 10px;
     }
 }
 @media (max-width: 480px) {
