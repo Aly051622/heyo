@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 }
 ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
@@ -175,7 +176,7 @@ body, * {
     width: 100%;
     height: 100%;
 }
-.modal-content {
+.modal-contents {
     background: whitesmoke;
     margin: 15% auto;
     padding: 20px;
@@ -186,7 +187,7 @@ body, * {
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
-.modal-content button {
+.modal-contents button {
     margin: 10px;
     padding: 10px 20px;
     border-radius: 4px;
@@ -201,17 +202,17 @@ body, * {
     border: 1px solid white;
 }
 
-.modal-content button:first-of-type {
+.modal-contents button:first-of-type {
     background-color:#2691d9;
     color: white;
 }
 
-.modal-content button:last-of-type {
+.modal-contents button:last-of-type {
     background-color: #2691d9;
     color: white;
 }
-.modal-content button:first-of-type:hover,
-.modal-content button:last-of-type:hover
+.modal-contents button:first-of-type:hover,
+.modal-contents button:last-of-type:hover
 {
     background-color: darkblue;
     border: solid 1px blue;
@@ -406,7 +407,7 @@ body, * {
             </div>
         </div>
         <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-content">
+                    <div class="modal-contents">
                         <p>Are you sure you want to log out?</p>
                         <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
                         <button onclick="confirmLogout(false)" class="btn-warning">No</button>
