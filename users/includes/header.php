@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 992px to 1199px screens */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (max-width: 1200px) {
     .navbar-header {
         padding: 15px;
     }
@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 768px to 991px screens */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (max-width: 992px) {
     .navbar-header {
         padding: 12px;
     }
@@ -224,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 576px to 767px screens */
-@media (min-width: 576px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .navbar-header {
         padding: 10px;
     }
@@ -247,7 +247,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 /* 480px to 575px screens */
 @media (max-width: 575px) {
     .navbar-header {
-        padding: 8px;
+        padding: 5px;
+        width: 100%;
+        height: 50px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 20px;
+    }
+    .menuToggle {
+        margin-left: 3em;
+    }
+}
+@media (max-width: 480px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 50px;
     }
     .user-avatar {
         height: 30px;

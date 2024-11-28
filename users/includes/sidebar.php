@@ -52,9 +52,26 @@
     }
 }
 
+@media (max-width: 576px) {
+    #sidebar {
+        width: 200px;
+        margin-top: -10px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
+
 @media (max-width: 480px) {
     #sidebar {
         width: 200px;
+        margin-top: -10px;
     }
 
     #sidebar.collapsed {
