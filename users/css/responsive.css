@@ -120,10 +120,9 @@ body, * {
 @media (max-width: 480px) {
     
     .breadcrumbs {
-        width: 90%;
+        width: 80%;
         margin-right: 20em;
         padding: 5px;
-        display: none;
     }
 
     #printbtn,

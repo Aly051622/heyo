@@ -359,7 +359,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
     #menuToggle {
         margin-left: 3em;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 }
 </style>
