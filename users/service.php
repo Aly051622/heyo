@@ -46,7 +46,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 position: absolute;
                 z-index: -1;
             }
- 
+        .breadcrumbs{
+            display: block;
+        }
         #chat-box {
             margin-left: 3em;
             width: 95%; 
@@ -632,7 +634,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="faq-question">Q: How do I change my parking pass or subscription?</div>
                     <div class="faq-answer">A: Navigate to the 'Subscriptions' section in your profile, select the parking pass you want to change, and follow the on-screen instructions to update your plan.</div>
                 </div>
-            </div>
+            </div><br>
 
             <!-- Right Column for the last 4 FAQ items -->
             <div class="col-md-6">
