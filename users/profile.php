@@ -419,7 +419,7 @@ while ($row = mysqli_fetch_array($ret)) {
         
         <div class="row form-group">
                     <div class="col text-center">
-                        <button type="submit" id="submit-button" class="btn btn-sm"><i class="bi bi-images"></i> Submit</button>
+                        <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
                 </div>
         </div>  
     </form>
