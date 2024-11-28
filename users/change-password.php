@@ -151,7 +151,7 @@ return true;
                                   
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" >⚙ Change</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >⚙ Change</button></p>
                                 </form>
                             </div>
                             

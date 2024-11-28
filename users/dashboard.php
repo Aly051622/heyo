@@ -99,7 +99,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             height: 100vh;
             overflow: auto;
             z-index: -1;
-            margin-top:50px;
         }
         /* Carousel container and styling */
         .carousel-container {
@@ -200,7 +199,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             #notificationCard {
                 opacity: 1;
                 transition: opacity 0.5s ease-in-out;
-                margin-left: 35em;
+                margin-left: 20em;
                 width: 1000px;
                 width: auto;
                 height: auto;
