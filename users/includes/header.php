@@ -407,17 +407,6 @@ body, * {
                 </div>
             </div>
         </div>
-        <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-contents">
-                        <p>Are you sure you want to log out?</p>
-                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
-                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
-                    </div>
-                </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
-            </div>
     </div>
 
     <!-- Upload Modal -->
@@ -456,9 +445,23 @@ body, * {
             </div>
         </div>
     </div>
+        <script>
+            var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
+            successModal.show();
+            </script>
+    
+    <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-contents">
+                        <p>Are you sure you want to log out?</p>
+                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
+                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
+                    </div>
+                </div>
+                <div class="alert-message" id="logout-alert" style="display: none;">
+                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+                </div>
+            </div>
     <script>
-        var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
-        successModal.show();
 
         function handleLogout() {
                 // Show the modal for confirmation
