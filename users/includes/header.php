@@ -457,6 +457,7 @@ body, * {
     <script>
         var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
         successModal.show();
+
         function handleLogout() {
                 // Show the modal for confirmation
                 document.getElementById("logout-confirm-modal").style.display = "block";
@@ -473,7 +474,7 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "../welcome.php"; // Or any other logout URL
+                    window.location.href = "../login.php"; // Or any other logout URL
                 }
             }
     </script>
