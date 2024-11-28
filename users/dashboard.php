@@ -94,11 +94,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
 
     <style>
-        body{
+        html, body{
             background: whitesmoke;
             height: 100vh;
-            overflow: hidden;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            overflow: auto;
             z-index: -1;
             margin-top:50px;
         }
@@ -180,7 +179,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         }
             /* Card-specific styles */
         .notification {
-            max-width: 300px;
+            width: 300px;
             height: auto;
             padding: 4px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -201,14 +200,14 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             #notificationCard {
                 opacity: 1;
                 transition: opacity 0.5s ease-in-out;
-                padding: 5px;
                 margin-left: 35em;
-                max-width: 1000px;
+                width: 1000px;
                 width: auto;
                 height: auto;
                 border: none;
-                }
-
+                z-index: 1;
+                text-shadow: 0px 4px 4px white;
+            }
 
                 .section {
             margin: 20px 0;
@@ -293,6 +292,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             .portrait-container {
                 flex-basis: 100%;
             }
+        }
+        @media (max-width: 480){
+                html, body{
+                    height: 100vh;
+                    background: whitesmoke;
+                }
         }
     </style>
 </head>

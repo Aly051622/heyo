@@ -36,7 +36,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <title>Customer Service | CTU Danao VPMS</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background: whitesmoke;
             height: 100vh;
             overflow: hidden;
@@ -45,6 +44,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 margin-top: 45px;
                 margin-left: 2em;
                 position: absolute;
+                z-index: -1;
             }
  
         #chat-box {
@@ -212,12 +212,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: black;
             }
         #faq-section {
-            z-index: 5;
+            z-index: -1;
             color: black;
         }
         .faq-item {
             margin-bottom: 1px;
-            z-index: 1000;
             padding: 5px;
             background: white;
             border-radius: 18px;

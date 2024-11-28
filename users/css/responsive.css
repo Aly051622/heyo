@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
 /*sa tanan na ni*/
 #right-panel {
     margin-left: 100px;
     transition: margin-left 0.3s ease;
     margin-top: 50px;
 } 
-.breadcrumbs.breadcrumb .text-right{
-    text-decoration: none;
-    color: dimgray;
+.breadcrumbs .breadcrumb .text-right a{
+    text-decoration: none !important;
+    color: dimgray !important;
 }
 .card,
 .card-header {

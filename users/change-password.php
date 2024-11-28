@@ -69,6 +69,11 @@ return true;
 
 </script>
 <style>
+    html, body{
+        height: 100vh;
+        overflow: auto;
+        background: whitesmoke;
+    }
     .btn-sm{
         padding: 5px 10px;
             background-color: #007bff;
@@ -146,7 +151,7 @@ return true;
                                   
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >⚙ Change</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" >⚙ Change</button></p>
                                 </form>
                             </div>
                             
