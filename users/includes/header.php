@@ -57,6 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 ?>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
     .navbar-header{
         position: fixed;
         width: 100vw;

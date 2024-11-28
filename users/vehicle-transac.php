@@ -84,6 +84,13 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
         body {
             font-family: 'Poppins', sans-serif;
             height: 100vh;
