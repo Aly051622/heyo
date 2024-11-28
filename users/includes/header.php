@@ -84,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 
     .user-avatar {
-        height: 52px;
-        width: 52px;
+        height: 55px;
+        width: 55px;
         border-radius: 50%;
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .active-indicator {
         position: absolute;
-        margin-top: 20px;
+        margin-top: 25px;
         right: -3px;
         background-color: #28a745;
         color: white;
@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-        margin-top: -65px;
+        margin-top: -60px;
         margin-right: 10px;
         position:fixed;
     }
