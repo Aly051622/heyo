@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-        margin-top: -70px;
+        margin-top: -60px;
         margin-right: 10px;
         position:fixed;
     }
@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         align-items: flex-start;
     }
     .dropdown {
-        margin-top: -40px;
+        margin-top: -20px;
         margin-right: 5px;
     }
     .menuToggle {
