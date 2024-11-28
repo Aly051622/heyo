@@ -59,8 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 <style>
     .navbar-header{
         position: fixed;
-        width: 100vh;
+        width: 100vw;
         z-index: 1;
+        height: 100px;
     }
     #printbtn:hover,
     #viewbtn:hover {
@@ -98,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .active-indicator {
         position: absolute;
-        bottom: -3px;
+        bottom: -6px;
         right: -3px;
         background-color: #28a745;
         color: white;
@@ -133,6 +134,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .menuToggle {
         margin-top: 5px;
         margin-left: 12em;
+    }
+    #menuToggle{
+        width: 120px; 
+        height: auto;
+        margin-top: -10px; 
+        margin-left: 20px; 
+        cursor: pointer; 
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 3px;
+    }
+    #mennuToggle:hover{
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        background: white;
     }
     #hh {
         margin-top: 30px;
@@ -266,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 <body>
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
-        <a ><img src="images/clientlogo.png"  id="menuToggle" style="width: 120px; height: auto; margin-top: -10px; margin-left: 20px; cursor: pointer; box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;"></a>
+        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
         <div class="user-area dropdown">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">
