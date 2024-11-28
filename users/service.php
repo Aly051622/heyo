@@ -584,6 +584,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         left: 5px;
         top: 5px;
     }
+    .page-title2{
+        display: flex;
+    }
+}
+.page-title2{
+    display: none;
 }
     </style>
 </head>
@@ -633,6 +639,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <!-- FAQ Section -->
     <div class="container" id="container">
        <div class="faq"> <i class="bi bi-question-circle-fill "></i> FAQs</div>
+       <div class="page-title2" id="message-icon">
+                        <i class="bi bi-chat-left-text-fill" ></i> Chat with Support
+                        </div>
         <div id="faq-section" class="row">
             <!-- Left Column for the first 4 FAQ items -->
             <div class="col-md-6">
