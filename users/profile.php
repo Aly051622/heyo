@@ -394,10 +394,10 @@ while ($row = mysqli_fetch_array($ret)) {
     <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data">
         <div class="row form-group">
             <div class="col-md-3">
-                <label for="registration-status" class="form-control-label regs">Registration Status</label>
+                <label for="registration-status" class="form-control-label">Registration Status</label>
             </div>
             <div class="col-md-9">
-                <select id="registration-status" name="registration_status" class="form-control" required>
+                <select id="registration-status" name="registration_status" class="form-control  regs" required>
                     <option value="" disabled selected>Select Registration Status</option>
                     <option value="for_registration" <?php echo $registrationStatus === 'for_registration' ? 'selected' : ''; ?>>For Registration</option>
                     <option value="registered" <?php echo $registrationStatus === 'registered' ? 'selected' : ''; ?>>Registered</option>
