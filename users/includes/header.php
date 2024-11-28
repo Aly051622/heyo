@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .active-indicator {
         position: absolute;
-        margin-top: 27px;
+        margin-top: 30px;
         right: -3px;
         background-color: #28a745;
         color: white;
