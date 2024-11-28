@@ -491,7 +491,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 }
 @media (max-width: 480px){
-    .breadcrumbs{
+    .chatbox-container{
         display: flex;
     }
     body{
@@ -532,9 +532,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 300px) {
-    .breadcrumbs{
-        display: flex;
-    }
     .navbar-header {
         padding: 2px;
         width: 100vw;
@@ -613,9 +610,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <!-- FAQ Section -->
     <div class="container" id="container">
        <div class="faq"> <i class="bi bi-question-circle-fill "></i> FAQs</div>
-       <div class="page-title2" id="message-icon">
-                        <i class="bi bi-chat-left-text-fill" ></i> Chat with Support
-                        </div>
         <div id="faq-section" class="row">
             <!-- Left Column for the first 4 FAQ items -->
             <div class="col-md-6">
