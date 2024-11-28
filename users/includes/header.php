@@ -475,7 +475,7 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "../login.php"; // Or any other logout URL
+                    window.location.href = "login.php"; 
                 }
             }
     </script>
