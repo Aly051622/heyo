@@ -193,6 +193,11 @@ html,body{
         margin-left: 18px;
         width: 500px;
     }
+    @media (max-width: 480px){
+        .regs{
+            max-width: 100px;
+        }
+    }
     
 </style>
 
@@ -380,7 +385,7 @@ while ($row = mysqli_fetch_array($ret)) {
     <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data">
         <div class="row form-group">
             <div class="col-md-3">
-                <label for="registration-status" class="form-control-label">Registration Status</label>
+                <label for="registration-status" class="form-control-label regs">Registration Status</label>
             </div>
             <div class="col-md-9">
                 <select id="registration-status" name="registration_status" class="form-control" required>
