@@ -395,6 +395,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 /* Responsive Styles for header na ni */
 
 @media (max-width: 1024px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 5px;
     }
@@ -422,6 +425,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 780px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 4px;
     }
@@ -449,6 +455,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 500px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 3px;
         width: 100vw;
@@ -482,6 +491,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 }
 @media (max-width: 480px){
+    .breadcrumbs{
+        display: flex;
+    }
     body{
         overflow-x: auto;
     }
@@ -520,6 +532,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 300px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 2px;
         width: 100vw;
@@ -550,47 +565,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 
-
-/*sidebarrrrr */
-
-@media (max-width: 768px) {
-    #sidebar {
-        left: -250px;
-    }
-
-    #sidebar.collapsed {
-        left: 0;
-    }
-
-    #toggleSidebar {
-        display: block;
-    }
-
-    #right-panel {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        width: 200px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
-    .page-title2{
-        display: flex;
-    }
-}
-.page-title2{
-    display: none;
-}
     </style>
 </head>
 <body>
