@@ -317,12 +317,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <div class="row">
                     <div class="col-lg-1">
                     <div class="card-body" id="notificationCard">
-                        <h2 style="text-align: center; font-size: 36px; letter-spacing: 10px;">
+                        <marquee direction="left" ><i class="fa-solid fa-truck"></i><h2 style="text-align: center; font-size: 36px;;">
                             W E L C O M E !
                         </h2>
                         <h3 style="text-align: center; font-size: 24px; font-weight: bold;">
                             <?php echo htmlspecialchars($lastName, ENT_QUOTES, 'UTF-8') . ', ' . htmlspecialchars($firstName, ENT_QUOTES, 'UTF-8'); ?>
-                        </h3>
+                        </h3> </marquee>
                     </div>
 
                     </div>
