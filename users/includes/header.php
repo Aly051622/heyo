@@ -283,7 +283,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
     .dropdown {
         margin-top: 50px;
-        margin-right: 20px;
+        margin-right: 100px;
     }
     .menuToggle {
         margin-left: 3em;
