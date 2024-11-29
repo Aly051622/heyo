@@ -407,14 +407,15 @@ body, * {
                 </div>
             </a>
             <div class="user-menu dropdown-menu">
-    <div id="hh">
-        <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
-        <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
-        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
-        <a class="nav-link" href="?logout=true" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                <div class="hh">
+                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
+                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
 
     <!-- Upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
@@ -470,13 +471,11 @@ body, * {
             </div>
     <script>
 
-function handleLogout() {
-    if (confirm("Are you sure you want to log out?")) {
-        return true; // Proceed to the logout link
-    }
-    return false; // Prevent logout if canceled
-}
-
+        function handleLogout() {
+                // Show the modal for confirmation
+                document.getElementById("logout-confirm-modal").style.display = "block";
+                return false; // Prevent the default action temporarily
+            }
 
             function confirmLogout(isConfirmed) {
                 // Hide the modal
