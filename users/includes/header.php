@@ -387,8 +387,8 @@ body, * {
 <style>
     /* Add relevant styles here */
 </style>
-<body>
-    <div class="navbar-header">
+<>
+    <div="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
         <div class="user-area dropdown">
@@ -418,7 +418,8 @@ body, * {
                 <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
                 </div>
         </div>
-    </div>
+</div>
+</div>
     
 
     <!-- Upload Modal -->
