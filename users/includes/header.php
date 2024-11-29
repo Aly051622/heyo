@@ -403,11 +403,23 @@ body, * {
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
-                <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
+                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
         </div>
-    </div>
+ 
+
+    <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-contents">
+                        <p>Are you sure you want to log out?</p>
+                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
+                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
+                    </div>
+                </div>
+                <div class="alert-message" id="logout-alert" style="display: none;">
+                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+                </div>
+            </div>
 
     <!-- Upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
@@ -448,40 +460,21 @@ body, * {
         <script>
             var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
             successModal.show();
-            </script>
-    
-    <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-contents">
-                        <p>Are you sure you want to log out?</p>
-                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
-                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
-                    </div>
-                </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
-            </div>
-    <script>
 
         function handleLogout() {
-                // Show the modal for confirmation
-                document.getElementById("logout-confirm-modal").style.display = "block";
-                return false; // Prevent the default action temporarily
+            document.getElementById("logout-confirm-modal").style.display = "block";
+            return false;
+        }
+
+        function confirmLogout(isConfirmed) {
+            document.getElementById("logout-confirm-modal").style.display = "none";
+            if (isConfirmed) {
+                document.getElementById("logout-alert").style.display = "block";
+                setTimeout(() => {
+                    window.location.href = "login.php";
+                }, 2000);
             }
-
-            function confirmLogout(isConfirmed) {
-                // Hide the modal
-                document.getElementById("logout-confirm-modal").style.display = "none";
-
-                if (isConfirmed) {
-                    // Show the logout alert
-                    var alertMessage = document.getElementById("logout-alert");
-                    alertMessage.style.display = "block";
-
-                    // Redirect or proceed with logout actions if necessary
-                    window.location.href = "login.php"; 
-                }
-            }
+        }
     </script>
     <?php endif; ?>
 
