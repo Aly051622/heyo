@@ -461,20 +461,7 @@ body, * {
             var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
             successModal.show();
 
-        function handleLogout() {
-            document.getElementById("logout-confirm-modal").style.display = "block";
-            return false;
-        }
 
-        function confirmLogout(isConfirmed) {
-            document.getElementById("logout-confirm-modal").style.display = "none";
-            if (isConfirmed) {
-                document.getElementById("logout-alert").style.display = "block";
-                setTimeout(() => {
-                    window.location.href = "login.php";
-                }, 2000);
-            }
-        }
     </script>
     <?php endif; ?>
 
