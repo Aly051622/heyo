@@ -403,7 +403,7 @@ body, * {
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
-                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
         </div>
