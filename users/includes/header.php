@@ -407,7 +407,7 @@ body, * {
                 </div>
             </div>
         </div>
- 
+    </div>
 
     <div id="logout-confirm-modal" class="modal">
                     <div class="modal-contents">
@@ -460,8 +460,30 @@ body, * {
         <script>
             var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
             successModal.show();
+            </script>
+    
+    
+    <script>
 
+        function handleLogout() {
+                // Show the modal for confirmation
+                document.getElementById("logout-confirm-modal").style.display = "block";
+                return false; // Prevent the default action temporarily
+            }
 
+            function confirmLogout(isConfirmed) {
+                // Hide the modal
+                document.getElementById("logout-confirm-modal").style.display = "none";
+
+                if (isConfirmed) {
+                    // Show the logout alert
+                    var alertMessage = document.getElementById("logout-alert");
+                    alertMessage.style.display = "block";
+
+                    // Redirect or proceed with logout actions if necessary
+                    window.location.href = "login.php"; 
+                }
+            }
     </script>
     <?php endif; ?>
 
