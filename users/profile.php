@@ -270,12 +270,12 @@ while ($row = mysqli_fetch_array($ret)) {
     ?>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">First Name</label></div>
-                                        <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" value="<?php  echo $row['FirstName'];?>">
+                                        <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php  echo $row['FirstName'];?>">
                                             </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="email-input" class=" form-control-label">Last Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="lastname" required="true" class="form-control" value="<?php  echo $row['LastName'];?>"></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="lastname" required="true" class="form-control"  readonly="true"value="<?php  echo $row['LastName'];?>"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Contact Number</label></div>
