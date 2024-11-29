@@ -188,11 +188,390 @@ body, * {
     font-weight: bold;
 }
 
+.navbar-header{
+        position: fixed;
+        width: 100vw;
+        z-index: 1;
+        height: 70px;
+    }
+    .btn:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
+    #printbtn:hover,
+    #viewbtn:hover, .btn:hover {
+        background: orange;
+    }
+
+    .navbar-header {
+        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 5px;
+        width: 100vw;
+        border-bottom: groove;
+    }
+
+    .profile-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .user-avatar {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        text-shadow: 0px 4px 4px gray;
+        border: groove 2px white;
+        z-index: 5;
+    }
+
+    .user-avatar:hover {
+        border: groove 1px orange;
+    }
+
+    .active-indicator {
+        position: absolute;
+        margin-top: 30px;
+        right: -3px;
+        background-color: #28a745;
+        color: white;
+        border: 2px solid white;
+        font-size: 11px;
+        border-radius: 50%;
+        width: 12px;
+        height: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .user-area {
+        display: flex;
+        align-items: center;
+        margin-top: -60px;
+        margin-right: 10px;
+        position:fixed;
+    }
+    .dropdown-toggle {
+        margin-top: 50px;
+    }
+    
+    .user-avatar img {
+        float: right;
+        margin-top: 52px;
+        z-index: 1;
+    }
+
+    .menuToggle {
+        margin-top: 5px;
+        margin-left: 12em;
+    }
+    #menuToggle{
+        width: 120px; 
+        height: auto;
+        margin-top: -10px; 
+        margin-left: 20px; 
+        cursor: pointer; 
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 3px;
+        border-radius: 7px;
+    }
+    #menuToggle:hover{
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    }
+    #hh {
+        margin-top: 30px;
+    }
+
+     
+/* modal for logout */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-contents {
+    background: whitesmoke;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.modal-contents button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    cursor: pointer;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-family: 'Montserrat',sans-serif;
+      background: whitesmoke;
+    border: 1px solid white;
+}
+
+.modal-contents button:first-of-type {
+    background-color:#2691d9;
+    color: white;
+}
+
+.modal-contents button:last-of-type {
+    background-color: #2691d9;
+    color: white;
+}
+.modal-contents button:first-of-type:hover,
+.modal-contents button:last-of-type:hover
+{
+    background-color: darkblue;
+    border: solid 1px blue;
+}
+.alert-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+    /* 1600px and larger screens */
+@media (min-width: 1600px) {
+    .navbar-header {
+        padding: 20px;
+    }
+    .user-avatar {
+        height: 50px;
+        width: 50px;
+    }
+    .user-area {
+        margin-right: 20px;
+    }
+}
+
+/* 1200px to 1599px screens */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .navbar-header {
+        padding: 18px;
+    }
+    .user-avatar {
+        height: 45px;
+        width: 45px;
+    }
+    .user-area {
+        margin-right: 15px;
+    }
+}
+
+/* 992px to 1199px screens */
+@media (max-width: 1200px) {
+    .navbar-header {
+        padding: 15px;
+    }
+    .user-avatar {
+        height: 40px;
+        width: 40px;
+    }
+    .menuToggle {
+        margin-left: 10em;
+    }
+    .dropdown {
+        margin-top: -70px;
+        margin-right: 25px;
+    }
+}
+
+/* 768px to 991px screens */
+@media (max-width: 992px) {
+    .navbar-header {
+        padding: 12px;
+    }
+    .user-avatar {
+        height: 35px;
+        width: 35px;
+    }
+    .user-area {
+        margin-right: 10px;
+    }
+    .menuToggle {
+        margin-left: 8em;
+        margin-top: 10px;
+    }
+    .dropdown {
+        margin-top: -60px;
+        margin-right: 15px;
+    }
+}
+
+/* 576px to 767px screens */
+@media (max-width: 767px) {
+    .navbar-header {
+        padding: 10px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        margin-right: 5px;
+        margin-top: 30em;
+    }
+    .menuToggle {
+        margin-left: 5em;
+        margin-top: 10px;
+    }
+    .dropdown {
+        margin-top: -50px;
+        margin-right: 10px;
+    }
+}
+
+/* 480px to 575px screens */
+@media (max-width: 575px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 50px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 40em;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 20px;
+    }
+    .menuToggle {
+        margin-left: 3em;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 50px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 30em;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 100px;
+    }
+    #menuToggle {
+        margin-left: 3em;
+        margin-top: 10px;
+    }
+}
      
 
     </style>
     </head>
     <body>
+
+    <aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="dashboard.php">
+                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="view-vehicle.php">
+                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    </a>
+                </li>
+                <li>
+                    <a href="vehicle-transac.php">
+                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
+                    </a>
+                </li>
+                <li>
+                    <a href="add-vehicle.php">
+                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                    </a>
+                </li>
+                <li>
+                    <a href="service.php">
+                        <i class="menu-icon fa fa-headset"></i>Chat Concern
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
+
+<div class="navbar-header">
+       <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
+        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
+        <div class="user-area dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="profile-container">
+                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
+                    <span class="active-indicator"></span>
+                </div>
+            </a>
+            <div class="user-menu dropdown-menu">
+                <div class="hh">
+                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
+                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="profilePic" accept="image/*" required>
+                        <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <div class="right-panel">
 <div class="breadcrumbs">
