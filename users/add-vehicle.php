@@ -22,6 +22,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             $model = $_POST['otherModel'];
         }      
 
+        // Validate the owner's contact number matches the logged-in user's contact number
+        if ($ownercontno !== $_SESSION['userMobile']) {
+            echo "<script>alert('The contact number does not match the current user\'s registered contact number. Please try again.');</script>";
+            echo "<script>window.history.back();</script>";
+            exit;
+        }
+
         $imagePath = '';
         if ($vehcomp === 'Chevrolet') {
             if ($model === 'Tracker') {
