@@ -13,7 +13,7 @@ if (!isset($_SESSION['vpmsuid'])) {
 
 $userId = $_SESSION['vpmsuid'];
 
-// Fetch the user's profile picture
+// Fetch the user's profile picture (optional, you can remove if not needed)
 $query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
 $result = mysqli_query($con, $query);
 
@@ -26,14 +26,14 @@ if ($result && mysqli_num_rows($result) > 0) {
         : $profilePicturePath;
 }
 
-// Log out logic
+// Log out logic, independent of profile picture upload or button click
 if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     session_destroy();
     header("Location: login.php"); // Redirect to login page
     exit;
 }
 
-// Handle image upload
+// Handle image upload (optional, remove if you don't want image upload feature)
 $uploadSuccess = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
@@ -457,6 +457,18 @@ body, * {
             </div>
         </div>
     </div>
+
+<!-- Logout Modal -->
+<div class="modal" id="logoutModal">
+    <div class="modal-contents">
+        <h2>Are you sure you want to log out?</h2>
+        <form action="qrlogout.php?action=logout" method="POST">
+            <button type="submit">Yes</button>
+            <button type="button" id="closeModal">No</button>
+        </form>
+    </div>
+</div>
+
         <script>
             var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
             successModal.show();
@@ -474,6 +486,28 @@ body, * {
                 </div>
             </div>
     <script>
+        // Get the modal and buttons
+    const logoutModal = document.getElementById('logoutModal');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const closeModal = document.getElementById('closeModal');
+
+    // Show the modal when logout button is clicked
+    logoutBtn.onclick = function() {
+        logoutModal.style.display = 'block';
+    }
+
+    // Close the modal when the "No" button is clicked
+    closeModal.onclick = function() {
+        logoutModal.style.display = 'none';
+    }
+
+    // Close the modal if the user clicks outside of the modal content
+    window.onclick = function(event) {
+        if (event.target === logoutModal) {
+            logoutModal.style.display = 'none';
+        }
+    }
+
 
         function handleLogout() {
                 // Show the modal for confirmation
