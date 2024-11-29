@@ -419,7 +419,7 @@ body, * {
                 </div>
         </div>
 </div>
-</div>
+
     
 
     <!-- Upload Modal -->
