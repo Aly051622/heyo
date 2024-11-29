@@ -78,8 +78,9 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
-    <link rel="apple-touch-icon" href="images/ctu.png">
-    <link rel="shortcut icon" href="images/ctu.png">
+    <link rel="apple-touch-icon" href="../images/aa.png">
+      <link rel="shortcut icon" href="../images/aa.png">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -127,9 +128,10 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     font-size: 18px;
     font-weight: bold;
 }
-body{
+html,body{
         background-color: whitesmoke;
         height: 100vh;
+        overflow: auto;
     }
     .card, .card-header{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
@@ -191,202 +193,21 @@ body{
         margin-left: 18px;
         width: 500px;
     }
-    
-
-
-/* Responsive Styles for header na ni */
-
-@media (max-width: 1024px) {
-    .navbar-header {
-        padding: 5px;
+    @media (max-width: 480px){
+        .regs{
+            max-width: 50px;
+        }
     }
-    .user-avatar {
-        height: 35px;
-        width: 35px;
+    @media (max-width: 300px){
+        .regs{
+            max-width: 50px;
+        }
     }
-    .active-indicator {
-        bottom: 3em;
-        right: 10px;
+    @media (max-width: 500px){
+        .regs{
+            max-width: 50px;
+        }
     }
-    .user-area img {
-        margin-right: 12px;
-        margin-top: -4em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 780px) {
-    .navbar-header {
-        padding: 4px;
-    }
-    .user-avatar {
-        height: 30px;
-        width: 30px;
-    }
-    .active-indicator {
-        bottom: 2.8em;
-        right: 8px;
-    }
-    .user-area img {
-        margin-right: 10px;
-        margin-top: -3em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 500px) {
-    .navbar-header {
-        padding: 3px;
-        width: 100vw;
-    }
-    .user-avatar {
-        height: 25px;
-        width: 25px;
-        margin-top: 20px;
-    }
-    .active-indicator {
-        bottom: 2.5em;
-        right: 6px;
-        font-size: 10px;
-    }
-    .user-area {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .user-area img {
-        margin-right: 8px;
-        margin-top: -2em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-@media (max-width: 480px){
-    body{
-        overflow-x: auto;
-    }
-    .navbar-header {
-        padding: 3px;
-        width: 100vw;
-        height: 68px;
-    }
-    .user-avatar {
-        height: 25px;
-        width: 25px;
-        margin-top: 20px;
-    }
-    .active-indicator {
-        bottom: 2.5em;
-        right: 6px;
-        font-size: 10px;
-    }
-    .user-area {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .user-area img {
-        margin-right: 8px;
-        margin-top: -5em;
-    } 
-    
-    .dropdown{
-        margin-top: -82px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 300px) {
-    .navbar-header {
-        padding: 2px;
-        width: 100vw;
-    }
-    .user-avatar {
-        height: 20px;
-        width: 20px;
-        margin-top: 10px;
-    }
-    .active-indicator {
-        bottom: 2em;
-        right: 4px;
-        font-size: 9px;
-    }
-    .user-area img {
-        margin-right: 6px;
-        margin-top: -1.5em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-
-
-/*sidebarrrrr */
-
-@media (max-width: 768px) {
-    #sidebar {
-        left: -250px;
-    }
-
-    #sidebar.collapsed {
-        left: 0;
-    }
-
-    #toggleSidebar {
-        display: block;
-    }
-
-    #right-panel {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        width: 200px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
-}
 </style>
 
 </head>
@@ -576,7 +397,7 @@ while ($row = mysqli_fetch_array($ret)) {
                 <label for="registration-status" class="form-control-label">Registration Status</label>
             </div>
             <div class="col-md-9">
-                <select id="registration-status" name="registration_status" class="form-control" required>
+                <select id="registration-status" name="registration_status" class="form-control  regs" required>
                     <option value="" disabled selected>Select Registration Status</option>
                     <option value="for_registration" <?php echo $registrationStatus === 'for_registration' ? 'selected' : ''; ?>>For Registration</option>
                     <option value="registered" <?php echo $registrationStatus === 'registered' ? 'selected' : ''; ?>>Registered</option>
@@ -612,7 +433,7 @@ while ($row = mysqli_fetch_array($ret)) {
         
         <div class="row form-group">
                     <div class="col text-center">
-                        <button type="submit" id="submit-button" class="btn btn-sm"><i class="bi bi-images"></i> Submit</button>
+                        <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
                 </div>
         </div>  
     </form>

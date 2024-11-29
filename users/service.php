@@ -21,8 +21,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
 <link rel="stylesheet" href="../admin/assets/css/style.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-<link rel="apple-touch-icon" href="images/ctu.png">
-<link rel="shortcut icon" href="images/ctu.png">
+<link rel="apple-touch-icon" href="../images/aa.png">
+      <link rel="shortcut icon" href="../images/aa.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet">
@@ -35,7 +36,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <title>Customer Service | CTU Danao VPMS</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             background: whitesmoke;
             height: 100vh;
             overflow: hidden;
@@ -44,8 +44,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 margin-top: 45px;
                 margin-left: 2em;
                 position: absolute;
+                z-index: -1;
             }
- 
+        .breadcrumbs{
+            display: block;
+        }
         #chat-box {
             margin-left: 3em;
             width: 95%; 
@@ -211,12 +214,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: black;
             }
         #faq-section {
-            z-index: 5;
+            z-index: -1;
             color: black;
         }
         .faq-item {
             margin-bottom: 1px;
-            z-index: 1000;
             padding: 5px;
             background: white;
             border-radius: 18px;
@@ -395,6 +397,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 /* Responsive Styles for header na ni */
 
 @media (max-width: 1024px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 5px;
     }
@@ -422,6 +427,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 780px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 4px;
     }
@@ -449,6 +457,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 500px) {
+    .breadcrumbs{
+        display: flex;
+    }
     .navbar-header {
         padding: 3px;
         width: 100vw;
@@ -482,6 +493,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 }
 @media (max-width: 480px){
+    .chatbox-container{
+        display: flex;
+    }
     body{
         overflow-x: auto;
     }
@@ -550,41 +564,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 
-
-/*sidebarrrrr */
-
-@media (max-width: 768px) {
-    #sidebar {
-        left: -250px;
-    }
-
-    #sidebar.collapsed {
-        left: 0;
-    }
-
-    #toggleSidebar {
-        display: block;
-    }
-
-    #right-panel {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        width: 200px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
-}
     </style>
 </head>
 <body>
@@ -655,7 +634,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="faq-question">Q: How do I change my parking pass or subscription?</div>
                     <div class="faq-answer">A: Navigate to the 'Subscriptions' section in your profile, select the parking pass you want to change, and follow the on-screen instructions to update your plan.</div>
                 </div>
-            </div>
+            </div><br>
 
             <!-- Right Column for the last 4 FAQ items -->
             <div class="col-md-6">

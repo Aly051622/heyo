@@ -1,8 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
 /*sa tanan na ni*/
 #right-panel {
     margin-left: 100px;
     transition: margin-left 0.3s ease;
     margin-top: 50px;
+} 
+.breadcrumbs a{
+    text-decoration: none !important;
+    color: dimgray !important;
 }
 .card,
 .card-header {
@@ -91,7 +102,6 @@
         width: auto;
         margin-left: -2em;
         padding: 5px;
-        display: none;
     }
 
     #printbtn,
@@ -109,10 +119,9 @@
 @media (max-width: 480px) {
     
     .breadcrumbs {
-        width: 90%;
+        width: 80%;
         margin-right: 20em;
         padding: 5px;
-        display: none;
     }
 
     #printbtn,
@@ -246,6 +255,9 @@
     
     .dropdown-toggle{
         margin-top: 30px;
+    }
+    .breadcrumbs{
+        display: none;
     }
 }
 @media (max-width: 480px){
