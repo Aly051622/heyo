@@ -124,12 +124,12 @@ body, * {
                 </li>
                 <li>
                     <a href="view-vehicle.php"  style="text-decoration: none;">
-                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    <i class="menu-icon fa fa-car-home"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
                     <a href="vehicle-transac.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-truck"></i>Vehicle Logs
+                        <i class="menu-icon fa fa-house"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
