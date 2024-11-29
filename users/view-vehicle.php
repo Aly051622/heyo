@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <?php
 session_start();
@@ -19,7 +18,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
   <html lang="">
   <head>
       <title>CTU- Danao Parking System - View Vehicle Parking Details</title>
-   
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
       <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
