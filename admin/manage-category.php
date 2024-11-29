@@ -20,8 +20,9 @@ echo "<script>window.location.href='manage-category.php'</script>";
 <html class="no-js" lang="">
 <head>
    
-<link rel="apple-touch-icon" href="images/ctu.png">
-    <link rel="shortcut icon" href="images/ctu.png">
+    <link rel="apple-touch-icon" href="images/aa.png">
+    <link rel="shortcut icon" href="images/aa.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <title>Manage Vehicle Category | CTU DANAO Parking System</title>
    
 

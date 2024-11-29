@@ -71,8 +71,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     
     <title>Client Dashboard | CTU DANAO Parking System</title>
    
-<link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-<link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+
+<link rel="apple-touch-icon" href="../images/aa.png">
+<link rel="shortcut icon" href="../images/aa.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -91,13 +94,18 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
 
     <style>
-        body{
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
+        html, body{
             background: whitesmoke;
             height: 100vh;
-            overflow: hidden;
-            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            overflow: auto;
             z-index: -1;
-            margin-top:50px;
         }
         /* Carousel container and styling */
         .carousel-container {
@@ -177,7 +185,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         }
             /* Card-specific styles */
         .notification {
-            max-width: 300px;
+            width: 300px;
             height: auto;
             padding: 4px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -198,14 +206,14 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             #notificationCard {
                 opacity: 1;
                 transition: opacity 0.5s ease-in-out;
-                padding: 5px;
-                margin-left: 35em;
-                max-width: 1000px;
+                margin-left: 20em;
+                width: 1000px;
                 width: auto;
                 height: auto;
                 border: none;
-                }
-
+                z-index: 1;
+                text-shadow: 0px 4px 4px white;
+            }
 
                 .section {
             margin: 20px 0;
@@ -291,6 +299,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 flex-basis: 100%;
             }
         }
+        @media (max-width: 480){
+                html, body{
+                    height: 100vh;
+                    background: whitesmoke;
+                    overflow: hidden;
+                }
+        }
     </style>
 </head>
 
@@ -309,9 +324,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-1">
-                            <div class="card-body " id="notificationCard">
-                                <h2>Welcome <?php echo $firstName; $lastName;?> <?php echo $lastName; ?> !</h2>
-                        </div>
+                    <div class="card-body" id="notificationCard">
+                    <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
+                    </div>
+
                     </div>
                 </div>
                 <!-- /Widgets -->

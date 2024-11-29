@@ -707,10 +707,9 @@ if (mysqli_query($con, $query)) {
     <title>CTU- Danao Parking Management System- Add Vehicle</title>
    
 
-    <link rel="apple-touch-icon" href="images/ctu.png">
-    <link rel="shortcut icon" href="images/ctu.png">
-    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
-    <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/9/9a/CTU_new_logo.png">
+    <link rel="apple-touch-icon" href="../images/aa.png">
+      <link rel="shortcut icon" href="../images/aa.png">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -774,6 +773,20 @@ if (mysqli_query($con, $query)) {
             background: whitesmoke;
             overflow: auto;
         }
+       .btn-sm:hover {
+              background-color: darkblue;
+              border: solid blue;
+          }
+  
+         .btn-sm {
+              border-radius: 9px;
+              background-color: rgb(53, 97, 255);
+              color: white;
+              border: solid;
+              cursor: pointer;
+              font-weight: bold;
+              box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          }
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->

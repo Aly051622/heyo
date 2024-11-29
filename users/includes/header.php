@@ -55,15 +55,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 }
 ?>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
     .navbar-header{
         position: fixed;
-        width: 100vh;
+        width: 100vw;
         z-index: 1;
+        height: 70px;
     }
+    .btn:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
     #printbtn:hover,
-    #viewbtn:hover {
+    #viewbtn:hover, .btn:hover {
         background: orange;
     }
 
@@ -72,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
             rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
             rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        padding: 13px;
+        padding: 5px;
         width: 100vw;
         border-bottom: groove;
     }
@@ -83,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
 
     .user-avatar {
-        height: 52px;
-        width: 52px;
+        height: 55px;
+        width: 55px;
         border-radius: 50%;
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
@@ -98,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 
     .active-indicator {
         position: absolute;
-        bottom: -3px;
+        margin-top: 30px;
         right: -3px;
         background-color: #28a745;
         color: white;
@@ -116,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         display: flex;
         align-items: center;
-        margin-top: -70px;
+        margin-top: -60px;
         margin-right: 10px;
         position:fixed;
     }
@@ -134,12 +147,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         margin-top: 5px;
         margin-left: 12em;
     }
+    #menuToggle{
+        width: 120px; 
+        height: auto;
+        margin-top: -10px; 
+        margin-left: 20px; 
+        cursor: pointer; 
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 3px;
+        border-radius: 7px;
+    }
+    #menuToggle:hover{
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    }
     #hh {
         margin-top: 30px;
     }
 
+     
+/* modal for logout */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-contents {
+    background: whitesmoke;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
 
-/* Responsive Styles with Media Queries */
+.modal-contents button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    cursor: pointer;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-family: 'Montserrat',sans-serif;
+      background: whitesmoke;
+    border: 1px solid white;
+}
+
+.modal-contents button:first-of-type {
+    background-color:#2691d9;
+    color: white;
+}
+
+.modal-contents button:last-of-type {
+    background-color: #2691d9;
+    color: white;
+}
+.modal-contents button:first-of-type:hover,
+.modal-contents button:last-of-type:hover
+{
+    background-color: darkblue;
+    border: solid 1px blue;
+}
+.alert-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        background-color: red;
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+/* Responsive na ni */
 
 /* 1600px and larger screens */
 @media (min-width: 1600px) {
@@ -170,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 992px to 1199px screens */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (max-width: 1200px) {
     .navbar-header {
         padding: 15px;
     }
@@ -188,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 768px to 991px screens */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (max-width: 992px) {
     .navbar-header {
         padding: 12px;
     }
@@ -201,6 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
     .menuToggle {
         margin-left: 8em;
+        margin-top: 10px;
     }
     .dropdown {
         margin-top: -60px;
@@ -209,7 +302,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 }
 
 /* 576px to 767px screens */
-@media (min-width: 576px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .navbar-header {
         padding: 10px;
     }
@@ -219,9 +312,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     }
     .user-area {
         margin-right: 5px;
+        margin-top: 30em;
     }
     .menuToggle {
         margin-left: 5em;
+        margin-top: 10px;
     }
     .dropdown {
         margin-top: -50px;
@@ -232,7 +327,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 /* 480px to 575px screens */
 @media (max-width: 575px) {
     .navbar-header {
-        padding: 8px;
+        padding: 5px;
+        width: 100%;
+        height: 50px;
     }
     .user-avatar {
         height: 30px;
@@ -241,13 +338,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     .user-area {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 40em;
     }
     .dropdown {
-        margin-top: -40px;
-        margin-right: 5px;
+        margin-top: 50px;
+        margin-right: 20px;
     }
     .menuToggle {
         margin-left: 3em;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 50px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 30em;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 100px;
+    }
+    #menuToggle {
+        margin-left: 3em;
+        margin-top: 10px;
     }
 }
 </style>
@@ -259,6 +382,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <style>
     /* Add relevant styles here */
@@ -266,7 +390,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
 <body>
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
-        <a ><img src="images/clientlogo.png"  id="menuToggle" style="width: 120px; height: auto; margin-top: -10px; margin-left: 20px; cursor: pointer; text-shadow: 0px 4px 4px gray"></a>
+        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
         <div class="user-area dropdown">
             <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="profile-container">
@@ -279,7 +403,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
                 <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
                 <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
-                <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
+                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
         </div>
@@ -296,7 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data">
                         <input type="file" name="profilePic" accept="image/*" required>
-                        <button type="submit" name="upload" class="btn btn-primary mt-2">Upload</button>
+                        <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
                     </form>
                 </div>
             </div>
@@ -321,9 +445,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
             </div>
         </div>
     </div>
+        <script>
+            var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
+            successModal.show();
+            </script>
+    
+    <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-contents">
+                        <p>Are you sure you want to log out?</p>
+                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
+                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
+                    </div>
+                </div>
+                <div class="alert-message" id="logout-alert" style="display: none;">
+                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+                </div>
+            </div>
     <script>
-        var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
-        successModal.show();
+
+        function handleLogout() {
+                // Show the modal for confirmation
+                document.getElementById("logout-confirm-modal").style.display = "block";
+                return false; // Prevent the default action temporarily
+            }
+
+            function confirmLogout(isConfirmed) {
+                // Hide the modal
+                document.getElementById("logout-confirm-modal").style.display = "none";
+
+                if (isConfirmed) {
+                    // Show the logout alert
+                    var alertMessage = document.getElementById("logout-alert");
+                    alertMessage.style.display = "block";
+
+                    // Redirect or proceed with logout actions if necessary
+                    window.location.href = "login.php"; 
+                }
+            }
     </script>
     <?php endif; ?>
 

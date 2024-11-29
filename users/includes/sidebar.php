@@ -3,11 +3,20 @@
 <head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head> 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body, * {
+    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+    margin: 0; /* Reset margin for consistency */
+    padding: 0; /* Reset padding for consistency */
+    box-sizing: border-box; /* Avoid layout issues */
+}
     .left-panel{
-        margin-top: 15px;
+        margin-top: 12px;
         border-top: groove 2px;
     }
     #sidebar {
@@ -52,9 +61,26 @@
     }
 }
 
+@media (max-width: 576px) {
+    #sidebar {
+        width: 200px;
+        margin-top: -15px;
+    }
+
+    #sidebar.collapsed {
+        width: 50px;
+    }
+
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
+
 @media (max-width: 480px) {
     #sidebar {
         width: 200px;
+        margin-top: -15px;
     }
 
     #sidebar.collapsed {
