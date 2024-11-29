@@ -21,21 +21,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         if ($_POST['model'] === "Others, please specify") {
             $model = $_POST['otherModel'];
         }      
-        
-        // Ensure the session contains the user's contact number
-        if (!isset($_SESSION['userMobile']) || empty($_SESSION['userMobile'])) {
-            echo "<script>alert('Session error: User contact number not found. Please log in again.');</script>";
-            echo "<script>window.location.href ='logout.php'</script>";
-            exit;
-        }
-
-        // Validate the input contact number matches the session contact number
-        $loggedInUserMobile = $_SESSION['userMobile']; // Get the session contact number
-        if (trim($ownercontno) !== trim($loggedInUserMobile)) {
-            echo "<script>alert('The contact number does not match the current user\'s registered contact number. Please try again.');</script>";
-            echo "<script>window.history.back();</script>";
-            exit;
-        }
 
         $imagePath = '';
         if ($vehcomp === 'Chevrolet') {
