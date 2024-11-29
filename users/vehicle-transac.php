@@ -78,6 +78,12 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QFW9zO27sR9L5N9l9X3C9yDhhFLDf8OiN+RFpF2mVXIOcn4Thhm/6z9y2mbsVsZ1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HoAq9iHknG3+MBHpNPIc4ni+lK69CBddA/PJyt7jyvTFDhoJfWl7r29wh+I1kFTV" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72gFWwHE1tvtfQN2fvHldDpWl9QUZT3G33asP1l61v0Ya34xUkTljAlbiY1" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.bundle.min.js" integrity="sha384-GWqAb6aDZ5DJVPbqwnBp4ycg4CJyZ3sEkkquLDVfuFxIt6sXJ3dKEyk5L1hZ4Epl" crossorigin="anonymous"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
 
