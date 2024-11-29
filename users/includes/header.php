@@ -26,9 +26,15 @@ if ($result && mysqli_num_rows($result) > 0) {
         : $profilePicturePath;
 }
 
-$uploadSuccess = false;
+// Log out logic
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    session_destroy();
+    header("Location: login.php"); // Redirect to login page
+    exit;
+}
 
 // Handle image upload
+$uploadSuccess = false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
     if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
         $uploadsDir = '../uploads/profile_uploads/';
@@ -54,15 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
         }
     }
 }
-
-// Handle logout
-if (isset($_GET['logout'])) {
-    session_destroy();
-    header("Location: login.php");
-    exit;
-}
 ?>
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
@@ -381,6 +379,12 @@ body, * {
         margin-top: 10px;
     }
 }
+#logout-btn:hover {
+    background-color: darkred;
+    color: white;
+    cursor: pointer;
+}
+
 </style>
 
 <!DOCTYPE html>
