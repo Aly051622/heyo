@@ -466,6 +466,7 @@ body, * {
     .user-avatar {
         height: 30px;
         width: 30px;
+        margin-left: 50em;
     }
     .user-area {
         flex-direction: column;
