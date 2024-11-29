@@ -1,23 +1,60 @@
-</a>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+</head> 
+<style>
+    #sidebar {
+    width: 200px;
+    position: fixed;
+    left: 0;
+    height: 100bh;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    margin-top: -2px;
+    z-index: 1;
+}
+
+#sidebar.collapsed {
+    width: 70px;
+}
+#toggleSidebar {
+    color: white;
+    border: none;
+    left: 10px;
+}
+a{
+    text-decoration: none;
+}
+</style> 
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="dashboard.php">
+                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                    </a>
                 </li>
                 <li>
-                    <a href="view-vehicle.php"  style="text-decoration: none;">
+                    <a href="view-vehicle.php">
                     <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
-                    <a href="vehicle-transac.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-truck-side"></i>Vehicle Logs
-                        <i class="menu-icon fa fa-truck"></i>Vehicle Logs
+                <a href="vehicle-transac.php">
+                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
-                    <a href="add-vehicle.php"  style="text-decoration: none;">
+                    <a href="add-vehicle.php">
                         <i class="menu-icon fa fa-address-book"></i>Register Vehicle
                     </a>
                 </li>
                 <li>
-                    <a href="service.php"  style="text-decoration: none;">
+                    <a href="service.php">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern
                     </a>
                 </li>
