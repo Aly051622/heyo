@@ -360,7 +360,7 @@ body, * {
     <div class="clearfix"></div>
 <!-- Footer -->
 <?php include_once('includes/footer.php'); ?>
-        </div>
+      
 <!-- /#right-panel -->
 
 <!-- Scripts -->
