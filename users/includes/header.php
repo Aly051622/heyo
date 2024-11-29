@@ -406,20 +406,8 @@ body, * {
                 <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
                 </div>
             </div>
-
-            <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-content">
-                        <p>Are you sure you want to log out?</p>
-                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
-                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
-                    </div>
-                </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
         </div>
     </div>
-    
 
     <!-- Upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
@@ -462,10 +450,20 @@ body, * {
             successModal.show();
             </script>
     
-    
+    <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-contents">
+                        <p>Are you sure you want to log out?</p>
+                        <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
+                        <button onclick="confirmLogout(false)" class="btn-warning">No</button>
+                    </div>
+                </div>
+                <div class="alert-message" id="logout-alert" style="display: none;">
+                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+                </div>
+            </div>
     <script>
 
-            function handleLogout() {
+        function handleLogout() {
                 // Show the modal for confirmation
                 document.getElementById("logout-confirm-modal").style.display = "block";
                 return false; // Prevent the default action temporarily
@@ -481,7 +479,7 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "../welcome.php"; // Or any other logout URL
+                    window.location.href = "login.php"; 
                 }
             }
     </script>
