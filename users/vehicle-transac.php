@@ -193,9 +193,7 @@ body, * {
     </style>
     </head>
     <body>
-        
-<?php include_once('includes/header.php'); ?>
-<?php include_once('includes/sidebar.php'); ?>
+
 <div class="right-panel">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
