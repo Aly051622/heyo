@@ -117,11 +117,13 @@ body, * {
                         <i class="menu-icon fa fa-address-book"></i>Register Vehicle
                     </a>
                 </li>
+                <!--
                 <li>
                     <a href="service.php"  style="text-decoration: none;">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern
                     </a>
                 </li>
+-->
             </ul>
         </div>
     </nav>
