@@ -418,9 +418,7 @@ input[type="text"]:hover, input[type="password"]:hover {
             <input type="password" name="repeatpassword" id="repeatpassword" placeholder="Repeat password" required class="form-control">
             <i class="fa fa-eye-slash" id="toggleRepeatPassword" style="position: absolute; right: 10px; top: 5px; cursor: pointer; color: black;"></i>
         </div>
-        <button class="icon-btn" id="terms-btn">
-      <i class="bi bi-house-lock-fill"></i> Terms and Conditions
-      </button>
+
 
             <div class="checkbox">
                 <label class="pull-right">
