@@ -7,22 +7,23 @@ include('includes/dbconnection.php');
 
 // Ensure user is logged in
 if (!isset($_SESSION['vpmsuid'])) {
-    echo '<p>Debug: User ID not found in session.</p>';
-    exit;
+    die('<p>Access Denied: User not logged in.</p>');
 }
 
 $userId = $_SESSION['vpmsuid'];
 
-// Fetch the user's profile picture
-$query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
-$result = mysqli_query($con, $query);
+// Fetch the user's profile picture securely using prepared statements
+$query = $con->prepare("SELECT profile_pictures FROM tblregusers WHERE ID = ?");
+$query->bind_param("i", $userId);
+$query->execute();
+$result = $query->get_result();
 
 $profilePicturePath = '../admin/images/images.png'; // Default avatar
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+if ($result && $result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     $profilePicture = $row['profile_pictures'] ?? '';
-    $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture)) 
-        ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8') 
+    $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture))
+        ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8')
         : $profilePicturePath;
 }
 
@@ -30,31 +31,44 @@ $uploadSuccess = false;
 
 // Handle image upload
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
+    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === UPLOAD_ERR_OK) {
         $uploadsDir = '../uploads/profile_uploads/';
-        $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
-        $targetFilePath = $uploadsDir . $fileName;
+        $fileType = mime_content_type($_FILES['profilePic']['tmp_name']);
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
-        // Create the uploads directory if it doesn't exist
-        if (!is_dir($uploadsDir)) {
-            mkdir($uploadsDir, 0777, true);
-        }
+        // Validate file type
+        if (in_array($fileType, $allowedTypes)) {
+            $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
+            $targetFilePath = $uploadsDir . $fileName;
 
-        // Move the uploaded file and update the database
-        if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
-            $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
-            if (mysqli_query($con, $updateQuery)) {
-                $uploadSuccess = true;
-                $profilePicturePath = $targetFilePath; // Update the displayed picture path
+            // Create the uploads directory if it doesn't exist
+            if (!is_dir($uploadsDir)) {
+                mkdir($uploadsDir, 0777, true);
+            }
+
+            // Move the uploaded file and update the database
+            if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
+                $updateQuery = $con->prepare("UPDATE tblregusers SET profile_pictures = ? WHERE ID = ?");
+                $updateQuery->bind_param("si", $fileName, $userId);
+
+                if ($updateQuery->execute()) {
+                    $uploadSuccess = true;
+                    $profilePicturePath = $targetFilePath; // Update the displayed picture path
+                } else {
+                    error_log("Database update failed: " . $con->error);
+                }
             } else {
-                error_log("Database update failed: " . mysqli_error($con));
+                error_log("File upload failed for: " . $targetFilePath);
             }
         } else {
-            error_log("File upload failed for: " . $targetFilePath);
+            echo '<p class="alert alert-danger">Invalid file type. Only JPG, PNG, and GIF are allowed.</p>';
         }
+    } else {
+        echo '<p class="alert alert-danger">Error uploading the file. Please try again.</p>';
     }
 }
 ?>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
@@ -409,24 +423,23 @@ body, * {
         </div>
     </div>
 
-    <!-- Upload Modal -->
-    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data">
-                        <input type="file" name="profilePic" accept="image/*" required>
-                        <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
-                    </form>
-                </div>
+   <!-- Upload Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" enctype="multipart/form-data">
+                    <input type="file" name="profilePic" accept="image/*" required>
+                    <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
+                </form>
             </div>
         </div>
     </div>
-
+</div>
     <!-- Success Modal -->
     <?php if ($uploadSuccess): ?>
     <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
