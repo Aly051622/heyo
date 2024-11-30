@@ -7,11 +7,13 @@ if (isset($_POST['login'])) {
     $emailOrMobile = $_POST['emailcont'];
     $password = $_POST['password'];
 
+    // Check if input is email or mobile number
     $condition = filter_var($emailOrMobile, FILTER_VALIDATE_EMAIL) 
                  ? "Email='$emailOrMobile'" 
                  : "MobileNumber='$emailOrMobile'";
 
-    $query = mysqli_query($con, "SELECT ID, FirstName, LastName, MobileNumber, Password, QRCode FROM tblregusers WHERE $condition");
+    // Query user data
+    $query = mysqli_query($con, "SELECT ID, FirstName, LastName, MobileNumber, Password, profile_pictures FROM tblregusers WHERE $condition");
     $row = mysqli_fetch_assoc($query);
 
     if ($row && password_verify($password, $row['Password'])) {
@@ -20,7 +22,7 @@ if (isset($_POST['login'])) {
         header('location:dashboard.php');
         exit();
     } else {
-        echo "<script>alert('Invalid Details.');</script>";
+        echo "<script>alert('Invalid login details.');</script>";
     }
 }
 
@@ -28,7 +30,7 @@ if (isset($_POST['login'])) {
 if (isset($_POST['upload'])) {
     if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] == 0) {
         $uploadsDir = '../uploads/profile_uploads/';
-        $fileName = time() . '_' . basename($_FILES['profilePic']['name']); // Unique file name
+        $fileName = time() . '_' . basename($_FILES['profilePic']['name']); // Generate unique file name
         $targetFilePath = $uploadsDir . $fileName;
 
         // Create uploads directory if it doesn't exist
@@ -43,26 +45,28 @@ if (isset($_POST['upload'])) {
 
             if ($query) {
                 echo "<script>alert('Profile picture uploaded successfully.');</script>";
+                header('location:dashboard.php'); // Refresh to update image
+                exit();
             } else {
-                echo "<script>alert('Database update failed.');</script>";
+                echo "<script>alert('Failed to update the database.');</script>";
             }
         } else {
-            echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
+            echo "<script>alert('Error occurred while uploading your file.');</script>";
         }
     } else {
-        echo "<script>alert('File upload failed. Please select a valid image.');</script>";
+        echo "<script>alert('No valid file selected.');</script>";
     }
 }
 
-// Fetch Profile Picture
+// Fetch Profile Picture for Display
 $userId = $_SESSION['vpmsuid'];
 $query = mysqli_query($con, "SELECT profile_pictures FROM tblregusers WHERE ID='$userId'");
 $row = mysqli_fetch_assoc($query);
 
-// Default to placeholder image if no profile picture is set
+// Set profile picture path
 $profilePicPath = !empty($row['profile_pictures']) 
     ? '../uploads/profile_uploads/' . $row['profile_pictures'] 
-    : '../admin/images/images.png';
+    : '../admin/images/images.png'; // Default placeholder
 ?>
 
 <!-- HTML Section -->
@@ -88,7 +92,7 @@ $profilePicPath = !empty($row['profile_pictures'])
         }
         .user-avatar {
             height: 35px;
-            width: 27px;
+            width: 35px;
         }
     </style>
 </head>
@@ -97,7 +101,9 @@ $profilePicPath = !empty($row['profile_pictures'])
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
-                    <a class="navbar-brand" href="dashboard.php"><img src="images/clienthc.png" alt="Logo" style="width: 120px; height: auto;"></a>
+                    <a class="navbar-brand" href="dashboard.php">
+                        <img src="images/clienthc.png" alt="Logo" style="width: 120px; height: auto;">
+                    </a>
                 </div>
             </div>
             <div class="top-right">
