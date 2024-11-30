@@ -109,9 +109,9 @@
       <button class="icon-btn" id="privacy-btn">
       <i class="bi bi-house-gear-fill"></i> Privacy Policy
       </button>
-      <button class="icon-btn" id="terms-btn">
+      <!--<button class="icon-btn" id="terms-btn">
       <i class="bi bi-house-lock-fill"></i> Terms and Conditions
-      </button>
+      </button>-->
     </div>
     <div class="footer-copyright">
       &copy; 2024 CTU DANAO - VEHICLE PARKING MANAGEMENT SYSTEM. <br>All Rights Reserved.
