@@ -101,7 +101,7 @@ body, * {
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="dashboard.php" style="text-decoration: none;">
-                        <i class="menu-icon-solid fa fa-laptop"></i>Dashboard
+                        <i class="menu-icon fa-solid fa-laptop"></i>Dashboard
                     </a>
                 </li>
                 <li>
