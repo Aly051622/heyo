@@ -176,6 +176,55 @@ body, * {
                 display: block;
                 margin-bottom: 5px;
             }
+            .breadcrumbs{
+                display: none;
+            }
+        }
+
+        @media (max-width: 300px) {
+            .table-responsive th, .table-responsive td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            .table-responsive tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+            }
+            .table-responsive td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+            .breadcrumbs{
+                display: none;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .table-responsive th, .table-responsive td {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            .table-responsive tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+            }
+            .table-responsive td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                margin-bottom: 5px;
+            }
+            .breadcrumbs{
+                display: none;
+            }
         }
         
         .text-center {
@@ -206,7 +255,7 @@ body, * {
             <div class="col-sm-8">
                 <div class="page-header float-right">
                     <div class="page-title">
-                        <ol class="breadcrumb text-right">
+                        <ol class="breadcrumb text-right" style="background: transparent;">
                             <li><a href="dashboard.php">Dashboard</a></li>
                             <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
                             <li class="active">View Vehicle Parking Details</li>
