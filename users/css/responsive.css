@@ -10,6 +10,7 @@ body, * {
     margin-left: 100px;
     transition: margin-left 0.3s ease;
     margin-top: 50px;
+    overflow: hidden;
 } 
 .breadcrumbs a{
     text-decoration: none !important;

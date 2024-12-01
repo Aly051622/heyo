@@ -18,7 +18,7 @@ body, * {
     }
     #sidebar {
     width: 200px;
-    position: absolute;
+    position: fixed;
     left: 0;
     height: 100bh;
     overflow: hidden;
