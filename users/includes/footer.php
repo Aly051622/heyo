@@ -256,7 +256,7 @@
    <!-- FAQ Modal -->
    <div id="faq-modal" class="modal">
     <div class="modal-content">
-      <iframe src="faq.php" class="iframe-content"></iframe>
+      <iframe src="faqs.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-faq">&times;</button>
     </div>
   </div>
