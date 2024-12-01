@@ -386,7 +386,6 @@ body, * {
 }
 </style>
 <header>
-<div id="right-panel" class="right-panel">
 <header id="header" class="header">
             <div class="top-left">
     <div class="navbar-header">
@@ -401,7 +400,7 @@ body, * {
 
                             <div class="user-area dropdown float-right">
                                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" style="margin-top: 10px;">
+                                    <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" style="margin-top: -10px;">
                                 </a>
 
                                 <div class="user-menu dropdown-menu" id="hh">
