@@ -238,6 +238,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         .space{
             margin-top:10px;
         }
+        .float-right{
+            background: transparent;
+        }
       /*sa tanan na ni*/
 #right-panel {
     margin-left: 100px;
@@ -256,7 +259,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Improve table styling for mobile */
 .table-responsive table {
     width: 100%;
     table-layout: auto;
@@ -324,77 +326,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         font-size: 0.9rem;
     }
 }
-
-@media (max-width: 500px) {
-    .breadcrumbs {
-        width: auto;
-        margin-left: -2em;
-        padding: 5px;
-        display: none;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    
-    .breadcrumbs {
-        width: 90%;
-        margin-right: 20em;
-        padding: 5px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 12px;
-        height: 100vh;
-        overflow: auto;
-    }
-    .card, .card-header, .card-body, .tables{
-        width: 330px;
-        font-size:12px;
-        
-    }
-    .tables thead{
-        padding: 2px;
-    }
- 
-}
-
-
-@media (max-width: 300px) {
-    .breadcrumbs {
-        width: 100%;
-        margin-left: 0.5em;
-        padding: 4px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 5px 8px;
-        font-size: 0.8rem;
-    }
-
-    body {
-        font-size: 0.8rem;
-    }
-}
-
-
-
 
 /* Responsive Styles for header na ni */
 
@@ -469,36 +400,25 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .breadcrumbs{
         height: 70px;
     }
-    .navbar-header {
-        padding: 3px;
-        width: 100vw;
+    .breadcrumbs {
+        width: 90%;
+        padding: 5px;
+        width: auto;
+        margin-left: 1em;
     }
-    .user-avatar {
-        height: 25px;
-        width: 25px;
-        margin-top: 20px;
+
+    body {
+        font-size: 12px;
+        height: 100vh;
+        overflow: auto;
     }
-    .active-indicator {
-        bottom: 2.5em;
-        right: 6px;
-        font-size: 10px;
+    .card, .card-header, .card-body, .tables{
+        width: 330px;
+        font-size:12px;
+        
     }
-    .user-area {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .user-area img {
-        margin-right: 8px;
-        margin-top: -2em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
+    .tables thead{
+        padding: 2px;
     }
 
     #message-icon{
@@ -509,6 +429,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
     #message-input{
         width: 250px;
+    }
+    .sec2{
+        margin-top: 50px;
     }
 }
 @media (max-width: 480px){
@@ -563,11 +486,17 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     #message-input{
         width: 250px;
     }
+    .sec2{
+        margin-top: 50px;
+    }
 }
 
 @media (max-width: 300px) {
     .breadcrumbs{
         height: 70px;
+        width: 100%;
+        margin-left: 1em;
+        padding: 4px;
     }
     .navbar-header {
         padding: 2px;
@@ -606,6 +535,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     #message-input{
         width: 200px;
     }
+
+    .sec2{
+        margin-top: 50px;
+    }
+    
 }
 
     </style>
@@ -630,7 +564,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
-                            <ol class="breadcrumb text-right">
+                            <ol class="breadcrumb text-right" style="background: transparent;">
                                 <li><a href="dashboard.php">Dashboard</a></li>
                                 <li class="active">Customer Service</li>
                                 <li class="active">FAQs</li>                              
@@ -679,10 +613,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="faq-question">Q: How do I change my parking pass or subscription?</div>
                     <div class="faq-answer">A: Navigate to the 'Subscriptions' section in your profile, select the parking pass you want to change, and follow the on-screen instructions to update your plan.</div>
                 </div>
-            </div><br>
+            </div>
 
             <!-- Right Column for the last 4 FAQ items -->
-            <div class="col-md-6">
+            <div class="col-md-6 sec2">
                 <div class="faq-item">
                     <div class="faq-question">Q: What should I do if I forget my parking pass?</div>
                     <div class="faq-answer">A: Visit the support chat or use the 'Forgot Pass' feature on the login page. You'll be guided to retrieve or reset your pass.</div>
