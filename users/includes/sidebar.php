@@ -96,27 +96,27 @@ body, * {
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="dashboard.php" style="text-decoration: none;">
-                        <i class="menu-icon bi bi-laptop-fill"></i>Dashboard
+                        <i class="menu-icon fa bi bi-laptop-fill"></i>Dashboard
                     </a>
                 </li>
                 <li>
                     <a href="view-vehicle.php"  style="text-decoration: none;">
-                    <i class="menu-icon bi bi-bus-front-fill"></i> Owned Vehicle/s
+                    <i class="menu-icon fa bi bi-bus-front-fill"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
                     <a href="vehicle-transac.php"  style="text-decoration: none;">
-                        <i class="menu-icon bi bi-train-front-fill"></i>Vehicle Logs
+                        <i class="menu-icon fa bi bi-train-front-fill"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
                     <a href="add-vehicle.php"  style="text-decoration: none;">
-                        <i class="menu-icon bi bi-journal-album"></i>Register Vehicle
+                        <i class="menu-icon fa bi bi-journal-album"></i>Register Vehicle
                     </a>
                 </li>
                 <li>
                     <a href="service.php"  style="text-decoration: none;">
-                        <i class="menu-icon bi bi-headset"></i>Chat Concern
+                        <i class="menu-icon fa bi bi-headset"></i>Chat Concern
                     </a>
                 </li>
             </ul>
