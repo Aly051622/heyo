@@ -454,6 +454,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
+
+    #message-icon{
+        width: 100px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -490,6 +494,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     
     .dropdown-toggle{
         margin-top: 30px;
+    }
+
+    #message-icon{
+        width: 70px;
     }
 }
 @media (max-width: 480px){
@@ -531,6 +539,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
+
+    #message-icon{
+        width: 70px;
+    }
 }
 
 @media (max-width: 300px) {
@@ -561,8 +573,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
-}
 
+    #message-icon{
+        width: 70px;
+    }
+}
 
     </style>
 </head>
