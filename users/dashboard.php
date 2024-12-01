@@ -314,7 +314,7 @@ body, * {
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
     <?php if ($licenseStatusMessage): ?>
-                            <div class="notification" style=" text-shadow: 0px 4px 4px white;"><?php echo $licenseStatusMessage; ?></div>
+                            <div class="notification"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
         <!-- Content -->
         <div class="content">
@@ -323,8 +323,8 @@ body, * {
                 <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-1">
-                    <div class="card-body" id="notificationCard">
-                    <h2>Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
+                    <div class="card-body" id="notificationCard" >
+                    <h2 style=" text-shadow: 0px 4px 4px white;">Welcome! <?php echo $firstName; $lastName;?> <?php echo $lastName; ?></h2>
                     </div>
 
                     </div>

@@ -343,7 +343,7 @@ body, * {
     .navbar-header {
         padding: 5px;
         width: 100%;
-        height: 50px;
+        height: 70px;
     }
     .user-avatar {
         height: 30px;
@@ -367,7 +367,7 @@ body, * {
     .navbar-header {
         padding: 5px;
         width: 100%;
-        height: 50px;
+        height: 70px;
     }
     .user-avatar {
         height: 30px;

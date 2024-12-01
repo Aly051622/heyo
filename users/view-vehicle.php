@@ -60,7 +60,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
           }
   
           #printbtn:hover,
-          #viewbtn:hover, .download-icon:hover, .btn-hover {
+          #viewbtn:hover, .download-icon:hover, .btn-sm:hover, .btn:hover {
               background-color: darkblue;
               border: solid blue;
               color: white;
@@ -158,9 +158,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</li>
-                                <li><a href="view-vehicle.php">View Vehicle Parking Details</li>
-                                <li class="active">View Vehicle Parking Details</li>
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                                <li class="active">View Vehicle Parking Details</a></li>
                             </ol>
                         </div>
                     </div>

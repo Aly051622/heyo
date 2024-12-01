@@ -773,12 +773,12 @@ if (mysqli_query($con, $query)) {
             background: whitesmoke;
             overflow: auto;
         }
-       .btn:hover, .btn-sm:hover, .btn-primary:hover {
+       .btn:hover, .btn-sm:hover, .btn-primary:hover, #addbtn:hover  {
               background-color: darkblue;
               border: solid blue;
           }
   
-         .btn-sm {
+         .btn-sm, #addbtn{
               border-radius: 9px;
               background-color: rgb(53, 97, 255);
               color: white;
@@ -953,7 +953,7 @@ if (mysqli_query($con, $query)) {
 
                                 <!-- Submit Button -->
                                 <p style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary btn-sm" name="submit">
+                                    <button type="submit" class="btn btn-primary btn-sm" name="submit" id="addbtn">
                                         <i class="fa fa-plus"> Add</i>
                                     </button>
                                 </p>
