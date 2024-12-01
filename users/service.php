@@ -50,7 +50,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: orange;
             padding: 20px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 7px;
         }
 
         .faq-container {
@@ -122,12 +122,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 </div>
             </div>
         </div>
-    </div>
+    </div><br>
     <!-- Header -->
-    <div class="faq-header mb-5">
+    <div class="faq-header">
         <h3>Frequently Asked Questions</h3>
     </div>
-
     <!-- FAQ Section -->
     <div class="faq-container">
         <!-- FAQ Items -->
