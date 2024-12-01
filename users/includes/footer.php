@@ -205,22 +205,29 @@
 <body>
   <footer class="footer">
     <div class="footer-icons">
-    <button class="icon-btn" id="slide-btn">
-      <i class="bi bi-gear-fill"></i> User Manual
+      
+      <button class="icon-btn" id="slide-btn">
+        <i class="bi bi-gear-fill"></i> User Manual
       </button>
+
       <button class="icon-btn" id="privacy-btn">
-      <i class="bi bi-house-gear-fill"></i> Privacy Policy
+        <i class="bi bi-house-gear-fill"></i> Privacy Policy
       </button>
+      
       <button class="icon-btn" id="terms-btn">
-      <i class="bi bi-house-lock-fill"></i> Terms and Conditions
+        <i class="bi bi-house-lock-fill"></i> Terms and Conditions
       </button>
+      
       <button class="icon-btn" id="faq-btn">
-      <i class="bi bi-question"></i> FAQs
+        <i class="bi bi-question"></i> FAQs
       </button>
+
     </div>
+
     <div class="footer-copyright">
       &copy; 2024 CTU DANAO - VEHICLE PARKING MANAGEMENT SYSTEM. <br>All Rights Reserved.
     </div>
+
   </footer>
 
     <!-- Slide Modal -->
@@ -246,7 +253,7 @@
     </div>
   </div>
 
-   <!-- Terms and Conditions Modal -->
+   <!-- FAQ Modal -->
    <div id="faq-modal" class="modal">
     <div class="modal-content">
       <iframe src="faq.php" class="iframe-content"></iframe>
@@ -259,16 +266,19 @@
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
 const slideModal = document.getElementById('slide-modal');
-const slideBtn = document.getElementById('slide-btn');
-const slideModal = document.getElementById('faq-modal');
-const slideBtn = document.getElementById('faq-btn');
+const faqModal = document.getElementById('faq-modal');
+
 const privacyBtn = document.getElementById('privacy-btn');
 const termsBtn = document.getElementById('terms-btn');
+const slideBtn = document.getElementById('slide-btn');
+const faqBtn = document.getElementById('faq-btn');
+
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
-const closeSlide = document.getElementById('close-faq');
+const closeSlide = document.getElementById('close-slide');
+const closeFaq= document.getElementById('close-faq');
 
-// Event Listeners
+// button ni
 slideBtn.addEventListener('click', () => {
   slideModal.style.display = 'flex';
 });
@@ -281,6 +291,11 @@ termsBtn.addEventListener('click', () => {
   termsModal.style.display = 'flex';
 });
 
+faqBtn.addEventListener('click', () => {
+  faqModal.style.display = 'flex';
+});
+
+//for close ni
 closeSlide.addEventListener('click', () => {
   slideModal.style.display = 'none';
 });
@@ -293,6 +308,11 @@ closeTerms.addEventListener('click', () => {
   termsModal.style.display = 'none';
 });
 
+closeFaq.addEventListener('click', () => {
+  faqModal.style.display = 'none';
+});
+
+
 window.addEventListener('click', (e) => {
   if (e.target === privacyModal) {
     privacyModal.style.display = 'none';
@@ -300,6 +320,8 @@ window.addEventListener('click', (e) => {
     termsModal.style.display = 'none';
   } else if (e.target === slideModal) {
     slideModal.style.display = 'none';
+  } else if (e.target === slideModal) {
+    faqModal.style.display = 'none';
   }
 });
   </script>

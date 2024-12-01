@@ -206,7 +206,9 @@ FROM tblvehicle WHERE ID='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
-?>                       <table border="1" class="table table-bordered table-striped table-responsive mg-b-0">
+?>                       
+                    <div class="table-responsive">
+                    <table border="1" class="table table-bordered table-striped  mg-b-0">
                               
 <tr>
                                 <th>Vehicle Category</th>
@@ -257,7 +259,9 @@ if($row['Status']=="Out")
 <tr>
 
 
-</table><?php } ?>
+</table>
+</div>
+<?php } ?>
 
                     </div>
                 </div>

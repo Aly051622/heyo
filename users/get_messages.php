@@ -3,7 +3,7 @@ session_start();
 include('../DBconnection/dbconnection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $userId = $_SESSION['vpmsuid'] ?? null;
+    $userId = $_SESSION['user_id'] ?? null;
 
     if (!$userId) {
         echo json_encode(['success' => false, 'message' => 'User not logged in.']);
@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     try {
+        // Fetch messages for the logged-in user
         $stmt = $con->prepare("SELECT username, message, isSupport, created_at FROM messages WHERE user_id = ? ORDER BY created_at ASC");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
@@ -25,6 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt->close();
     } catch (Exception $e) {
         echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    } finally {
+        $con->close();
     }
+} else {
+    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
 }
 ?>
