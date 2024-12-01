@@ -390,7 +390,7 @@ body, * {
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
         
-                <div class="top-right">
+                <div class="top-right right-panel">
                 <div class="header-menu">
                 <div class="header-left"></div>
                     <div class="user-area dropdown float-right" style="margin-top: 20px;">
