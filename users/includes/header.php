@@ -393,7 +393,7 @@ body, * {
                 <div class="top-right right-panel">
                 <div class="header-menu">
                 <div class="header-left"></div>
-                    <div class="user-area dropdown float-right" style="margin-top: 20px;">
+                    <div class="user-area dropdown float-right" style="margin-top: -50px;">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php
                             // Check if the profile picture exists and display it
@@ -414,7 +414,7 @@ body, * {
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
                                     <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"></i> Change Password</a>
-                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi-box-arrow-right-fill"></i> Logout</a>
+                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"></i> Logout</a>
 
                                 </form>   
                     </div>
