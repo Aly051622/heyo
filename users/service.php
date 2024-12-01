@@ -124,8 +124,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         </div>
     </div>
     <!-- Header -->
-    <div class="faq-header">
-        <h1>Frequently Asked Questions</h1>
+    <div class="faq-header mb-5">
+        <h3>Frequently Asked Questions</h3>
     </div>
 
     <!-- FAQ Section -->
