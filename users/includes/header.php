@@ -419,8 +419,8 @@ body, * {
                                     <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
-                                    <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
-                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                                    <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"></i> Change Password</a>
+                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi-box-arrow-right-fill"></i> Logout</a>
 
                                 </form>   
                     </div>
