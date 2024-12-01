@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/dbconnection.php');
+include('../DBconnection/dbconnection.php');
 
 if (isset($_POST['login'])) {
     $emailOrMobile = $_POST['emailcont'];
@@ -51,9 +51,11 @@ if (isset($_POST['upload'])) {
 }
 ?>
 
+<!-- Link to external JavaScript -->
 <script src="js/upload-profile.js"></script>
 
 <style>
+    /* Your existing CSS styles */
     #header {
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
@@ -74,9 +76,16 @@ if (isset($_POST['upload'])) {
         width: 27px;
     }
 </style>
-
-
-  
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
+                    </a>
+                    <div class="user-menu dropdown-menu">
+                        <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                        <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                        <a class="nav-link" href="logout.php"><i class="fa fa-power-off"></i> Logout</a>
 
                         <!-- Profile picture upload form -->
                         <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 10px;">
