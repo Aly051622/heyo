@@ -77,10 +77,12 @@ if (isset($_POST['upload'])) {
     }
 </style>
 
+<div id="right-panel" class="right-panel">
     <header id="header" class="header">
-    <div class="navbar-header">
-       <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
-        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
+        <div class="top-left">
+            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
+                <a class="navbar-brand" href="dashboard.php"><img src="images/clienthc.png" alt="Logo" style="width: 120px; height: auto;"></a>
+            </div>
         </div>
         <div class="top-right">
             <div class="header-menu">
@@ -104,4 +106,4 @@ if (isset($_POST['upload'])) {
             </div>
         </div>
     </header>
-
+</div>
