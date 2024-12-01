@@ -23,29 +23,27 @@ if (!$con) {
 $query = "SELECT username, comment FROM comments ORDER BY created_at DESC";
 $result = mysqli_query($con, $query);
 
-$comments = [];
-
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $comments[] = [
-            'username' => $row['username'] ?: 'Anonymous', // Default to 'Anonymous' if username is empty
-            'comment' => $row['comment']
-        ];
-    }
-
-    // Send JSON response with comments
-    echo json_encode([
-        'success' => true,
-        'comments' => $comments
-    ]);
-} else {
-    // Handle query failure
+if (!$result) {
     echo json_encode([
         'success' => false,
-        'message' => 'Failed to fetch comments.'
+        'message' => 'Failed to fetch comments: ' . mysqli_error($con)
     ]);
+    exit;
 }
+
+$comments = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $comments[] = [
+        'username' => $row['username'] ?: 'Anonymous', // Default to 'Anonymous' if username is empty
+        'comment' => $row['comment']
+    ];
+}
+
+// Send JSON response
+echo json_encode([
+    'success' => true,
+    'comments' => $comments
+]);
 
 // Close the database connection
 mysqli_close($con);
-?>
