@@ -498,7 +498,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 70px;
+        width: 100px;
+    }
+    .page-header .float-right{
+        display:none;
     }
 }
 @media (max-width: 480px){
@@ -546,7 +549,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 70px;
+        width: 100px;
+    }
+    .page-header .float-right{
+       margin-top: 2px;
     }
 }
 
@@ -584,7 +590,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 70px;
+        width: 100px;
+    }
+    .page-header .float-right{
+        display:none;
     }
 }
 
