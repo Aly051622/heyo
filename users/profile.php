@@ -231,7 +231,7 @@ html,body{
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>My Profile</h1>
+                                <h3>My Profile</h3>
                             </div>
                         </div>
                     </div>
