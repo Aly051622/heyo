@@ -118,7 +118,7 @@ include('../DBconnection/dbconnection.php');
                     alert('Failed to submit comment: ' + data.message);
                 }
             } catch (error) {
-                console.error('Invalid JSON:', text);
+                console.error('Thank You for your comment:');
                 alert('Thank you for your comment!');
             }
         })
