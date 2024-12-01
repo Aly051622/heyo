@@ -76,6 +76,12 @@ if (isset($_POST['upload'])) {
         width: 27px;
     }
 </style>
+
+    <header id="header" class="header">
+    <div class="navbar-header">
+       <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
+        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
+        </div>
         <div class="top-right">
             <div class="header-menu">
                 <div class="user-area dropdown float-right">
@@ -98,4 +104,4 @@ if (isset($_POST['upload'])) {
             </div>
         </div>
     </header>
-</div>
+
