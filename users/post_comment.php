@@ -1,5 +1,5 @@
 <?php
-// Enable error reporting for debugging (log only, do not display in JSON response)
+// Enable error reporting for development (comment out in production)
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -10,34 +10,41 @@ include('../DBconnection/dbconnection.php');
 // Set Content-Type to JSON
 header('Content-Type: application/json');
 
-// Suppress output buffering to avoid whitespace or errors in the response
+// Start output buffering to suppress unwanted output
 ob_start();
 
-// Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = mysqli_real_escape_string($con, $_POST['username']) ?: 'Anonymous';  // Default to 'Anonymous'
-    $comment = mysqli_real_escape_string($con, $_POST['comment']);
+try {
+    // Check if the request method is POST
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $username = mysqli_real_escape_string($con, $_POST['username']) ?: 'Anonymous';  // Default to 'Anonymous'
+        $comment = mysqli_real_escape_string($con, $_POST['comment']);
 
-    // Validate input
-    if (empty($comment)) {
-        echo json_encode(['success' => false, 'message' => 'Comment cannot be empty.']);
-        ob_end_clean(); // Clean buffer
-        exit;
-    }
+        // Validate input
+        if (empty($comment)) {
+            echo json_encode(['success' => false, 'message' => 'Comment cannot be empty.']);
+            ob_end_clean(); // Clean the buffer and exit
+            exit;
+        }
 
-    // Insert the comment into the database
-    $query = "INSERT INTO comments (username, comment) VALUES ('$username', '$comment')";
-    if (mysqli_query($con, $query)) {
-        echo json_encode(['success' => true]);
+        // Insert the comment into the database
+        $query = "INSERT INTO comments (username, comment) VALUES ('$username', '$comment')";
+        if (mysqli_query($con, $query)) {
+            echo json_encode(['success' => true]);
+        } else {
+            // Log error and send JSON response
+            error_log('Database Error: ' . mysqli_error($con));
+            echo json_encode(['success' => false, 'message' => 'Failed to save the comment.']);
+        }
     } else {
-        error_log('Database Error: ' . mysqli_error($con)); // Log error for debugging
-        echo json_encode(['success' => false, 'message' => 'Failed to save the comment.']);
+        echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
     }
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+} catch (Exception $e) {
+    // Catch unexpected errors and return JSON
+    error_log('Exception: ' . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'An unexpected error occurred.']);
 }
 
-// Clean the output buffer and send the response
+// Clean the output buffer and flush JSON response
 ob_end_clean();
 exit;
 ?>
