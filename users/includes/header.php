@@ -162,12 +162,10 @@ if (isset($_POST['upload'])) {
 }
 </style>
 
-<div id="right-panel" class="right-panel">
     <header id="header" class="header">
-        <div class="top-left">
-            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
-                <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style="width: 120px; height: auto; margin-top:-4px; margin-left: -9.5em;"></a>
-            </div>
+    <div class="navbar-header">
+       <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
+        <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
         </div>
         <div class="top-right">
             <div class="header-menu">
@@ -191,7 +189,7 @@ if (isset($_POST['upload'])) {
                         <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
                             <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
                             <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
-                            <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>
+                            <!--<button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
                             <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
                             <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
 
@@ -233,4 +231,3 @@ if (isset($_POST['upload'])) {
             }
         </script>
     </header>
-</div>
