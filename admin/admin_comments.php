@@ -94,7 +94,7 @@ $result = mysqli_query($con, $query);
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $formatted_date = date("h:i:s A | F d, Y", strtotime($row['created_at']));
+                        $formatted_date = date("h:i A\nm / d / Y", strtotime($row['created_at']));
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row['username']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['comment']) . "</td>";
