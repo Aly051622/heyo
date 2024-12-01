@@ -320,7 +320,7 @@ window.addEventListener('click', (e) => {
     termsModal.style.display = 'none';
   } else if (e.target === slideModal) {
     slideModal.style.display = 'none';
-  } else if (e.target === slideModal) {
+  } else if (e.target === faqModal) {
     faqModal.style.display = 'none';
   }
 });
