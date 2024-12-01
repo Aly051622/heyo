@@ -458,7 +458,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 100px;
+        width: 50px;
     }
     #message-input{
         width: 200px;
@@ -468,7 +468,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 @media (max-width: 500px) {
     .breadcrumbs{
         display: flex;
-        height: 50px;
     }
     .navbar-header {
         padding: 3px;
@@ -503,19 +502,18 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 150px;
+        width: 70px;
     }
-    .page-header .float-right{
-        display:none;
+    .page-header .float-right, .float-right{
+        background: transparent;
     }
     #message-input{
-        width: 200px;
+        width: 250px;
     }
 }
 @media (max-width: 480px){
     .breadcrumbs{
         display: flex;
-        height: 50px;
     }
     .chatbox-container{
         display: flex;
@@ -557,13 +555,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 150px;
+        width: 60px;
     }
     .float-right{
-       margin-top: 2px;
+       background: transparent;
     }
     #message-input{
-        width: 200px;
+        width: 250px;
     }
 }
 
@@ -571,7 +569,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     .breadcrumbs{
         display: flex;
-        height: 50px;
     }
     .navbar-header {
         padding: 2px;
