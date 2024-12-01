@@ -761,6 +761,30 @@ if (mysqli_query($con, $query)) {
             cursor: pointer;
         }
 
+        body{
+        background-color: whitesmoke;
+        height: 100vh;
+       overflow: hidden; 
+    }
+    .card .card-header{
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+             }
+             .btn-sm{
+                border: solid lightgray;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: rgb(53, 97, 255);
+                color: white;
+                cursor: pointer;
+                font-family: 'Monsterrat', sans-serif;
+                font-weight: bolder;
+                cursor: pointer;
+        }
+
+           .btn-sm:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
     </style>
     
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
@@ -1047,7 +1071,7 @@ function toggleOtherModelInput() {
                            
                             
                             
-                           <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
+                           <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
                         </form>
                             </div>
                             
