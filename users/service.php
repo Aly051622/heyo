@@ -398,7 +398,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 @media (max-width: 500px) {
     .breadcrumbs{
-        height: 70px;
+        height: 60px;
     }
     .breadcrumbs {
         width: 90%;
@@ -406,7 +406,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         width: auto;
         margin-left: 1em;
     }
-
+    .breadcrumb{
+        margin-top: 100px;
+    }
     body {
         font-size: 12px;
         height: 100vh;
@@ -436,7 +438,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 @media (max-width: 480px){
     .breadcrumbs{
-        height: 70px;
+        height: 60px;
+    }
+    .breadcrumb{
+        margin-top: 100px;
     }
     .chatbox-container{
         display: flex;
@@ -493,10 +498,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 @media (max-width: 300px) {
     .breadcrumbs{
-        height: 70px;
+        height: 60px;
         width: 100%;
         margin-left: 1em;
         padding: 4px;
+    }
+    .breadcrumb{
+        margin-top: 100px;
     }
     .navbar-header {
         padding: 2px;
@@ -537,7 +545,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     .sec2{
-        margin-top: 50px;
+        margin-top: 150px;
     }
     
 }
