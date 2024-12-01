@@ -578,7 +578,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div class="row m-0">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
+                    <div class="page-title" id="message-icon">
                         <i class="bi bi-chat-left-text-fill" ></i> Ask for Help
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -609,10 +611,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <!-- FAQ Section -->
     <div class="container" id="container">
+        <div class="space"></div>
        <div class="faq"> <i class="bi bi-question-circle-fill "></i> FAQs</div>
-       <div class="page-title" id="message-icon">
-                        <i class="bi bi-chat-left-text-fill" ></i> Ask for Help
-                        </div>
         <div id="faq-section" class="row">
             <!-- Left Column for the first 4 FAQ items -->
             <div class="col-md-6">
