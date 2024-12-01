@@ -194,7 +194,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: orange;
             padding: 10px;
             font-weight: bold;
-            margin-left: -9em;
         }
         h5{
             padding: 5px;
@@ -218,16 +217,17 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: black;
         }
         .faq-item {
-            margin-bottom: 1px;
+            margin-bottom: 2px;
             padding: 5px;
             background: white;
             border-radius: 18px;
-            height: 30%;
+            height: 32%;
             width: 75%;
             font-size:12px;
             margin-bottom: 2px;
         }
         .faq-question {
+            margin-bottom: 1px;
             font-weight: bold;
             z-index: 1000;
             background: whitesmoke;
@@ -235,7 +235,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             height: 30%;
             width: 90%;
         }
-    
+        .space{
+            margin-top:10px;
+        }
       /*sa tanan na ni*/
 #right-panel {
     margin-left: 100px;
@@ -458,6 +460,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     #message-icon{
         width: 100px;
     }
+    #message-input{
+        width: 200px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -498,10 +503,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 100px;
+        width: 150px;
     }
     .page-header .float-right{
         display:none;
+    }
+    #message-input{
+        width: 200px;
     }
 }
 @media (max-width: 480px){
@@ -549,14 +557,18 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 100px;
+        width: 150px;
     }
-    .page-header .float-right{
+    .float-right{
        margin-top: 2px;
+    }
+    #message-input{
+        width: 200px;
     }
 }
 
 @media (max-width: 300px) {
+
     .breadcrumbs{
         display: flex;
         height: 50px;
@@ -590,10 +602,13 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     #message-icon{
-        width: 100px;
+        width: 150px;
     }
     .page-header .float-right{
         display:none;
+    }
+    #message-input{
+        width: 200px;
     }
 }
 
