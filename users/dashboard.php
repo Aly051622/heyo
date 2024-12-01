@@ -201,7 +201,7 @@ body, * {
         }
             .content{
                 background-color: transparent;
-                margin-top: -30px;
+                margin-top: -10px;
             }
             #notificationCard {
                 opacity: 1;
@@ -212,7 +212,6 @@ body, * {
                 height: auto;
                 border: none;
                 z-index: 1;
-                text-shadow: 0px 4px 4px white;
             }
 
                 .section {
@@ -315,7 +314,7 @@ body, * {
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
     <?php if ($licenseStatusMessage): ?>
-                            <div class="notification"><?php echo $licenseStatusMessage; ?></div>
+                            <div class="notification" style=" text-shadow: 0px 4px 4px white;"><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
         <!-- Content -->
         <div class="content">

@@ -60,9 +60,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
           }
   
           #printbtn:hover,
-          #viewbtn:hover, .download-icon:hover {
+          #viewbtn:hover, .download-icon:hover, .btn-hover {
               background-color: darkblue;
               border: solid blue;
+              color: white;
           }
   
           #printbtn, #viewbtn, .download-icon {
@@ -81,12 +82,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               padding: 6px 7px;
               text-decoration: none;
               font-size: 18px;
+              font-weight: bold;
               transition: background-color 0.3s ease;
           }
   
-          .download-icon:hover {
-              color: white;
-          }
           .text-right{
               color: gray;
           }
@@ -159,8 +158,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="page-header float-right">
                         <div class="page-title">
                             <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a>&nbsp;/&nbsp;</li>
-                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a>&nbsp;/&nbsp;</li>
+                                <li><a href="dashboard.php">Dashboard</li>
+                                <li><a href="view-vehicle.php">View Vehicle Parking Details</li>
                                 <li class="active">View Vehicle Parking Details</li>
                             </ol>
                         </div>

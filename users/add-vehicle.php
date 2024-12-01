@@ -773,7 +773,7 @@ if (mysqli_query($con, $query)) {
             background: whitesmoke;
             overflow: auto;
         }
-       .btn-sm:hover {
+       .btn:hover, .btn-sm:hover, .btn-primary:hover {
               background-color: darkblue;
               border: solid blue;
           }
