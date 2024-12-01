@@ -1,6 +1,13 @@
 <?php
-// Include the database connection
+session_start();
+error_reporting(0);
 include('../DBconnection/dbconnection.php');
+
+// Check if the user is logged in
+if (!isset($_SESSION['vpmsuid']) || strlen($_SESSION['vpmsuid']) == 0) {
+    header('location:logout.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
