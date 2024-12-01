@@ -15,56 +15,6 @@ if (!isset($_SESSION['vpmsuid'])) {
 
 $userId = $_SESSION['vpmsuid'];
 
-// Fetch the current profile picture from the database
-$query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
-$result = mysqli_query($con, $query);
-
-if (!$result) {
-    echo '<p>Debug: Query failed: ' . mysqli_error($con) . '</p>';
-    $profilePicturePath = '../admin/images/images.png'; // Default avatar if query fails
-} elseif (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $profilePicture = $row['profile_pictures'];
-    $profilePicturePath = '../uploads/profile_uploads/' . htmlspecialchars($profilePicture ?? '', ENT_QUOTES, 'UTF-8'); // Construct the path with null check
-
-    // Debugging: Log profile picture path
-    echo '<!-- Debug: Profile picture path: ' . $profilePicturePath . ' -->';
-} else {
-    $profilePicturePath = '../admin/images/images.png'; // Default avatar if no picture found
-}
-
-// Handle profile picture upload
-if (isset($_POST['upload'])) {
-    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] == 0) {
-        // Ensure the uploads directory exists
-        $uploadsDir = '../uploads/profile_uploads/'; // Your uploads directory
-        $fileName = basename($_FILES['profilePic']['name']);
-        $targetFilePath = $uploadsDir . $fileName;
-
-        // Check if the uploads directory exists
-        if (!is_dir($uploadsDir)) {
-            mkdir($uploadsDir, 0777, true); // Create the directory if it doesn't exist
-        }
-
-        // Move the uploaded file
-        if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
-            // Update the database with the new profile picture path
-            $query = mysqli_query($con, "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'");
-
-            if ($query) {
-                echo "<script>alert('Profile picture uploaded successfully.');</script>";
-                // Update the profile picture path for display
-                $profilePicturePath = $targetFilePath; // Update the path for display
-            } else {
-                echo "<script>alert('Database update failed.');</script>";
-            }
-        } else {
-            echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
-        }
-    } else {
-        echo "<script>alert('File upload failed.');</script>";
-    }
-}
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
