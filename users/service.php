@@ -1,40 +1,29 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
+session_set_cookie_params([
+    'domain' => '.ctudanaoparksys.icu',
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'None'
+]);
 session_start();
 error_reporting(0);
 include('../DBconnection/dbconnection.php');
-if (strlen($_SESSION['vpmsuid']==0)) {
-  header('location:logout.php');
-  }
-  ?>
+
+if (!isset($_SESSION['vpmsuid'])) {
+    header('location:logout.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<html class="no-js" lang="">
 <head>
-    <!-- Stylesheets -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-<link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-<link rel="stylesheet" href="../admin/assets/css/style.css">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
-<link rel="apple-touch-icon" href="../images/aa.png">
-      <link rel="shortcut icon" href="../images/aa.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet">
-<link rel="stylesheet" href="park.css">
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Customer Service | CTU Danao VPMS</title>
+    <!-- CSS and JS Includes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        <style>
         body {
             background: whitesmoke;
             height: 100vh;
@@ -208,498 +197,60 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             margin-top: 30px;
             z-index: 1000;
          }
-         #faq-section {
-            position: relative;
-            z-index: 1;
-            color: black;
-            }
-        #faq-section {
-            z-index: -1;
-            color: black;
-        }
-        .faq-item {
-            margin-bottom: 1px;
-            padding: 5px;
-            background: white;
-            border-radius: 18px;
-            height: 30%;
-            width: 75%;
-            font-size:12px;
-            margin-bottom: 2px;
-        }
-        .faq-question {
-            font-weight: bold;
-            z-index: 1000;
-            background: whitesmoke;
-            border-radius: 18px;
-            height: 30%;
-            width: 90%;
-        }
-    
-      /*sa tanan na ni*/
-#right-panel {
-    margin-left: 100px;
-    transition: margin-left 0.3s ease;
-}
-.card,
-.card-header {
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-}
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Improve table styling for mobile */
-.table-responsive table {
-    width: 100%;
-    table-layout: auto;
-    word-wrap: break-word;
-}
-
-.table-responsive th, .table-responsive td {
-    white-space: nowrap;
-    padding: 8px;
-    text-align: left;
-}
-
-@media (max-width: 480px) {
-    .table-responsive th, .table-responsive td {
-        display: block;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-    }
-    .table-responsive tr {
-        display: block;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-    }
-    .table-responsive td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
-}
-
-
-
-/*for all the braeadcrumbs for users*/
-@media (max-width: 1024px) {
-    .breadcrumbs {
-        width: 95%;
-        margin-left: 3em;
-    }
-}
-
-@media (max-width: 954px) {
-    .breadcrumbs {
-        width: 90%;
-        margin-left: 2em;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 8px 15px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 780px) {
-    .breadcrumbs {
-        width: 85%;
-        margin-left: 1.5em;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 7px 12px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .breadcrumbs {
-        width: auto;
-        margin-left: -2em;
-        padding: 5px;
-        display: none;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    
-    .breadcrumbs {
-        width: 90%;
-        margin-right: 20em;
-        padding: 5px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 12px;
-        height: 100vh;
-        overflow: auto;
-    }
-    .card, .card-header, .card-body, .tables{
-        width: 330px;
-        font-size:12px;
-        
-    }
-    .tables thead{
-        padding: 2px;
-    }
- 
-}
-
-
-@media (max-width: 300px) {
-    .breadcrumbs {
-        width: 100%;
-        margin-left: 0.5em;
-        padding: 4px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 5px 8px;
-        font-size: 0.8rem;
-    }
-
-    body {
-        font-size: 0.8rem;
-    }
-}
-
-
-
-
-/* Responsive Styles for header na ni */
-
-@media (max-width: 1024px) {
-    .breadcrumbs{
-        display: flex;
-    }
-    .navbar-header {
-        padding: 5px;
-    }
-    .user-avatar {
-        height: 35px;
-        width: 35px;
-    }
-    .active-indicator {
-        bottom: 3em;
-        right: 10px;
-    }
-    .user-area img {
-        margin-right: 12px;
-        margin-top: -4em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 780px) {
-    .breadcrumbs{
-        display: flex;
-    }
-    .navbar-header {
-        padding: 4px;
-    }
-    .user-avatar {
-        height: 30px;
-        width: 30px;
-    }
-    .active-indicator {
-        bottom: 2.8em;
-        right: 8px;
-    }
-    .user-area img {
-        margin-right: 10px;
-        margin-top: -3em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 500px) {
-    .breadcrumbs{
-        display: flex;
-    }
-    .navbar-header {
-        padding: 3px;
-        width: 100vw;
-    }
-    .user-avatar {
-        height: 25px;
-        width: 25px;
-        margin-top: 20px;
-    }
-    .active-indicator {
-        bottom: 2.5em;
-        right: 6px;
-        font-size: 10px;
-    }
-    .user-area {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .user-area img {
-        margin-right: 8px;
-        margin-top: -2em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-@media (max-width: 480px){
-    .chatbox-container{
-        display: flex;
-    }
-    body{
-        overflow-x: auto;
-    }
-    .navbar-header {
-        padding: 3px;
-        width: 100vw;
-        height: 68px;
-    }
-    .user-avatar {
-        height: 25px;
-        width: 25px;
-        margin-top: 20px;
-    }
-    .active-indicator {
-        bottom: 2.5em;
-        right: 6px;
-        font-size: 10px;
-    }
-    .user-area {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .user-area img {
-        margin-right: 8px;
-        margin-top: -5em;
-    } 
-    
-    .dropdown{
-        margin-top: -82px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-@media (max-width: 300px) {
-    .navbar-header {
-        padding: 2px;
-        width: 100vw;
-    }
-    .user-avatar {
-        height: 20px;
-        width: 20px;
-        margin-top: 10px;
-    }
-    .active-indicator {
-        bottom: 2em;
-        right: 4px;
-        font-size: 9px;
-    }
-    .user-area img {
-        margin-right: 6px;
-        margin-top: -1.5em;
-    }
-    
-    .dropdown{
-        margin-top: -85px;
-        margin-right: 40px;
-    }
-    
-    .dropdown-toggle{
-        margin-top: 30px;
-    }
-}
-
-
     </style>
 </head>
 <body>
- <!-- Left Panel -->
-
- <?php include_once('includes/sidebar.php');?>
- <?php include_once('includes/header.php');?>
-
- <div class="right-panel">
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                    <div class="page-title">
-                        <h3>Chat Support</h3>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li class="active">Customer Service</li>
-                                <li class="active">FAQs</li>                              
-                            </ol>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <h3>Chat with Support</h3>
+    <div id="chat-box"></div>
+    <div class="input-group">
+        <input type="text" id="message-input" class="form-control" placeholder="Type your message...">
+        <div class="input-group-append">
+            <button id="send-button" class="btn btn-primary">Send</button>
         </div>
     </div>
-<br>
-             
-    <!-- Chat Box Container -->
-    <div class="page-title" id="message-icon">
-                        <i class="bi bi-chat-left-text-fill" ></i> Chat with Support
-                        </div>
-    <div id="chat-box-container">
-        <div id="chat-box"></div>
-        <input type="text" id="message-input" placeholder="Type your message..." />
-        <button id="send-button">
-            <i class="bi bi-send-fill"></i> Send
-        </button>
-    </div>
-
-</body>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.netz/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
-
+</div>
 
 <script>
+    const chatBox = document.getElementById('chat-box');
     const messageInput = document.getElementById('message-input');
     const sendButton = document.getElementById('send-button');
-    const messageIcon = document.getElementById('message-icon');
 
-
-// Function to add a message to the chat box
-function addMessageToChat(username, message, isSupport = false) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isSupport ? 'message-support' : 'message-user');
-    messageDiv.textContent = `${username}: ${message}`;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
-}
-
-// Function to send a message
-sendButton.addEventListener('click', function () {
-    const userMessage = messageInput.value.trim();
-    if (userMessage === '') {
-        alert('Please enter a message before sending.');
-        return;
+    function addMessage(username, message, isSupport = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.textContent = `${username}: ${message}`;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-    
-    // Add user message to chat
-    addMessageToChat('You', userMessage);
-    messageInput.value = ''; // Clear input
 
-    // Send message to server
-    fetch('send_message.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: userMessage })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Message sent successfully');
-        } else {
-            alert('Failed to send message: ' + data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error sending message:', error);
-    });
-});
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if (message === '') return;
 
-// Function to fetch and display messages periodically
-function fetchMessages() {
-    // Store the current scroll position
-    const isAtBottom = chatBox.scrollTop >= chatBox.scrollHeight - chatBox.clientHeight - 10;
-
-    fetch('get_messages.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.success && Array.isArray(data.messages)) {
-                chatBox.innerHTML = ''; // Clear chat box
-                data.messages.forEach(msg => {
-                    addMessageToChat(msg.username, msg.message, msg.isSupport);
-                });
-
-                // If the user is at the bottom, scroll to the latest message
-                if (isAtBottom) {
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }
+        fetch('send_message.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        }).then(res => res.json()).then(data => {
+            if (data.success) {
+                addMessage('You', message);
+                messageInput.value = '';
+            } else {
+                alert('Error sending message');
             }
-        })
-        .catch(error => {
-            console.error('Error loading messages:', error);
         });
-}
+    });
 
-// Fetch messages every 2 seconds
-setInterval(fetchMessages, 2000);
+    setInterval(() => {
+        fetch('get_messages.php')
+            .then(res => res.json())
+            .then(data => {
+                chatBox.innerHTML = '';
+                data.messages.forEach(msg => {
+                    addMessage(msg.username, msg.message, msg.isSupport);
+                });
+            });
+    }, 2000);
 </script>
-
 </body>
 </html>
