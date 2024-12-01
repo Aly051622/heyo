@@ -46,8 +46,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         }
 
         .faq-header {
-            background-color: orange;
-            color: white;
+            background-color: transparent;
+            color: orange;
             padding: 20px;
             text-align: center;
             margin-bottom: 20px;
@@ -171,8 +171,17 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div class="faq-answer">A: Yes, you can. Visit the 'Manage Vehicles' section, select the parking reservation, and transfer it to a different registered vehicle.</div>
         </div>
     </div>
-    </div>
     
 <?php include_once('includes/footer.php'); ?>
+    </div>
+    
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.netz/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../admin/assets/js/main.js"></script>
+
 </body>
 </html>
