@@ -140,9 +140,16 @@ return true;
                                         <div class="col-12 col-md-9"><input type="password" name="currentpassword" class=" form-control" required= "true" value=""></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">New Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" name="newpassword" class="form-control" value="" required="true"></div>
-                                    </div>
+    <div class="col col-md-3">
+        <label for="email-input" class="form-control-label">New Password</label>
+    </div>
+    <div class="col-12 col-md-9">
+        <input type="password" name="newpassword" class="form-control" value="" required="true" 
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+               title="Password must be at least 8 characters long, and include at least one lowercase letter, one uppercase letter, one number, and one special character.">
+    </div>
+</div>
+
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Confirm Password</label></div>
                                         <div class="col-12 col-md-9"> <input type="password" name="confirmpassword" class="form-control" value="" required="true"></div>
