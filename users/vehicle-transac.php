@@ -240,7 +240,7 @@ body, * {
  <!-- Include sidebar -->
  <?php include_once('includes/sidebar.php'); ?>
     
-    <?php include_once('includes/header.php');?>
+ 
 <div class="right-panel">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
