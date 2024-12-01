@@ -914,9 +914,10 @@ function toggleOtherModelInput() {
 }
 </script>
 
-<?php include_once('includes/header.php');?>
 </head>
 <body>
+    
+<?php include_once('includes/header.php');?>
    <?php include_once('includes/sidebar.php');?>
     <!-- Right Panel -->
 

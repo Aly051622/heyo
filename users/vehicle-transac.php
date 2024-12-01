@@ -237,6 +237,7 @@ body, * {
     <body>
 
 
+    <?php include_once('includes/header.php');?>
  <!-- Include sidebar -->
  <?php include_once('includes/sidebar.php'); ?>
     
