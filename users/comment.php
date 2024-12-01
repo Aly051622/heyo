@@ -132,7 +132,7 @@ include('../DBconnection/dbconnection.php');
                 }
             } catch (error) {
                 console.error('Invalid JSON:', text);
-                alert('Thank you for your comment!');
+                alert('Received invalid JSON response.');
             }
         })
         .catch(error => {
