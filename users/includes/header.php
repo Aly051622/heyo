@@ -402,7 +402,7 @@ body, * {
                                 </a>
 
                                 <div class="user-menu dropdown-menu" id="hh">
-                                    <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
+                                    <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
@@ -410,10 +410,10 @@ body, * {
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
-                                    <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
+                                    <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
                                     </i></a>
 
-                                    <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
+                                    <a class="nav-link" href="logout.php"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
                                 </div>
                             </div>
