@@ -116,7 +116,7 @@ body, * {
                 </li>
                 <li>
                     <a href="service.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa bi bi-headset"></i>Chat Concern
+                        <i class="menu-icon fa bi bi-question-circle-fill"></i>FAQs
                     </a>
                 </li>
             </ul>

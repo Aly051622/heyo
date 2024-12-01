@@ -125,11 +125,21 @@
   display: flex;
   gap: 20px;
 }
-
 .icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
+  border: solid lightgray;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: rgb(53, 97, 255);
+                color: white;
+                cursor: pointer;
+                font-family: 'Monsterrat', sans-serif;
+                font-weight: bolder;
+                cursor: pointer;
+}
+
+.icon:hover {
+  background-color: darkblue;
+  border: solid blue;
 }
 
 .icon {
@@ -204,31 +214,25 @@
     </style>
 <body>
   <footer class="footer">
-    <div class="footer-icons">
-      
+      <div class="footer-icons">
       <button class="icon-btn" id="slide-btn">
         <i class="bi bi-gear-fill"></i> User Manual
-      </button>
-
-      <button class="icon-btn" id="privacy-btn">
+        </button>
+        <button class="icon-btn" id="privacy-btn">
         <i class="bi bi-house-gear-fill"></i> Privacy Policy
-      </button>
-      
-      <button class="icon-btn" id="terms-btn">
+        </button>
+        <button class="icon-btn" id="terms-btn">
         <i class="bi bi-house-lock-fill"></i> Terms and Conditions
-      </button>
-      
-      <button class="icon-btn" id="faq-btn">
-        <i class="bi bi-question"></i> FAQs
-      </button>
-
-    </div>
-
-    <div class="footer-copyright">
-      &copy; 2024 CTU DANAO - VEHICLE PARKING MANAGEMENT SYSTEM. <br>All Rights Reserved.
-    </div>
-
-  </footer>
+        </button>
+      </div>
+      <div class="footer-contact">
+          <p><strong>For more concerns, contact Security Admin:</strong></p>
+          <p>Contact Number: <a href="tel:09123456789">0912-345-6789</a></p>
+      </div>
+      <marquee direction="left"><div class="footer-copyright">
+        &copy; 2024 CTU DANAO - VEHICLE PARKING MANAGEMENT SYSTEM. <br>All Rights Reserved.
+      </div></marquee>
+    </footer>
 
     <!-- Slide Modal -->
   <div id="slide-modal" class="modal">
@@ -253,30 +257,19 @@
     </div>
   </div>
 
-   <!-- FAQ Modal -->
-   <div id="faq-modal" class="modal">
-    <div class="modal-content">
-      <iframe src="service.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-faq">&times;</button>
-    </div>
-  </div>
-
   <script>
     // Select Elements
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
 const slideModal = document.getElementById('slide-modal');
-const faqModal = document.getElementById('faq-modal');
 
 const privacyBtn = document.getElementById('privacy-btn');
 const termsBtn = document.getElementById('terms-btn');
 const slideBtn = document.getElementById('slide-btn');
-const faqBtn = document.getElementById('faq-btn');
 
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
 const closeSlide = document.getElementById('close-slide');
-const closeFaq= document.getElementById('close-faq');
 
 // button ni
 slideBtn.addEventListener('click', () => {
@@ -289,10 +282,6 @@ privacyBtn.addEventListener('click', () => {
 
 termsBtn.addEventListener('click', () => {
   termsModal.style.display = 'flex';
-});
-
-faqBtn.addEventListener('click', () => {
-  faqModal.style.display = 'flex';
 });
 
 //for close ni
@@ -308,9 +297,6 @@ closeTerms.addEventListener('click', () => {
   termsModal.style.display = 'none';
 });
 
-closeFaq.addEventListener('click', () => {
-  faqModal.style.display = 'none';
-});
 
 
 window.addEventListener('click', (e) => {
@@ -320,9 +306,7 @@ window.addEventListener('click', (e) => {
     termsModal.style.display = 'none';
   } else if (e.target === slideModal) {
     slideModal.style.display = 'none';
-  } else if (e.target === faqModal) {
-    faqModal.style.display = 'none';
-  }
+  } 
 });
   </script>
 </body>

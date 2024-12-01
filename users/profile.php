@@ -217,7 +217,6 @@ html,body{
     
    <?php include_once('includes/header.php');?>
 
-    <!-- Notification system -->
    <!-- Notification system -->
 <div class="right-panel">
 <div id="notification">
