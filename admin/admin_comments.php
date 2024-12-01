@@ -4,6 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Set the timezone to Philippine Time (Asia/Manila)
+date_default_timezone_set('Asia/Manila');
+
 // Include the database connection
 include('../DBconnection/dbconnection.php');
 
