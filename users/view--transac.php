@@ -214,6 +214,8 @@ else {
 }
 
     </style>
+    
+    <?php include_once('includes/header.php');?>
 <body>
     
 
@@ -225,7 +227,7 @@ else {
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>View Vehicle Details</h1>
                             </div>
                         </div>
                     </div>
