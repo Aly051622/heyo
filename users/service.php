@@ -167,8 +167,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             background-color: #007bff;
             color: white;
             cursor: pointer;
-            border-top-left-radius: 7px;
-            border-bottom-left-radius: 7px;
+            border-radius: 7px;
             margin-left:-30px ;
         }
         #message-icon:hover{
@@ -433,7 +432,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         width: 250px;
     }
     .sec2{
-        margin-top: 50px;
+        margin-top: 30em;
     }
 }
 @media (max-width: 480px){
@@ -492,7 +491,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         width: 250px;
     }
     .sec2{
-        margin-top: 50px;
+        margin-top: 30em;
     }
 }
 
@@ -545,7 +544,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 
     .sec2{
-        margin-top: 150px;
+        margin-top: 30em;
     }
     
 }
@@ -564,9 +563,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div class="row m-0">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
-                    <div class="page-title" id="message-icon">
-                        <i class="bi bi-chat-left-text-fill" ></i> Ask for Help
-                        </div>
+                  <h3>  FAQs</h3>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -598,7 +595,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <!-- FAQ Section -->
     <div class="container" id="container">
         <div class="space"></div>
-       <div class="faq text-center"> <i class="bi bi-question-circle-fill "></i> FAQs</div>
+       <div class=" faq" id="message-icon">
+                        <i class="bi bi-chat-left-text-fill" ></i> Ask for Help
+                    </div>
         <div id="faq-section" class="row">
             <!-- Left Column for the first 4 FAQ items -->
             <div class="col-md-6">
