@@ -4,6 +4,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// Set the timezone to Philippine Time (Asia/Manila)
+//date_default_timezone_set('Asia/Manila');
+
 // Include the database connection
 include('../DBconnection/dbconnection.php');
 
@@ -84,18 +87,18 @@ $result = mysqli_query($con, $query);
                 <tr>
                     <th>Username</th>
                     <th>Comment</th>
-                    <th>Date</th>
+                    <!--<th>Date</th>-->
                 </tr>
             </thead>
             <tbody>
                 <?php
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $formatted_date = date("h:i:s A | F d, Y", strtotime($row['created_at']));
+                      //  $formatted_date = date("h:i A\nm / d / Y", strtotime($row['created_at']));
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row['username']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['comment']) . "</td>";
-                        echo "<td>" . htmlspecialchars($formatted_date) . "</td>";
+                        //echo "<td>" . htmlspecialchars($formatted_date) . "</td>";
                         echo "</tr>";
                     }
                 } else {
