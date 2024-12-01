@@ -186,7 +186,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
   </head>
   <body>
     
-    <?php include_once('includes/header.php'); ?>
     <?php include_once('includes/sidebar.php'); ?>
    
 
