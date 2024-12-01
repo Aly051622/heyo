@@ -389,18 +389,6 @@ body, * {
 }
 </style>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
-<style>
-    /* Add relevant styles here */
-</style>
 <body>
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
@@ -419,7 +407,7 @@ body, * {
                 <!--
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
 -->
-                <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+                <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi bi-box-arrow-right-"></i> Logout</a>
                 </div>
             </div>
         </div>
