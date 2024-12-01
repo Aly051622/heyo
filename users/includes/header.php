@@ -138,7 +138,7 @@ body, * {
         z-index: 1;
     }
 
-    .user-menu {
+    .user-area {
         display: flex;
         align-items: center;
         margin-top: -60px;
@@ -393,7 +393,7 @@ body, * {
                 <div class="top-right">
                 <div class="header-menu">
                 <div class="header-left"></div>
-                    <div class="user-area dropdown float-right" style="margin-top: -60px;">
+                    <div class="user-area dropdown float-right" style="margin-top: 20px;">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <?php
                             // Check if the profile picture exists and display it
