@@ -386,6 +386,9 @@ body, * {
 }
 </style>
 <header>
+<div id="right-panel" class="right-panel">
+<header id="header" class="header">
+            <div class="top-left">
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
@@ -454,4 +457,6 @@ body, * {
                 }
             }
         </script>
+        </div>
 </header>
+        </div>
