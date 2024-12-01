@@ -6,26 +6,16 @@
 <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head> 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-body, * {
-    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
-    margin: 0; /* Reset margin for consistency */
-    padding: 0; /* Reset padding for consistency */
-    box-sizing: border-box; /* Avoid layout issues */
-}
-    .left-panel{
-        margin-top: 12px;
-        border-top: groove 2px;
-    }
     #sidebar {
     width: 200px;
     position: fixed;
+    top: 0;
     left: 0;
     height: 100bh;
     overflow: hidden;
     transition: width 0.3s ease;
-
-    z-index: -1;
+    z-index: 1;
+    margin-top: -6px;
 }
 
 #sidebar.collapsed {
@@ -36,59 +26,7 @@ body, * {
     color: white;
     border: none;
     left: 10px;
-}
-
-
-/*sidebarrrrr */
-
-@media (max-width: 768px) {
-    #sidebar {
-        left: -250px;
-    }
-
-    #sidebar.collapsed {
-        left: 0;
-    }
-
-    #toggleSidebar {
-        display: block;
-    }
-
-    #right-panel {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 576px) {
-    #sidebar {
-        width: 200px;
-        margin-top: -15px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    #sidebar {
-        width: 200px;
-        margin-top: -15px;
-    }
-
-    #sidebar.collapsed {
-        width: 50px;
-    }
-
-    #toggleSidebar {
-        left: 5px;
-        top: 5px;
-    }
+    z-index: 11;
 }
 
 </style> 
@@ -116,6 +54,11 @@ body, * {
                         <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
                     </a>
                 </li>
+               <!-- <li>
+                    <a href="maps.php">
+                        <i class="menu-icon fa fa-map-location-dot"></i>Maps
+                    </a>
+                </li>-->
                 <li>
                     <a href="service.php">
                         <i class="menu-icon fa fa-headset"></i>Chat Concern
