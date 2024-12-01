@@ -214,6 +214,9 @@
       <button class="icon-btn" id="terms-btn">
       <i class="bi bi-house-lock-fill"></i> Terms and Conditions
       </button>
+      <button class="icon-btn" id="faq-btn">
+      <i class="bi bi-question"></i> FAQs
+      </button>
     </div>
     <div class="footer-copyright">
       &copy; 2024 CTU DANAO - VEHICLE PARKING MANAGEMENT SYSTEM. <br>All Rights Reserved.
@@ -243,17 +246,27 @@
     </div>
   </div>
 
+   <!-- Terms and Conditions Modal -->
+   <div id="faq-modal" class="modal">
+    <div class="modal-content">
+      <iframe src="faq.php" class="iframe-content"></iframe>
+      <button class="close-btn" id="close-faq">&times;</button>
+    </div>
+  </div>
+
   <script>
     // Select Elements
 const privacyModal = document.getElementById('privacy-modal');
 const termsModal = document.getElementById('terms-modal');
 const slideModal = document.getElementById('slide-modal');
 const slideBtn = document.getElementById('slide-btn');
+const slideModal = document.getElementById('faq-modal');
+const slideBtn = document.getElementById('faq-btn');
 const privacyBtn = document.getElementById('privacy-btn');
 const termsBtn = document.getElementById('terms-btn');
 const closePrivacy = document.getElementById('close-privacy');
 const closeTerms = document.getElementById('close-terms');
-const closeSlide = document.getElementById('close-slide');
+const closeSlide = document.getElementById('close-faq');
 
 // Event Listeners
 slideBtn.addEventListener('click', () => {
