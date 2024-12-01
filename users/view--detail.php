@@ -50,6 +50,103 @@ if (strlen($_SESSION['vpmsuid']==0)) {
          .btn:hover{
             background: orange;
          }
+         
+         .text-right{
+              color: gray;
+          }
+  
+          /* Table responsive adjustments for mobile */
+          .table-responsive {
+              overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
+          }
+          .table-responsive {
+              overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
+          }
+  
+          /* Improve table styling for mobile */
+          .table-responsive table {
+              width: 100%;
+              table-layout: auto;
+              word-wrap: break-word;
+          }
+  
+          .table-responsive th, .table-responsive td {
+              white-space: nowrap;
+              padding: 8px;
+              text-align: left;
+          }
+  
+          @media (max-width: 480px) {
+              .table-responsive th, .table-responsive td {
+                  display: block;
+                  width: 100%;
+                  box-sizing: border-box;
+                  padding: 10px;
+              }
+              .table-responsive tr {
+                  display: block;
+                  margin-bottom: 15px;
+                  border: 1px solid #ddd;
+              }
+              .table-responsive td::before {
+                  content: attr(data-label);
+                  font-weight: bold;
+                  display: block;
+                  margin-bottom: 5px;
+              }
+              .breadcrumbs{
+                display: none;
+              }
+          }
+          .clearfix{
+              background: whitesmoke; 
+          }
+          @media (max-width: 300px) {
+              .table-responsive th, .table-responsive td {
+                  display: block;
+                  width: 100%;
+                  box-sizing: border-box;
+                  padding: 10px;
+              }
+              .table-responsive tr {
+                  display: block;
+                  margin-bottom: 15px;
+                  border: 1px solid #ddd;
+              }
+              .table-responsive td::before {
+                  content: attr(data-label);
+                  font-weight: bold;
+                  display: block;
+                  margin-bottom: 5px;
+              }
+              .breadcrumbs{
+                display: none;
+              }
+          }
+          @media (max-width: 500px) {
+              .table-responsive th, .table-responsive td {
+                  display: block;
+                  width: 100%;
+                  box-sizing: border-box;
+                  padding: 10px;
+              }
+              .table-responsive tr {
+                  display: block;
+                  margin-bottom: 15px;
+                  border: 1px solid #ddd;
+              }
+              .table-responsive td::before {
+                  content: attr(data-label);
+                  font-weight: bold;
+                  display: block;
+                  margin-bottom: 5px;
+              }
+              .breadcrumbs{
+                display: none;
+              }
+          }
     </style>
 <body>
     <!-- Left Panel -->
@@ -109,7 +206,7 @@ FROM tblvehicle WHERE ID='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
-?>                       <table border="1" class="table table-bordered mg-b-0">
+?>                       <table border="1" class="table table-bordered table-striped table-responsive mg-b-0">
                               
 <tr>
                                 <th>Vehicle Category</th>
