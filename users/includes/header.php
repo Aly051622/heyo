@@ -78,7 +78,7 @@ body, * {
     box-sizing: border-box; /* Avoid layout issues */
 }
     .navbar-header{
-        position: fixed;
+        position: absolute;
         width: 100vw;
         z-index: 1;
         height: 70px;
