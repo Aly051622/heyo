@@ -47,41 +47,33 @@ include('../DBconnection/dbconnection.php');
         textarea:focus, input:focus {
             outline: none;
             border-bottom: 2px solid #007bff;
-            
         }
         .line-separator {
             border-bottom: 1px solid #ccc;
             margin: -10px 0;
         }
-
     </style>
 </head>
 <body>
-
-        <div id="comment-form">
-            <p>Welcome to the comment area! You are encouraged to express your thoughts, ask questions, and bring up any pertinent topics. </p><br>
-            <input id="user-name" type="text" placeholder="Your Name" /><br>
-            <div class="line-separator"></div> <!-- Div for line separation --><br>
-            <textarea id="comment-text" placeholder="Write your comment..."></textarea><br/>
-            
-            <button id="post-button"><i class="bi bi-postcard-fill"></i> Post Comment</button>
-        </div>
+    <div id="comment-form">
+        <p>Welcome to the comment area! You are encouraged to express your thoughts, ask questions, and bring up any pertinent topics. </p><br>
+        <input id="user-name" type="text" placeholder="Your Name" /><br>
+        <div class="line-separator"></div> <!-- Div for line separation --><br>
+        <textarea id="comment-text" placeholder="Write your comment..."></textarea><br/>
+        <button id="post-button"><i class="bi bi-postcard-fill"></i> Post Comment</button>
+    </div>
 
     <script>
-        
     // Load existing comments on page load
     document.addEventListener('DOMContentLoaded', function () {
         fetch('../admin/get_comments.php')
             .then(response => {
-                console.log('Response Status:', response.status); // Debug: Log response status
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(data => {
-                console.log('Response Data:', data); // Debug: Log the received data
-
                 if (data.success && Array.isArray(data.comments)) {
                     data.comments.forEach(comment => {
                         addCommentToUI(comment.username || 'Anonymous', comment.comment);
@@ -114,17 +106,12 @@ include('../DBconnection/dbconnection.php');
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();  // Use text() to inspect raw response
-        })
+        .then(response => response.text())
         .then(text => {
             try {
-                const data = JSON.parse(text);  // Attempt to parse JSON
+                const data = JSON.parse(text); // Parse JSON response
                 if (data.success) {
-                    alert('Your comment has been sent!'); // Show success message
+                    alert('Your comment has been sent!');
                     document.getElementById('user-name').value = '';
                     document.getElementById('comment-text').value = '';
                 } else {
@@ -132,18 +119,18 @@ include('../DBconnection/dbconnection.php');
                 }
             } catch (error) {
                 console.error('Invalid JSON:', text);
-                alert('Received invalid JSON response.');
+                alert('Invalid JSON response received from the server.');
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error submitting comment:', error);
             alert('An error occurred while submitting the comment.');
         });
     });
 
     // Helper function to add a new comment to the UI (if needed)
     function addCommentToUI(userName, commentText) {
-        // This function can be used in admin_comments.php
+        console.log(`${userName}: ${commentText}`); // Example placeholder for future UI functionality
     }
     </script>
 </body>
