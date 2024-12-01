@@ -145,6 +145,9 @@ body, * {
         margin-right: 10px;
         position:fixed;
     }
+    .dropdown{
+        margin-top: -60px;
+    }
     .dropdown-toggle {
         margin-top: 50px;
     }
@@ -177,59 +180,8 @@ body, * {
         margin-top: 30px;
     }
 
-     
-/* modal for logout */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-.modal-contents {
-    background: whitesmoke;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 300px;
-    text-align: center;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-}
-
-.modal-contents button {
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    cursor: pointer;
-      font-size: 18px;
-      letter-spacing: 1px;
-      font-weight: 600;
-      font-family: 'Montserrat',sans-serif;
-      background: whitesmoke;
-    border: 1px solid white;
-}
-
-.modal-contents button:first-of-type {
-    background-color:#2691d9;
-    color: white;
-}
-
-.modal-contents button:last-of-type {
-    background-color: #2691d9;
-    color: white;
-}
-.modal-contents button:first-of-type:hover,
-.modal-contents button:last-of-type:hover
-{
-    background-color: darkblue;
-    border: solid 1px blue;
-}
-.alert-message {
+ /* logout message */
+ .alert-message {
         display: none;
         position: fixed;
         top: 50%;
@@ -242,6 +194,59 @@ body, * {
         text-align: center;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
+  
+/* modal for logout */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.modal-content {
+    background: whitesmoke;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    cursor: pointer;
+      color: white;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      font-family: 'Montserrat',sans-serif;
+      background: whitesmoke;
+    border: 1px solid white;
+}
+
+.modal-content button:first-of-type {
+    background-color:#2691d9;
+    color: white;
+}
+
+.modal-content button:last-of-type {
+    background-color: #2691d9;
+    color: white;
+}
+.modal-content button:first-of-type:hover,
+.modal-content button:last-of-type:hover
+{
+    background-color: darkblue;
+    border: solid 1px blue;
+}
 
 /* Responsive na ni */
 
