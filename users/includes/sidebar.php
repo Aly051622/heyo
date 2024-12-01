@@ -2,8 +2,8 @@
 
 <head>
 <link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css?v=1.1">
+
 </head> 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
