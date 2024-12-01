@@ -1,70 +1,68 @@
 <?php
+// Start the session only if it hasn't been started yet
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include('includes/dbconnection.php');
+// Include database connection
+include('../DBconnection/dbconnection.php');
 
-// Ensure user is logged in
+// Check if the user ID is set in the session
 if (!isset($_SESSION['vpmsuid'])) {
-    die('<p>Access Denied: User not logged in.</p>');
+    echo '<p>Debug: User ID not found in session.</p>';
+    exit; // Stop further execution
 }
 
 $userId = $_SESSION['vpmsuid'];
 
-// Fetch the user's profile picture securely using prepared statements
-$query = $con->prepare("SELECT profile_pictures FROM tblregusers WHERE ID = ?");
-$query->bind_param("i", $userId);
-$query->execute();
-$result = $query->get_result();
+// Fetch the current profile picture from the database
+$query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
+$result = mysqli_query($con, $query);
 
-$profilePicturePath = '../admin/images/images.png'; // Default avatar
-if ($result && $result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $profilePicture = $row['profile_pictures'] ?? '';
-    $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture))
-        ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8')
-        : $profilePicturePath;
+if (!$result) {
+    echo '<p>Debug: Query failed: ' . mysqli_error($con) . '</p>';
+    $profilePicturePath = '../admin/images/images.png'; // Default avatar if query fails
+} elseif (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $profilePicture = $row['profile_pictures'];
+    $profilePicturePath = '../uploads/profile_uploads/' . htmlspecialchars($profilePicture ?? '', ENT_QUOTES, 'UTF-8'); // Construct the path with null check
+
+    // Debugging: Log profile picture path
+    echo '<!-- Debug: Profile picture path: ' . $profilePicturePath . ' -->';
+} else {
+    $profilePicturePath = '../admin/images/images.png'; // Default avatar if no picture found
 }
 
-$uploadSuccess = false;
+// Handle profile picture upload
+if (isset($_POST['upload'])) {
+    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] == 0) {
+        // Ensure the uploads directory exists
+        $uploadsDir = '../uploads/profile_uploads/'; // Your uploads directory
+        $fileName = basename($_FILES['profilePic']['name']);
+        $targetFilePath = $uploadsDir . $fileName;
 
-// Handle image upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === UPLOAD_ERR_OK) {
-        $uploadsDir = '../uploads/profile_uploads/';
-        $fileType = mime_content_type($_FILES['profilePic']['tmp_name']);
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        // Check if the uploads directory exists
+        if (!is_dir($uploadsDir)) {
+            mkdir($uploadsDir, 0777, true); // Create the directory if it doesn't exist
+        }
 
-        // Validate file type
-        if (in_array($fileType, $allowedTypes)) {
-            $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
-            $targetFilePath = $uploadsDir . $fileName;
+        // Move the uploaded file
+        if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
+            // Update the database with the new profile picture path
+            $query = mysqli_query($con, "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'");
 
-            // Create the uploads directory if it doesn't exist
-            if (!is_dir($uploadsDir)) {
-                mkdir($uploadsDir, 0777, true);
-            }
-
-            // Move the uploaded file and update the database
-            if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
-                $updateQuery = $con->prepare("UPDATE tblregusers SET profile_pictures = ? WHERE ID = ?");
-                $updateQuery->bind_param("si", $fileName, $userId);
-
-                if ($updateQuery->execute()) {
-                    $uploadSuccess = true;
-                    $profilePicturePath = $targetFilePath; // Update the displayed picture path
-                } else {
-                    error_log("Database update failed: " . $con->error);
-                }
+            if ($query) {
+                echo "<script>alert('Profile picture uploaded successfully.');</script>";
+                // Update the profile picture path for display
+                $profilePicturePath = $targetFilePath; // Update the path for display
             } else {
-                error_log("File upload failed for: " . $targetFilePath);
+                echo "<script>alert('Database update failed.');</script>";
             }
         } else {
-            echo '<p class="alert alert-danger">Invalid file type. Only JPG, PNG, and GIF are allowed.</p>';
+            echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
         }
     } else {
-        echo '<p class="alert alert-danger">Error uploading the file. Please try again.</p>';
+        echo "<script>alert('File upload failed.');</script>";
     }
 }
 ?>
@@ -393,68 +391,40 @@ body, * {
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
-        <div class="user-area dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="profile-container">
-                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
-                    <span class="active-indicator"></span>
-                </div>
-            </a>
-            <div class="user-menu dropdown-menu">
-                <div class="hh">
-                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
-                <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
-                <!--
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
--->
-                <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi bi-box-arrow-right-"></i> Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="header-left"></div>
+                <div class="user-area dropdown float-right">
+                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php
+                        // Check if the profile picture exists and display it
+                        if (!empty($profilePicture) && file_exists($profilePicturePath)) {
+                            echo '<!-- Debug: Found profile picture at: ' . $profilePicturePath . ' -->';
+                            echo '<img class="user-avatar rounded-circle" src="' . $profilePicturePath . '" alt="User Avatar">';
+                        } else {
+                            echo '<!-- Debug: No profile picture found or file does not exist. Attempted path: ' . $profilePicturePath . ' -->';
+                            echo '<img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="Default Avatar">';
+                        }
+                        ?>
+                    </a>
+                    <div class="user-menu dropdown-menu">
+                        <!-- Dropdown for profile picture upload -->
+                        <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                        <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
+                            <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
+                            <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
+                            <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>
+                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                            <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
 
-   <!-- Upload Modal -->
-<div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="post" enctype="multipart/form-data">
-                    <input type="file" name="profilePic" accept="image/*" required>
-                    <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-    <!-- Success Modal -->
-    <?php if ($uploadSuccess): ?>
-    <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadSuccessModalLabel"><i class="bi bi-check-circle-fill"></i> Success</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Profile picture uploaded successfully.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="location.reload();">OK</button>
+                        </form>
+                      
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-        <script>
-            var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
-            successModal.show();
-            </script>
-    
-    <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-contents">
+            <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-content">
                         <p>Are you sure you want to log out?</p>
                         <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
                         <button onclick="confirmLogout(false)" class="btn-warning">No</button>
@@ -463,10 +433,9 @@ body, * {
                 <div class="alert-message" id="logout-alert" style="display: none;">
                 <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
                 </div>
-            </div>
-    <script>
-
-        function handleLogout() {
+        </div>
+        <script>
+             function handleLogout() {
                 // Show the modal for confirmation
                 document.getElementById("logout-confirm-modal").style.display = "block";
                 return false; // Prevent the default action temporarily
@@ -482,12 +451,10 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "login.php"; 
+                    window.location.href = "../welcome.php"; // Or any other logout URL
                 }
             }
-    </script>
-    <?php endif; ?>
+        </script>
+    </header>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
