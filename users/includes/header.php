@@ -386,42 +386,37 @@ body, * {
     }
 }
 </style>
-
-    <header id="header" class="header">
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
-        <div class="top-right">
-            <div class="header-menu">
-                <div class="header-left"></div>
-                <div class="user-area dropdown float-right">
-                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php
-                        // Check if the profile picture exists and display it
-                        if (!empty($profilePicture) && file_exists($profilePicturePath)) {
-                            echo '<!-- Debug: Found profile picture at: ' . $profilePicturePath . ' -->';
-                            echo '<img class="user-avatar rounded-circle" src="' . $profilePicturePath . '" alt="User Avatar">';
-                        } else {
-                            echo '<!-- Debug: No profile picture found or file does not exist. Attempted path: ' . $profilePicturePath . ' -->';
-                            echo '<img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="Default Avatar">';
-                        }
-                        ?>
-                    </a>
-                    <div class="user-menu dropdown-menu">
-                        <!-- Dropdown for profile picture upload -->
-                        <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
-                        <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
-                            <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
-                            <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
-                           <!-- <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
-                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
-                            <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
+        
+                <div class="top-right"></div>
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php
+                            // Check if the profile picture exists and display it
+                            if (!empty($profilePicture) && file_exists($profilePicturePath)) {
+                                echo '<!-- Debug: Found profile picture at: ' . $profilePicturePath . ' -->';
+                                echo '<img class="user-avatar rounded-circle" src="' . $profilePicturePath . '" alt="User Avatar">';
+                            } else {
+                                echo '<!-- Debug: No profile picture found or file does not exist. Attempted path: ' . $profilePicturePath . ' -->';
+                                echo '<img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="Default Avatar">';
+                            }
+                            ?>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                                <!-- Dropdown for profile picture upload -->
+                                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
+                                <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
+                                    <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
+                                    <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
+                                <!-- <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
+                                    <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
+                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
 
-                        </form>
-                      
+                                </form>   
                     </div>
                 </div>
-            </div>
             <div id="logout-confirm-modal" class="modal">
                     <div class="modal-content">
                         <p>Are you sure you want to log out?</p>
@@ -454,4 +449,3 @@ body, * {
                 }
             }
         </script>
-    </header>
