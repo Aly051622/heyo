@@ -33,9 +33,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Customer Service | CTU Danao VPMS</title>
+   
+<title>Customer Service | CTU Danao VPMS</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             background: whitesmoke;
             height: 100vh;
             overflow: hidden;
@@ -44,18 +46,15 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 margin-top: 45px;
                 margin-left: 2em;
                 position: absolute;
-                z-index: -1;
             }
-        .breadcrumbs{
-            display: block;
-        }
+ 
         #chat-box {
             margin-left: 3em;
             width: 95%; 
             height: 370px;
             padding: 35px;
             border: none;
-            z-index: 999;
+            z-index: 1;
             margin-top: -180px;
         }
         /* Scrollbar styling for the chat box */
@@ -167,7 +166,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             background-color: #007bff;
             color: white;
             cursor: pointer;
-            border-radius: 7px;
+            border-top-left-radius: 7px;
+            border-bottom-left-radius: 7px;
             margin-left:-30px ;
         }
         #message-icon:hover{
@@ -193,6 +193,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: orange;
             padding: 10px;
             font-weight: bold;
+            margin-left: -9em;
         }
         h5{
             padding: 5px;
@@ -212,21 +213,21 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: black;
             }
         #faq-section {
-            z-index: -1;
+            z-index: 5;
             color: black;
         }
         .faq-item {
-            margin-bottom: 2px;
+            margin-bottom: 1px;
+            z-index: 1000;
             padding: 5px;
             background: white;
             border-radius: 18px;
-            height: 32%;
+            height: 30%;
             width: 75%;
             font-size:12px;
             margin-bottom: 2px;
         }
         .faq-question {
-            margin-bottom: 1px;
             font-weight: bold;
             z-index: 1000;
             background: whitesmoke;
@@ -234,12 +235,37 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             height: 30%;
             width: 90%;
         }
-        .space{
-            margin-top:10px;
+        /* Breadcrumb styles */
+        .breadcrumbs {
+            width: 90%;
+            background-color: #ffffff;
+            padding: 7px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            margin-left: 5em;
         }
-        .float-right{
-            background: transparent;
+
+        .breadcrumbs .breadcrumb {
+            background: none;
+            margin: 0;
+            padding: 0;
         }
+
+        .breadcrumb a {
+            color: gray;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: black;
+        }
+
+        .breadcrumb .active {
+            color: #6c757d;
+        }
+    
       /*sa tanan na ni*/
 #right-panel {
     margin-left: 100px;
@@ -258,6 +284,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     -webkit-overflow-scrolling: touch;
 }
 
+/* Improve table styling for mobile */
 .table-responsive table {
     width: 100%;
     table-layout: auto;
@@ -326,12 +353,80 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 }
 
+@media (max-width: 500px) {
+    .breadcrumbs {
+        width: auto;
+        margin-left: -2em;
+        padding: 5px;
+        display: none;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    body {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    
+    .breadcrumbs {
+        width: 90%;
+        margin-right: 20em;
+        padding: 5px;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    body {
+        font-size: 12px;
+        height: 100vh;
+        overflow-x: auto;
+    }
+    .card, .card-header, .card-body, .tables{
+        width: 330px;
+        font-size:12px;
+        
+    }
+    .tables thead{
+        padding: 2px;
+    }
+ 
+}
+
+
+@media (max-width: 300px) {
+    .breadcrumbs {
+        width: 100%;
+        margin-left: 0.5em;
+        padding: 4px;
+    }
+
+    #printbtn,
+    #viewbtn {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    body {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+
 /* Responsive Styles for header na ni */
 
 @media (max-width: 1024px) {
-    .breadcrumbs{
-        display: flex;
-    }
     .navbar-header {
         padding: 5px;
     }
@@ -359,9 +454,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 780px) {
-    .breadcrumbs{
-        display: flex;
-    }
     .navbar-header {
         padding: 4px;
     }
@@ -386,65 +478,42 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
-
-    #message-icon{
-        width: 50px;
-    }
-    #message-input{
-        width: 200px;
-    }
 }
 
 @media (max-width: 500px) {
-    .breadcrumbs{
-        height: 60px;
+    .navbar-header {
+        padding: 3px;
+        width: 100vw;
     }
-    .breadcrumbs {
-        width: 90%;
-        padding: 5px;
-        width: auto;
-        margin-left: 1em;
+    .user-avatar {
+        height: 25px;
+        width: 25px;
+        margin-top: 20px;
     }
-    .breadcrumb{
-        margin-top: 100px;
+    .active-indicator {
+        bottom: 2.5em;
+        right: 6px;
+        font-size: 10px;
     }
-    body {
-        font-size: 12px;
-        height: 100vh;
-        overflow: auto;
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .card, .card-header, .card-body, .tables{
-        width: 330px;
-        font-size:12px;
-        
+    .user-area img {
+        margin-right: 8px;
+        margin-top: -2em;
     }
-    .tables thead{
-        padding: 2px;
+    
+    .dropdown{
+        margin-top: -85px;
+        margin-right: 40px;
     }
-
-    #message-icon{
-        width: 70px;
-    }
-    .page-header .float-right, .float-right{
-        background: transparent;
-    }
-    #message-input{
-        width: 250px;
-    }
-    .sec2{
-        margin-top: 30em;
+    
+    .dropdown-toggle{
+        margin-top: 30px;
     }
 }
 @media (max-width: 480px){
-    .breadcrumbs{
-        height: 60px;
-    }
-    .breadcrumb{
-        margin-top: 100px;
-    }
-    .chatbox-container{
-        display: flex;
-    }
     body{
         overflow-x: auto;
     }
@@ -480,31 +549,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
-
-    #message-icon{
-        width: 60px;
-    }
-    .float-right{
-       background: transparent;
-    }
-    #message-input{
-        width: 250px;
-    }
-    .sec2{
-        margin-top: 30em;
-    }
 }
 
 @media (max-width: 300px) {
-    .breadcrumbs{
-        height: 60px;
-        width: 100%;
-        margin-left: 1em;
-        padding: 4px;
-    }
-    .breadcrumb{
-        margin-top: 100px;
-    }
     .navbar-header {
         padding: 2px;
         width: 100vw;
@@ -532,23 +579,44 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     .dropdown-toggle{
         margin-top: 30px;
     }
+}
 
-    #message-icon{
-        width: 150px;
+
+
+/*sidebarrrrr */
+
+@media (max-width: 768px) {
+    #sidebar {
+        left: -250px;
     }
-    .page-header .float-right{
-        display:none;
+
+    #sidebar.collapsed {
+        left: 0;
     }
-    #message-input{
+
+    #toggleSidebar {
+        display: block;
+    }
+
+    #right-panel {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
         width: 200px;
     }
 
-    .sec2{
-        margin-top: 30em;
+    #sidebar.collapsed {
+        width: 50px;
     }
-    
-}
 
+    #toggleSidebar {
+        left: 5px;
+        top: 5px;
+    }
+}
     </style>
 </head>
 <body>
@@ -563,13 +631,15 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div class="row m-0">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
-                  <h3>  FAQs</h3>
+                        <div class="page-title" id="message-icon">
+                        <i class="bi bi-chat-left-text-fill" ></i> Chat with Support
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
-                            <ol class="breadcrumb text-right" style="background: transparent;">
+                            <ol class="breadcrumb text-right">
                                 <li><a href="dashboard.php">Dashboard</a></li>
                                 <li class="active">Customer Service</li>
                                 <li class="active">FAQs</li>                              
@@ -594,10 +664,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <!-- FAQ Section -->
     <div class="container" id="container">
-        <div class="space"></div>
-       <div class=" faq" id="message-icon">
-                        <i class="bi bi-chat-left-text-fill" ></i> Ask for Help
-                    </div>
+       <div class="faq"> <i class="bi bi-question-circle-fill "></i> FAQs</div>
         <div id="faq-section" class="row">
             <!-- Left Column for the first 4 FAQ items -->
             <div class="col-md-6">
@@ -623,7 +690,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             </div>
 
             <!-- Right Column for the last 4 FAQ items -->
-            <div class="col-md-6 sec2">
+            <div class="col-md-6">
                 <div class="faq-item">
                     <div class="faq-question">Q: What should I do if I forget my parking pass?</div>
                     <div class="faq-answer">A: Visit the support chat or use the 'Forgot Pass' feature on the login page. You'll be guided to retrieve or reset your pass.</div>
@@ -651,7 +718,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.netz/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.bundle.min.js"></script>
