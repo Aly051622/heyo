@@ -466,9 +466,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 }
 
 @media (max-width: 500px) {
-    .breadcrumbs{
-        display: flex;
-    }
+   
     .navbar-header {
         padding: 3px;
         width: 100vw;
@@ -512,9 +510,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     }
 }
 @media (max-width: 480px){
-    .breadcrumbs{
-        display: flex;
-    }
+    
     .chatbox-container{
         display: flex;
     }
@@ -568,7 +564,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 @media (max-width: 300px) {
 
     .breadcrumbs{
-        display: flex;
     }
     .navbar-header {
         padding: 2px;
