@@ -76,14 +76,12 @@ body, * {
     margin: 0; /* Reset margin for consistency */
     padding: 0; /* Reset padding for consistency */
     box-sizing: border-box; /* Avoid layout issues */
-    overflow: auto;
 }
     .navbar-header{
         position: fixed;
         width: 100vw;
         z-index: 1;
         height: 70px;
-        overflow: auto;
     }
     .btn:hover{
                 background-color: darkblue;
@@ -393,6 +391,7 @@ body, * {
     }
 }
 </style>
+<header>
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
@@ -459,3 +458,4 @@ body, * {
                 }
             }
         </script>
+</header>
