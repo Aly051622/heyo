@@ -914,12 +914,12 @@ function toggleOtherModelInput() {
 }
 </script>
 
+<?php include_once('includes/header.php');?>
 </head>
 <body>
    <?php include_once('includes/sidebar.php');?>
     <!-- Right Panel -->
 
-   <?php include_once('includes/header.php');?>
 <div class="right-panel" style="overflow: auto;">
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
