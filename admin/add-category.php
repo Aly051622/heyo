@@ -50,19 +50,30 @@ echo "<script>window.location.href='manage-category.php'</script>";
 
 </head>
 <style>
-    body{
-        background-color: #f9fcff;
-        background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+     body{
+        background-color: whitesmoke;
+        height: 100vh;
+       overflow: hidden; 
     }
-    .card, .card-header{
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-         }
-         .btn-sm:hover{
-            background:orange;
-         }
-         .btn{
-            cursor: url('https://img.icons8.com/ios-glyphs/28/drag-left.png') 14 14, auto;
-         }
+    .card .card-header{
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+             }
+             .btn-sm{
+                border: solid lightgray;
+                border-radius: 10px;
+                padding: 10px;
+                background-color: rgb(53, 97, 255);
+                color: white;
+                cursor: pointer;
+                font-family: 'Monsterrat', sans-serif;
+                font-weight: bolder;
+                cursor: pointer;
+        }
+
+           .btn-sm:hover{
+                background-color: darkblue;
+                border: solid blue;
+            }
     </style>
 <body>
    <?php include_once('includes/sidebar.php');?>
@@ -122,7 +133,7 @@ echo "<script>window.location.href='manage-category.php'</script>";
                                         <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control" placeholder="Vehicle Category" required="true"></div>
                                     </div>
 
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-sm" name="submit" ><i class="fa fa-plus"> Add</i></button></p>
                                 </form>
                             </div>
                             

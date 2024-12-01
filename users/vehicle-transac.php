@@ -594,40 +594,41 @@ body, * {
     </style>
     </head>
     <body>
-
+        
     <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="dashboard.php">
-                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                    <a href="dashboard.php" style="text-decoration: none;">
+                        <i class="menu-icon fa bi bi-laptop-fill"></i>Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="view-vehicle.php">
-                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    <a href="view-vehicle.php"  style="text-decoration: none;">
+                    <i class="menu-icon fa bi bi-bus-front-fill"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
-                    <a href="vehicle-transac.php">
-                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
+                    <a href="vehicle-transac.php"  style="text-decoration: none;">
+                        <i class="menu-icon fa bi bi-train-front-fill"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
-                    <a href="add-vehicle.php">
-                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                    <a href="add-vehicle.php"  style="text-decoration: none;">
+                        <i class="menu-icon fa bi bi-journal-album"></i>Register Vehicle
                     </a>
                 </li>
                 <li>
-                    <a href="service.php">
-                        <i class="menu-icon fa fa-headset"></i>Chat Concern
+                    <a href="service.php"  style="text-decoration: none;">
+                        <i class="menu-icon fa bi bi-headset"></i>Chat Concern
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
 </aside>
+
 
 <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->

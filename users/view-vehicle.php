@@ -214,7 +214,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                                         <p style="margin: 0;"><strong>Download QR Code</strong></p>
                                                         <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
                                                         <a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename($row['QRCodePath']); ?>" class="download-icon">
-                                                            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+                                                            <i class="bi bi-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
                                                         </a>
                                                     <?php } else { ?>
                                                         <p>QR Code image not found</p>
