@@ -68,17 +68,23 @@
         <div class="content-box">
             <h4 class="text-center">Privacy Policy</h4>
             
-            <p><strong>Privacy Policy:</strong> The Privacy Policy of the CTU Danao Parking System outlines how user information is collected, used, and protected. It ensures that personal data, such as vehicle details and contact information, is kept confidential and secure, and explains that this information will only be used for parking management purposes within the system and will not be shared with third parties without user consent.</p>
+            <p><strong>Privacy Policy:</strong> 
+            The Privacy Policy of the CTU Danao Parking System outlines how user information is collected, used, and protected. It ensures that personal data, such as vehicle details and contact information, is kept confidential and secure, and explains that this information will only be used for parking management purposes within the system and will not be shared with third parties without user consent.</p>
             
-            <p><strong>Information We Collect:</strong> The CTU Danao Parking System collects only the information that is directly entered and stored within the system by the users, such as vehicle details, user profiles, and parking activity logs.</p>
+            <p><strong>Information We Collect:</strong> 
+            The CTU Danao Parking System collects only the information that is directly entered and stored within the system by the users, such as vehicle details, user profiles, and parking activity logs.</p>
             
-            <p><strong>How We Use Information:</strong> The collected information is used solely for the purpose of managing parking spaces, verifying user identities, and ensuring efficient operation of the parking system. This helps us provide accurate data and improve user experience.</p>
+            <p><strong>How We Use Information:</strong> 
+            The collected information is used solely for the purpose of managing parking spaces, verifying user identities, and ensuring efficient operation of the parking system. This helps us provide accurate data and improve user experience.</p>
             
-            <p><strong>Sharing of Information:</strong> Users can share feedback and comments within the system, which may be viewed by the admin. However, no personal or sensitive information is shared outside the system without the user's consent.</p>
+            <p><strong>Sharing of Information:</strong> 
+            Users can share feedback and comments within the system, which may be viewed by the admin. However, no personal or sensitive information is shared outside the system without the user's consent.</p>
             
-            <p><strong>Security Measures of the System:</strong> The system implements strict security measures to protect user data, including encryption and access controls, to ensure that all personal and vehicle-related information remains safe from unauthorized access.</p>
+            <p><strong>Security Measures of the System:</strong> 
+            The system implements strict security measures to protect user data, including encryption and access controls, to ensure that all personal and vehicle-related information remains safe from unauthorized access.</p>
             
-            <p><strong>Contact Us:</strong> Users can contact the support team through the chat feature within the system for any concerns or inquiries. This provides an efficient way to address issues or receive assistance directly from the research team or system administrators.</p>
+            <p><strong>Contact Us:</strong> 
+            Users can contact the support team through the chat feature within the system for any concerns or inquiries. This provides an efficient way to address issues or receive assistance directly from the research team or system administrators.</p>
 
             <p class="mt-4"><a href="terms.php" class="btn btn-secondary">Back to Terms and Conditions</a></p>
         </div>
