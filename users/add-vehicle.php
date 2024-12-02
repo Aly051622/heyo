@@ -946,7 +946,7 @@ if (mysqli_query($con, $query)) {
                                 <!-- Submit Button -->
                                 <p style="text-align: center;">
                                     <button type="submit" class="btn btn-primary btn-sm" name="submit" id="addbtn">
-                                        <i class="fa fa-plus"> Add</i>
+                                        <i class="fa bi bi-plus"> Add</i>
                                     </button>
                                 </p>
                             </form>
