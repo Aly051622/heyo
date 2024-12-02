@@ -98,23 +98,23 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
             </form>
         </div>
 
-        <div id="exampl" class="receipt-table">
+        <?php
+        $query = "SELECT * FROM tblvehicle";
+        if (isset($_GET['from_date']) && isset($_GET['to_date'])) {
+            $from_date = $_GET['from_date'];
+            $to_date = $_GET['to_date'];
+            $query .= " WHERE DATE(InTime) BETWEEN '$from_date' AND '$to_date'";
+        }
+
+        $ret = mysqli_query($con, $query);
+        $cnt = 1;
+
+        while ($row = mysqli_fetch_array($ret)) {
+        ?>
+            <div id="exampl" class="receipt-table">
             <div class="header-content">
                         <img src="images/header.png" alt="header" class="center">
                     </div>
-                            <?php
-                            $query = "SELECT * FROM tblvehicle";
-                            if (isset($_GET['from_date']) && isset($_GET['to_date'])) {
-                                $from_date = $_GET['from_date'];
-                                $to_date = $_GET['to_date'];
-                                $query .= " WHERE DATE(InTime) BETWEEN '$from_date' AND '$to_date'";
-                            }
-
-                            $ret = mysqli_query($con, $query);
-                            $cnt = 1;
-
-                            while ($row = mysqli_fetch_array($ret)) {
-                            ?>
                 <div class="container">
                 </div>
                 <table border="1" class="table table-bordered mg-b-0">
