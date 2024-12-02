@@ -203,6 +203,9 @@ html,body{
             max-width: 250px;
         }
     }
+    #imageModal{
+        z-index: 1;
+    }
 </style>
 
 </head>
