@@ -24,6 +24,11 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
             body {
                 margin: 0;
             }
+            .header-content, .footer-content{
+                width: 100%;
+                height: auto;
+                left:10em;
+            }
             .container {
                 display: flex;
                 align-items: center;
