@@ -95,12 +95,12 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-body, * {
-    font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
-    margin: 0; /* Reset margin for consistency */
-    padding: 0; /* Reset padding for consistency */
-    box-sizing: border-box; /* Avoid layout issues */
-}
+        body, * {
+            font-family: 'Open Sans', sans-serif !important; /* Ensure Open Sans is prioritized */
+            margin: 0; /* Reset margin for consistency */
+            padding: 0; /* Reset padding for consistency */
+            box-sizing: border-box; /* Avoid layout issues */
+        }
         html, body{
             background: whitesmoke;
             height: 100vh;
@@ -314,7 +314,7 @@ body, * {
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
     <?php if ($licenseStatusMessage): ?>
-                            <div class="notification"><?php echo $licenseStatusMessage; ?></div>
+                            <div class="notification" style="margin-left: 10em; position: absolute;><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
         <!-- Content -->
         <div class="content">
