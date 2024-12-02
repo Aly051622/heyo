@@ -205,8 +205,8 @@ html,body{
 }
 
     .modal-content {
-        height: 100vh;
-        width: 100vh;
+        height: 500px;
+        width: 1000px;
         overflow: auto; /* Allow scrolling if content exceeds modal height */
 
     }
