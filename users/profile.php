@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 include('../DBconnection/dbconnection.php');
@@ -74,13 +75,13 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -89,12 +90,8 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../admin/assets/css/style.css">   
-    <link rel="stylesheet" href="css/responsive.css">   
-    <!-- Include Bootstrap CSS (required for styling) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="css/responsive/.css">
 
    <style>
 
@@ -102,16 +99,16 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text for contrast */
-    border: 1px solid #f5c6cb; /* Border color similar to background */
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb; 
     border-radius: 5px;
-    padding: 15px; /* Increased padding for better readability */
+    padding: 15px; 
     display: none;
     z-index: 9999;
     width: 300px;
     max-width: 90%;
-    font-size: 16px; /* Increased font size for better visibility */
+    font-size: 16px; 
 }
 
 #notification span {
@@ -195,17 +192,17 @@ html,body{
     }
     @media (max-width: 480px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
         }
     }
     @media (max-width: 300px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
         }
     }
     @media (max-width: 500px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
         }
     }
 </style>
@@ -237,7 +234,7 @@ html,body{
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
+                                <ol class="breadcrumb text-right" style="background: transparent;">
                                     <li><a href="dashboard.php">Dashboard</a></li>
                                     <li><a href="profile.php">Profile</a></li>
                                     <li class="active">User Profile</li>
