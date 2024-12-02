@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 include('../DBconnection/dbconnection.php');
@@ -75,13 +74,13 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -90,8 +89,12 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive/.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">   
+    <link rel="stylesheet" href="css/responsive.css">   
+    <!-- Include Bootstrap CSS (required for styling) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
    <style>
 
@@ -192,17 +195,17 @@ html,body{
     }
     @media (max-width: 480px){
         .regs{
-            max-width: 250px;
+            max-width: 50px;
         }
     }
     @media (max-width: 300px){
         .regs{
-            max-width: 250px;
+            max-width: 50px;
         }
     }
     @media (max-width: 500px){
         .regs{
-            max-width: 250px;
+            max-width: 50px;
         }
     }
 </style>
@@ -234,7 +237,7 @@ html,body{
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right" style="background: transparent;">
+                                <ol class="breadcrumb text-right">
                                     <li><a href="dashboard.php">Dashboard</a></li>
                                     <li><a href="profile.php">Profile</a></li>
                                     <li class="active">User Profile</li>
