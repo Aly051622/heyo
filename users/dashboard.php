@@ -313,8 +313,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <?php include_once('includes/header.php'); ?>
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
+        <br>
     <?php if ($licenseStatusMessage): ?>
-                            <div class="notification" style="margin-left: 10em;><?php echo $licenseStatusMessage; ?></div>
+                            <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
         <!-- Content -->
         <div class="content">
