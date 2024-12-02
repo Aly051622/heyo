@@ -11,8 +11,8 @@ include('../DBconnection/dbconnection.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <style>
         @media print {
-            body * {
-                visibility: hidden;
+            .heading-container{
+                visibility: visible;
             }
             .print-container, .print-container * {
                 visibility: visible;
@@ -89,41 +89,41 @@ include('../DBconnection/dbconnection.php');
     </script>
 </head>
 <body onload="printPage()">
-<div class="header-content">
+<div class="heading-container">
+                    <div class="header-content">
                         <img src="images/header.png" alt="header" class="center">
                     </div>
-                    <div class="container">
-<div class="heading-container">
-  <div class="print-container">
-  <h3 class="text-center">All Vehicle Records</h3>
-        <table class="table table-bordered table-striped">
-            <tbody>
-                <?php
-                $query = "SELECT * FROM tblvehicle";
-                $result = mysqli_query($con, $query);
+        <div class="print-container">
+            <h3 class="text-center">All Vehicle Records</h3>
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <?php
+                        $query = "SELECT * FROM tblvehicle";
+                        $result = mysqli_query($con, $query);
 
-                while ($row = mysqli_fetch_array($result)) {
-                    $status = ($row['Status'] == "Out") ? "Outgoing Vehicle" : "Incoming Vehicle";
-                    $outTime = ($row['Status'] == "Out") ? $row['OutTime'] : "N/A";
-                    $remark = ($row['Status'] == "Out") ? $row['Remark'] : "N/A";
-                ?>
-                    <tr>
-                        <td><?php echo $row['ParkingNumber']; ?></td>
-                        <td><?php echo $row['VehicleCategory']; ?></td>
-                        <td><?php echo $row['VehicleCompanyname']; ?></td>
-                        <td><?php echo $row['OwnerName']; ?></td>
-                        <td><?php echo $row['OwnerContactNumber']; ?></td>
-                        <td><?php echo $row['InTime']; ?></td>
-                        <td><?php echo $outTime; ?></td>
-                        <td><?php echo $status; ?></td>
-                        <td><?php echo $remark; ?></td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="footer-content">
-                    <img src="images/footer.png" alt="footer" class="center">
-                </div>
+                        while ($row = mysqli_fetch_array($result)) {
+                            $status = ($row['Status'] == "Out") ? "Outgoing Vehicle" : "Incoming Vehicle";
+                            $outTime = ($row['Status'] == "Out") ? $row['OutTime'] : "N/A";
+                            $remark = ($row['Status'] == "Out") ? $row['Remark'] : "N/A";
+                        ?>
+                            <tr>
+                                <td><?php echo $row['ParkingNumber']; ?></td>
+                                <td><?php echo $row['VehicleCategory']; ?></td>
+                                <td><?php echo $row['VehicleCompanyname']; ?></td>
+                                <td><?php echo $row['OwnerName']; ?></td>
+                                <td><?php echo $row['OwnerContactNumber']; ?></td>
+                                <td><?php echo $row['InTime']; ?></td>
+                                <td><?php echo $outTime; ?></td>
+                                <td><?php echo $status; ?></td>
+                                <td><?php echo $remark; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+        </div>
+                    <div class="footer-content">
+                        <img src="images/footer.png" alt="footer" class="center">
+                    </div>
+</div>
 </body>
 </html>
