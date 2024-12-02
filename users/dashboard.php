@@ -292,7 +292,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
         .space{
             margin-left: 20px;
-            margin-top: 3em;
+            margin-top: 5em;
             width: 100%;
         }
         /* Responsive */
