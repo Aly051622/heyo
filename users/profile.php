@@ -189,6 +189,7 @@ html,body{
     .modal-backdrop {
     z-index: 1040; /* Ensure the backdrop is below the modal */
     pointer-events: none; /* Allows clicks to pass through the backdrop */
+    background-color: transparent;
     }
 
     .modal {
