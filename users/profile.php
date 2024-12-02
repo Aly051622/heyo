@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 include('../DBconnection/dbconnection.php');
@@ -74,7 +75,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
@@ -234,7 +234,7 @@ html,body{
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
+                                <ol class="breadcrumb text-right" style="background: transparent;">
                                     <li><a href="dashboard.php">Dashboard</a></li>
                                     <li><a href="profile.php">Profile</a></li>
                                     <li class="active">User Profile</li>

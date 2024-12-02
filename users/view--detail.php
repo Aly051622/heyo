@@ -18,10 +18,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
    
     <title>Client View Vehicle Detail | CTU DANAO Parking System</title>
    
-
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
@@ -31,9 +31,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/responsive/.css">
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 </head>
 <style>
        .clearfix{ 
@@ -172,7 +172,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                     <div class="col-sm-8">
                         <div class="page-header float-right">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
+                                <ol class="breadcrumb text-right" style="background: transparent;">
                                     <li><a href="dashboard.php">Dashboard</a></li>
                                     <li><a href="view-vehicle.php">View Vehicle</a></li>
                                     <li class="active">View Vehicle details</li>
