@@ -348,7 +348,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             </div>
         <?php endif; ?>
 
-    <div class="carousel-container"style="margin-top: -70px;">
+    <div class="carousel-container"style="margin-top: -65px;">
         <div class="carousel">
             <img src="images/tem.png" alt="Slide 1">
             <img src="images/temp.png" alt="Slide 2">
