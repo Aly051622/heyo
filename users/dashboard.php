@@ -294,7 +294,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             margin-left: 20px;
             margin-top: 6em;
             width: 100%;
-            z-index: -1;
+            margin-bottom:5px;
         }
         /* Responsive */
         @media (max-width: 768px) {
@@ -342,8 +342,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             </div>
             <!-- .animated -->
         </div>
-
-        <!-- Notification card with disappearing effect -->
         <?php if ($regValidityStatus == 0): ?>
             <div  class="notification" style="margin-left: 25em; position: absolute;">
                 <?php echo $licenseStatusMessage; ?>
