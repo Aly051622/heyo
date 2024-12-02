@@ -311,7 +311,7 @@ while ($row = mysqli_fetch_array($ret)) {
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="z-index: 1;">
                 <img id="modalImage" src="" alt="" class="img-fluid">
             </div>
         </div>
