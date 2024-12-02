@@ -90,6 +90,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         .breadcrumb {
             background-color: transparent;
         }
+        .clearfix{
+            background: whitesmoke;
+        }
     </style>
 </head>
 <body>
@@ -171,6 +174,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         </div>
     </div>
     
+    <div class="clearfix"></div>
 <?php include_once('includes/footer.php'); ?>
     </div>
     

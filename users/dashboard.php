@@ -195,7 +195,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             border-radius: 9px;
             text-align: center;
             margin-top: -10px;
-            color: green;
+            color: orange;
             font-weight: bold;
             position: absolute;
         }
@@ -292,7 +292,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
         .space{
             margin-left: 20px;
-            margin-top: 10px;
+            margin-top: 10em;
+            width: 100%;
         }
         /* Responsive */
         @media (max-width: 768px) {
@@ -319,9 +320,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
         <div class="space">
-    <?php if ($licenseStatusMessage): ?>
+    <marquee direction="right"><?php if ($licenseStatusMessage): ?>
                             <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
-                        <?php endif; ?>
+                        <?php endif; ?></marquee>
                         </div>
         <!-- Content -->
         <div class="content">
