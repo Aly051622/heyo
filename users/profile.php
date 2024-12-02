@@ -208,12 +208,13 @@ html,body{
         height: 100vh;
         width: 100vh;
         overflow: auto; /* Allow scrolling if content exceeds modal height */
+
     }
 
     .modal-body img {
         width: 100%; /* Ensure the image spans the modal */
         height: 100%; /* Maintain aspect ratio */
-        object-fit: contain; /* Ensure the image scales properly */
+        object-fit: cover; /* Ensure the image scales properly */
     }
 
     .reg{
