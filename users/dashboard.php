@@ -320,9 +320,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
         <div class="space">
-    <marquee direction="right"><?php if ($licenseStatusMessage): ?>
-                            <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
-                        <?php endif; ?></marquee>
+    <?php if ($licenseStatusMessage): ?>
+        <marquee direction="right"><div class="notification" ><?php echo $licenseStatusMessage; ?></div></marquee>
+                        <?php endif; ?>
                         </div>
         <!-- Content -->
         <div class="content">
