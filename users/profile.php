@@ -201,7 +201,7 @@ html,body{
 
     .modal-body img#modalImage {
     max-width: 90%; 
-    max-height: 80vh; 
+    max-height: 90%; 
     width: auto; 
     height: auto; 
     display: block; 
