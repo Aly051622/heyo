@@ -186,6 +186,18 @@ html,body{
         transform: scale(1.1); 
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
     }
+    .modal-backdrop {
+    z-index: 1040; /* Ensure the backdrop is below the modal */
+    pointer-events: none; /* Allows clicks to pass through the backdrop */
+    }
+
+    .modal {
+        z-index: 1050; /* Ensure the modal is above the backdrop */
+        display: flex; /* Ensure the modal content is properly centered */
+        justify-content: center;
+        align-items: center;
+    }
+
     .reg{
         margin-left: 18px;
         width: 500px;
