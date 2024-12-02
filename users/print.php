@@ -78,7 +78,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
         </style>
     </head>
     <body>
-        <div class="container mt-5">
+        <div class="container mt-5" id="head">
             <form method="GET" class="form-inline">
                 <label for="from_date" class="mr-2">From:</label>
                 <input type="date" name="from_date" class="form-control mr-3" required>
@@ -175,13 +175,13 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                             body {
                                 margin: 0;
                             }
-                            .container {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                margin-right: 50vh;
-                                padding-top: 20px;
+                           #head{
+                                display: none;
+                           }
+                            .header-content, .footer-content{
+                                width: 100%;
+                                height: auto;
+                                left:10em;
                             }
                         }
 
