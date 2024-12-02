@@ -76,6 +76,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
@@ -95,6 +96,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
    <style>
 
 #notification {
+    position: fixed;
     top: 10px;
     right: 10px;
     background-color: #f8d7da; /* Light red background */
@@ -203,26 +205,22 @@ html,body{
             max-width: 250px;
         }
     }
-    #imageModal{
-        z-index: 1;
-    }
 </style>
 
 </head>
 <body>
-    
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
     
    <?php include_once('includes/header.php');?>
 
    <!-- Notification system -->
-
+<div class="right-panel">
 <div id="notification">
     <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
     <button id="notification-close">&times;</button>
 </div>
-<div class="right-panel">
+
         <div class="breadcrumbs mb-5">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
