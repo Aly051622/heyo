@@ -64,7 +64,6 @@ body, * {
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
         border: groove 2px white;
-        z-index: 5;
     }
 
     .user-avatar:hover {
@@ -90,9 +89,8 @@ body, * {
 
     .user-area {
         display: flex;
-        align-items: center;
         margin-top: -60px;
-        margin-right: 10px;
+        margin-right: 50px;
         position:fixed;
     }
     .dropdown{
@@ -363,7 +361,7 @@ body, * {
                                     <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
                                     </i></a>
 
-                                    <a class="nav-link" href="logout.php"><i class="fa bi-box-arrow-right"> Logout
+                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
                                 </div>
                             </div>
