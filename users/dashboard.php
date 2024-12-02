@@ -289,6 +289,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         .hover-orange:hover { background-color: #FFDAB9; }
         .hover-skyblue:hover { background-color: #ADD8E6; }
         .hover-lightred:hover { background-color: #FFC0CB; }
+
+        .space{
+            margin-left: 20px;
+            margin-top: 10px;
+        }
         /* Responsive */
         @media (max-width: 768px) {
             .portrait-section {
@@ -313,10 +318,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <?php include_once('includes/header.php'); ?>
     <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
-        <br>
+        <div class="space">
     <?php if ($licenseStatusMessage): ?>
                             <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
+                        </div>
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
