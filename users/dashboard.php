@@ -321,7 +321,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <div class="right-panel">
         <div class="space">
     <?php if ($licenseStatusMessage): ?>
-        <marquee direction="right"><div class="notification" ><?php echo $licenseStatusMessage; ?></div></marquee>
+        <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
                         <?php endif; ?>
                         </div>
         <!-- Content -->
