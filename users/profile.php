@@ -201,7 +201,7 @@ html,body{
 
     .modal-dialog {
     max-width: 90%; /* Set the maximum width of the modal */
-    width: auto; /* Allow the width to adjust dynamically */
+    width: 1000px; /* Allow the width to adjust dynamically */
 }
 
     .modal-content {
