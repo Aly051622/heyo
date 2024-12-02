@@ -214,12 +214,12 @@ html,body{
    <?php include_once('includes/header.php');?>
 
    <!-- Notification system -->
-<div class="right-panel">
+
 <div id="notification">
     <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
     <button id="notification-close">&times;</button>
 </div>
-
+<div class="right-panel">
         <div class="breadcrumbs mb-5">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
