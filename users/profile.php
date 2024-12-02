@@ -192,17 +192,17 @@ html,body{
     }
     @media (max-width: 480px){
         .regs{
-            max-width: 100px;
+            max-width: 250px;
         }
     }
     @media (max-width: 300px){
         .regs{
-            max-width: 100px;
+            max-width: 250px;
         }
     }
     @media (max-width: 500px){
         .regs{
-            max-width: 100px;
+            max-width: 250px;
         }
     }
 </style>
