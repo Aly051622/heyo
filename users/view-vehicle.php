@@ -269,7 +269,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                             </div>
                                             <div class="mt-2">
                                                 <a href="view--detail.php?viewid=<?php echo $row['vehid']; ?>" class="btn btn-primary mr-2" id="viewbtn">🖹 View</a>
-                                                <a href="print.php?vid=<?php echo $row['vehid']; ?>" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
+                                                <a href="C:\Users\acer\Documents\GitHub\heyo\users\print.php" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print</a>
                                             </div>
                                         </div>
                                     </div>
