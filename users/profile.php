@@ -212,8 +212,8 @@ html,body{
     }
 
     .modal-body img {
-        width: 100%; /* Ensure the image spans the modal */
-        height: 100%; /* Maintain aspect ratio */
+        width: 1000px; /* Ensure the image spans the modal */
+        height: 500px; /* Maintain aspect ratio */
         object-fit: cover; /* Ensure the image scales properly */
     }
 
