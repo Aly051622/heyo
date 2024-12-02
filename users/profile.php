@@ -205,7 +205,8 @@ html,body{
 }
 
     .modal-content {
-        max-height: 90vh; /* Set maximum height to 90% of the viewport */
+        height: 100vh;
+        width: 100vh;
         overflow: auto; /* Allow scrolling if content exceeds modal height */
     }
 
