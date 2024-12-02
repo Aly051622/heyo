@@ -76,7 +76,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
