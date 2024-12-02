@@ -361,7 +361,7 @@ body, * {
                                     <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
                                     </i></a>
 
-                                    <a class="nav-link" href="logout.php" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
+                                    <a class="nav-link" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
                                 </div>
                             </div>
@@ -398,7 +398,7 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "../welcome.php"; // Or any other logout URL
+                    window.location.href = "login.php"; // Or any other logout URL
                 }
             }
         </script>
