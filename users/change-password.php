@@ -36,7 +36,7 @@ if (strlen($_SESSION['vpmsuid']) == 0) {
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-    
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>CTU- Danao Parking System - Change Password</title>
    
     <link rel="apple-touch-icon" href="../images/aa.png">
