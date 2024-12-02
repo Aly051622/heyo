@@ -211,8 +211,7 @@ html,body{
 
     .modal-body img {
         width: 100%; /* Ensure the image spans the modal */
-        height: auto; /* Maintain aspect ratio */
-        max-height: 80vh; /* Ensure the image fits within the modal */
+        height: 100%; /* Maintain aspect ratio */
         object-fit: contain; /* Ensure the image scales properly */
     }
 
