@@ -199,6 +199,23 @@ html,body{
         align-items: center;
     }
 
+    .modal-dialog {
+    max-width: 90%; /* Set the maximum width of the modal */
+    width: auto; /* Allow the width to adjust dynamically */
+}
+
+    .modal-content {
+        max-height: 90vh; /* Set maximum height to 90% of the viewport */
+        overflow: auto; /* Allow scrolling if content exceeds modal height */
+    }
+
+    .modal-body img {
+        width: 100%; /* Ensure the image spans the modal */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 80vh; /* Ensure the image fits within the modal */
+        object-fit: contain; /* Ensure the image scales properly */
+    }
+
     .reg{
         margin-left: 18px;
         width: 500px;
