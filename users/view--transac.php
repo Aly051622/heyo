@@ -236,7 +236,7 @@ else {
                             <div class="page-title">
                                 <ol class="breadcrumb text-right" style="background: transparent">
                                     <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle</a></li>
+                                    <li><a href="vehicle-transac.php">View Vehicle</a></li>
                                     <li class="active">View Vehicle details</li>
                                 </ol>
                             </div>
