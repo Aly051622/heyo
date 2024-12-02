@@ -24,11 +24,18 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
             body {
                 margin: 0;
             }
-            .header-content, .footer-content{
-                width: 100%;
-                height: auto;
-                left:10em;
+
+            .header-content, .footer-content {
+                width: 100%; 
+                height: auto; 
+                margin-left: auto; 
+                margin-right: auto;
+                display: flex; 
+                justify-content: center;
+                align-items: center; 
+                position: relative; 
             }
+
             .container {
                 display: flex;
                 align-items: center;
@@ -178,10 +185,15 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                            #head{
                                 display: none;
                            }
-                            .header-content, .footer-content{
-                                width: 100%;
-                                height: auto;
-                                left:10em;
+                              .header-content, .footer-content {
+                                width: 100%; 
+                                height: auto; 
+                                margin-left: auto; 
+                                margin-right: auto;
+                                display: flex; 
+                                justify-content: center;
+                                align-items: center; 
+                                position: relative; 
                             }
                         }
 
