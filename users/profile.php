@@ -95,7 +95,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
    <style>
 
 #notification {
-    position: fixed;
     top: 10px;
     right: 10px;
     background-color: #f8d7da; /* Light red background */
@@ -208,6 +207,7 @@ html,body{
 
 </head>
 <body>
+    
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
     
