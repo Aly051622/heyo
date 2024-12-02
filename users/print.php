@@ -85,7 +85,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                 <button type="button" class="btn btn-success" onclick="window.location.href='print_all.php'">Print All</button>
             </form>
         </div>
-
+            <div class="whole">
         <?php
         $query = "SELECT * FROM tblvehicle";
         if (isset($_GET['from_date']) && isset($_GET['to_date'])) {
@@ -149,36 +149,45 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
         <?php
         }
         ?>
-
+            </div>
         <script>
-            function CallPrint() {
-                const prtContent = document.querySelector('body').innerHTML;
-                const WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-                WinPrint.document.write(`
-                    <html>
-                    <head>
-                        <title>Print View</title>
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-                        <link rel="stylesheet" href="assets/css/style.css">
-                        <style>
-                            @media print {
-                                #printbtn { display: none; }
-                                body { margin: 0; font-size: 12px; }
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        ${prtContent}
-                    </body>
-                    </html>
-                `);
-                WinPrint.document.close();
-                WinPrint.focus();
-                WinPrint.print();
-                WinPrint.close();
-            }
+           function CallPrint() {
+            const prtContent = document.querySelector('.whole').innerHTML;
+            const WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+            WinPrint.document.write(`
+                <html>
+                <head>
+                    <title>Print View</title>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+                    <link rel="stylesheet" href="assets/css/style.css">
+                    <style>
+                        @media print {
+                            #printbtn { display: none; }
+                            body { margin: 0; font-size: 12px; }
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            padding: 8px;
+                            text-align: left;
+                        }
+                    </style>
+                </head>
+                <body>
+                    ${prtContent}
+                </body>
+                </html>
+            `);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+        }
+
         </script>
     </body>
     </html>
