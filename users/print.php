@@ -164,7 +164,7 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
 
         <script>
             function CallPrint() {
-                const prtContent = document.querySelector('body').innerHTML;
+                const prtContent = document.querySelector('.receipt-table').innerHTML;
                 const WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
                 WinPrint.document.write(`
                     <html>
