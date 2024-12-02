@@ -51,26 +51,7 @@ include('../DBconnection/dbconnection.php');
                 margin-right: 50vh;
                 padding-top: 20px;
             }
-            .left-content {
-                flex: 1;
-                text-align: left;
-                margin-left: 60px;
-            }
-            .left-image {
-                margin-right: 50px;
-                width: 100px;
-                height: 100px;
-            }
-            .right-content {
-                flex: 1;
-                text-align: right;
-                margin-right: -150px;
-            }
-            .right-image {
-                margin-left: 80px;
-                width: 150px;
-                height: 150px;
-            }
+            
             .header-content, .footer-content {
                 width: 100%; 
                 height: auto; 
@@ -96,6 +77,19 @@ include('../DBconnection/dbconnection.php');
                     </div>
             <h3 class="text-center">All Vehicle Records</h3>
                 <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Parking Number</th>
+                            <th>Vehicle Category</th>
+                            <th>Company</th>
+                            <th>Owner</th>
+                            <th>Contact</th>
+                            <th>In Time</th>
+                            <th>Out Time</th>
+                            <th>Status</th>
+                            <th>Remark</th>
+                        </tr>
+                        </thead>
                     <tbody>
                         <?php
                         $query = "SELECT * FROM tblvehicle";
