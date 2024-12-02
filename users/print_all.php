@@ -23,6 +23,16 @@ include('../DBconnection/dbconnection.php');
                 top: 0;
                 width: 100%;
             }
+            .header-content, .footer-content {
+                width: 100%; 
+                height: auto; 
+                margin-left: auto; 
+                margin-right: auto;
+                display: flex; 
+                justify-content: center;
+                align-items: center; 
+                position: relative; 
+            }
         }
         .heading-container {
                 display: flex;
@@ -61,7 +71,16 @@ include('../DBconnection/dbconnection.php');
                 width: 150px;
                 height: 150px;
             }
-        
+            .header-content, .footer-content {
+                width: 100%; 
+                height: auto; 
+                margin-left: auto; 
+                margin-right: auto;
+                display: flex; 
+                justify-content: center;
+                align-items: center; 
+                position: relative; 
+            }
     </style>
     <script>
         function printPage() {
@@ -69,47 +88,15 @@ include('../DBconnection/dbconnection.php');
         }
     </script>
 </head>
-    <div class="container">
-  <div class="left-content">
-    <img src="images/ctu.png" alt="ctu logo" class="left-image" style="width: 130px; height: 130px;"><img src="images/cot.png" alt="cot logo" class="left-image" style="width: 90px; height: 90px;">
-  </div>
-
-  <div class="center-content">
-    <p>
-      Republic of the Philippines<br>
-      CEBU TECHNOLOGICAL UNIVERSITY<br>
-      DANAO CAMPUS<br>
-      Sabang, Danao City Cebu 6004, Philippines<br>
-      Website: <a href="http://www.ctu.edu.ph">http://www.ctu.edu.ph</a> Email: info-danao@ctu.edu.ph<br>
-      Phone: (+6332) 354 3660 local 108 / +63 917 317 0329<br>
-      OFFICE OF THE REGISTRAR<br>
-      Institutional Code: 07033
-    </p>
-  </div>
-
-  <div class="right-content">
-    <img src="images/ph.png" alt="ph logo" class="right-image" style="width: 80px; height: 80px;"><img src="images/iso.png" alt="iso logo" class="right-image" style="width: 110px; height: 110px;">
-  </div>
-</div>
-
 <body onload="printPage()">
+<div class="header-content">
+                        <img src="images/header.png" alt="header" class="center">
+                    </div>
+                    <div class="container">
 <div class="heading-container">
   <div class="print-container">
   <h3 class="text-center">All Vehicle Records</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Parking Number</th>
-                    <th>Vehicle Category</th>
-                    <th>Company</th>
-                    <th>Owner</th>
-                    <th>Contact</th>
-                    <th>In Time</th>
-                    <th>Out Time</th>
-                    <th>Status</th>
-                    <th>Remark</th>
-                </tr>
-            </thead>
+        <table class="table table-bordered table-striped">
             <tbody>
                 <?php
                 $query = "SELECT * FROM tblvehicle";
@@ -135,5 +122,8 @@ include('../DBconnection/dbconnection.php');
             </tbody>
         </table>
     </div>
+    <div class="footer-content">
+                    <img src="images/footer.png" alt="footer" class="center">
+                </div>
 </body>
 </html>
