@@ -175,7 +175,7 @@ html,body{
     .clickable-image {
         width: 100%; 
         height: auto; 
-        max-height: 500px;
+        max-height: 150px;
         object-fit: cover;
         border-radius: 8px; 
         cursor: pointer; 
@@ -315,7 +315,7 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div class="modal" id="imageModal" tabindex="1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -325,18 +325,20 @@ while ($row = mysqli_fetch_array($ret)) {
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="Image Preview" class="img-fluid">
+                <img id="modalImage" src="" alt="" class="img-fluid">
             </div>
         </div>
     </div>
 </div>
 
+
+
 <script>
     $(document).on('click', '.clickable-image', function () {
-    var src = $(this).attr('src');
-    var title = $(this).data('title');
-    $('#modalImage').attr('src', src);
-    $('#imageModalTitle').text(title);
+        var src = $(this).attr('src');
+        var title = $(this).data('title');
+        $('#modalImage').attr('src', src);
+        $('#imageModalTitle').text(title);
     });
 </script>
 
