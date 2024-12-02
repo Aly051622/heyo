@@ -435,12 +435,42 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <!-- JavaScript for Modal Image Handling -->
 <script>
-    $(document).on('click', '.clickable-image', function () {
-        var src = $(this).attr('src');
-        var title = $(this).data('title');
-        $('#modalImage').attr('src', src);
-        $('#imageModalTitle').text(title);
-    });
+  $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src');
+    const img = new Image();
+    img.src = src;
+
+    img.onload = function () {
+        const modalImage = $('#modalImage');
+        const modalBody = $('.modal-body');
+
+        // Set the modal image source
+        modalImage.attr('src', src);
+
+        // Determine aspect ratio
+        if (img.width > img.height) {
+            // Landscape image
+            modalImage.css({
+                'max-width': '90%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        } else {
+            // Portrait image
+            modalImage.css({
+                'max-width': '60%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        }
+
+        // Adjust modal title
+        $('#imageModalTitle').text($(this).data('title'));
+    };
+});
+
 </script>
     <div class="reg">
     <p>Registration Status: <?php echo $registrationStatus; ?></p>
