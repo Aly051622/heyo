@@ -345,11 +345,11 @@ body, * {
                                 </div>
 
                             <div class="user-area dropdown float-right">
-                                    <div class="avatar"  style="margin-top: -100px;">
+                                    <div class="avatar"  style="margin-top: -100px; position fixed;">
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                <div class="user-menu dropdown-menu" id="hh">
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -90px; position fixed;">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
