@@ -317,8 +317,8 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 
 <body>
 
+<?php include_once('includes/sidebar.php'); ?>
 <?php include_once('includes/header.php'); ?>
-    <?php include_once('includes/sidebar.php'); ?>
     <div class="right-panel">
         <div class="space">
     <?php if ($licenseStatusMessage): ?>
@@ -346,9 +346,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <div  class="notification" style="margin-left: 25em; position: absolute;">
                 <?php echo $licenseStatusMessage; ?>
             </div>
-        <?php endif; ?>
+        <?php endif; ?><br>
 
-    <div class="carousel-container"style="margin-top: -65px;">
+    <div class="carousel-container"style="margin-top: -70px;">
         <div class="carousel">
             <img src="images/tem.png" alt="Slide 1">
             <img src="images/temp.png" alt="Slide 2">
