@@ -112,10 +112,10 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
         while ($row = mysqli_fetch_array($ret)) {
         ?>
             <div id="exampl" class="receipt-table">
-                <div class="container">
-                    <div class="header-content">
+            <div class="header-content">
                         <img src="images/header.png" alt="header" class="center">
                     </div>
+                <div class="container">
                 </div>
                 <table border="1" class="table table-bordered mg-b-0">
                     <tr>
