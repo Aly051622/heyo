@@ -20,7 +20,7 @@ body, * {
     width: 200px;
     position: fixed;
     left: 0;
-    height: 100bh;
+    height: 100vh;
     overflow: hidden;
     transition: width 0.3s ease;
 
@@ -56,6 +56,9 @@ body, * {
     #right-panel {
         margin-left: 0;
     }
+    .left-panel{
+        height:100vh;
+    }
 }
 
 @media (max-width: 576px) {
@@ -72,6 +75,9 @@ body, * {
         left: 5px;
         top: 5px;
     }
+    .left-panel{
+        height:100vh;
+    }
 }
 
 @media (max-width: 480px) {
@@ -87,6 +93,9 @@ body, * {
     #toggleSidebar {
         left: 5px;
         top: 5px;
+    }
+    .left-panel{
+        height:100vh;
     }
 }
 </style> 

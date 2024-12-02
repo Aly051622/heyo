@@ -70,10 +70,7 @@ $crImage = !empty($row['cr_image']) ? 'uploads/' . htmlspecialchars($row['cr_ima
 $nvImage = !empty($row['nv_image']) ? 'uploads/' . htmlspecialchars($row['nv_image']) : '';
 $registrationStatus = htmlspecialchars($row['registration_status']);
 ?>
-  <!-- Include sidebar -->
-  <?php include_once('includes/sidebar.php'); ?>
-    
-    <?php include_once('includes/header.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -211,7 +208,10 @@ html,body{
 </head>
 <body>
     
-  
+    <!-- Include sidebar -->
+    <?php include_once('includes/sidebar.php'); ?>
+    
+   <?php include_once('includes/header.php');?>
 
    <!-- Notification system -->
 
