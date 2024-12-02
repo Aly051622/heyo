@@ -212,10 +212,13 @@ html,body{
     }
 
     .modal-body img {
-        width: 1000px; /* Ensure the image spans the modal */
-        height: 500px; /* Maintain aspect ratio */
-        object-fit: cover; /* Ensure the image scales properly */
-    }
+    max-width: 90%; /* Scale the image to fit the modal */
+    max-height: 80vh; /* Ensure the image fits within the viewport height */
+    object-fit: contain; /* Preserve the aspect ratio */
+    display: block; /* Center image within modal */
+    margin: 0 auto; /* Center horizontally */
+}
+
 
     .reg{
         margin-left: 18px;
@@ -352,12 +355,42 @@ while ($row = mysqli_fetch_array($ret)) {
 
 
 <script>
-    $(document).on('click', '.clickable-image', function () {
-        var src = $(this).attr('src');
-        var title = $(this).data('title');
-        $('#modalImage').attr('src', src);
-        $('#imageModalTitle').text(title);
+   $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src');
+    const img = new Image();
+    img.src = src;
+
+    img.onload = function () {
+        const modalImage = $('#modalImage');
+        const modalBody = $('.modal-body');
+
+        // Set the modal image source
+        modalImage.attr('src', src);
+
+        // Determine aspect ratio
+        if (img.width > img.height) {
+            // Landscape image
+            modalImage.css({
+                'max-width': '90%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        } else {
+            // Portrait image
+            modalImage.css({
+                'max-width': '60%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        }
+
+        // Adjust modal title
+        $('#imageModalTitle').text($(this).data('title'));
+     };
     });
+
 </script>
 
 
