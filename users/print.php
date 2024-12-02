@@ -228,68 +228,59 @@ if (strlen($_SESSION['vpmsaid']) == 0) {
 
 
         <script>
-       <script>
          function CallPrint() {
-            const prtContent = document.getElementById('exampl').innerHTML;
-            const printButton = document.getElementById('printbtn');
+    const prtContent = document.getElementById('exampl').innerHTML;
+    const printButton = document.getElementById('printbtn');
 
-            // Temporarily hide the print button
-            printButton.style.display = 'none';
+    // Temporarily hide the print button
+    printButton.style.display = 'none';
 
-            // Open a new window for printing
-            const WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-            
-            // Write the content and include necessary styles
-            WinPrint.document.write(`
-                <html>
-                <head>
-                    <title>Print View</title>
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-                    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-                    <link rel="stylesheet" href="assets/css/style.css">
-                    <style>
-                        @media print {
-                            #printbtn {
-                                display: none; 
-                            }
-                            body {
-                                margin: 0;
-                            }
-                            .container {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                text-align: center;
-                                margin-right: 50vh;
-                                padding-top: 20px;
-                            }
-                        }
-                    </style>
-                </head>
-                <body>
-                    ${prtContent}
-                </body>
-                </html>
-            `);
+    // Open a new window for printing
+    const WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
+    
+    // Write the content and include necessary styles
+    WinPrint.document.write(`
+        <html>
+        <head>
+            <title>Print View</title>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+            <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+            <link rel="stylesheet" href="assets/css/style.css">
+            <style>
+                @media print {
+                    #printbtn {
+                        display: none; /* Ensure print button is hidden */
+                    }
+                    body {
+                        margin: 0;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            ${prtContent}
+        </body>
+        </html>
+    `);
 
-            // Close the document and trigger print dialog
-            WinPrint.document.close();
-            WinPrint.focus();
-            WinPrint.print();
+    // Close the document and trigger print dialog
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
 
-            // Restore the original visibility of the print button after printing
-            printButton.style.display = 'block';
-        }
+    // Restore the original visibility of the print button after printing
+    printButton.style.display = 'block';
+}
 
 
-                </script>
-            </body>
-            </html>
+        </script>
+    </body>
+    </html>
 
-        <?php
-            }
-        }
-        ?>
+<?php
+    }
+}
+?>
