@@ -349,7 +349,6 @@ body, * {
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                    </div>
                                 <div class="user-menu dropdown-menu" id="hh">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
@@ -364,6 +363,8 @@ body, * {
 
                                     <a class="nav-link" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
+                                </div>
+                                
                                 </div>
                             </div>
 
