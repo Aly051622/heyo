@@ -25,27 +25,43 @@ include('../DBconnection/dbconnection.php');
             }
         }
         .heading-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1.5rem; /* Adjust as needed */
         }       
+
         .text-center {
-            text-align: center;
+                text-align: center;
         }
         .container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-right: 50vh;
-            padding-top: 20px;
-        }
-        .center-content{
-            width: 100%;
-        }
-        .center2-content{
-            width: 100%;
-        }
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                margin-right: 50vh;
+                padding-top: 20px;
+            }
+            .left-content {
+                flex: 1;
+                text-align: left;
+                margin-left: 60px;
+            }
+            .left-image {
+                margin-right: 50px;
+                width: 100px;
+                height: 100px;
+            }
+            .right-content {
+                flex: 1;
+                text-align: right;
+                margin-right: -150px;
+            }
+            .right-image {
+                margin-left: 80px;
+                width: 150px;
+                height: 150px;
+            }
+        
     </style>
     <script>
         function printPage() {
@@ -53,99 +69,71 @@ include('../DBconnection/dbconnection.php');
         }
     </script>
 </head>
-<body onload="printPage()">
     <div class="container">
-        <div class="center-content">
-            <img src="images/header.png">
-        </div>
-    </div>
+  <div class="left-content">
+    <img src="images/ctu.png" alt="ctu logo" class="left-image" style="width: 130px; height: 130px;"><img src="images/cot.png" alt="cot logo" class="left-image" style="width: 90px; height: 90px;">
+  </div>
 
-    <div class="heading-container">
-        <div class="print-container">
-            <h3 class="text-center">All Vehicle Records</h3>
-            <table class="table table-bordered">
-                <thead>
+  <div class="center-content">
+    <p>
+      Republic of the Philippines<br>
+      CEBU TECHNOLOGICAL UNIVERSITY<br>
+      DANAO CAMPUS<br>
+      Sabang, Danao City Cebu 6004, Philippines<br>
+      Website: <a href="http://www.ctu.edu.ph">http://www.ctu.edu.ph</a> Email: info-danao@ctu.edu.ph<br>
+      Phone: (+6332) 354 3660 local 108 / +63 917 317 0329<br>
+      OFFICE OF THE REGISTRAR<br>
+      Institutional Code: 07033
+    </p>
+  </div>
+
+  <div class="right-content">
+    <img src="images/ph.png" alt="ph logo" class="right-image" style="width: 80px; height: 80px;"><img src="images/iso.png" alt="iso logo" class="right-image" style="width: 110px; height: 110px;">
+  </div>
+</div>
+
+<body onload="printPage()">
+<div class="heading-container">
+  <div class="print-container">
+  <h3 class="text-center">All Vehicle Records</h3>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Parking Number</th>
+                    <th>Vehicle Category</th>
+                    <th>Company</th>
+                    <th>Owner</th>
+                    <th>Contact</th>
+                    <th>In Time</th>
+                    <th>Out Time</th>
+                    <th>Status</th>
+                    <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $query = "SELECT * FROM tblvehicle";
+                $result = mysqli_query($con, $query);
+
+                while ($row = mysqli_fetch_array($result)) {
+                    $status = ($row['Status'] == "Out") ? "Outgoing Vehicle" : "Incoming Vehicle";
+                    $outTime = ($row['Status'] == "Out") ? $row['OutTime'] : "N/A";
+                    $remark = ($row['Status'] == "Out") ? $row['Remark'] : "N/A";
+                ?>
                     <tr>
-                        <th>Parking Number</th>
-                        <th>Vehicle Category</th>
-                        <th>Company</th>
-                        <th>Owner</th>
-                        <th>Contact</th>
-                        <th>In Time</th>
-                        <th>Out Time</th>
-                        <th>Status</th>
-                        <th>Remark</th>
+                        <td><?php echo $row['ParkingNumber']; ?></td>
+                        <td><?php echo $row['VehicleCategory']; ?></td>
+                        <td><?php echo $row['VehicleCompanyname']; ?></td>
+                        <td><?php echo $row['OwnerName']; ?></td>
+                        <td><?php echo $row['OwnerContactNumber']; ?></td>
+                        <td><?php echo $row['InTime']; ?></td>
+                        <td><?php echo $outTime; ?></td>
+                        <td><?php echo $status; ?></td>
+                        <td><?php echo $remark; ?></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $query = "
-                    SELECT 
-                        ParkingSlot,
-                        VehicleCategory,
-                        VehicleCompanyname,
-                        OwnerName,
-                        OwnerContactNumber,
-                        FormattedInTimeFromLogin AS InTime,
-                        FormattedOutTime AS OutTime,
-                        IF(FormattedOutTime IS NULL, 'Incoming Vehicle', 'Outgoing Vehicle') AS Status,
-                        IF(FormattedOutTime IS NOT NULL, 'Processed', 'Pending') AS Remark
-                    FROM (
-                        SELECT 
-                            tblqr_login.ParkingSlot,
-                            tblvehicle.VehicleCategory,
-                            tblvehicle.VehicleCompanyname,
-                            tblvehicle.OwnerName,
-                            tblvehicle.OwnerContactNumber,
-                            DATE_FORMAT(tblqr_login.TIMEIN, '%h:%i %p %m-%d-%Y') AS FormattedInTimeFromLogin,
-                            DATE_FORMAT(tblqr_logout.TIMEOUT, '%h:%i %p %m-%d-%Y') AS FormattedOutTime
-                        FROM 
-                            tblqr_login 
-                        INNER JOIN 
-                            tblvehicle ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
-                        LEFT JOIN 
-                            tblqr_logout ON tblqr_login.VehiclePlateNumber = tblqr_logout.VehiclePlateNumber 
-                        
-                        UNION ALL
-                        
-                        SELECT 
-                            tblmanual_login.ParkingSlot,
-                            tblvehicle.VehicleCategory,
-                            tblvehicle.VehicleCompanyname,
-                            tblvehicle.OwnerName,
-                            tblvehicle.OwnerContactNumber,
-                            DATE_FORMAT(tblmanual_login.TIMEIN, '%h:%i %p %m-%d-%Y') AS FormattedInTimeFromLogin,
-                            DATE_FORMAT(tblmanual_logout.TIMEOUT, '%h:%i %p %m-%d-%Y') AS FormattedOutTime
-                        FROM 
-                            tblmanual_login 
-                        INNER JOIN 
-                            tblvehicle ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
-                        LEFT JOIN 
-                            tblmanual_logout ON tblmanual_login.RegistrationNumber = tblmanual_logout.RegistrationNumber
-                    ) AS CombinedResults";
-
-                    $result = mysqli_query($con, $query);
-
-                    while ($row = mysqli_fetch_array($result)) {
-                    ?>
-                        <tr>
-                            <td><?php echo $row['ParkingSlot']; ?></td>
-                            <td><?php echo $row['VehicleCategory']; ?></td>
-                            <td><?php echo $row['VehicleCompanyname']; ?></td>
-                            <td><?php echo $row['OwnerName']; ?></td>
-                            <td><?php echo $row['OwnerContactNumber']; ?></td>
-                            <td><?php echo $row['InTime']; ?></td>
-                            <td><?php echo $row['OutTime'] ?? "N/A"; ?></td>
-                            <td><?php echo $row['Status']; ?></td>
-                            <td><?php echo $row['Remark']; ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <div class="center2-content">
-                <img src="images/footer.png">
-            </div>
-        </div>
+                <?php } ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
