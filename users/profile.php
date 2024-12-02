@@ -199,15 +199,6 @@ html,body{
         align-items: center;
     }
 
-    .modal-body img#modalImage {
-    max-width: 90%; 
-    max-height: 50%; 
-    width: auto; 
-    height: auto; 
-    display: block; 
-    margin: 0 auto; 
-        }
-
     .reg{
         margin-left: 18px;
         width: 500px;
