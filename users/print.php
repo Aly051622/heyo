@@ -163,10 +163,23 @@ if (strlen($_SESSION['vpmsaid'] == 0)) {
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
                         <link rel="stylesheet" href="assets/css/style.css">
                         <style>
-                            @media print {
-                                #printbtn { display: none; }
-                                body { margin: 0; font-size: 12px; }
+                             @media print {
+                            #printbtn {
+                                display: none; 
                             }
+                            body {
+                                margin: 0;
+                            }
+                            .container {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-align: center;
+                                margin-right: 50vh;
+                                padding-top: 20px;
+                            }
+                        }
+
                         </style>
                     </head>
                     <body>
