@@ -336,7 +336,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             <!-- .animated -->
         </div>
         <?php if ($regValidityStatus == 0): ?>
-            <div  class="notification" style="margin-left: 25em; position: absolute;">
+            <div  class="notification" style="margin-left: 25em; position: absolute; display: none;">
                 <?php echo $licenseStatusMessage; ?>
             </div>
         <?php endif; ?><br>
