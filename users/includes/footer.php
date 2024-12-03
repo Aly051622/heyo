@@ -180,7 +180,7 @@
 }
 .iframe-content {
     width: 100%; /* Ensure the iframe spans the full modal width */
-    height: 80vh; /* Adjust height to fit within the viewport */
+    height: 50vh; /* Adjust height to fit within the viewport */
     border: none; /* Remove border from iframe */
 }
 .close-btn {
