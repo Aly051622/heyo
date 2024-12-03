@@ -546,7 +546,7 @@ html,body{
     </div><!-- END: Content -->
      <!-- START: Bootstrap Modal -->
      <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="width: 50em; height: 50em;">
+                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
                                     <div class="modal-content">
                                         <div class="modal-header" style="padding: 2px;">
                                             <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
