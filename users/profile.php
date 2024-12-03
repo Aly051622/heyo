@@ -287,31 +287,7 @@ html,body{
         <button id="notification-close">&times;</button>
     </div><!-- END: Notification -->
 
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                    <div class="page-title">
-                        <h3>My Profile</h3>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right" style="background: transparent;">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li class="profile.php">Profile</li>
-                                <li class="active">User's Information</li>                              
-                            </ol>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include_once('includes/profile-bread.php');?>
 
     <div class="content"><!-- START: Content -->
         <div class="animated fadeIn"><!-- START: Animated Fade In -->
