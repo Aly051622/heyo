@@ -82,7 +82,7 @@
 
     .iframe-content {
       width: 100%;
-      height: 80vh; /* Set height to occupy most of the viewport */
+      height: 30vh; /* Set height to occupy most of the viewport */
       border: none;
     }
 
