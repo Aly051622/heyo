@@ -271,6 +271,31 @@ html,body{
                         <button id="notification-close">&times;</button>
                     </div>
 
+                    <div class="breadcrumbs mb-5"><!-- bcrumbs -->
+                        <div class="breadcrumbs-inner">
+                            <div class="row m-0">
+                                <div class="col-sm-4">
+                                    <div class="page-header float-left">
+                                        <div class="page-title">
+                                            <h3>My Profile</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="page-header float-right">
+                                        <div class="page-title">
+                                            <ol class="breadcrumb text-right" style="background: transparent;">
+                                                <li><a href="dashboard.php">Dashboard</a></li>
+                                                <li><a href="profile.php">Profile</a></li>
+                                                <li class="active">User Profile</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- endbcrumbs -->
+
     <div class="content"> <!-- content -->
         <div class="animated fadeIn">
 
