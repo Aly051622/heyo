@@ -300,6 +300,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            color: orange;
         }
 
         .close-btn:hover {
