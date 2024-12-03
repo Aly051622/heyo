@@ -117,45 +117,45 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             }
             } elseif ($vehcomp === 'Changhe') {
                 if ($model === 'Changhe A6') {
-                    $imagePath = '../admin/vehicles/changhe/Changhe A6.png';
+                    $imagePath = '../admin/vehicles/changhe/Changhe A6.jpg';
                 } elseif ($model === 'Changhe Journey MPV M60') {
-                    $imagePath = '../admin/vehicles/changhe/Changhe Journey MPV M60.png';
+                    $imagePath = '../admin/vehicles/changhe/Changhe Journey MPV M60.jpg';
                 } else {
-                    $imagePath = '../admin/vehicles/changhe/Changhe A6.png';
+                    $imagePath = '../admin/vehicles/changhe/Changhe A6.jpg';
             }
             } elseif ($vehcomp === 'Changan') {
                 if ($model === 'Changan CS15') {
-                    $imagePath = '../admin/vehicles/changan/Changan CS15.png';
+                    $imagePath = '../admin/vehicles/changan/Changan CS15.jpg';
                 } elseif ($model === 'Changan Alsvin') {
-                    $imagePath = '../admin/vehicles/changan/Changan Alsvin.png';
+                    $imagePath = '../admin/vehicles/changan/Changan Alsvin.jpg';
                 } elseif ($model === 'Changan CS35 Plus') {
-                    $imagePath = '../admin/vehicles/changan/Changan CS35 Plus.png';
+                    $imagePath = '../admin/vehicles/changan/Changan CS35 Plus.jpg';
                 } elseif ($model === 'Changan Uni-T') {
-                    $imagePath = '../admin/vehicles/changan/Changan Uni-T.png';
+                    $imagePath = '../admin/vehicles/changan/Changan Uni-T.jpg';
                 } else {
-                    $imagePath = '../admin/vehicles/changan/Changan CS15.png';
+                    $imagePath = '../admin/vehicles/changan/Changan CS15.jpg';
             }
             } elseif ($vehcomp === 'Chery') {
                 if ($model === 'Chery Tiggo 2 Pro') {
-                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.png';
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.jpg';
                 } elseif ($model === 'Chery Tiggo 5X Pro') {
-                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 5X Pro.png';
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 5X Pro.jpg';
                 } elseif ($model === 'Chery Tiggo 7 Pro') {
-                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 7 Pro.png';
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 7 Pro.jpg';
                 } elseif ($model === 'Chery Tiggo 8 Pro') {
-                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 8 Pro.png';
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 8 Pro.jpg';
                 } else {
-                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.png';
+                    $imagePath = '../admin/vehicles/chery/Chery Tiggo 2 Pro.jpg';
             }
             } elseif ($vehcomp === 'Dongfeng') {
                 if ($model === 'Dongfeng M-HERO') {
-                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.png';
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.jpg';
                 } elseif ($model === 'Dongfeng Rich 6 EV 450') {
-                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Rich 6 EV 450.png';
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Rich 6 EV 450.jpg';
                 } elseif ($model === 'Dongfeng Aeolus Huge') {
-                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Aeolus Huge.png';
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng Aeolus Huge.jpg';
                 } else {
-                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.png';
+                    $imagePath = '../admin/vehicles/dongfeng/Dongfeng M-HERO.jpg';
             }
             } elseif ($vehcomp === 'Kawasaki') {
                 if ($model === 'Kawasaki Barako II') {
@@ -817,7 +817,7 @@ function updateMakeBrandOptions() {
     const options = {
         "Two Wheeler Vehicle": ["Benelli", "CFMoto", "Honda Motors", "Kawasaki", "Kymco", "MotorStar", "Piaggio", "Racal", "Rusi", "Suzuki Motors", "SYM", "TVS", "Yamaha", "Others, please specify"],
         "Four Wheeler Vehicle": ["Changhe", "Changan", "Chery", "Chevrolet", "Dongfeng", "Ford", "Foton", "GAC", "Geely", "Honda", "Hyundai", "Isuzu", "Kia", "Lexus", "Mazda", "MG (Morris Garages)", "Mitsubishi", "Nissan", "Peugeot", "Subaru", "Suzuki", "Toyota", "Volkswagen", "Others, please specify"],
-        "Bicycles": ["Battle", "Brusko", "Cannondale", "GT", "Hiland", "Kona", "Nakto", "RoyalBaby", "Others, please specify"]
+        "Bicycles": ["Battle", "Brusko", "Cannondale", "GT", "Hiland", "Kona", "Nakto", "Others, please specify"]
     };
 
     if (options[catename]) {
@@ -830,10 +830,10 @@ function updateMakeBrandOptions() {
     }
 }
 
-    /*vehcomp.addEventListener("change", () => {
+    vehcomp.addEventListener("change", () => {
         otherMakeInput.style.display = vehcomp.value === "Others, please specify" ? "block" : "none";
     });
-} */
+
 
 function updateModelOptions() {
     const vehcomp = document.getElementById("vehcomp").value;
@@ -853,7 +853,7 @@ function updateModelOptions() {
         "Kymco": ["Kymco Super 8", "Kymco Xciting 300i", "Kymco AK550", "Kymco Like 150i", "Others, please specify"],
         "MotorStar": ["MotorStar MSX200-II", "MotorStar Xplorer X200R", "MotorStar Nicess 110", "Others, please specify"],
         "Piaggio": ["Piaggio Vespa Primavera", "Piaggio Vespa GTS", "Others, please specify"],
-        "Racal" : ["Racal 115", "Racal King 175", "Racal Raptor 250", "Racal Classic 150", "Racal KRZ 150", "Racal Adventure 200", "Racal 160", "Others, please specify"], //WALA PASAAAAD
+        "Racal" : ["Racal 115", "Racal King 175", "Racal Classic 150", "Racal KRZ 150", "Racal 160", "Others, please specify"], //WALA PASAAAAD
         "Rusi": ["Rusi Flash 150", "Rusi Mojo 200", "Rusi Classic 250", "Others, please specify"],
         "Suzuki Motors": ["Suzuki Raider R150", "Suzuki Skydrive", "Suzuki Burgman Street", "Suzuki Smash 115", "Suzuki GSX-R150", "Suzuki Gixxer", "Others, please specify"],
         "SYM": ["SYM Maxsym 400i", "SYM Bonus X", "SYM RV1-2", "Others, please specify"],
@@ -884,8 +884,7 @@ function updateModelOptions() {
         "GT": ["GT Avalanche Elite Mountain Bike", "Others, please specify"],
         "Hiland": ["Hiland 26er Mountain Bike", "Others, please specify"],
         "Kona": ["Kona Lava Dome Mountain Bike", "Others, please specify"],
-        "Nakto": ["Nakto Ranger Electric Bike", "Others, please specify"],
-        "RoyalBaby": ["RoyalBaby Freestyle Kids Mountain Bike", "Others, please specify"]
+        "Nakto": ["Nakto Ranger Electric Bike", "Others, please specify"]
 
     };
 
