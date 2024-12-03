@@ -41,7 +41,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               height: 100%;
               margin: 0;
               padding: 0;
-              overflow-x: auto;
+              overflow: auto;
               
               background: whitesmoke;
           }
