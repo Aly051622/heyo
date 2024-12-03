@@ -200,23 +200,22 @@ html,body{
     }
 
     .modal-dialog {
-    max-width: 90%; /* Set the maximum width of the modal */
-    width: 1000px; /* Allow the width to adjust dynamically */
+    width: 1000px; 
 }
 
     .modal-content {
         height: 500px;
         width: 1000px;
-        overflow: auto; /* Allow scrolling if content exceeds modal height */
+        overflow: auto; 
 
     }
 
     .modal-body img {
-    max-width: 90%; /* Scale the image to fit the modal */
-    max-height: 80vh; /* Ensure the image fits within the viewport height */
-    object-fit: contain; /* Preserve the aspect ratio */
-    display: block; /* Center image within modal */
-    margin: 0 auto; /* Center horizontally */
+    max-width: 90%; 
+    max-height: 80vh; 
+    object-fit: cover; 
+    display: block; 
+    margin: 0 auto; 
 }
 
 

@@ -427,8 +427,7 @@ body, * {
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
-                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px;"><i class="fa bi-gear-fill"> Change Password
-                                    </i></a>
+                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px;"><i class="fa bi-gear-fill"> Change Password</i></a>
 
                                     <a class="nav-link" onclick="return handleLogout();" style="margin-bottom: 8px;"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
