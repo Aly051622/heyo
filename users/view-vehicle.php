@@ -51,9 +51,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               font-family: 'Poppins', sans-serif;
               transition: all 0.3s ease;
           }
-        table{
-            overflow: hidden;
-        }
+    
          
           /* Card and button styles */
           .card,
@@ -239,7 +237,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                         : '../admin/' . $row['QRCodePath'];
                                     $fullImagePath = __DIR__ . '/' . $imagePath;
                                 ?>
-                                    <div class="d-flex align-items-center  rounded p-0.2 mb-3">
+                                    <div class="d-flex align-items-center  rounded p-0.2 mb-3" style="overflow-y: hidden;">
                                         <div class="flex-shrink-0 mr-3">
                                             <?php if (!empty($imagePath) && file_exists($fullImagePath)) { ?>
                                                 <img src="<?php echo $imagePath; ?>" alt="Vehicle Image" style="width: 170px; height: 100px;" />
