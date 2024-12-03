@@ -92,11 +92,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
   
           /* Table responsive adjustments for mobile */
           .table-responsive {
-              overflow-x: auto;
+              overflow: auto;
               -webkit-overflow-scrolling: touch;
           }
           .table-responsive {
-              overflow-x: auto;
+              overflow: auto;
               -webkit-overflow-scrolling: touch;
           }
   
