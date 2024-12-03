@@ -191,6 +191,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             color: orange;
             font-weight: bold;
             position: absolute;
+            padding: 10px;
         }
             .content{
                 background-color: transparent;
