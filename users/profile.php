@@ -161,7 +161,7 @@ html,body{
     }
     .imgp input[type="file"]{
         margin-left: 1em;
-        margin-top:-40px;
+        margin-top:-20px;
         cursor: pointer;
         text-align: left;
     }
