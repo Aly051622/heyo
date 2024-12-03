@@ -341,13 +341,13 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" style="width: 500px; height: 500px;">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="padding: 2px;">
                 <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body">
