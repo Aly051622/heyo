@@ -73,16 +73,15 @@
     }
 
     .modal-content {
-      width: 100%;
       background: #fff;
-      padding: 15px;
+      padding: 1px;
       border-radius: 10px;
       position: relative;
     }
 
     .iframe-content {
       width: 100%;
-      height: 30vh; /* Set height to occupy most of the viewport */
+      height: 80vh; /* Set height to occupy most of the viewport */
       border: none;
     }
 
