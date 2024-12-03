@@ -192,30 +192,28 @@ html,body{
     background-color: transparent;
     }
 
-    .modal {
-        z-index: 1050; /* Ensure the modal is above the backdrop */
-        display: flex; /* Ensure the modal content is properly centered */
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    .modal-dialog {
-    width: 100%;
+    .modal-body img {
+    display: block; /* Centers the image */
+    margin: 0 auto; /* Centers the image horizontally */
+    object-fit: contain; /* Ensures the image respects aspect ratio */
 }
 
-    .modal-content {
-        height: 500px;
-        width: 1000px;
-        overflow: auto; 
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    }
+.modal-dialog {
+    max-width: 90vw; /* Ensure the modal doesn't exceed viewport width */
+    max-height: 90vh; /* Ensure the modal doesn't exceed viewport height */
+}
 
-    .modal-body img {
-    display: block; /* Centers the image inside the modal */
-    margin: 0 auto;
-    }
+.modal-content {
+    background-color: transparent; /* Optional: Removes background for focus on the image */
+    border: none; /* Optional: Removes border for a cleaner look */
+}
+
 
 
 
@@ -335,7 +333,7 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal" id="imageModal" tabindex="1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div class="modal" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -355,32 +353,33 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <script>
     $(document).on('click', '.clickable-image', function () {
-        const src = $(this).attr('src');
-        const img = new Image();
-        img.src = src;
+    const src = $(this).attr('src'); // Get the source of the clicked image
+    const img = new Image(); // Create a new Image object
+    img.src = src; // Set its source to the clicked image's source
 
-        img.onload = function () {
-            const modalImage = $('#modalImage');
-            const modalBody = $('.modal-body');
+    img.onload = function () {
+        // After the image loads, get its natural dimensions
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
 
-            // Set the modal image source
-            modalImage.attr('src', src);
+        // Update the modal image source and set its natural dimensions
+        const modalImage = $('#modalImage');
+        modalImage.attr('src', src);
+        modalImage.css({
+            width: `${naturalWidth}px`,
+            height: `${naturalHeight}px`,
+            maxWidth: '90vw', // Ensure it doesn't exceed viewport width
+            maxHeight: '90vh', // Ensure it doesn't exceed viewport height
+        });
 
-            // Set modal image to its actual size
-            modalImage.css({
-                'width': `${img.width}px`,
-                'height': `${img.height}px`,
-                'max-width': '100%',
-                'max-height': '80vh',
-            });
-
-            // Adjust modal title
-            $('#imageModalTitle').text($(this).data('title'));
-        };
+        // Set modal title dynamically (optional)
+        $('#imageModalTitle').text($(this).data('title'));
 
         // Open the modal
         $('#imageModal').modal('show');
-    });
+    };
+});
+
 
 </script>
 
