@@ -121,9 +121,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                   display: block;
                   margin-bottom: 5px;
               }
-              .breadcrumbs{
-                display: none;
-              }
           }
           @media (max-width: 500px) {
               .table-responsive th, .table-responsive td {
