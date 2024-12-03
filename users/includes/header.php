@@ -392,7 +392,7 @@ body, * {
                             <div class="user-area dropdown float-right">
                                     <div class="avatar"  style="margin-top: -100px; position fixed;">
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img class="user-avatar " src="../admin/images/images.png" alt="User Avatar" style="width: 50px; height: 50px; font-weight: none;">
+                                        <img class="user-avatar " src="../admin/images/images.png" alt="User Avatar" style="width: 50px; height: 50px; font-weight: normal;">
                                     </a>
                                 <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; ">
                                     <a class="nav-link" href="profile.php" style="margin-bottom: 8px; margin-top: 8px;"><i class="fa bi-person-fill" > My Profile
