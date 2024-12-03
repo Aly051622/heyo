@@ -368,7 +368,7 @@ body, * {
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
                                 <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; ">
-                                    <a class="nav-link" href="profile.php" style="line-height: 20; "><i class="fa bi-person-fill" > My Profile
+                                    <a class="nav-link" href="profile.php" style="margin-bottom: 8px;"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
@@ -376,7 +376,7 @@ body, * {
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
-                                    <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
+                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px;"><i class="fa bi-gear-fill"> Change Password
                                     </i></a>
 
                                     <a class="nav-link" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
