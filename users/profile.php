@@ -92,6 +92,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+</head>
     <style>
 
 #notification {
@@ -252,9 +253,9 @@ html,body{
             max-width: 250px;
         }
     }
+
 </style>
 
-</head>
 <body>
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
@@ -301,7 +302,7 @@ html,body{
                     <div class="card-header">
                         <strong>User </strong> Profile
                     </div>
-                    <div class="card-body card-block"><!-- START: Card Body -->
+                    <div class="card-body"><!-- START: Card Body -->
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"><!-- START: Form -->
 
                             <?php
