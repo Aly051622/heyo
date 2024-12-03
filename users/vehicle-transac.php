@@ -270,7 +270,7 @@ body, * {
                     </div>
                     <div class="card-body">
                         <!-- Uncomment if needed -->
-                         <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> 
+                       <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> 
                         
                             <table class="table table-striped ">
                             <thead>
