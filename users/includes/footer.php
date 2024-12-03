@@ -70,7 +70,7 @@
   border-radius: 10px;
   width: 90%;
   height: 600px;
-  max-width: 720px;
+  max-width: 730px;
   position: relative;
 }
 
