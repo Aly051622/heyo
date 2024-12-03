@@ -76,9 +76,8 @@
 
 .iframe-content {
   width: 100%;
-  height: 400px;
+  height: 600px;
   border: none;
-  z-index: 1;
 }
 
 .con{
