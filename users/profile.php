@@ -266,9 +266,7 @@ html,body{
    <!-- Notification system -->
    <div class="right-panel"><!-- START: Right Panel -->
     <div id="notification"><!-- START: Notification -->
-        <span id="notification-message">
-            <?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?>
-        </span>
+        <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
         <button id="notification-close">&times;</button>
     </div><!-- END: Notification -->
 
@@ -298,72 +296,66 @@ html,body{
     </div><!-- END: Breadcrumbs -->
 
     <div class="content"><!-- START: Content -->
-        <div class="animated fadeIn"><!-- START: Animated FadeIn -->
+        <div class="animated fadeIn"><!-- START: Animated Fade In -->
 
             <div class="col-lg-12"><!-- START: Column -->
                 <div class="card"><!-- START: Card -->
-                    <div class="card-header"><!-- START: Card Header -->
-                        <strong>User</strong> Profile
-                    </div><!-- END: Card Header -->
-
+                    <div class="card-header">
+                        <strong>User </strong> Profile
+                    </div>
                     <div class="card-body card-block"><!-- START: Card Body -->
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"><!-- START: Form -->
 
                             <?php
-                            $uid = $_SESSION['vpmsuid'];
-                            $ret = mysqli_query($con, "select * from tblregusers where ID='$uid'");
-                            $cnt = 1;
-                            while ($row = mysqli_fetch_array($ret)) {
+                                $uid = $_SESSION['vpmsuid'];
+                                $ret = mysqli_query($con, "SELECT * FROM tblregusers WHERE ID='$uid'");
+                                $cnt = 1;
+                                while ($row = mysqli_fetch_array($ret)) {
                             ?>
-                            <div class="row form-group"><!-- START: Form Group -->
-                                <div class="col col-md-3">
-                                    <label for="text-input" class="form-control-label">First Name</label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class="form-control-label">First Name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php echo $row['FirstName']; ?>">
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php echo $row['FirstName']; ?>">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="email-input" class="form-control-label">Last Name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" name="lastname" required="true" class="form-control" readonly="true" value="<?php echo $row['LastName']; ?>">
+                                    </div>
                                 </div>
-                            </div><!-- END: Form Group -->
-
-                            <div class="row form-group"><!-- START: Form Group -->
-                                <div class="col col-md-3">
-                                    <label for="email-input" class="form-control-label">Last Name</label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="password-input" class="form-control-label">Contact Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" readonly="true" class="form-control" value="<?php echo $row['MobileNumber']; ?>">
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" name="lastname" required="true" class="form-control" readonly="true" value="<?php echo $row['LastName']; ?>">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="disabled-input" class="form-control-label">Email Address</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="email" name="email" required="true" class="form-control" readonly="true" value="<?php echo $row['Email']; ?>">
+                                    </div>
                                 </div>
-                            </div><!-- END: Form Group -->
-
-                            <div class="row form-group"><!-- START: Form Group -->
-                                <div class="col col-md-3">
-                                    <label for="password-input" class="form-control-label">Contact Number</label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="disabled-input" class="form-control-label">Registration</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" name="regdate" readonly="true" class="form-control" value="<?php echo $row['RegDate']; ?>">
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" readonly="true" class="form-control" value="<?php echo $row['MobileNumber']; ?>">
-                                </div>
-                            </div><!-- END: Form Group -->
-
-                            <div class="row form-group"><!-- START: Form Group -->
-                                <div class="col col-md-3">
-                                    <label for="disabled-input" class="form-control-label">Email address</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="email" name="email" required="true" class="form-control" value="<?php echo $row['Email']; ?>" readonly="true">
-                                </div>
-                            </div><!-- END: Form Group -->
-
-                            <div class="row form-group"><!-- START: Form Group -->
-                                <div class="col col-md-3">
-                                    <label for="disabled-input" class="form-control-label">Registration</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" name="regdate" value="<?php echo $row['RegDate']; ?>" readonly="true" class="form-control">
-                                </div>
-                            </div><!-- END: Form Group -->
-
-                            <!-- Additional form fields commented -->
                             <?php } ?>
 
-                            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true"><!-- START: Modal -->
+                            <!-- START: Bootstrap Modal -->
+                            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
                                     <div class="modal-content">
                                         <div class="modal-header" style="padding: 2px;">
@@ -377,43 +369,96 @@ html,body{
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- END: Modal -->
+                            </div><!-- END: Bootstrap Modal -->
 
-                            <div class="container mt-5"><!-- START: Image Upload Section -->
+                            <div class="container mt-5"><!-- START: Container -->
                                 <div class="row">
                                     <?php if ($orImage): ?>
-                                    <div class="col-md-4 mb-4">
-                                        <h4>OR File</h4>
-                                        <img src="<?php echo $orImage; ?>" alt="OR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="OR File">
-                                    </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h4>OR File</h4>
+                                            <img src="<?php echo $orImage; ?>" alt="OR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="OR File">
+                                        </div>
                                     <?php endif; ?>
 
                                     <?php if ($crImage): ?>
-                                    <div class="col-md-4 mb-4">
-                                        <h4>CR File</h4>
-                                        <img src="<?php echo $crImage; ?>" alt="CR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="CR File">
-                                    </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h4>CR File</h4>
+                                            <img src="<?php echo $crImage; ?>" alt="CR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="CR File">
+                                        </div>
                                     <?php endif; ?>
 
                                     <?php if ($nvImage): ?>
-                                    <div class="col-md-4 mb-4">
-                                        <h4>MV File</h4>
-                                        <img src="<?php echo $nvImage; ?>" alt="NV File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="NV File">
-                                    </div>
+                                        <div class="col-md-4 mb-4">
+                                            <h4>MV File</h4>
+                                            <img src="<?php echo $nvImage; ?>" alt="NV File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="NV File">
+                                        </div>
                                     <?php endif; ?>
                                 </div>
-                            </div><!-- END: Image Upload Section -->
+                            </div><!-- END: Container -->
 
-                            <div class="row form-group text-center"><!-- START: Submit Button -->
-                                <div class="col">
-                                    <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
-                                </div>
-                            </div><!-- END: Submit Button -->
+                            <div class="reg"><!-- START: Registration -->
+                                <p>Registration Status: <?php echo $registrationStatus; ?></p>
+
+                                <!-- START: Persistent Notification System -->
+                                <div id="notification" style="display: none;">
+                                    <span id="notification-message">Please upload your files.</span>
+                                    <button id="notification-close"><i class="bi bi-x-circle-fill"></i></button>
+                                </div><!-- END: Persistent Notification System -->
+
+                                <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data"><!-- START: Upload Form -->
+                                    <div class="row form-group">
+                                        <div class="col-md-3">
+                                            <label for="registration-status" class="form-control-label">Registration Status</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <select id="registration-status" name="registration_status" class="form-control regs" required>
+                                                <option value="" disabled selected>Select Registration Status</option>
+                                                <option value="for_registration" <?php echo $registrationStatus === 'for_registration' ? 'selected' : ''; ?>>For Registration</option>
+                                                <option value="registered" <?php echo $registrationStatus === 'registered' ? 'selected' : ''; ?>>Registered</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="imgp"><!-- START: File Uploads -->
+                                        <div class="row form-group" id="for-registration-files" style="display: none;">
+                                            <div class="col-md-3">
+                                                <label for="nv-file" class="form-control-label">Upload MV File</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-group" id="registered-files" style="display: none;">
+                                            <div class="col-md-3">
+                                                <label for="or-file" class="form-control-label">Upload OR File</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="cr-file" class="form-control-label">Upload CR File</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
+                                            </div>
+                                        </div>
+                                    </div><!-- END: File Uploads -->
+
+                                    <div class="row form-group">
+                                        <div class="col text-center">
+                                            <button type="submit" id="submit-button" class="btn btn-primary btn-sm">
+                                                <i class="bi bi-images"></i> Submit
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form><!-- END: Upload Form -->
+                            </div><!-- END: Registration -->
                         </form><!-- END: Form -->
                     </div><!-- END: Card Body -->
                 </div><!-- END: Card -->
             </div><!-- END: Column -->
-        </div><!-- END: Animated FadeIn -->
+        </div><!-- END: Animated Fade In -->
     </div><!-- END: Content -->
 </div><!-- END: Right Panel -->
 
