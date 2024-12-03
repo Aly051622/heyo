@@ -134,7 +134,7 @@ html,body{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             top: 50%;
                  }
-                 .btn{
+                 .close, .btn{
                 border: solid lightgray;
                 border-radius: 10px;
                 padding: 10px;
@@ -145,7 +145,7 @@ html,body{
                 font-weight: bolder;
         }
 
-           .btn:hover{
+         .close:hover  .btn:hover{
                 background-color: darkblue;
                 border: solid blue;
             }
