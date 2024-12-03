@@ -123,7 +123,7 @@ body, * {
     #hh {
         margin-top: 30px;
         height: 155px;
-        width: auto;
+        width: 100px;
     }
     .nav-link:hover{
         border-radius: 4px;
