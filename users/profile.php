@@ -1,4 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 include('../DBconnection/dbconnection.php');
@@ -82,7 +82,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -124,10 +123,10 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     font-size: 18px;
     font-weight: bold;
 }
-html,body{
+body{
         background-color: whitesmoke;
         height: 100vh;
-        overflow: auto;
+        overflow: hidden;
     }
     .card, .card-header{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
@@ -350,6 +349,7 @@ html,body{
                                         <input type="text" name="regdate" readonly="true" class="form-control" value="<?php echo $row['RegDate']; ?>">
                                     </div>
                                 </div>
+                            <?php } ?>
 
                             <div class="container mt-5"><!-- START: Container -->
                                 <div class="row">
@@ -432,8 +432,6 @@ html,body{
                                             </button>
                                         </div>
                                     </div>
-                                    
-                            <?php } ?>
                                 </form><!-- END: Upload Form -->
                             </div><!-- END: Registration -->
                         </form><!-- END: Form -->
