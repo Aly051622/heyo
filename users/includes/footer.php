@@ -59,26 +59,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   object-fit: contain;
 }
 
 .modal-content {
+  background: #fff;
   border-radius: 10px;
   width: 90%;
   height: 600px;
-  max-width: 740px;
+  max-width: 600px;
   position: relative;
-  padding: 0;
 }
 
 .iframe-content {
   width: 100%;
   height: 400px;
   border: none;
-  padding: 0;
 }
 
 .con{
