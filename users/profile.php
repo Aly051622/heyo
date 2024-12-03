@@ -354,7 +354,7 @@ while ($row = mysqli_fetch_array($ret)) {
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="Image Preview">
+                <img id="modalImage" src="" alt="img-fluid">
             </div>
         </div>
     </div>
