@@ -367,10 +367,8 @@ body, * {
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; 
-        line-height: 5;
-        margin-bottom: 5px;">
-                                    <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; ">
+                                    <a class="nav-link" href="profile.php" style="line-height: 20; margin-bottom: 20px;"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
