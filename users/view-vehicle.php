@@ -225,7 +225,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="overflow: hidden;">
                                 <?php
                                 $ownerno = $_SESSION['vpmsumn'];
                                 $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
@@ -237,7 +237,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                         : '../admin/' . $row['QRCodePath'];
                                     $fullImagePath = __DIR__ . '/' . $imagePath;
                                 ?>
-                                    <div class="d-flex align-items-center  rounded p-0.2 mb-3" style="overflow: hidden;">
+                                    <div class="d-flex align-items-center  rounded p-0.2 mb-3">
                                         <div class="flex-shrink-0 mr-3">
                                             <?php if (!empty($imagePath) && file_exists($fullImagePath)) { ?>
                                                 <img src="<?php echo $imagePath; ?>" alt="Vehicle Image" style="width: 170px; height: 100px;" />
