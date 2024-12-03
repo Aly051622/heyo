@@ -280,8 +280,7 @@ body, * {
                         <!-- Uncomment if needed -->
                         <!-- <a href="print_all.php" style="cursor:pointer" target="_blank" class="btn btn-warning" id="printbtn">🖶 Print All</a> -->
                         
-                        <div class="">
-                            <table class="table table-striped table-responsive">
+                            <table class="table table-striped ">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -314,7 +313,7 @@ body, * {
                     </div>
                 </div>
             </div>
-        </div>
+        
                                 </div>
     </div><!-- .animated -->
 </div><!-- .content -->
