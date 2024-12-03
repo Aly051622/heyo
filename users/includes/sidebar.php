@@ -15,6 +15,7 @@ body, * {
     .left-panel{
         margin-top: 12px;
         border-top: groove 2px;
+        z-index: 1;
     }
     #sidebar {
     width: 200px;
