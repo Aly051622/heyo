@@ -367,62 +367,32 @@ while ($row = mysqli_fetch_array($ret)) {
 
 
 <script>
-   $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src');
-    const modalImage = $('#modalImage');
-    modalImage.attr('src', src).addClass('zoomable');
-    $('#imageModal').modal('show');
+    $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src'); // Get the source of the clicked image
+    const img = new Image(); // Create a new Image object
+    img.src = src; // Set its source to the clicked image's source
 
-    let scale = 1; // Initial zoom scale
-    let translateX = 0; // Horizontal translation
-    let translateY = 0; // Vertical translation
+    img.onload = function () {
+        // After the image loads, get its natural dimensions
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
 
-    const modalBody = $('.modal-body');
-    const image = modalImage.get(0);
-
-    modalBody.off('wheel').on('wheel', function (event) {
-        event.preventDefault();
-
-        // Zoom on mouse wheel
-        const delta = event.originalEvent.deltaY > 0 ? -0.1 : 0.1;
-        scale = Math.min(Math.max(0.5, scale + delta), 5); // Limit zoom level between 0.5 and 5
-        image.style.transform = `translate(-50%, -50%) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
-    });
-
-    modalBody.off('mousedown').on('mousedown', function (event) {
-        event.preventDefault();
-        let startX = event.pageX;
-        let startY = event.pageY;
-
-        modalBody.css('cursor', 'grabbing');
-
-        $(document).on('mousemove', function (moveEvent) {
-            const dx = moveEvent.pageX - startX;
-            const dy = moveEvent.pageY - startY;
-
-            startX = moveEvent.pageX;
-            startY = moveEvent.pageY;
-
-            translateX += dx / scale; // Adjust translation based on zoom level
-            translateY += dy / scale;
-
-            image.style.transform = `translate(-50%, -50%) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+        // Update the modal image source and set its natural dimensions
+        const modalImage = $('#modalImage');
+        modalImage.attr('src', src);
+        modalImage.css({
+            width: `${naturalWidth}px`,
+            height: `${naturalHeight}px`,
+            maxWidth: '90vw', // Ensure it doesn't exceed viewport width
+            maxHeight: '90vh', // Ensure it doesn't exceed viewport height
         });
 
-        $(document).on('mouseup', function () {
-            $(document).off('mousemove');
-            $(document).off('mouseup');
-            modalBody.css('cursor', 'grab');
-        });
-    });
+        // Set modal title dynamically (optional)
+        $('#imageModalTitle').text($(this).data('title'));
 
-    modalBody.off('dblclick').on('dblclick', function () {
-        // Reset zoom and position on double click
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        image.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
+        // Open the modal
+        $('#imageModal').modal('show');
+    };
 });
 
 
