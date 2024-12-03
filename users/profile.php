@@ -370,13 +370,17 @@ html,body{
                                     </div>
                                 </div>
                                 <div class="row form-group">
+                                    <!--
                                     <div class="col col-md-3">
                                         <label for="disabled-input" class="form-control-label">Registration</label>
                                     </div>
+                                
                                     <div class="col-12 col-md-9">
                                         <input type="text" name="regdate" readonly="true" class="form-control" value="<?php echo $row['RegDate']; ?>">
                                     </div>
                                 </div>
+                                
+                                -->
                             <?php } ?>
 
                             <div class="container"><!-- START: Container -->
