@@ -302,7 +302,7 @@ html,body{
                     <div class="card-header">
                         <strong>User </strong> Profile
                     </div>
-                    <div class="card-body"><!-- START: Card Body -->
+                    <div class="card-body card-block"><!-- START: Card Body -->
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"><!-- START: Form -->
 
                             <?php
