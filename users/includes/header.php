@@ -124,6 +124,7 @@ body, * {
         margin-top: 30px;
         height: 155px;
         width: 100px;
+        padding: 5px;
     }
     .nav-link:hover{
         border-radius: 4px;
