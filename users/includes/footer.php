@@ -59,7 +59,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: whitesmoke;
   justify-content: center;
   align-items: center;
   object-fit: contain;
@@ -69,8 +69,8 @@
   background: #fff;
   border-radius: 10px;
   width: 90%;
-  height: 700px;
-  max-width: 720px;
+  height: 720px;
+  max-width: 730px;
   position: relative;
 }
 
