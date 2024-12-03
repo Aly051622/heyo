@@ -308,7 +308,7 @@ html,body{
 @media (max-width: 480px) {
     
     .breadcrumbs {
-        width: 30%;
+        width: 200px;
         margin-left: 50px;
         padding: 5px;
     }
