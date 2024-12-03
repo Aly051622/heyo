@@ -63,12 +63,11 @@
   justify-content: center;
   align-items: center;
   object-fit: contain;
-  padding: 1px;
 }
 
 .modal-content {
   background: #fff;
-  padding: 1px;
+  padding: 15px;
   border-radius: 10px;
   width: 90%;
   height: 600px;
