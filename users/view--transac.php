@@ -228,7 +228,7 @@ else {
             <!-- START: Left Section -->
             <div class="col-12 col-md-4 mb-2 mb-md-0">
                 <div class="page-header float-md-left text-center text-md-left">
-                    <div class="page-title">
+                    <div class="page-title" style="color: black;">
                     <h3>View Vehicle Details</h3>
                     </div>
                 </div>
