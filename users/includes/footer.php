@@ -66,7 +66,6 @@
 }
 
 .modal-content {
-  background: transparent;
   border-radius: 10px;
   width: 90%;
   height: 600px;
@@ -79,6 +78,7 @@
   width: 100%;
   height: 400px;
   border: none;
+  padding: 0;
 }
 
 .con{
