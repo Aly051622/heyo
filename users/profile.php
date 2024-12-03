@@ -354,23 +354,6 @@ html,body{
                                 </div>
                             <?php } ?>
 
-                            <!-- START: Bootstrap Modal -->
-                            <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="padding: 2px;">
-                                            <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
-                                                <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- END: Bootstrap Modal -->
-
                             <div class="container mt-5"><!-- START: Container -->
                                 <div class="row">
                                     <?php if ($orImage): ?>
@@ -460,6 +443,22 @@ html,body{
             </div><!-- END: Column -->
         </div><!-- END: Animated Fade In -->
     </div><!-- END: Content -->
+     <!-- START: Bootstrap Modal -->
+     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="padding: 2px;">
+                                            <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
+                                                <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- END: Bootstrap Modal -->
 </div><!-- END: Right Panel -->
 
 
