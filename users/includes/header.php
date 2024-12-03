@@ -319,15 +319,9 @@ body, * {
     #hh{
         margin-left: 50px;
     }
-    .avatar{
-        height: 50px;
-        width: 50px;
-        margin-left: 10em;
-    }
-    .avatar:hover{
-        height: 50px;
-        width: 50px;
-    }
+    .active{
+    margin-top: 20px;
+   }
 }
 @media (max-width: 480px) {
     .navbar-header {
@@ -355,15 +349,9 @@ body, * {
     #hh{
         margin-left: 50px;
     }
-    .avatar{
-        height: 50px;
-        width: 50px;
-        margin-left: 10em;
-    }
-    .avatar:hover{
-        height: 50px;
-        width: 50px;
-    }
+    .active{
+    margin-top: 20px;
+   }
 }
 @media (max-width: 300px) {
     .navbar-header {
