@@ -317,19 +317,7 @@ html,body{
         font-size: 0.85rem;
     }
 
-    body {
-        font-size: 12px;
-        height: 100vh;
-        overflow-x: auto;
-    }
-    .card, .card-header, .card-body, .tables{
-        width: 330px;
-        font-size:12px;
-        
-    }
-    .tables thead{
-        padding: 2px;
-    }
+   
  
 }
 
