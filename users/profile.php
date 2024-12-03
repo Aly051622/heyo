@@ -346,7 +346,7 @@ while ($row = mysqli_fetch_array($ret)) {
         <div class="modal-content">
             <div class="modal-header" style="padding: 2px;">
                 <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent;">
                     <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
