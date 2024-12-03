@@ -360,7 +360,7 @@ while ($row = mysqli_fetch_array($ret)) {
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="Preview Image">
+                <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
             </div>
         </div>
     </div>
@@ -369,25 +369,24 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <script>
 $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); // Get image source
-    const title = $(this).attr('data-title'); // Get image title from the clicked element
+    const src = $(this).attr('src'); // Get the image source
     const img = new Image(); // Create a new Image object
-    img.src = src;
+    img.src = src; // Set the source to the clicked image's source
 
     img.onload = function () {
+        // Get the original dimensions of the image
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Set the modal image source and dimensions
+        // Set the modal image's source and style it to show in its original size
         $('#modalImage').attr('src', src).css({
             width: `${naturalWidth}px`,
-            height: `${naturalHeight}px`
+            height: `${naturalHeight}px`,
+            maxWidth: '100%',
+            maxHeight: '100%',
         });
 
-        // Set the modal title dynamically
-        $('#imageModalTitle').text(title);
-
-        // Show the modal
+        // Open the modal
         $('#imageModal').modal('show');
     };
 });
