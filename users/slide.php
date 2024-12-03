@@ -96,7 +96,6 @@
                 <img src="images/areaB.png" alt="Slide 3" class="landscape">
                 <img src="images/areaC.png" alt="Slide 4" class="landscape">
                 <img src="images/areaD.png" alt="Slide 5" class="landscape">
-                <img src="images/clienthc.png" alt="Slide 6" class="landscape">
             </div>
         </div>
     </div>

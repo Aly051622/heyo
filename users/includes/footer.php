@@ -56,44 +56,45 @@
 
     /* Modal Styling */
     .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      justify-content: center;
-      align-items: center;
-    }
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+}
 
-    .modal-dialog.custom-width {
-      max-width: 90%; /* Set the modal width to 90% of the viewport */
-      width:auto ;
-    }
+.modal-dialog {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .modal-content {
-      background: #fff;
-      padding: 1px;
-      border-radius: 10px;
-      position: relative;
-    }
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-    .iframe-content {
-      width: 100%;
-      height: 60vh; /* Set height to occupy most of the viewport */
-      border: none;
-    }
+.iframe-content {
+  width: 100%;
+  border: none;
+}
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-    }
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -128,14 +129,14 @@
   </footer>
 
   <!-- Slide Modal -->
-  <div id="slide-modal" class="modal modal-dialog-centered" >
-    <div class="modal-dialog custom-width">
-      <div class="modal-content">
-        <iframe src="slide.php" class="iframe-content"></iframe>
-        <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
-      </div>
+  <div id="slide-modal" class="modal">
+  <div class="modal-dialog" id="slide-modal-dialog">
+    <div class="modal-content" id="slide-modal-content">
+      <iframe src="slide.php" class="iframe-content" id="slide-iframe"></iframe>
+      <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
+</div>
 
   <!-- Privacy Policy Modal -->
   <div id="privacy-modal" class="modal modal-dialog-centered">
@@ -160,15 +161,12 @@
   <script>
     const privacyModal = document.getElementById('privacy-modal');
     const termsModal = document.getElementById('terms-modal');
-    const slideModal = document.getElementById('slide-modal');
 
     const privacyBtn = document.getElementById('privacy-btn');
     const termsBtn = document.getElementById('terms-btn');
-    const slideBtn = document.getElementById('slide-btn');
 
     const closePrivacy = document.getElementById('close-privacy');
     const closeTerms = document.getElementById('close-terms');
-    const closeSlide = document.getElementById('close-slide');
 
     slideBtn.addEventListener('click', () => {
       slideModal.style.display = 'flex';
@@ -204,5 +202,41 @@
       }
     });
   </script>
+  <script>
+  const slideModal = document.getElementById('slide-modal');
+  const slideDialog = document.getElementById('slide-modal-dialog');
+  const slideIframe = document.getElementById('slide-iframe');
+  const closeSlide = document.getElementById('close-slide');
+  const slideBtn = document.getElementById('slide-btn');
+
+  // Open the modal
+  slideBtn.addEventListener('click', () => {
+    slideModal.style.display = 'flex';
+  });
+
+  // Close the modal
+  closeSlide.addEventListener('click', () => {
+    slideModal.style.display = 'none';
+  });
+
+  // Adjust modal size dynamically based on iframe content
+  slideIframe.addEventListener('load', () => {
+    const iframeContent = slideIframe.contentWindow.document.documentElement;
+    const width = iframeContent.scrollWidth;
+    const height = iframeContent.scrollHeight;
+
+    // Set modal and iframe dimensions
+    slideDialog.style.width = `${width}px`;
+    slideDialog.style.maxWidth = '90vw'; // Limit the width for smaller screens
+    slideIframe.style.height = `${height}px`;
+  });
+
+  // Close the modal when clicking outside of the content
+  window.addEventListener('click', (e) => {
+    if (e.target === slideModal) {
+      slideModal.style.display = 'none';
+    }
+  });
+</script>
 </body>
 </html>
