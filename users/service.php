@@ -104,7 +104,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                 <div class="col-sm-8">
                     <div class="page-header float-right">
                         <div class="page-title">
-                            <ol class="breadcrumb text-right">
+                            <ol class="breadcrumb text-right" style="background: transparent;">
                                 <li><a href="dashboard.php">Dashboard</a></li>
                                 <li class="active">Frequently Asked Questions</li>
                                 <li class="active">FAQs</li>                              

@@ -323,7 +323,7 @@ body, * {
         margin-left: 50px;
     }
     .user-menu{
-        margin-left: 10em;
+        margin-left: 15em;
     }
     
 }
@@ -354,7 +354,7 @@ body, * {
         margin-left: 50px;
     }
     .user-menu{
-        margin-left: 10em;
+        margin-left: 15em;
     }
     
 }
@@ -386,7 +386,7 @@ body, * {
     }
    
     .user-menu{
-        margin-left: 10em;
+        margin-left: 15em;
     }
 }
 </style>
