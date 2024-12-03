@@ -255,7 +255,7 @@ if(isset($_POST['login'])) {
         width: 85%; /* Further reduce width for very small screens */
         padding: 30px 20px; /* Further reduce padding */
         border-radius: 20px; /* Adjust border-radius for a smaller look */
-        height: 450px;
+        height: 500px;
     }
     .bg-img:after{
       position: absolute;
@@ -268,6 +268,7 @@ if(isset($_POST['login'])) {
     }
     #home{
       margin-left: 12.5em;
+      position: fixed;
     }
 }
         </style>

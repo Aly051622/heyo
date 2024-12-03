@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="modal-header">
                 <h3 class="modal-title" id="commentModalLabel">Comment Section</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body" id="modalContent">
@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="modal-header">
                 <h3 class="modal-title" id="feedbackModalLabel">Feedbacks</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body" id="modalContent">

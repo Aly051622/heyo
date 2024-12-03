@@ -376,7 +376,7 @@ input[type="text"]:hover, input[type="password"]:hover {
       <div class="bg-img">
          <div class="content">
          <a href="login.php" id="x">
-         <i class="fa-solid fa fa-xmark"></i></a>
+         <i class="bi bi-x-circle-fill"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
 

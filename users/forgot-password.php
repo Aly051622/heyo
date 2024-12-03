@@ -186,7 +186,7 @@ if(isset($_POST['submit']))
             <div class="login-content" id="content">
             <div>
                <a href="login.php" id="x">
-                X</a>
+               <i class="bi bi-x-circle-fill"></i></a>
                     <a class="space"style="text-decoration:none; font-family: 'Montserrat', sans-serif;">
                          <h2 style="color: white; " >F O R G O T PASSWORD</h2>
                     </a>

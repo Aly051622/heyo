@@ -238,14 +238,14 @@
   <div id="slide-modal" class="modal">
     <div class="modal-content">
       <iframe src="slide.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-slide">&times;</button>
+      <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
   <!-- Privacy Policy Modal -->
   <div id="privacy-modal" class="modal">
     <div class="modal-content">
       <iframe src="policy.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-privacy">&times;</button>
+      <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
 
@@ -253,7 +253,7 @@
   <div id="terms-modal" class="modal">
     <div class="modal-content">
       <iframe src="terms.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-terms">&times;</button>
+      <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
 
