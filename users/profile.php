@@ -318,11 +318,11 @@ html,body{
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
-                        <div class="card table-responsive">
+                        <div class="card ">
                             <div class="card-header">
                                 <strong>User </strong> Profile
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block table-responsive">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                    
                                    <?php
