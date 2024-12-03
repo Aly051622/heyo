@@ -124,8 +124,6 @@ body, * {
         margin-top: 30px;
         height: 100px;
         width: auto;
-        line-height: 5;
-        margin-bottom: 5px;
     }
     .nav-link:hover{
         border-radius: 4px;
@@ -369,7 +367,9 @@ body, * {
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px;">
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; 
+        line-height: 5;
+        margin-bottom: 5px;">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
