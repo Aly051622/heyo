@@ -43,7 +43,6 @@ body, * {
     }
     .nav-link{
         cursor: pointer;
-        line-height: 2;
     }
     .navbar-header {
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
@@ -125,6 +124,7 @@ body, * {
         margin-top: 30px;
         height: 100px;
         width: auto;
+        line-height: 5;
     }
     .nav-link:hover{
         border-radius: 4px;
