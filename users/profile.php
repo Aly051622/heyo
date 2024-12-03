@@ -82,18 +82,21 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    
     <link rel="stylesheet" href="css/responsive/.css">
+    
 
-   <style>
+</head>
+    <style>
 
 #notification {
     position: fixed;
@@ -159,8 +162,8 @@ html,body{
         width: 935px;
     }
     .imgp input[type="file"]{
-        margin-left: 15em;
-        margin-top:-40px;
+        margin-left: 1em;
+        margin-top:-20px;
         cursor: pointer;
         text-align: left;
     }
@@ -205,13 +208,12 @@ html,body{
 }
 
 .modal-dialog {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0 auto;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .modal-content {
@@ -224,16 +226,30 @@ html,body{
     transform: none; 
 }
 
-
+.table-responsive{
+    overflow: hidden;
+}
     .reg{
         margin-left: 18px;
         width: 500px;
+    }
+    @media (max-width: 560px){
+        .regs{
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
+        }
     }
     @media (max-width: 480px){
         .regs{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -242,6 +258,8 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -250,9 +268,12 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
+
 </style>
 
 </head>
@@ -269,36 +290,53 @@ html,body{
     <button id="notification-close">&times;</button>
 </div>
 
-        <div class="breadcrumbs mb-5">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h3>My Profile</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right" style="background: transparent;">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="profile.php">Profile</a></li>
-                                    <li class="active">User Profile</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         <!-- Include sidebar -->
+    <?php include_once('includes/sidebar.php'); ?>
+    
+    <?php include_once('includes/header.php');?>
+ 
+   
+     <div id="notification"><!-- START: Notification -->
+         <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
+         <button id="notification-close">&times;</button>
+     </div><!-- END: Notification -->
+     <div class="right-panel">
+    <!-- Notification system -->
+     <div class="breadcrumbs">
+     <div class="breadcrumbs-inner">
+         <div class="row m-0">
+             <!-- START: Left Section -->
+             <div class="col-12 col-md-4 mb-2 mb-md-0">
+                 <div class="page-header float-md-left text-center text-md-left">
+                     <div class="page-title">
+                         <h3>My Profile</h3>
+                     </div>
+                 </div>
+             </div>
+             <!-- END: Left Section -->
+ 
+             <!-- START: Right Section -->
+             <div class="col-12 col-md-8">
+                 <div class="page-header float-md-right text-center text-md-right">
+                     <div class="page-title">
+                         <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                             <li><a href="dashboard.php">Dashboard</a></li>
+                             <li class="profile.php">Profile</li>
+                             <li class="active">User's Information</li>
+                         </ol>
+                     </div>
+                 </div>
+             </div>
+             <!-- END: Right Section -->
+         </div>
+     </div>
+ </div>
 
-        <div class="content">
+        <div class="content  table-responsive">
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="card ">
                             <div class="card-header">
                                 <strong>User </strong> Profile
                             </div>
@@ -510,17 +548,17 @@ $(document).on('click', '.clickable-image', function () {
                 </div>
 
                 <div class="row form-group" id="registered-files" style="display: none;">
-                <div class="col-12 col-md-3">
+                <div class="col-12 col-md-3"><br>
                     <label for="or-file" class="form-control-label">Upload OR File</label>
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-9"><br>
                     <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
                 </div>
                 <div class="w-100 d-md-none"></div> <!-- Forces a new row on small screens -->
-                <div class="col-12 col-md-3 mt-3 mt-md-0">
+                <div class="col-12 col-md-3 mt-3 mt-md-0"><br>
                     <label for="cr-file" class="form-control-label ">Upload CR File</label>
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-9"><br>
                     <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
                 </div>
             </div>
