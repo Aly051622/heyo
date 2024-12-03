@@ -268,7 +268,6 @@ if(isset($_POST['login'])) {
     }
     #home{
       margin-left: 12.5em;
-      position: fixed;
     }
 }
         </style>
