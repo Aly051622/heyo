@@ -69,7 +69,7 @@
   background: #fff;
   border-radius: 10px;
   width: 90%;
-  height: 600px;
+  height: 700px;
   max-width: 730px;
   position: relative;
 }
