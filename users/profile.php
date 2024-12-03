@@ -354,7 +354,7 @@ html,body{
                                 </div>
                             <?php } ?>
 
-                            <div class="container mt-5"><!-- START: Container -->
+                            <div class="mt-5"><!-- START: Container -->
                                 <div class="row">
                                     <?php if ($orImage): ?>
                                         <div class="col-md-4 mb-4">
@@ -460,6 +460,7 @@ html,body{
                                 </div>
                             </div><!-- END: Bootstrap Modal -->
 </div><!-- END: Right Panel -->
+
 
 
                         <script>
