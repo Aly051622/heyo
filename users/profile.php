@@ -360,24 +360,22 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <script>
 $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); // Get the image source
-    const title = $(this).attr('alt'); // Use the 'alt' attribute for the modal title
-    const img = new Image(); // Create a new Image object
-    img.src = src; // Set the source to the clicked image's source
+    const src = $(this).attr('src'); 
+    const title = $(this).attr('alt'); 
+    const img = new Image(); 
+    img.src = src; 
 
     img.onload = function () {
-        // Get the original dimensions of the image
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Set the modal image's source
         $('#modalImage').attr('src', src).css({
             display: 'block',
-            width: naturalWidth > window.innerWidth ? '100%' : `${naturalWidth}px`, 
-            height: naturalHeight > window.innerHeight ? '100%' : `${naturalHeight}px`, 
+            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
+            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
             maxWidth: '100%',
             maxHeight: '100%',
-            objectFit: 'cover',
+            objectFit: 'contain',
         });
 
         // Update modal title dynamically if needed
@@ -448,17 +446,14 @@ $(document).on('click', '.clickable-image', function () {
         // Set the modal image source
         modalImage.attr('src', src);
 
-        // Determine aspect ratio
         if (img.width > img.height) {
-            // Landscape image
             modalImage.css({
-                'max-width': '90%',
-                'max-height': '80vh',
+                'max-width': '100%',
+                'max-height': '100vh',
                 'width': 'auto',
                 'height': 'auto'
             });
         } else {
-            // Portrait image
             modalImage.css({
                 'max-width': '60%',
                 'max-height': '80vh',
@@ -467,7 +462,6 @@ $(document).on('click', '.clickable-image', function () {
             });
         }
 
-        // Adjust modal title
         $('#imageModalTitle').text($(this).data('title'));
     };
 });
