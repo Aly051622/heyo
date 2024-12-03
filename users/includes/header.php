@@ -290,6 +290,9 @@ body, * {
         margin-top: -50px;
         margin-right: 10px;
     }
+    .user-menu{
+        margin-left: 10em;
+    }
 }
 
 /* 480px to 575px screens */
@@ -319,6 +322,9 @@ body, * {
     #hh{
         margin-left: 50px;
     }
+    .user-menu{
+        margin-left: 10em;
+    }
     
 }
 @media (max-width: 480px) {
@@ -346,6 +352,9 @@ body, * {
     }
     #hh{
         margin-left: 50px;
+    }
+    .user-menu{
+        margin-left: 10em;
     }
     
 }
@@ -376,6 +385,9 @@ body, * {
         margin-left: 50px;
     }
    
+    .user-menu{
+        margin-left: 10em;
+    }
 }
 </style>
 <header>
