@@ -361,6 +361,7 @@ while ($row = mysqli_fetch_array($ret)) {
 <script>
 $(document).on('click', '.clickable-image', function () {
     const src = $(this).attr('src'); // Get the image source
+    const title = $(this).attr('alt'); // Use the 'alt' attribute for the modal title
     const img = new Image(); // Create a new Image object
     img.src = src; // Set the source to the clicked image's source
 
@@ -369,18 +370,26 @@ $(document).on('click', '.clickable-image', function () {
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Set the modal image's source and style it to show in its original size
+        // Set the modal image's source
         $('#modalImage').attr('src', src).css({
-            width: `${naturalWidth}px`,
-            height: `${naturalHeight}px`,
+            display: 'block',
+            width: naturalWidth > window.innerWidth ? '100%' : `${naturalWidth}px`, 
+            height: naturalHeight > window.innerHeight ? '100%' : `${naturalHeight}px`, 
             maxWidth: '100%',
             maxHeight: '100%',
+            objectFit: 'cover',
         });
+
+        // Update modal title dynamically if needed
+        if (title) {
+            $('#imageModalTitle').text(title);
+        }
 
         // Open the modal
         $('#imageModal').modal('show');
     };
 });
+
 
 
 </script>
