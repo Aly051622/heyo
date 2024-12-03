@@ -502,26 +502,26 @@ $(document).on('click', '.clickable-image', function () {
         <div class="imgp">
                 <div class="row form-group" id="for-registration-files" style="display: none;">
                     <div class="col-md-3">
-                        <label for="nv-file" class="form-control-label fil">Upload MV File</label>
+                        <label for="nv-file" class="form-control-label ">Upload MV File</label>
                     </div>
                     <div class="col-md-9">
-                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control">
+                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
                     </div>
                 </div>
 
                 <div class="row form-group" id="registered-files" style="display: none;">
                 <div class="col-12 col-md-3">
-                    <label for="or-file" class="form-control-label fil">Upload OR File</label>
+                    <label for="or-file" class="form-control-label">Upload OR File</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control">
+                    <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
                 </div>
                 <div class="w-100 d-md-none"></div> <!-- Forces a new row on small screens -->
                 <div class="col-12 col-md-3 mt-3 mt-md-0">
-                    <label for="cr-file" class="form-control-label fil">Upload CR File</label>
+                    <label for="cr-file" class="form-control-label ">Upload CR File</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control">
+                    <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
                 </div>
             </div>
 
