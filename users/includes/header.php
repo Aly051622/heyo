@@ -351,7 +351,7 @@ body, * {
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -50px; position fixed;">
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -45px; position fixed;">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
