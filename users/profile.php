@@ -332,7 +332,7 @@ html,body{
      </div>
  </div>
 
-        <div class="content  table-responsive">
+        <div class="content  ">
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
