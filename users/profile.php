@@ -300,7 +300,7 @@ html,body{
          <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
          <button id="notification-close">&times;</button>
      </div><!-- END: Notification -->
-     <div class="right-panel">
+
     <!-- Notification system -->
      <div class="breadcrumbs">
      <div class="breadcrumbs-inner">
@@ -332,7 +332,7 @@ html,body{
      </div>
  </div>
 
-        <div class="content  ">
+        <div class="content ">
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
