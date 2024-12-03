@@ -122,7 +122,6 @@ body, * {
     }
     #hh {
         margin-top: 30px;
-        font-size: 20px;
         height: 100px;
         width: auto;
     }
@@ -368,9 +367,9 @@ body, * {
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar" >
                                     </a>
-                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px;">
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px;">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
-                                    </i></a>
+                                    </i></a><br>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
                                     <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
@@ -378,7 +377,7 @@ body, * {
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
                                     <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
-                                    </i></a>
+                                    </i></a><br>
 
                                     <a class="nav-link" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
