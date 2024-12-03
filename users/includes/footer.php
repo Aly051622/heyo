@@ -170,8 +170,7 @@
   background: #fff;
   padding: 15px;
   border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
+  width: 80%;
   position: relative;
 }
 
