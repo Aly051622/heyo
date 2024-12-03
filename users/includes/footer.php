@@ -24,16 +24,6 @@
   gap: 20px;
 }
 
-.icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.icon {
-  width: 40px;
-  height: 40px;
-}
 
 .footer-copyright {
   margin-top: 10px;
@@ -47,8 +37,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 1000px;
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
@@ -216,7 +205,7 @@
 
    <!-- Slide Modal -->
 <div id="slide-modal" class="modal modal-dialog-centered">
-    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+    <div class="modal-dialog custom-width"> 
         <div class="modal-content">
             <iframe src="slide.php" class="iframe-content"></iframe>
             <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
