@@ -298,8 +298,8 @@ html,body{
 
 @media (max-width: 500px) {
     .breadcrumbs {
-        width: auto;
-        margin-left: -2em;
+        width: 60%;
+        margin-left: 2em;
         padding: 5px;
     }
 
@@ -308,8 +308,8 @@ html,body{
 @media (max-width: 480px) {
     
     .breadcrumbs {
-        width: 80%;
-        margin-left: 5em;
+        width: 60%;
+        margin-left: 2em;
         padding: 5px;
     }
  
@@ -318,9 +318,9 @@ html,body{
 
 @media (max-width: 300px) {
     .breadcrumbs {
-        width: 100%;
-        margin-left: 0.5em;
-        padding: 4px;
+        width: 60%;
+        margin-left: 2em;
+        padding: 5px;
     }
 
 }
