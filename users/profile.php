@@ -213,12 +213,10 @@ html,body{
     }
 
     .modal-body img {
-    max-width: 90%; 
-    max-height: 80vh; 
-    object-fit: cover; 
-    display: block; 
-    margin: 0 auto; 
-}
+    display: block; /* Centers the image inside the modal */
+    margin: 0 auto;
+    }
+
 
 
     .reg{
@@ -356,40 +354,32 @@ while ($row = mysqli_fetch_array($ret)) {
 
 
 <script>
-   $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src');
-    const img = new Image();
-    img.src = src;
+    $(document).on('click', '.clickable-image', function () {
+        const src = $(this).attr('src');
+        const img = new Image();
+        img.src = src;
 
-    img.onload = function () {
-        const modalImage = $('#modalImage');
-        const modalBody = $('.modal-body');
+        img.onload = function () {
+            const modalImage = $('#modalImage');
+            const modalBody = $('.modal-body');
 
-        // Set the modal image source
-        modalImage.attr('src', src);
+            // Set the modal image source
+            modalImage.attr('src', src);
 
-        // Determine aspect ratio
-        if (img.width > img.height) {
-            // Landscape image
+            // Set modal image to its actual size
             modalImage.css({
+                'width': `${img.width}px`,
+                'height': `${img.height}px`,
                 'max-width': '100%',
                 'max-height': '80vh',
-                'width': 'auto',
-                'height': 'auto'
             });
-        } else {
-            // Portrait image
-            modalImage.css({
-                'max-width': '60%',
-                'max-height': '80vh',
-                'width': 'auto',
-                'height': 'auto'
-            });
-        }
 
-        // Adjust modal title
-        $('#imageModalTitle').text($(this).data('title'));
-     };
+            // Adjust modal title
+            $('#imageModalTitle').text($(this).data('title'));
+        };
+
+        // Open the modal
+        $('#imageModal').modal('show');
     });
 
 </script>
