@@ -153,34 +153,14 @@
   text-align: center;
 }
 
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  align-items: center;
+.modal-dialog.custom-width {
+    width: 50em;
 }
-
-.modal-content {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  width: 100%;
-  position: relative;
-}
-
 .iframe-content {
-  width: 100%;
-  height: 400px;
-  border: none;
-  object-fit: contain;
+    width: 100%; /* Ensure the iframe spans the full modal width */
+    height: 50vh; /* Adjust height to fit within the viewport */
+    border: none; /* Remove border from iframe */
 }
-
 .close-btn {
   position: absolute;
   top: 10px;
@@ -234,28 +214,36 @@
       </div></marquee>
     </footer>
 
-    <!-- Slide Modal -->
-  <div id="slide-modal" class="modal modal-dialog-centered">
-    <div class="modal-content  ">
-      <iframe src="slide.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
+   <!-- Slide Modal -->
+<div id="slide-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="slide.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
     </div>
-  </div>
-  <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="modal modal-dialog-centered">
-    <div class="modal-content ">
-      <iframe src="policy.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
-    </div>
-  </div>
+</div>
 
-  <!-- Terms and Conditions Modal -->
-  <div id="terms-modal" class="modal modal-dialog-centered">
-    <div class="modal-content ">
-      <iframe src="terms.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
+<!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="policy.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- Terms and Conditions Modal -->
+<div id="terms-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="terms.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+    </div>
+</div>
+
 
   <script>
     // Select Elements
