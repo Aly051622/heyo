@@ -69,8 +69,8 @@
   background: #fff;
   border-radius: 10px;
   width: 90%;
-  height: 600px;
-  max-width: 600px;
+  height: 700px;
+  max-width: 720px;
   position: relative;
 }
 
