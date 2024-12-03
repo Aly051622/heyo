@@ -192,22 +192,26 @@ html,body{
     background-color: transparent;
     }
 
-.modal-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    overflow: auto;
+    .modal-body {
+    position: relative;
+    overflow: hidden; /* Prevent content from overflowing */
+    height: 80vh; /* Set a height limit for the modal */
+    cursor: grab; /* Indicate that the image can be dragged */
 }
 
 .modal-body img {
-    display: block;
-    margin: auto;
-    max-width: 100%; /* Ensures the image is responsive to screen width */
-    max-height: 100%; /* Ensures the image does not exceed screen height */
-    object-fit: contain; /* Maintains aspect ratio */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none; /* Allow the image to grow beyond the modal boundaries */
+    max-height: none;
 }
 
+.modal-body img.zoomable {
+    transform-origin: center center; /* Allow scaling from the center */
+    transition: transform 0.2s ease; /* Smooth transitions for zooming */
+}
 
 .modal {
     display: flex;
@@ -216,8 +220,8 @@ html,body{
 }
 
 .modal-dialog {
-    max-width: 90vw;
-    max-height: 90vh; 
+    max-width: 90vw; /* Ensure the modal doesn't exceed viewport width */
+    max-height: 90vh; /* Ensure the modal doesn't exceed viewport height */
 }
 
 .modal-content {
@@ -344,47 +348,83 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div class="modal" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                <h5 class="modal-title" id="imageModalTitle"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="img-fluid">
+                <img id="modalImage" src="" alt="" class="img-fluid">
             </div>
         </div>
     </div>
 </div>
 
 
+
 <script>
-  $(document).on('click', '.clickable-image', function () {
+   $(document).on('click', '.clickable-image', function () {
     const src = $(this).attr('src');
-    const img = new Image();
-    img.src = src;
+    const modalImage = $('#modalImage');
+    modalImage.attr('src', src).addClass('zoomable');
+    $('#imageModal').modal('show');
 
-    img.onload = function () {
-        const modalImage = $('#modalImage');
-        
-        // Set the modal image source
-        modalImage.attr('src', src);
+    let scale = 1; // Initial zoom scale
+    let translateX = 0; // Horizontal translation
+    let translateY = 0; // Vertical translation
 
-        // Ensure the image is displayed at its actual size
-        modalImage.css({
-            'width': `${img.naturalWidth}px`,
-            'height': `${img.naturalHeight}px`,
-            'max-width': '100%', // Responsive width
-            'max-height': '100%' // Responsive height
+    const modalBody = $('.modal-body');
+    const image = modalImage.get(0);
+
+    modalBody.off('wheel').on('wheel', function (event) {
+        event.preventDefault();
+
+        // Zoom on mouse wheel
+        const delta = event.originalEvent.deltaY > 0 ? -0.1 : 0.1;
+        scale = Math.min(Math.max(0.5, scale + delta), 5); // Limit zoom level between 0.5 and 5
+        image.style.transform = `translate(-50%, -50%) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    });
+
+    modalBody.off('mousedown').on('mousedown', function (event) {
+        event.preventDefault();
+        let startX = event.pageX;
+        let startY = event.pageY;
+
+        modalBody.css('cursor', 'grabbing');
+
+        $(document).on('mousemove', function (moveEvent) {
+            const dx = moveEvent.pageX - startX;
+            const dy = moveEvent.pageY - startY;
+
+            startX = moveEvent.pageX;
+            startY = moveEvent.pageY;
+
+            translateX += dx / scale; // Adjust translation based on zoom level
+            translateY += dy / scale;
+
+            image.style.transform = `translate(-50%, -50%) scale(${scale}) translate(${translateX}px, ${translateY}px)`;
         });
 
-        // Open the modal
-        $('#imageModal').modal('show');
-    };
+        $(document).on('mouseup', function () {
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+            modalBody.css('cursor', 'grab');
+        });
+    });
+
+    modalBody.off('dblclick').on('dblclick', function () {
+        // Reset zoom and position on double click
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        image.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
 });
+
 
 </script>
 
