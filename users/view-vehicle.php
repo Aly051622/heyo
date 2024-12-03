@@ -225,7 +225,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive" style="overflow: hidden;">
+                            <div class="table-responsive" style="overflow: hidden; padding: 2px;">
                                 <?php
                                 $ownerno = $_SESSION['vpmsumn'];
                                 $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
