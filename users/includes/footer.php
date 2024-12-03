@@ -154,8 +154,7 @@
 }
 
 .modal-dialog.custom-width {
-    max-width: 90%; /* Adjust the percentage as needed */
-    width: auto;
+    width: 1000px;
 }
 .iframe-content {
     width: 100%; /* Ensure the iframe spans the full modal width */
