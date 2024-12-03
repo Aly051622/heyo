@@ -52,7 +52,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               transition: all 0.3s ease;
           }
         table{
-            overflow: auto;
+            overflow: hidden;
         }
          
           /* Card and button styles */
