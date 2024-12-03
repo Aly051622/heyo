@@ -1,102 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>User | Footer</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<style>
-    /* General Footer Styling */
-.footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: whitesmoke;
-  color: orange;
-  padding: 10px;
-  font-size: 14px;
-}
-
-.footer-icons {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-copyright {
-  margin-top: 10px;
-  font-size: 12px;
-  text-align: center;
-}
-
-/* Modal Styling */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: #fff;
-  padding: 2px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-.iframe-content {
-  width: 100%;
-  height: 400px;
-  border: none;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-  .icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .modal-content {
-    width: 90%;
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .icon {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-    </style>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <title>User | Footer</title>
-  <link rel="stylesheet" href="styles.css">
 </head>
 <style>
     /* General Footer Styling */
