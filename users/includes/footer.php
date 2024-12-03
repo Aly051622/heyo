@@ -170,7 +170,7 @@
   background: #fff;
   padding: 15px;
   border-radius: 10px;
-  width: 80%;
+  width: 100%;
   position: relative;
 }
 
@@ -235,23 +235,23 @@
     </footer>
 
     <!-- Slide Modal -->
-  <div id="slide-modal" class="modal">
-    <div class="modal-content modal-dialog-centered ">
+  <div id="slide-modal" class="modal modal-dialog-centered">
+    <div class="modal-content  ">
       <iframe src="slide.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
   <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="modal">
-    <div class="modal-content modal-dialog-centered">
+  <div id="privacy-modal" class="modal modal-dialog-centered">
+    <div class="modal-content ">
       <iframe src="policy.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
 
   <!-- Terms and Conditions Modal -->
-  <div id="terms-modal" class="modal">
-    <div class="modal-content modal-dialog-centered">
+  <div id="terms-modal" class="modal modal-dialog-centered">
+    <div class="modal-content ">
       <iframe src="terms.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
     </div>
