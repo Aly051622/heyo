@@ -125,6 +125,7 @@ body, * {
         height: 100px;
         width: auto;
         line-height: 5;
+        margin-bottom: 5px;
     }
     .nav-link:hover{
         border-radius: 4px;
