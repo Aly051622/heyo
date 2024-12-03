@@ -200,6 +200,7 @@ html,body{
     }
 
     .modal-dialog {
+    max-width: 100%;
     width: 1000px; 
 }
 
