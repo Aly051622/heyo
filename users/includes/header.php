@@ -319,9 +319,7 @@ body, * {
     #hh{
         margin-left: 50px;
     }
-    .active{
-    margin-top: 20px;
-   }
+    
 }
 @media (max-width: 480px) {
     .navbar-header {
@@ -349,9 +347,7 @@ body, * {
     #hh{
         margin-left: 50px;
     }
-    .active{
-    margin-top: 20px;
-   }
+    
 }
 @media (max-width: 300px) {
     .navbar-header {
@@ -379,9 +375,7 @@ body, * {
     #hh{
         margin-left: 50px;
     }
-   .active{
-    margin-top: 20px;
-   }
+   
 }
 </style>
 <header>
