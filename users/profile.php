@@ -196,34 +196,36 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Allows scrolling if the image is too large */
-    height: auto;
+    overflow: auto; /* Allows scrolling for large images */
+    height: 80vh; /* Limit height for smaller screens */
 }
 
 .modal-body img {
     display: block;
     margin: auto;
-    object-fit: cover;
+    object-fit: contain;
+    max-width: none; /* Ensure image is not constrained */
+    max-height: none; /* Ensure image is not constrained */
 }
 
-
-.modal {
+.modal-dialog {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
- .modal-dialog {
     max-width: 100%;
-    width: 1000px; 
+    margin: 0 auto;
+    overflow: auto;
 }
 
 .modal-content {
-    background-color: transparent; /* Optional: Removes background for focus on the image */
-    border: none; /* Optional: Removes border for a cleaner look */
+    background: transparent; /* Transparent background for focus on image */
+    border: none; /* No border for a cleaner look */
+    box-shadow: none; /* No shadow for a cleaner look */
 }
 
-
+.modal.fade .modal-dialog {
+    transform: none; /* Prevent sliding animations */
+}
 
 
     .reg{
@@ -352,27 +354,25 @@ while ($row = mysqli_fetch_array($ret)) {
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="Image Preview">
+                <img id="modalImage" src="" alt="Preview Image">
             </div>
         </div>
     </div>
 </div>
 
 
-
-
 <script>
  $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); // Get the image source
+    const src = $(this).attr('src'); // Get image source
     const img = new Image(); // Create a new Image object
-    img.src = src; // Set the source to the clicked image
+    img.src = src;
 
     img.onload = function () {
         // Fetch the natural dimensions of the image
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Set the modal image's source and dimensions
+        // Set the modal image source and its natural dimensions
         const modalImage = $('#modalImage');
         modalImage.attr('src', src);
         modalImage.css({
@@ -380,7 +380,14 @@ while ($row = mysqli_fetch_array($ret)) {
             height: `${naturalHeight}px`
         });
 
-        // Open the modal
+        // Adjust modal to fit within the viewport
+        const modalDialog = $('.modal-dialog');
+        modalDialog.css({
+            maxWidth: naturalWidth > window.innerWidth ? '100%' : `${naturalWidth}px`,
+            maxHeight: naturalHeight > window.innerHeight ? '100%' : `${naturalHeight}px`
+        });
+
+        // Show the modal
         $('#imageModal').modal('show');
     };
 });
