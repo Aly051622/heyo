@@ -43,6 +43,7 @@ body, * {
     }
     .nav-link{
         cursor: pointer;
+        line-height: 2;
     }
     .navbar-header {
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
@@ -369,7 +370,7 @@ body, * {
                                     </a>
                                 <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px;">
                                     <a class="nav-link" href="profile.php"><i class="fa bi-person-fill" > My Profile
-                                    </i></a><br>
+                                    </i></a>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
                                     <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
@@ -377,7 +378,7 @@ body, * {
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
                                     <a class="nav-link" href="change-password.php"><i class="fa bi-gear-fill"> Change Password
-                                    </i></a><br>
+                                    </i></a>
 
                                     <a class="nav-link" onclick="return handleLogout();"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
