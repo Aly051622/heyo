@@ -138,6 +138,7 @@
   background: #fff;
   padding: 15px;
   border-radius: 10px;
+  width: 1000px;
   position: relative;
 }
 
