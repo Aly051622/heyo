@@ -82,21 +82,18 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-    
     <link rel="stylesheet" href="css/responsive/.css">
-    
 
-</head>
-    <style>
+   <style>
 
 #notification {
     position: fixed;
@@ -162,8 +159,8 @@ html,body{
         width: 935px;
     }
     .imgp input[type="file"]{
-        margin-left: 1em;
-        margin-top:-20px;
+        margin-left: 15em;
+        margin-top:-40px;
         cursor: pointer;
         text-align: left;
     }
@@ -208,12 +205,13 @@ html,body{
 }
 
 .modal-dialog {
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .modal-content {
@@ -226,30 +224,16 @@ html,body{
     transform: none; 
 }
 
-.table-responsive{
-    overflow: hidden;
-}
+
     .reg{
         margin-left: 18px;
         width: 500px;
-    }
-    @media (max-width: 560px){
-        .regs{
-            max-width: 250px;
-        }
-        .fil{
-            margin-top: 20px;
-            margin-left: 10px;
-            max-width: 250px;
-        }
     }
     @media (max-width: 480px){
         .regs{
             max-width: 250px;
         }
         .fil{
-            margin-top: 20px;
-            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -258,8 +242,6 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            margin-top: 20px;
-            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -268,422 +250,430 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            margin-top: 20px;
-            margin-left: 10px;
             max-width: 250px;
         }
     }
-
-    
 </style>
+
+</head>
 <body>
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
     
    <?php include_once('includes/header.php');?>
 
-  
-    <div id="notification"><!-- START: Notification -->
-        <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
-        <button id="notification-close">&times;</button>
-    </div><!-- END: Notification -->
-    <div class="right-panel">
    <!-- Notification system -->
-    <div class="breadcrumbs">
-    <div class="breadcrumbs-inner">
-        <div class="row m-0">
-            <!-- START: Left Section -->
-            <div class="col-12 col-md-4 mb-2 mb-md-0">
-                <div class="page-header float-md-left text-center text-md-left">
-                    <div class="page-title">
-                        <h3>My Profile</h3>
-                    </div>
-                </div>
-            </div>
-            <!-- END: Left Section -->
+<div class="right-panel">
+<div id="notification">
+    <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
+    <button id="notification-close">&times;</button>
+</div>
 
-            <!-- START: Right Section -->
-            <div class="col-12 col-md-8">
-                <div class="page-header float-md-right text-center text-md-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
-                            <li><a href="dashboard.php">Dashboard</a></li>
-                            <li class="profile.php">Profile</li>
-                            <li class="active">User's Information</li>
-                        </ol>
+        <div class="breadcrumbs mb-5">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h3>My Profile</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right" style="background: transparent;">
+                                    <li><a href="dashboard.php">Dashboard</a></li>
+                                    <li><a href="profile.php">Profile</a></li>
+                                    <li class="active">User Profile</li>
+                                </ol>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- END: Right Section -->
+        </div>
+
+        <div class="content">
+            <div class="animated fadeIn">
+
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>User </strong> Profile
+                            </div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                   
+                                   <?php
+$uid=$_SESSION['vpmsuid'];
+$ret=mysqli_query($con,"select * from tblregusers where ID='$uid'");
+$cnt=1;
+while ($row = mysqli_fetch_array($ret)) {
+    //echo "User Type from Database: " . $row['user_type']; // Add this line for debugging
+    ?>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">First Name</label></div>
+                                        <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php  echo $row['FirstName'];?>">
+                                            </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">Last Name</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="lastname" required="true" class="form-control"  readonly="true"value="<?php  echo $row['LastName'];?>"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Contact Number</label></div>
+                                        <div class="col-12 col-md-9"> <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" readonly="true" class="form-control" value="<?php  echo $row['MobileNumber'];?>"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Email address</label></div>
+                                        <div class="col-12 col-md-9"><input type="email" name="email" required="true" class="form-control" value="<?php  echo $row['Email'];?>"  readonly="true"></div>
+                                    </div>
+                                  
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Registration</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="regdate" value="<?php  echo $row['RegDate'];?>"  readonly="true" class="form-control"></div>
+                                    </div>
+                                    <!--
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">UserType</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="userType" value="<?php  echo $row['user_type'];?>"  readonly="true" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Place</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
+                                    </div>
+
+<div class="row form-group">
+    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
+    <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
+</form>-->
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
+        <div class="modal-content">
+            <div class="modal-header" style="padding: 2px;">
+                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
+            </div>
         </div>
     </div>
 </div>
 
 
-    <div class="content"><!-- START: Content -->
-        <div class="animated fadeIn"><!-- START: Animated Fade In -->
+<script>
+$(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src'); 
+    const title = $(this).attr('alt'); 
+    const img = new Image(); 
+    img.src = src; 
 
-            <div class="col-lg-12"><!-- START: Column -->
-                <div class="card "><!-- START: Card -->
-                    <div class="card-header">
-                        <strong>User </strong> Profile
+    img.onload = function () {
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+
+        $('#modalImage').attr('src', src).css({
+            display: 'block',
+            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
+            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain',
+        });
+
+        // Update modal title dynamically if needed
+        if (title) {
+            $('#imageModalTitle').text(title);
+        }
+
+        // Open the modal
+        $('#imageModal').modal('show');
+    };
+});
+
+
+
+</script>
+
+
+<!-- HTML Form -->
+<div class="container mt-5">
+    <div class="row">
+        <?php if ($orImage): ?>
+            <div class="col-md-4 mb-4">
+                <h4>OR File</h4>
+                <img src="<?php echo $orImage; ?>" alt="OR File" 
+                     class="img-fluid clickable-image" 
+                     data-toggle="modal" data-target="#imageModal" 
+                     data-title="OR File">
+            </div>
+        <?php endif; ?>
+
+        <?php if ($crImage): ?>
+            <div class="col-md-4 mb-4 im">
+                <h4>CR File</h4>
+                <img src="<?php echo $crImage; ?>" alt="CR File" 
+                     class="img-fluid clickable-image" 
+                     data-toggle="modal" data-target="#imageModal" 
+                     data-title="CR File">
+            </div>
+        <?php endif; ?>
+
+        <?php if ($nvImage): ?>
+            <div class="col-md-4 mb-4">
+                <h4>MV File</h4>
+                <img src="<?php echo $nvImage; ?>" alt="NV File" 
+                     class="img-fluid clickable-image" 
+                     data-toggle="modal" data-target="#imageModal" 
+                     data-title="NV File">
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- JavaScript for Modal Image Handling -->
+<script>
+  $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src');
+    const img = new Image();
+    img.src = src;
+
+    img.onload = function () {
+        const modalImage = $('#modalImage');
+        const modalBody = $('.modal-body');
+
+        // Set the modal image source
+        modalImage.attr('src', src);
+
+        if (img.width > img.height) {
+            modalImage.css({
+                'max-width': '100%',
+                'max-height': '100vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        } else {
+            modalImage.css({
+                'max-width': '60%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        }
+
+        $('#imageModalTitle').text($(this).data('title'));
+    };
+});
+
+</script>
+    <div class="reg">
+    <p>Registration Status: <?php echo $registrationStatus; ?></p>
+
+    <!-- Persistent Notification system -->
+    <div id="notification" style="display: none;">
+        <span id="notification-message">Please upload your files.</span>
+        <button id="notification-close"><i class="bi bi-x-circle-fill"></i></button>
+    </div>
+
+    <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data">
+        <div class="row form-group">
+            <div class="col-md-3">
+                <label for="registration-status" class="form-control-label">Registration Status</label>
+            </div>
+            <div class="col-md-9">
+                <select id="registration-status" name="registration_status" class="form-control  regs" required>
+                    <option value="" disabled selected>Select Registration Status</option>
+                    <option value="for_registration" <?php echo $registrationStatus === 'for_registration' ? 'selected' : ''; ?>>For Registration</option>
+                    <option value="registered" <?php echo $registrationStatus === 'registered' ? 'selected' : ''; ?>>Registered</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="imgp">
+                <div class="row form-group" id="for-registration-files" style="display: none;">
+                    <div class="col-md-3">
+                        <label for="nv-file" class="form-control-label ">Upload MV File</label>
                     </div>
-                    <div class="card-body card-block table-responsive" ><!-- START: Card Body -->
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal"><!-- START: Form -->
+                    <div class="col-md-9">
+                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
+                    </div>
+                </div>
 
-                            <?php
-                                $uid = $_SESSION['vpmsuid'];
-                                $ret = mysqli_query($con, "SELECT * FROM tblregusers WHERE ID='$uid'");
-                                $cnt = 1;
-                                while ($row = mysqli_fetch_array($ret)) {
-                            ?>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="text-input" class="form-control-label">First Name</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php echo $row['FirstName']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="email-input" class="form-control-label">Last Name</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="lastname" required="true" class="form-control" readonly="true" value="<?php echo $row['LastName']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="password-input" class="form-control-label">Contact Number</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="mobilenumber" maxlength="10" pattern="[0-9]{10}" readonly="true" class="form-control" value="<?php echo $row['MobileNumber']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="disabled-input" class="form-control-label">Email Address</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="email" name="email" required="true" class="form-control" readonly="true" value="<?php echo $row['Email']; ?>">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="disabled-input" class="form-control-label">Registration</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" name="regdate" readonly="true" class="form-control" value="<?php echo $row['RegDate']; ?>">
-                                    </div>
-                                </div>
-                            <?php } ?>
+                <div class="row form-group" id="registered-files" style="display: none;">
+                <div class="col-12 col-md-3">
+                    <label for="or-file" class="form-control-label">Upload OR File</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
+                </div>
+                <div class="w-100 d-md-none"></div> <!-- Forces a new row on small screens -->
+                <div class="col-12 col-md-3 mt-3 mt-md-0">
+                    <label for="cr-file" class="form-control-label ">Upload CR File</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
+                </div>
+            </div>
 
-                            <div class="container"><!-- START: Container -->
-                                <div class="row">
-                                    <?php if ($orImage): ?>
-                                        <div class="col-md-4 mb-4">
-                                            <h4>OR File</h4>
-                                            <img src="<?php echo $orImage; ?>" alt="OR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="OR File">
-                                        </div>
-                                    <?php endif; ?>
+        </div>
+        
+        <div class="row form-group">
+                    <div class="col text-center">
+                        <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
+                </div>
+        </div>  
+    </form>
+</div>
+</div>
+<script>
+        // Show/hide upload fields based on selected registration status
+        document.getElementById('registration-status').addEventListener('change', function() {
+            const registeredFiles = document.getElementById('registered-files');
+            const forRegistrationFiles = document.getElementById('for-registration-files');
 
-                                    <?php if ($crImage): ?>
-                                        <div class="col-md-4 mb-4">
-                                            <h4>CR File</h4>
-                                            <img src="<?php echo $crImage; ?>" alt="CR File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="CR File">
-                                        </div>
-                                    <?php endif; ?>
+            if (this.value === 'registered') {
+                registeredFiles.style.display = 'block';
+                forRegistrationFiles.style.display = 'none';
+            } else if (this.value === 'for_registration') {
+                registeredFiles.style.display = 'none';
+                forRegistrationFiles.style.display = 'block';
+            } else {
+                registeredFiles.style.display = 'none';
+                forRegistrationFiles.style.display = 'none';
+            }
+        });
 
-                                    <?php if ($nvImage): ?>
-                                        <div class="col-md-4 mb-4">
-                                            <h4>MV File</h4>
-                                            <img src="<?php echo $nvImage; ?>" alt="NV File" class="img-fluid clickable-image" data-toggle="modal" data-target="#imageModal" data-title="NV File">
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div><!-- END: Container -->
+        // Close notification on click
+        document.getElementById('notification-close').addEventListener('click', function() {
+            document.getElementById('notification').style.display = 'none';
+        });
+    </script>
 
-                            <div class="reg"><!-- START: Registration -->
-                                <p>Registration Status: <?php echo $registrationStatus; ?></p>
+<script>
+    function startReminderNotification() {
+        var notification = document.getElementById('notification');
+        var notificationMessage = document.getElementById('notification-message');
+        notification.style.display = 'block';
 
-                                <!-- START: Persistent Notification System -->
-                                <div id="notification" style="display: none;">
-                                    <span id="notification-message">Please upload your files.</span>
-                                    <button id="notification-close"><i class="bi bi-x-circle-fill"></i></button>
-                                </div><!-- END: Persistent Notification System -->
+        // Customize the message or keep it from PHP
+        notificationMessage.textContent = notificationMessage.textContent || "Please upload your files.";
 
-                                <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data"><!-- START: Upload Form -->
-                                    <div class="row form-group">
-                                        <div class="col-md-3">
-                                            <label for="registration-status" class="form-control-label">Registration Status</label>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <select id="registration-status" name="registration_status" class="form-control regs" required>
-                                                <option value="" disabled selected>Select Registration Status</option>
-                                                <option value="for_registration" <?php echo $registrationStatus === 'for_registration' ? 'selected' : ''; ?>>For Registration</option>
-                                                <option value="registered" <?php echo $registrationStatus === 'registered' ? 'selected' : ''; ?>>Registered</option>
-                                            </select>
-                                        </div>
-                                    </div>
+        // Toggle visibility every second
+        setInterval(function () {
+            notification.style.display = notification.style.display === 'none' ? 'block' : 'none';
+        }, 1000); // Toggle visibility every second
+    }
 
-                                    <div class="imgp"><!-- START: File Uploads -->
-                                        <div class="row form-group" id="for-registration-files" style="display: none;">
-                                            <div class="col-md-3">
-                                                <label for="nv-file" class="form-control-label">Upload MV File</label>
-                                            </div><br>
-                                            <div class="col-md-9">
-                                                <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
-                                            </div>
-                                        </div>
+    function hideNotification() {
+        var notification = document.getElementById('notification');
+        notification.style.display = 'none';
+    }
 
-                                        <div class="row form-group" id="registered-files" style="display: none;">
-                                            <div class="col-md-3">
-                                                <label for="or-file" class="form-control-label">Upload OR File</label>
-                                            </div>
-                                            <div class="col-md-9"><br>
-                                                <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
-                                            </div><br>
-                                            <div class="col-md-3">
-                                                <label for="cr-file" class="form-control-label">Upload CR File</label>
-                                            </div>
-                                            <div class="col-md-9"><br>
-                                                <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
-                                            </div>
-                                        </div>
-                                    </div><!-- END: File Uploads -->
+    document.addEventListener('DOMContentLoaded', function () {
+        var orImageUploaded = <?php echo json_encode(!empty($orImage)); ?>;
+        var crImageUploaded = <?php echo json_encode(!empty($crImage)); ?>;
+        var nvImageUploaded = <?php echo json_encode(!empty($nvImage)); ?>;
 
-                                    <div class="row form-group">
-                                        <div class="col text-center">
-                                            <button type="submit" id="submit-button" class="btn btn-primary btn-sm">
-                                                <i class="bi bi-images"></i> Submit
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form><!-- END: Upload Form -->
-                            </div><!-- END: Registration -->
-                        </form><!-- END: Form -->
-                    </div><!-- END: Card Body -->
-                </div><!-- END: Card -->
-            </div><!-- END: Column -->
-        </div><!-- END: Animated Fade In -->
-    </div><!-- END: Content -->
-     <!-- START: Bootstrap Modal -->
-     <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document" >
-                                    <div class="modal-content">
-                                        <div class="modal-header" style="padding: 2px;">
-                                            <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
-                                                <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- END: Bootstrap Modal -->
-</div><!-- END: Right Panel -->
+        // Show notification only if no files are uploaded
+        if (!orImageUploaded && !crImageUploaded && !nvImageUploaded) {
+            startReminderNotification();
+        }
+
+        // File input elements
+        var nvFileInput = document.getElementById('nv-file');
+        var orFileInput = document.getElementById('or-file');
+        var crFileInput = document.getElementById('cr-file');
+        var form = document.getElementById('upload-form');
+        var registrationStatus = document.getElementById('registration-status');
+
+        function anyFileUploaded() {
+            // Check if any file has been uploaded, including PHP pre-upload checks
+            return (
+                nvFileInput.files.length > 0 ||
+                orFileInput.files.length > 0 &&
+                crFileInput.files.length > 0 &&
+                orImageUploaded &&
+                crImageUploaded ||
+                nvImageUploaded
+            );
+        }
+
+        function checkNotification() {
+            if (anyFileUploaded()) {
+                hideNotification(); // Hide notification if any file is uploaded
+                return true;
+            } else {
+                startReminderNotification(); // Show notification if no files are uploaded
+                return false;
+            }
+        }
+
+        // Add event listeners to file inputs to check for uploads
+        nvFileInput.addEventListener('change', checkNotification);
+        orFileInput.addEventListener('change', checkNotification);
+        crFileInput.addEventListener('change', checkNotification);
+
+        // Handle registration status change
+        registrationStatus.addEventListener('change', function () {
+            checkNotification();
+        });
+
+        const form = document.querySelector('#myForm');
+
+function checkNotification() {
+    const fileInput = document.querySelector('#fileInput');
+    if (!fileInput.files.length) {
+        alert("Please upload a file before submitting!");
+        return false;
+    }
+    return true;
+}
+
+form.addEventListener('submit', function (event) {
+    if (!checkNotification()) {
+        event.preventDefault();
+    }
+});
 
 
+        // Close button event listener for the notification
+        document.getElementById('notification-close').addEventListener('click', function () {
+            hideNotification();
+        });
 
-                        <script>
-                        $(document).on('click', '.clickable-image', function () {
-                            const src = $(this).attr('src'); 
-                            const title = $(this).attr('alt'); 
-                            const img = new Image(); 
-                            img.src = src; 
+        // Initial check and setup on page load
+        checkNotification();
+    });
+</script>
 
-                            img.onload = function () {
-                                const naturalWidth = img.naturalWidth;
-                                const naturalHeight = img.naturalHeight;
-
-                                $('#modalImage').attr('src', src).css({
-                                    display: 'block',
-                                    width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
-                                    height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
-                                    objectFit: 'contain',
-                                });
-
-                                // Update modal title dynamically if needed
-                                if (title) {
-                                    $('#imageModalTitle').text(title);
-                                }
-
-                                // Open the modal
-                                $('#imageModal').modal('show');
-                            };
-                        });
-                        </script>
-
-
-                        <!-- Include Bootstrap JS and jQuery -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-                        <!-- JavaScript for Modal Image Handling -->
-                        <script>
-                        $(document).on('click', '.clickable-image', function () {
-                            const src = $(this).attr('src');
-                            const img = new Image();
-                            img.src = src;
-
-                            img.onload = function () {
-                                const modalImage = $('#modalImage');
-                                const modalBody = $('.modal-body');
-
-                                // Set the modal image source
-                                modalImage.attr('src', src);
-
-                                if (img.width > img.height) {
-                                    modalImage.css({
-                                        'max-width': '100%',
-                                        'max-height': '100vh',
-                                        'width': 'auto',
-                                        'height': 'auto'
-                                    });
-                                } else {
-                                    modalImage.css({
-                                        'max-width': '60%',
-                                        'max-height': '80vh',
-                                        'width': 'auto',
-                                        'height': 'auto'
-                                    });
-                                }
-
-                                $('#imageModalTitle').text($(this).data('title'));
-                            };
-                        });
-
-                        </script>
-                        
-                        <script>
-                                // Show/hide upload fields based on selected registration status
-                                document.getElementById('registration-status').addEventListener('change', function() {
-                                    const registeredFiles = document.getElementById('registered-files');
-                                    const forRegistrationFiles = document.getElementById('for-registration-files');
-
-                                    if (this.value === 'registered') {
-                                        registeredFiles.style.display = 'block';
-                                        forRegistrationFiles.style.display = 'none';
-                                    } else if (this.value === 'for_registration') {
-                                        registeredFiles.style.display = 'none';
-                                        forRegistrationFiles.style.display = 'block';
-                                    } else {
-                                        registeredFiles.style.display = 'none';
-                                        forRegistrationFiles.style.display = 'none';
-                                    }
-                                });
-
-                                // Close notification on click
-                                document.getElementById('notification-close').addEventListener('click', function() {
-                                    document.getElementById('notification').style.display = 'none';
-                                });
-                            </script>
-
-                        <script>
-                            function startReminderNotification() {
-                                var notification = document.getElementById('notification');
-                                var notificationMessage = document.getElementById('notification-message');
-                                notification.style.display = 'block';
-
-                                // Customize the message or keep it from PHP
-                                notificationMessage.textContent = notificationMessage.textContent || "Please upload your files.";
-
-                                // Toggle visibility every second
-                                setInterval(function () {
-                                    notification.style.display = notification.style.display === 'none' ? 'block' : 'none';
-                                }, 1000); // Toggle visibility every second
-                            }
-
-                            function hideNotification() {
-                                var notification = document.getElementById('notification');
-                                notification.style.display = 'none';
-                            }
-
-                            document.addEventListener('DOMContentLoaded', function () {
-                                var orImageUploaded = <?php echo json_encode(!empty($orImage)); ?>;
-                                var crImageUploaded = <?php echo json_encode(!empty($crImage)); ?>;
-                                var nvImageUploaded = <?php echo json_encode(!empty($nvImage)); ?>;
-
-                                // Show notification only if no files are uploaded
-                                if (!orImageUploaded && !crImageUploaded && !nvImageUploaded) {
-                                    startReminderNotification();
-                                }
-
-                                // File input elements
-                                var nvFileInput = document.getElementById('nv-file');
-                                var orFileInput = document.getElementById('or-file');
-                                var crFileInput = document.getElementById('cr-file');
-                                var form = document.getElementById('upload-form');
-                                var registrationStatus = document.getElementById('registration-status');
-
-                                function anyFileUploaded() {
-                                    // Check if any file has been uploaded, including PHP pre-upload checks
-                                    return (
-                                        nvFileInput.files.length > 0 ||
-                                        orFileInput.files.length > 0 &&
-                                        crFileInput.files.length > 0 &&
-                                        orImageUploaded &&
-                                        crImageUploaded ||
-                                        nvImageUploaded
-                                    );
-                                }
-
-                                function checkNotification() {
-                                    if (anyFileUploaded()) {
-                                        hideNotification(); // Hide notification if any file is uploaded
-                                        return true;
-                                    } else {
-                                        startReminderNotification(); // Show notification if no files are uploaded
-                                        return false;
-                                    }
-                                }
-
-                                // Add event listeners to file inputs to check for uploads
-                                nvFileInput.addEventListener('change', checkNotification);
-                                orFileInput.addEventListener('change', checkNotification);
-                                crFileInput.addEventListener('change', checkNotification);
-
-                                // Handle registration status change
-                                registrationStatus.addEventListener('change', function () {
-                                    checkNotification();
-                                });
-
-                                const form = document.querySelector('#myForm');
-
-                        function checkNotification() {
-                            const fileInput = document.querySelector('#fileInput');
-                            if (!fileInput.files.length) {
-                                alert("Please upload a file before submitting!");
-                                return false;
-                            }
-                            return true;
-                        }
-
-                        form.addEventListener('submit', function (event) {
-                            if (!checkNotification()) {
-                                event.preventDefault();
-                            }
-                        });
-
-
-                                // Close button event listener for the notification
-                                document.getElementById('notification-close').addEventListener('click', function () {
-                                    hideNotification();
-                                });
-
-                                // Initial check and setup on page load
-                                checkNotification();
-                            });
-                        </script>
-
+         <?php } ?>
                 <!--<p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>-->
+                </form>
+            </div>    
+                </div>
+                    </div>
+                <div class="col-lg-6">
+                </div>
+            </div>
+
+        </div><!-- .animated -->
+    </div><!-- .content -->
 
     <div class="clearfix"></div>
+
+</div><!-- /#right-panel -->
+
+<!-- Right Panel -->
 
 <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
@@ -691,6 +681,7 @@ html,body{
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="../admin/assets/js/main.js"></script>
+
 
 </body>
 </html>
