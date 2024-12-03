@@ -222,8 +222,6 @@ html,body{
 
 .modal.fade .modal-dialog {
     transform: none; 
-    width: 1000px;
-    height: 1000px;
 }
 
 
@@ -344,7 +342,7 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 500px; height: 500px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
