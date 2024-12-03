@@ -392,10 +392,10 @@ body, * {
                             <div class="user-area dropdown float-right">
                                     <div class="avatar"  style="margin-top: -100px; position fixed;">
                                     <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img class="user-avatar " src="../admin/images/images.png" alt="User Avatar" style="width: 50px; height: 50px; font-weight: normal;">
+                                        <img class="user-avatar " src="../admin/images/images.png" alt="User Avatar" style="width: 50px; height: 50px; ">
                                     </a>
                                 <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; ">
-                                    <a class="nav-link" href="profile.php" style="margin-bottom: 8px; margin-top: 8px;"><i class="fa bi-person-fill" > My Profile
+                                    <a class="nav-link" href="profile.php" style="margin-bottom: 8px; margin-top: 8px; font-weight: normal;"><i class="fa bi-person-fill" > My Profile
                                     </i></a>
 
                                      <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
@@ -403,9 +403,9 @@ body, * {
                                     <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
                                <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
 
-                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px;"><i class="fa bi-gear-fill"> Change Password</i></a>
+                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px; font-weight: normal;"><i class="fa bi-gear-fill"> Change Password</i></a>
 
-                                    <a class="nav-link" onclick="return handleLogout();" style="margin-bottom: 8px;"><i class="fa bi-box-arrow-right"> Logout
+                                    <a class="nav-link" onclick="return handleLogout();" style="margin-bottom: 8px; font-weight: normal;"><i class="fa bi-box-arrow-right"> Logout
                                     </i></a>
                                 </div>
                                 
