@@ -210,10 +210,18 @@ return true;
     echo $msg;
   }  ?> </p>
                         <div class="form-group field space">
-                        <span class="fa bi bi-lock-fill"></span>
-                        <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password" required="true">
-                        <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 11px; cursor: pointer; color: black;"></i>
-                    </div>
+    <span class="fa bi bi-lock-fill"></span>
+    <input type="password" 
+           class="form-control" 
+           id="newpassword" 
+           name="newpassword" 
+           placeholder="New Password" 
+           required="true" 
+           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}" 
+           title="Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.">
+    <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 11px; cursor: pointer; color: black;"></i>
+</div>
+
                     <div class="form-group field space">
                         <span class="fa bi bi-shield-lock-fill"></span>
                         <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required="true">
