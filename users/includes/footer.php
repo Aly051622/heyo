@@ -174,13 +174,15 @@
   position: relative;
 }
 
-.iframe-content {
-  width: 100%;
-  height: 400px;
-  border: none;
-  object-fit: contain;
+.modal-dialog.custom-width {
+    max-width: 90%; /* Adjust the percentage as needed */
+    width: auto;
 }
-
+.iframe-content {
+    width: 100%; /* Ensure the iframe spans the full modal width */
+    height: 80vh; /* Adjust height to fit within the viewport */
+    border: none; /* Remove border from iframe */
+}
 .close-btn {
   position: absolute;
   top: 10px;
@@ -234,28 +236,36 @@
       </div></marquee>
     </footer>
 
-    <!-- Slide Modal -->
-  <div id="slide-modal" class="modal modal-dialog-centered">
-    <div class="modal-content  ">
-      <iframe src="slide.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
+   <!-- Slide Modal -->
+<div id="slide-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="slide.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
     </div>
-  </div>
-  <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="modal modal-dialog-centered">
-    <div class="modal-content ">
-      <iframe src="policy.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
-    </div>
-  </div>
+</div>
 
-  <!-- Terms and Conditions Modal -->
-  <div id="terms-modal" class="modal modal-dialog-centered">
-    <div class="modal-content ">
-      <iframe src="terms.php" class="iframe-content"></iframe>
-      <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
+<!-- Privacy Policy Modal -->
+<div id="privacy-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="policy.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
     </div>
-  </div>
+</div>
+
+<!-- Terms and Conditions Modal -->
+<div id="terms-modal" class="modal modal-dialog-centered">
+    <div class="modal-dialog custom-width"> <!-- Use custom-width class -->
+        <div class="modal-content">
+            <iframe src="terms.php" class="iframe-content"></iframe>
+            <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+    </div>
+</div>
+
 
   <script>
     // Select Elements
