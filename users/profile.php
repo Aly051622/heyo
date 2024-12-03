@@ -206,7 +206,7 @@ html,body{
 
 .modal-dialog {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 100vw;
     height: 100vh;
