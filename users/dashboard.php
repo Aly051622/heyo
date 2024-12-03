@@ -1,63 +1,48 @@
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 error_reporting(0);
 include('../DBconnection/dbconnection.php');
-error_reporting(0);
-if (strlen($_SESSION['vpmsuid']==0)) {
-  header('location:logout.php');
-  } else{ 
-    
+
+if (strlen($_SESSION['vpmsuid'] == 0)) {
+    header('location:logout.php');
+} else {
     $uid = $_SESSION['vpmsuid'];
 
-    // Fetch user information and validity status using email to join the uploads table
-    $userQuery = mysqli_query($con, "SELECT u.*, up.validity AS upload_validity, up.expiration_date FROM tblregusers u LEFT JOIN uploads up ON u.email = up.email WHERE u.ID='$uid'");
+    // Fetch user information and validity status from tblregusers
+    $userQuery = mysqli_query($con, "SELECT * FROM tblregusers WHERE ID='$uid'");
 
     if (!$userQuery) {
-        die("Error in query: " . mysqli_error($con)); // Add error handling for debugging
+        die("Error in query: " . mysqli_error($con)); // Error handling for debugging
     }
 
     $userData = mysqli_fetch_array($userQuery);
 
-    // Debug: Check if user data is fetched successfully
     if (!$userData) {
-        die("Error fetching user data: " . mysqli_error($con));
+        die("Error fetching user data: " . mysqli_error($con)); // Additional error handling
     }
 
-    // Get the expiration date
+    // Get the current date
     $currentDate = date('Y-m-d');
-    $expirationDate = $userData['expiration_date'];
 
-    // Check if expiration date is valid
-    $expirationTimestamp = $expirationDate ? strtotime($expirationDate) : null; // Check if expiration_date is not null
-    $currentTimestamp = strtotime($currentDate);
-
-    // Determine validity status
+    // Determine the validity status
     $regValidityStatus = $userData['validity']; // Validity from tblregusers
-    $uploadValidityStatus = $userData['upload_validity']; // Validity from uploads table
     $licenseStatusMessage = "";
 
-    // Check if the license is expired and set the notification message
+    // Check validity and set the appropriate notification message
     if ($regValidityStatus == 0) {
-        // Validity is 0 means the license is invalid
+        // Validity is 0 (license expired)
         $licenseStatusMessage = "Your driver's license is expired. Please renew it.";
     } elseif ($regValidityStatus == -2) {
-        // User is unvalidated, do not show license messages
-        $licenseStatusMessage = ""; // Explicitly set to empty for clarity
-    } elseif ($uploadValidityStatus == 0) {
-        // Check validity in uploads for invalidated clients
-        $licenseStatusMessage = "Your driver's license is expired. Please renew it.";
-    } elseif ($uploadValidityStatus == -2) {
-        // Unvalidated users do not receive notifications
-        $licenseStatusMessage = ""; // Explicitly set to empty for clarity
-    } elseif ($expirationTimestamp && $expirationTimestamp < $currentTimestamp && $expirationTimestamp >= strtotime("-3 months", $currentTimestamp)) {
-        // License expired but within 3 months grace period
-        $licenseStatusMessage = "Your driver's license has expired. You have 3 months to renew it before your account is voided.";
+        // Validity is -2 (unvalidated account)
+        $licenseStatusMessage = "Your account is unvalidated. Please complete your registration.";
+    } elseif ($regValidityStatus == 1) {
+        // Validity is 1 (validated account) - No notification
+        $licenseStatusMessage = ""; // Explicitly set to empty
     }
 
-    // Sanitize user data for output
+    // Sanitize user data for secure output
     $firstName = isset($userData['FirstName']) ? htmlspecialchars($userData['FirstName'], ENT_QUOTES, 'UTF-8') : 'User';
     $lastName = isset($userData['LastName']) ? htmlspecialchars($userData['LastName'], ENT_QUOTES, 'UTF-8') : '';
 
