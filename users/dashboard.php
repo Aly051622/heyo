@@ -183,7 +183,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             padding: 4px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             color: #333;
-            z-index: 1005;
+            z-index: -1;
             position: absolute;
             border-radius: 9px;
             text-align: center;
