@@ -187,8 +187,8 @@ html,body{
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
     }
     .modal-backdrop {
-    z-index: 1040; /* Ensure the backdrop is below the modal */
-    pointer-events: none; /* Allows clicks to pass through the backdrop */
+    z-index: 1040; 
+    pointer-events: none;
     background-color: transparent;
     }
 
@@ -196,30 +196,28 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Enable scrolling for large images */
+    overflow: auto; 
 }
 
 .modal-body img {
-    max-width: none; /* Ensure the image displays at its full size */
-    max-height: none; /* Ensure the image displays at its full size */
+    max-width: none; 
+    max-height: none; 
 }
-
-
-
 
 .modal-dialog {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 100%;
+    width: 100%;
+    height: auto;
     margin: 0 auto;
     overflow: auto;
 }
 
 .modal-content {
-    background: transparent; /* Transparent background for focus on image */
-    border: none; /* No border for a cleaner look */
-    box-shadow: none; /* No shadow for a cleaner look */
+    background: transparent; 
+    border: none;
+    box-shadow: none; 
 }
 
 .modal.fade .modal-dialog {
