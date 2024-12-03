@@ -89,11 +89,13 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="css/responsive/.css">
-
-   <style>
+    <style>
 
 #notification {
     position: fixed;
@@ -306,12 +308,12 @@ html,body{
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                    
                                    <?php
-$uid=$_SESSION['vpmsuid'];
-$ret=mysqli_query($con,"select * from tblregusers where ID='$uid'");
-$cnt=1;
-while ($row = mysqli_fetch_array($ret)) {
-    //echo "User Type from Database: " . $row['user_type']; // Add this line for debugging
-    ?>
+                                    $uid=$_SESSION['vpmsuid'];
+                                    $ret=mysqli_query($con,"select * from tblregusers where ID='$uid'");
+                                    $cnt=1;
+                                    while ($row = mysqli_fetch_array($ret)) {
+                                        //echo "User Type from Database: " . $row['user_type']; // Add this line for debugging
+                                        ?>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">First Name</label></div>
                                         <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php  echo $row['FirstName'];?>">
@@ -344,64 +346,64 @@ while ($row = mysqli_fetch_array($ret)) {
                                         <div class="col-12 col-md-9"><input type="text" name="place" value="<?php  echo $row['place'];?>"  readonly="true" class="form-control"></div>
                                     </div>
 
-<div class="row form-group">
-    <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
-    <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
-</form>-->
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">License Number</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="LicenseNumber" value="<?php echo $row['LicenseNumber']; ?>" readonly="true" class="form-control"></div>
+                                    </form>-->
 
-<!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" >
-    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
-        <div class="modal-content">
-            <div class="modal-header" style="padding: 2px;">
-                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
-                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
-            </div>
-        </div>
-    </div>
-</div>
+                    <!-- Bootstrap Modal -->
+                    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" >
+                        <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
+                            <div class="modal-content">
+                                <div class="modal-header" style="padding: 2px;">
+                                    <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
+                                        <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    
+                <div class="container mt-5">
+                    <div class="row">
+                        <?php if ($orImage): ?>
+                            <div class="col-md-4 mb-4">
+                                <h4>OR File</h4>
+                                <img src="<?php echo $orImage; ?>" alt="OR File" 
+                                    class="img-fluid clickable-image" 
+                                    data-toggle="modal" data-target="#imageModal" 
+                                    data-title="OR File">
+                            </div>
+                        <?php endif; ?>
 
-<div class="container mt-5">
-    <div class="row">
-        <?php if ($orImage): ?>
-            <div class="col-md-4 mb-4">
-                <h4>OR File</h4>
-                <img src="<?php echo $orImage; ?>" alt="OR File" 
-                     class="img-fluid clickable-image" 
-                     data-toggle="modal" data-target="#imageModal" 
-                     data-title="OR File">
-            </div>
-        <?php endif; ?>
+                        <?php if ($crImage): ?>
+                            <div class="col-md-4 mb-4 im">
+                                <h4>CR File</h4>
+                                <img src="<?php echo $crImage; ?>" alt="CR File" 
+                                    class="img-fluid clickable-image" 
+                                    data-toggle="modal" data-target="#imageModal" 
+                                    data-title="CR File">
+                            </div>
+                        <?php endif; ?>
 
-        <?php if ($crImage): ?>
-            <div class="col-md-4 mb-4 im">
-                <h4>CR File</h4>
-                <img src="<?php echo $crImage; ?>" alt="CR File" 
-                     class="img-fluid clickable-image" 
-                     data-toggle="modal" data-target="#imageModal" 
-                     data-title="CR File">
-            </div>
-        <?php endif; ?>
+                        <?php if ($nvImage): ?>
+                            <div class="col-md-4 mb-4">
+                                <h4>MV File</h4>
+                                <img src="<?php echo $nvImage; ?>" alt="NV File" 
+                                    class="img-fluid clickable-image" 
+                                    data-toggle="modal" data-target="#imageModal" 
+                                    data-title="NV File">
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
 
-        <?php if ($nvImage): ?>
-            <div class="col-md-4 mb-4">
-                <h4>MV File</h4>
-                <img src="<?php echo $nvImage; ?>" alt="NV File" 
-                     class="img-fluid clickable-image" 
-                     data-toggle="modal" data-target="#imageModal" 
-                     data-title="NV File">
-            </div>
-        <?php endif; ?>
-    </div>
-</div>
-
-    <div class="reg">
+                <div class="reg">
     <p>Registration Status: <?php echo $registrationStatus; ?></p>
 
     <!-- Persistent Notification system -->
@@ -452,167 +454,57 @@ while ($row = mysqli_fetch_array($ret)) {
 
         </div>
         
-        <div class="row form-group">
-                    <div class="col text-center">
-                        <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
-                </div>
-        </div>  
-    </form>
-</div>
-</div>
-<script>
-        // Show/hide upload fields based on selected registration status
-        document.getElementById('registration-status').addEventListener('change', function() {
-            const registeredFiles = document.getElementById('registered-files');
-            const forRegistrationFiles = document.getElementById('for-registration-files');
+            <div class="row form-group">
+                        <div class="col text-center">
+                            <button type="submit" id="submit-button" class="btn btn-primary btn-sm"><i class="bi bi-images"></i> Submit</button>
+                    </div>
+            </div>  
+        </form>
+    </div>
+    </div>
 
-            if (this.value === 'registered') {
-                registeredFiles.style.display = 'block';
-                forRegistrationFiles.style.display = 'none';
-            } else if (this.value === 'for_registration') {
-                registeredFiles.style.display = 'none';
-                forRegistrationFiles.style.display = 'block';
-            } else {
-                registeredFiles.style.display = 'none';
-                forRegistrationFiles.style.display = 'none';
-            }
-        });
+    <script>
+    $(document).on('click', '.clickable-image', function () {
+        const src = $(this).attr('src'); 
+        const title = $(this).attr('alt'); 
+        const img = new Image(); 
+        img.src = src; 
 
-        // Close notification on click
-        document.getElementById('notification-close').addEventListener('click', function() {
-            document.getElementById('notification').style.display = 'none';
-        });
- 
-    function startReminderNotification() {
-        var notification = document.getElementById('notification');
-        var notificationMessage = document.getElementById('notification-message');
-        notification.style.display = 'block';
+        img.onload = function () {
+            const naturalWidth = img.naturalWidth;
+            const naturalHeight = img.naturalHeight;
 
-        // Customize the message or keep it from PHP
-        notificationMessage.textContent = notificationMessage.textContent || "Please upload your files.";
-
-        // Toggle visibility every second
-        setInterval(function () {
-            notification.style.display = notification.style.display === 'none' ? 'block' : 'none';
-        }, 1000); // Toggle visibility every second
-    }
-
-    function hideNotification() {
-        var notification = document.getElementById('notification');
-        notification.style.display = 'none';
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var orImageUploaded = <?php echo json_encode(!empty($orImage)); ?>;
-        var crImageUploaded = <?php echo json_encode(!empty($crImage)); ?>;
-        var nvImageUploaded = <?php echo json_encode(!empty($nvImage)); ?>;
-
-        // Show notification only if no files are uploaded
-        if (!orImageUploaded && !crImageUploaded && !nvImageUploaded) {
-            startReminderNotification();
-        }
-
-        // File input elements
-        var nvFileInput = document.getElementById('nv-file');
-        var orFileInput = document.getElementById('or-file');
-        var crFileInput = document.getElementById('cr-file');
-        var form = document.getElementById('upload-form');
-        var registrationStatus = document.getElementById('registration-status');
-
-        function anyFileUploaded() {
-            // Check if any file has been uploaded, including PHP pre-upload checks
-            return (
-                nvFileInput.files.length > 0 ||
-                orFileInput.files.length > 0 &&
-                crFileInput.files.length > 0 &&
-                orImageUploaded &&
-                crImageUploaded ||
-                nvImageUploaded
-            );
-        }
-
-        function checkNotification() {
-            if (anyFileUploaded()) {
-                hideNotification(); // Hide notification if any file is uploaded
-                return true;
-            } else {
-                startReminderNotification(); // Show notification if no files are uploaded
-                return false;
-            }
-        }
-
-        // Add event listeners to file inputs to check for uploads
-        nvFileInput.addEventListener('change', checkNotification);
-        orFileInput.addEventListener('change', checkNotification);
-        crFileInput.addEventListener('change', checkNotification);
-
-        // Handle registration status change
-        registrationStatus.addEventListener('change', function () {
-            checkNotification();
-        });
-
-        const form = document.querySelector('#myForm');
-
-        function checkNotification() {
-            const fileInput = document.querySelector('#fileInput');
-            if (!fileInput.files.length) {
-                alert("Please upload a file before submitting!");
-                return false;
-            }
-            return true;
-        }
-
-        form.addEventListener('submit', function (event) {
-            if (!checkNotification()) {
-                event.preventDefault();
-            }
-        });
-
-
-                // Close button event listener for the notification
-                document.getElementById('notification-close').addEventListener('click', function () {
-                    hideNotification();
-                });
-
-                // Initial check and setup on page load
-                checkNotification();
+            $('#modalImage').attr('src', src).css({
+                display: 'block',
+                width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
+                height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
+                maxWidth: '100%',
+                maxHeight: '100%',
+                objectFit: 'contain',
             });
 
-            $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); 
-    const title = $(this).attr('alt'); 
-    const img = new Image(); 
-    img.src = src; 
+            // Update modal title dynamically if needed
+            if (title) {
+                $('#imageModalTitle').text(title);
+            }
 
-    img.onload = function () {
-        const naturalWidth = img.naturalWidth;
-        const naturalHeight = img.naturalHeight;
+            // Open the modal
+            $('#imageModal').modal('show');
+        };
+    });
+    </script>
 
-        $('#modalImage').attr('src', src).css({
-            display: 'block',
-            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
-            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain',
-        });
 
-        // Update modal title dynamically if needed
-        if (title) {
-            $('#imageModalTitle').text(title);
-        }
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        // Open the modal
-        $('#imageModal').modal('show');
-    };
-});
-
-//JavaScript for Modal Image Handling 
-
-  $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src');
-    const img = new Image();
-    img.src = src;
+    <!-- JavaScript for Modal Image Handling -->
+    <script>
+    $(document).on('click', '.clickable-image', function () {
+        const src = $(this).attr('src');
+        const img = new Image();
+        img.src = src;
 
         img.onload = function () {
             const modalImage = $('#modalImage');
@@ -641,7 +533,128 @@ while ($row = mysqli_fetch_array($ret)) {
         };
     });
 
-</script>
+    </script>
+    
+    <script>
+            // Show/hide upload fields based on selected registration status
+            document.getElementById('registration-status').addEventListener('change', function() {
+                const registeredFiles = document.getElementById('registered-files');
+                const forRegistrationFiles = document.getElementById('for-registration-files');
+
+                if (this.value === 'registered') {
+                    registeredFiles.style.display = 'block';
+                    forRegistrationFiles.style.display = 'none';
+                } else if (this.value === 'for_registration') {
+                    registeredFiles.style.display = 'none';
+                    forRegistrationFiles.style.display = 'block';
+                } else {
+                    registeredFiles.style.display = 'none';
+                    forRegistrationFiles.style.display = 'none';
+                }
+            });
+
+            // Close notification on click
+            document.getElementById('notification-close').addEventListener('click', function() {
+                document.getElementById('notification').style.display = 'none';
+            });
+        </script>
+
+    <script>
+        function startReminderNotification() {
+            var notification = document.getElementById('notification');
+            var notificationMessage = document.getElementById('notification-message');
+            notification.style.display = 'block';
+
+            // Customize the message or keep it from PHP
+            notificationMessage.textContent = notificationMessage.textContent || "Please upload your files.";
+
+            // Toggle visibility every second
+            setInterval(function () {
+                notification.style.display = notification.style.display === 'none' ? 'block' : 'none';
+            }, 1000); // Toggle visibility every second
+        }
+
+        function hideNotification() {
+            var notification = document.getElementById('notification');
+            notification.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var orImageUploaded = <?php echo json_encode(!empty($orImage)); ?>;
+            var crImageUploaded = <?php echo json_encode(!empty($crImage)); ?>;
+            var nvImageUploaded = <?php echo json_encode(!empty($nvImage)); ?>;
+
+            // Show notification only if no files are uploaded
+            if (!orImageUploaded && !crImageUploaded && !nvImageUploaded) {
+                startReminderNotification();
+            }
+
+            // File input elements
+            var nvFileInput = document.getElementById('nv-file');
+            var orFileInput = document.getElementById('or-file');
+            var crFileInput = document.getElementById('cr-file');
+            var form = document.getElementById('upload-form');
+            var registrationStatus = document.getElementById('registration-status');
+
+            function anyFileUploaded() {
+                // Check if any file has been uploaded, including PHP pre-upload checks
+                return (
+                    nvFileInput.files.length > 0 ||
+                    orFileInput.files.length > 0 &&
+                    crFileInput.files.length > 0 &&
+                    orImageUploaded &&
+                    crImageUploaded ||
+                    nvImageUploaded
+                );
+            }
+
+            function checkNotification() {
+                if (anyFileUploaded()) {
+                    hideNotification(); // Hide notification if any file is uploaded
+                    return true;
+                } else {
+                    startReminderNotification(); // Show notification if no files are uploaded
+                    return false;
+                }
+            }
+
+            // Add event listeners to file inputs to check for uploads
+            nvFileInput.addEventListener('change', checkNotification);
+            orFileInput.addEventListener('change', checkNotification);
+            crFileInput.addEventListener('change', checkNotification);
+
+            // Handle registration status change
+            registrationStatus.addEventListener('change', function () {
+                checkNotification();
+            });
+
+            const form = document.querySelector('#myForm');
+
+    function checkNotification() {
+        const fileInput = document.querySelector('#fileInput');
+        if (!fileInput.files.length) {
+            alert("Please upload a file before submitting!");
+            return false;
+        }
+        return true;
+    }
+
+    form.addEventListener('submit', function (event) {
+        if (!checkNotification()) {
+            event.preventDefault();
+        }
+    });
+
+
+            // Close button event listener for the notification
+            document.getElementById('notification-close').addEventListener('click', function () {
+                hideNotification();
+            });
+
+            // Initial check and setup on page load
+            checkNotification();
+        });
+    </script>
 
          <?php } ?>
                 <!--<p style="text-align: center;">  <button type="submit" class="btn btn-sm" name="submit">⏏ Update</button>-->
@@ -649,6 +662,7 @@ while ($row = mysqli_fetch_array($ret)) {
             </div>    
                 </div>
                     </div>
+               
             </div>
 
         </div><!-- .animated -->
@@ -661,15 +675,11 @@ while ($row = mysqli_fetch_array($ret)) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
- <!-- Include Bootstrap JS and jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="../admin/assets/js/main.js"></script>
-
 
 </body>
 </html>
