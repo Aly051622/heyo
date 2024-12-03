@@ -208,8 +208,8 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: auto;
+    width: 500px;
+    height: 500px;
     margin: 0 auto;
     overflow: auto;
 }
