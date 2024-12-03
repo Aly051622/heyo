@@ -67,11 +67,11 @@
 
 .modal-content {
   background: #fff;
-  padding: 15px;
+  padding-top: 15px;
   border-radius: 10px;
   width: 90%;
   height: 600px;
-  max-width: 800px;
+  max-width: 700px;
   position: relative;
 }
 
