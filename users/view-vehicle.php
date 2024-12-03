@@ -51,7 +51,9 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               font-family: 'Poppins', sans-serif;
               transition: all 0.3s ease;
           }
-  
+        table{
+            overflow: auto;
+        }
          
           /* Card and button styles */
           .card,
