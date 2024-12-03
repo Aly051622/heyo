@@ -309,7 +309,7 @@ html,body{
     
     .breadcrumbs {
         width: 80%;
-        margin-right: 20em;
+        margin-left: 5em;
         padding: 5px;
     }
  
