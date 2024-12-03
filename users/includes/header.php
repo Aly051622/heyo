@@ -122,7 +122,7 @@ body, * {
     }
     #hh {
         margin-top: 30px;
-        height: 170px;
+        height: 155px;
         width: auto;
     }
     .nav-link:hover{
