@@ -234,7 +234,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 100px;
+            max-width: 200px;
         }
     }
     @media (max-width: 300px){
@@ -242,7 +242,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 100px;
+            max-width: 200px;
         }
     }
     @media (max-width: 500px){
@@ -250,7 +250,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 100px;
+            max-width: 200px;
         }
     }
 </style>
