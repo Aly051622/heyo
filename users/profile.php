@@ -225,7 +225,9 @@ html,body{
     transform: none; 
 }
 
-
+.table-responsive{
+    overflow: hidden;
+}
     .reg{
         margin-left: 18px;
         width: 500px;
@@ -422,7 +424,7 @@ html,body{
                                         <div class="row form-group" id="for-registration-files" style="display: none;">
                                             <div class="col-md-3">
                                                 <label for="nv-file" class="form-control-label">Upload MV File</label>
-                                            </div>
+                                            </div><br>
                                             <div class="col-md-9">
                                                 <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
                                             </div>
@@ -432,13 +434,13 @@ html,body{
                                             <div class="col-md-3">
                                                 <label for="or-file" class="form-control-label">Upload OR File</label>
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-9"><br>
                                                 <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
                                             </div><br>
                                             <div class="col-md-3">
                                                 <label for="cr-file" class="form-control-label">Upload CR File</label>
                                             </div>
-                                            <div class="col-md-9">
+                                            <div class="col-md-9"><br>
                                                 <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
                                             </div>
                                         </div>
