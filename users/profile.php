@@ -350,7 +350,6 @@ html,body{
                                         <input type="text" name="regdate" readonly="true" class="form-control" value="<?php echo $row['RegDate']; ?>">
                                     </div>
                                 </div>
-                            <?php } ?>
 
                             <div class="container mt-5"><!-- START: Container -->
                                 <div class="row">
@@ -403,7 +402,7 @@ html,body{
                                     <div class="imgp"><!-- START: File Uploads -->
                                         <div class="row form-group" id="for-registration-files" style="display: none;">
                                             <div class="col-md-3">
-                                                <label for="nv-file" class="form-control">Upload MV File</label>
+                                                <label for="nv-file" class="form-control-label">Upload MV File</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
@@ -412,13 +411,13 @@ html,body{
 
                                         <div class="row form-group" id="registered-files" style="display: none;">
                                             <div class="col-md-3">
-                                                <label for="or-file" class="form-control">Upload OR File</label>
+                                                <label for="or-file" class="form-control-label">Upload OR File</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
                                             </div>
                                             <div class="col-md-3">
-                                                <label for="cr-file" class="form-control">Upload CR File</label>
+                                                <label for="cr-file" class="form-control-label">Upload CR File</label>
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
@@ -433,6 +432,8 @@ html,body{
                                             </button>
                                         </div>
                                     </div>
+                                    
+                            <?php } ?>
                                 </form><!-- END: Upload Form -->
                             </div><!-- END: Registration -->
                         </form><!-- END: Form -->
