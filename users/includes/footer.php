@@ -178,6 +178,7 @@
   width: 100%;
   height: 400px;
   border: none;
+  object-fit: contain;
 }
 
 .close-btn {
@@ -235,14 +236,14 @@
 
     <!-- Slide Modal -->
   <div id="slide-modal" class="modal">
-    <div class="modal-content modal-dialog-centered modal-lg">
+    <div class="modal-content modal-dialog-centered ">
       <iframe src="slide.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
     </div>
   </div>
   <!-- Privacy Policy Modal -->
   <div id="privacy-modal" class="modal">
-    <div class="modal-content modal-dialog-centered modal-lg">
+    <div class="modal-content modal-dialog-centered">
       <iframe src="policy.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
     </div>
@@ -250,7 +251,7 @@
 
   <!-- Terms and Conditions Modal -->
   <div id="terms-modal" class="modal">
-    <div class="modal-content modal-dialog-centered modal-lg">
+    <div class="modal-content modal-dialog-centered">
       <iframe src="terms.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
     </div>
