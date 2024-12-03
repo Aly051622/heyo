@@ -234,7 +234,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 200px;
+            max-width: 250px;
         }
     }
     @media (max-width: 300px){
@@ -242,7 +242,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 200px;
+            max-width: 250px;
         }
     }
     @media (max-width: 500px){
@@ -250,7 +250,7 @@ html,body{
             max-width: 250px;
         }
         .fil{
-            max-width: 200px;
+            max-width: 250px;
         }
     }
 </style>
@@ -482,7 +482,7 @@ $(document).on('click', '.clickable-image', function () {
     <!-- Persistent Notification system -->
     <div id="notification" style="display: none;">
         <span id="notification-message">Please upload your files.</span>
-        <button id="notification-close">&times;</button>
+        <button id="notification-close"><i class="bi bi-x-circle-fill"></i></button>
     </div>
 
     <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data">
@@ -676,11 +676,11 @@ form.addEventListener('submit', function (event) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="../admin/assets/js/main.js"></script>
 
 
 </body>

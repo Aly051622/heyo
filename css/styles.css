@@ -235,13 +235,6 @@ sup {
   top: -0.5em;
 }
 
-a {
-  color: #1abc9c;
-  text-decoration: underline;
-}
-a:hover {
-  color: #15967d;
-}
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
@@ -3030,14 +3023,14 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1abc9c;
-  border-color: #1abc9c;
+  background-color: rgb(53, 97, 255);
+  color: white;
+  border: solid white;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #16a085;
-  border-color: #15967d;
+  background-color: darkblue;
+  border: solid blue;
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
   color: #fff;
@@ -3091,7 +3084,7 @@ textarea.form-control-lg {
 
 .btn-success {
   color: #fff;
-  background-color: #198754;
+  background-color: #038246;
   border-color: #198754;
 }
 .btn-success:hover {
@@ -3943,7 +3936,6 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #1abc9c;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3953,7 +3945,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #15967d;
+
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -4000,7 +3992,6 @@ textarea.form-control-lg {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1abc9c;
 }
 
 .nav-fill > .nav-link,
@@ -5884,6 +5875,7 @@ textarea.form-control-lg {
   background-clip: padding-box;
   border: 0.125rem solid rgba(0, 0, 0, 0.2);
   border-radius: 0.75rem;
+  cursor: pointer;
 }
 .popover .popover-arrow {
   position: absolute;
