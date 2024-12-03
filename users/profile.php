@@ -400,7 +400,7 @@ html,body{
         <div class="animated fadeIn"><!-- START: Animated Fade In -->
 
             <div class="col-lg-12"><!-- START: Column -->
-                <div class="card"><!-- START: Card -->
+                <div class="card table-responsive"><!-- START: Card -->
                     <div class="card-header">
                         <strong>User </strong> Profile
                     </div>
