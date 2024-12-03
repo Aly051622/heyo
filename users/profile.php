@@ -415,7 +415,7 @@ html,body{
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
-                                            </div>
+                                            </div><br>
                                             <div class="col-md-3">
                                                 <label for="cr-file" class="form-control-label">Upload CR File</label>
                                             </div>
