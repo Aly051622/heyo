@@ -82,18 +82,21 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    
     <link rel="stylesheet" href="css/responsive/.css">
+    
 
-   <style>
+</head>
+    <style>
 
 #notification {
     position: fixed;
@@ -159,8 +162,8 @@ html,body{
         width: 935px;
     }
     .imgp input[type="file"]{
-        margin-left: 15em;
-        margin-top:-40px;
+        margin-left: 1em;
+        margin-top:-20px;
         cursor: pointer;
         text-align: left;
     }
@@ -205,13 +208,12 @@ html,body{
 }
 
 .modal-dialog {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     margin: 0 auto;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .modal-content {
@@ -224,16 +226,30 @@ html,body{
     transform: none; 
 }
 
-
+.table-responsive{
+    overflow: hidden;
+}
     .reg{
         margin-left: 18px;
         width: 500px;
+    }
+    @media (max-width: 560px){
+        .regs{
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
+        }
     }
     @media (max-width: 480px){
         .regs{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -242,6 +258,8 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -250,12 +268,12 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
-    .table-responsive{
-        overflow: hidden;
-    }
+
 </style>
 
 </head>
@@ -282,7 +300,6 @@ html,body{
          <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
          <button id="notification-close">&times;</button>
      </div><!-- END: Notification -->
-     <div class="right-panel">
     <!-- Notification system -->
      <div class="breadcrumbs">
      <div class="breadcrumbs-inner">
@@ -314,7 +331,7 @@ html,body{
      </div>
  </div>
 
-        <div class="content">
+        <div class="content  table-responsive">
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
@@ -322,7 +339,7 @@ html,body{
                             <div class="card-header">
                                 <strong>User </strong> Profile
                             </div>
-                            <div class="card-body card-block table-responsive">
+                            <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                    
                                    <?php
@@ -691,7 +708,6 @@ form.addEventListener('submit', function (event) {
 
     <div class="clearfix"></div>
 
-</div><!-- /#right-panel -->
 
 <!-- Right Panel -->
 
