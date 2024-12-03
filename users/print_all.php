@@ -1,123 +1,142 @@
 <?php
 session_start();
+error_reporting(0);
+date_default_timezone_set('Asia/Manila');
 include('../DBconnection/dbconnection.php');
+
+// Make sure user is logged in
+if (strlen($_SESSION['vpmsuid'] == 0)) {
+    header('location:logout.php');
+} else {
+    // Sanitize input
+    $cid = mysqli_real_escape_string($con, $_GET['viewid']);
+    $source = mysqli_real_escape_string($con, $_GET['source']); // Get the source table identifier
+
+    // Construct query based on source
+    if ($source == 'QR') {
+        $query = "
+        SELECT 
+            tblqr_login.ParkingSlot, 
+            tblvehicle.VehicleCategory, 
+            tblvehicle.VehicleCompanyname, 
+            tblvehicle.Model, 
+            tblvehicle.Color, 
+            tblvehicle.RegistrationNumber, 
+            tblvehicle.OwnerName, 
+            tblvehicle.OwnerContactNumber, 
+            DATE_FORMAT(tblqr_login.TIMEIN, '%h:%i %p %m-%d-%Y') AS FormattedInTimeFromLogin, 
+            DATE_FORMAT(tblqr_logout.TIMEOUT, '%h:%i %p %m-%d-%Y') AS FormattedOutTime 
+        FROM 
+            tblqr_login 
+        INNER JOIN 
+            tblvehicle ON tblqr_login.VehiclePlateNumber = tblvehicle.RegistrationNumber 
+        LEFT JOIN 
+            tblqr_logout ON tblqr_login.VehiclePlateNumber = tblqr_logout.VehiclePlateNumber 
+            AND tblqr_login.ParkingSlot = tblqr_logout.ParkingSlot
+        WHERE 
+            tblqr_login.ID = '$cid'";
+    } elseif ($source == 'Manual') {
+        $query = "
+        SELECT 
+            tblmanual_login.ParkingSlot, 
+            tblvehicle.VehicleCategory, 
+            tblvehicle.VehicleCompanyname, 
+            tblvehicle.Model, 
+            tblvehicle.Color, 
+            tblvehicle.RegistrationNumber, 
+            tblvehicle.OwnerName, 
+            tblvehicle.OwnerContactNumber, 
+            DATE_FORMAT(tblmanual_login.TimeIn, '%h:%i %p %m-%d-%Y') AS FormattedInTimeFromLogin, 
+            DATE_FORMAT(tblmanual_logout.TimeOut, '%h:%i %p %m-%d-%Y') AS FormattedOutTime 
+        FROM 
+            tblmanual_login 
+        INNER JOIN 
+            tblvehicle ON tblmanual_login.RegistrationNumber = tblvehicle.RegistrationNumber 
+        LEFT JOIN 
+            tblmanual_logout ON tblmanual_login.RegistrationNumber = tblmanual_logout.RegistrationNumber 
+            AND tblmanual_login.ParkingSlot = tblmanual_logout.ParkingSlot
+        WHERE 
+            tblmanual_login.ID = '$cid'";
+    } else {
+        echo "Invalid source!";
+        exit();
+    }
+
+    $result = mysqli_query($con, $query);
+
+    if (!$result) {
+        error_log("SQL Error in VIEW--TRANSAC.PHP: " . mysqli_error($con), 3, "error_log.txt");
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print All | CTU DANAO Parking System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Print Vehicle Details | CTU Danao Parking System</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <style>
-        @media print {
-            .heading-container{
-                visibility: visible;
-            }
-            .print-container, .print-container * {
-                visibility: visible;
-            }
-            .print-container {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-            }
-            .header-content, .footer-content {
-                width: 100%; 
-                height: auto; 
-                margin-left: auto; 
-                margin-right: auto;
-                display: flex; 
-                justify-content: center;
-                align-items: center; 
-                position: relative; 
-            }
-        }
-        .heading-container {
-                display: flex;
-                justify-content: center;
-                margin-bottom: 1.5rem; /* Adjust as needed */
-        }       
-
-        .text-center {
-                text-align: center;
-        }
-        .container {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                margin-right: 50vh;
-                padding-top: 20px;
-            }
-            
-            .header-content, .footer-content {
-                width: 100%; 
-                height: auto; 
-                margin-left: auto; 
-                margin-right: auto;
-                display: flex; 
-                justify-content: center;
-                align-items: center; 
-                position: relative; 
-            }
-    </style>
-    <script>
-        function printPage() {
-            window.print();
-        }
-    </script>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your custom styles -->
 </head>
-<body onload="printPage()">
-<div class="heading-container">
-        <div class="print-container">
-                    <div class="header-content">
-                        <img src="images/header.png" alt="header" class="center">
-                    </div>
-            <h3 class="text-center">All Vehicle Records</h3>
-                <table class="table table-bordered table-striped">
-                        <thead>
+<body>
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header">
+                <strong>Vehicle Details</strong>
+            </div>
+            <div class="card-body">
+                <?php if ($row = mysqli_fetch_array($result)) { ?>
+                    <table class="table table-bordered">
                         <tr>
-                            <th>Parking Number</th>
-                            <th>Vehicle Category</th>
-                            <th>Company</th>
-                            <th>Owner</th>
-                            <th>Contact</th>
-                            <th>In Time</th>
-                            <th>Out Time</th>
-                            <th>Status</th>
-                            <th>Remark</th>
+                            <th>Parking Slot</th>
+                            <td><?php echo $row['ParkingSlot']; ?></td>
                         </tr>
-                        </thead>
-                    <tbody>
-                        <?php
-                        $query = "SELECT * FROM tblvehicle";
-                        $result = mysqli_query($con, $query);
+                        <tr>
+                            <th>Vehicle Category</th>
+                            <td><?php echo $row['VehicleCategory']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Vehicle Company Name</th>
+                            <td><?php echo $row['VehicleCompanyname']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Model</th>
+                            <td><?php echo $row['Model']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Color</th>
+                            <td><?php echo $row['Color']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Registration Number</th>
+                            <td><?php echo $row['RegistrationNumber']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Owner Name</th>
+                            <td><?php echo $row['OwnerName']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Owner Contact Number</th>
+                            <td><?php echo $row['OwnerContactNumber']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>In Time</th>
+                            <td><?php echo $row['FormattedInTimeFromLogin']; ?></td>
+                        </tr>
+                        <tr>
+                            <th>Out Time</th>
+                            <td><?php echo $row['FormattedOutTime']; ?></td>
+                        </tr>
+                    </table>
 
-                        while ($row = mysqli_fetch_array($result)) {
-                            $status = ($row['Status'] == "Out") ? "Outgoing Vehicle" : "Incoming Vehicle";
-                            $outTime = ($row['Status'] == "Out") ? $row['OutTime'] : "N/A";
-                            $remark = ($row['Status'] == "Out") ? $row['Remark'] : "N/A";
-                        ?>
-                            <tr>
-                                <td><?php echo $row['ParkingNumber']; ?></td>
-                                <td><?php echo $row['VehicleCategory']; ?></td>
-                                <td><?php echo $row['VehicleCompanyname']; ?></td>
-                                <td><?php echo $row['OwnerName']; ?></td>
-                                <td><?php echo $row['OwnerContactNumber']; ?></td>
-                                <td><?php echo $row['InTime']; ?></td>
-                                <td><?php echo $outTime; ?></td>
-                                <td><?php echo $status; ?></td>
-                                <td><?php echo $remark; ?></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-                <div class="footer-content">
-                        <img src="images/footer.png" alt="footer" class="center">
-                </div>
-        </div>          
-</div>
+                    <!-- Add Print Button -->
+                    <button class="btn btn-primary" id="printbtn" onclick="window.print()">Print</button>
+                <?php } else { ?>
+                    <p>No data found.</p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
