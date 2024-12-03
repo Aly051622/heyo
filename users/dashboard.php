@@ -284,11 +284,25 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         .hover-lightred:hover { background-color: #FFC0CB; }
 
         .space{
-            margin-left: 10em;
+            margin-left: 20px;
             margin-top: 6em;
             width: 100%;
             margin-bottom:5px;
             font-size: 15px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: red;
         }
         /* Responsive */
         @media (max-width: 768px) {
@@ -314,11 +328,15 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 <?php include_once('includes/sidebar.php'); ?>
 <?php include_once('includes/header.php'); ?>
     <div class="right-panel">
-        <div class="space">
+    <div class="space">
     <?php if ($licenseStatusMessage): ?>
-        <div class="notification" ><?php echo $licenseStatusMessage; ?></div>
-                        <?php endif; ?>
-                        </div>
+        <div class="notification">
+            <?php echo $licenseStatusMessage; ?>
+            <button class="close-btn" onclick="closeNotification()"><i class="bi bi-x-circle-fill"></i></button>
+        </div>
+    <?php endif; ?>
+</div>
+
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
@@ -421,6 +439,12 @@ setTimeout(function() {
     }
 }, 10000); // 10 seconds in milliseconds
 
+function closeNotification() {
+    const notification = document.querySelector('.notification');
+    if (notification) {
+        notification.style.display = 'none';
+    }
+}
 
 </script>
 
