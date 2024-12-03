@@ -122,7 +122,7 @@ body, * {
     }
     #hh {
         margin-top: 30px;
-        height: 100px;
+        height: 150px;
         width: auto;
     }
     .nav-link:hover{
@@ -311,12 +311,21 @@ body, * {
         margin-top: 50px;
         margin-right: 20px;
     }
-    .menuToggle {
+    #menuToggle {
         margin-left: 3em;
-        margin-top: 10px;
+        margin-top: 7px;
     }
     #hh{
-        margin-left: 20px;
+        margin-left: 50px;
+    }
+    .avatar{
+        height: 50px;
+        width: 50px;
+        margin-left: 10em;
+    }
+    .avatar:hover{
+        height: 50px;
+        width: 50px;
     }
 }
 @media (max-width: 480px) {
@@ -340,12 +349,53 @@ body, * {
     }
     #menuToggle {
         margin-left: 3em;
-        margin-top: 10px;
+        margin-top: 7px;
     }
     #hh{
-        margin-left: 20px;
+        margin-left: 50px;
     }
     .avatar{
+        height: 50px;
+        width: 50px;
+        margin-left: 10em;
+    }
+    .avatar:hover{
+        height: 50px;
+        width: 50px;
+    }
+}
+@media (max-width: 300px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 30em;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 100px;
+    }
+    #menuToggle {
+        margin-left: 3em;
+        margin-top: 7px;
+    }
+    #hh{
+        margin-left: 50px;
+    }
+    .avatar{
+        height: 50px;
+        width: 50px;
+        margin-left: 10em;
+    }
+    .avatar:hover{
         height: 50px;
         width: 50px;
     }
