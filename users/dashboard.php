@@ -183,7 +183,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
             padding: 4px;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             color: #333;
-            z-index: -1;
+            z-index: 1005;
             position: absolute;
             border-radius: 9px;
             text-align: center;
@@ -284,10 +284,11 @@ if (strlen($_SESSION['vpmsuid']==0)) {
         .hover-lightred:hover { background-color: #FFC0CB; }
 
         .space{
-            margin-left: 20px;
+            margin-left: 10em;
             margin-top: 6em;
             width: 100%;
             margin-bottom:5px;
+            font-size: 15px;
         }
         /* Responsive */
         @media (max-width: 768px) {
