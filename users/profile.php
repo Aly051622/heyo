@@ -193,25 +193,19 @@ html,body{
     }
 
     .modal-body {
-    position: relative;
-    overflow: hidden; /* Prevent content from overflowing */
-    height: 80vh; /* Set a height limit for the modal */
-    cursor: grab; /* Indicate that the image can be dragged */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Allows scrolling if the image is too large */
+    height: auto;
 }
 
 .modal-body img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: none; /* Allow the image to grow beyond the modal boundaries */
-    max-height: none;
+    display: block;
+    margin: auto;
+    object-fit: cover;
 }
 
-.modal-body img.zoomable {
-    transform-origin: center center; /* Allow scaling from the center */
-    transition: transform 0.2s ease; /* Smooth transitions for zooming */
-}
 
 .modal {
     display: flex;
@@ -219,9 +213,9 @@ html,body{
     align-items: center;
 }
 
-.modal-dialog {
-    max-width: 90vw; /* Ensure the modal doesn't exceed viewport width */
-    max-height: 90vh; /* Ensure the modal doesn't exceed viewport height */
+ .modal-dialog {
+    max-width: 100%;
+    width: 1000px; 
 }
 
 .modal-content {
@@ -348,17 +342,17 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="imageModalTitle"></h5>
+                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="" class="img-fluid">
+                <img id="modalImage" src="" alt="Image Preview">
             </div>
         </div>
     </div>
@@ -366,34 +360,31 @@ while ($row = mysqli_fetch_array($ret)) {
 
 
 
+
 <script>
-    $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); // Get the source of the clicked image
+ $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src'); // Get the image source
     const img = new Image(); // Create a new Image object
-    img.src = src; // Set its source to the clicked image's source
+    img.src = src; // Set the source to the clicked image
 
     img.onload = function () {
-        // After the image loads, get its natural dimensions
+        // Fetch the natural dimensions of the image
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Update the modal image source and set its natural dimensions
+        // Set the modal image's source and dimensions
         const modalImage = $('#modalImage');
         modalImage.attr('src', src);
         modalImage.css({
             width: `${naturalWidth}px`,
-            height: `${naturalHeight}px`,
-            maxWidth: '90vw', // Ensure it doesn't exceed viewport width
-            maxHeight: '90vh', // Ensure it doesn't exceed viewport height
+            height: `${naturalHeight}px`
         });
-
-        // Set modal title dynamically (optional)
-        $('#imageModalTitle').text($(this).data('title'));
 
         // Open the modal
         $('#imageModal').modal('show');
     };
 });
+
 
 
 </script>
