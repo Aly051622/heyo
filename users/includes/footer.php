@@ -68,7 +68,7 @@
     }
 
     .modal-dialog.custom-width {
-      max-width: 100%; /* Set the modal width to 90% of the viewport */
+      max-width: 90%; /* Set the modal width to 90% of the viewport */
       width:auto ;
     }
 
@@ -81,7 +81,7 @@
 
     .iframe-content {
       width: 100%;
-      height: 80vh; /* Set height to occupy most of the viewport */
+      height: 60vh; /* Set height to occupy most of the viewport */
       border: none;
     }
 
@@ -128,7 +128,7 @@
   </footer>
 
   <!-- Slide Modal -->
-  <div id="slide-modal" class="modal modal-dialog-centered" style="width: 1000px;">
+  <div id="slide-modal" class="modal modal-dialog-centered" >
     <div class="modal-dialog custom-width">
       <div class="modal-content">
         <iframe src="slide.php" class="iframe-content"></iframe>
