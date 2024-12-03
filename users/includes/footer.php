@@ -63,6 +63,7 @@
   justify-content: center;
   align-items: center;
   object-fit: contain;
+  padding: 1px;
 }
 
 .modal-content {
@@ -70,7 +71,7 @@
   padding: 1px;
   border-radius: 10px;
   width: 90%;
-  max-width: 500px;
+  max-width: 900px;
   position: relative;
 }
 
