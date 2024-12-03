@@ -200,13 +200,19 @@ html,body{
     height: 80vh; /* Limit height for smaller screens */
 }
 
+.modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .modal-body img {
     display: block;
     margin: auto;
-    object-fit: cover;
-    max-width: none; /* Ensure image is not constrained */
-    max-height: none; /* Ensure image is not constrained */
+    max-width: none; /* Prevent shrinking */
+    max-height: none; /* Prevent shrinking */
 }
+
 
 .modal-dialog {
     display: flex;
@@ -362,36 +368,29 @@ while ($row = mysqli_fetch_array($ret)) {
 
 
 <script>
- $(document).on('click', '.clickable-image', function () {
+$(document).on('click', '.clickable-image', function () {
     const src = $(this).attr('src'); // Get image source
+    const title = $(this).attr('data-title'); // Get image title from the clicked element
     const img = new Image(); // Create a new Image object
     img.src = src;
 
     img.onload = function () {
-        // Fetch the natural dimensions of the image
         const naturalWidth = img.naturalWidth;
         const naturalHeight = img.naturalHeight;
 
-        // Set the modal image source and its natural dimensions
-        const modalImage = $('#modalImage');
-        modalImage.attr('src', src);
-        modalImage.css({
+        // Set the modal image source and dimensions
+        $('#modalImage').attr('src', src).css({
             width: `${naturalWidth}px`,
             height: `${naturalHeight}px`
         });
 
-        // Adjust modal to fit within the viewport
-        const modalDialog = $('.modal-dialog');
-        modalDialog.css({
-            maxWidth: naturalWidth > window.innerWidth ? '100%' : `${naturalWidth}px`,
-            maxHeight: naturalHeight > window.innerHeight ? '100%' : `${naturalHeight}px`
-        });
+        // Set the modal title dynamically
+        $('#imageModalTitle').text(title);
 
         // Show the modal
         $('#imageModal').modal('show');
     };
 });
-
 
 
 </script>
