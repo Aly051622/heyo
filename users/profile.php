@@ -197,6 +197,8 @@ html,body{
         display: flex; /* Ensure the modal content is properly centered */
         justify-content: center;
         align-items: center;
+        width: 100%;
+        height: 100%;
     }
 
     .modal-dialog {
