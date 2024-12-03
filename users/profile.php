@@ -91,6 +91,7 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     
 
 </head>
@@ -206,7 +207,6 @@ html,body{
 }
 
 .modal-dialog {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -230,11 +230,23 @@ html,body{
         margin-left: 18px;
         width: 500px;
     }
+    @media (max-width: 560px){
+        .regs{
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
+        }
+    }
     @media (max-width: 480px){
         .regs{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -243,6 +255,8 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
@@ -251,112 +265,13 @@ html,body{
             max-width: 250px;
         }
         .fil{
+            margin-top: 20px;
+            margin-left: 10px;
             max-width: 250px;
         }
     }
 
     
-/*for all the braeadcrumbs for users*/
-@media (max-width: 1024px) {
-    .breadcrumbs {
-        width: 95%;
-        margin-left: 3em;
-    }
-}
-
-@media (max-width: 954px) {
-    .breadcrumbs {
-        width: 90%;
-        margin-left: 2em;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 8px 15px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 780px) {
-    .breadcrumbs {
-        width: 85%;
-        margin-left: 1.5em;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 7px 12px;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .breadcrumbs {
-        width: auto;
-        margin-left: -2em;
-        padding: 5px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 0.9rem;
-        margin-top: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    
-    .breadcrumbs {
-        width: 80%;
-        margin-right: 20em;
-        padding: 5px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    body {
-        font-size: 12px;
-        height: 100vh;
-        overflow-x: auto;
-    }
-    .card, .card-header, .card-body, .tables{
-        width: 330px;
-        font-size:12px;
-        
-    }
-    .tables thead{
-        padding: 2px;
-    }
- 
-}
-
-
-@media (max-width: 300px) {
-    .breadcrumbs {
-        width: 100%;
-        margin-left: 0.5em;
-        padding: 4px;
-    }
-
-    #printbtn,
-    #viewbtn {
-        padding: 5px 8px;
-        font-size: 0.8rem;
-    }
-
-    body {
-        font-size: 0.8rem;
-    }
-}
 </style>
 <body>
     <!-- Include sidebar -->
