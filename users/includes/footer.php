@@ -35,7 +35,7 @@
                 cursor: pointer;
 }
 
-.icon:hover {
+.icon-btn:hover {
   background-color: darkblue;
   border: solid blue;
 }
@@ -82,7 +82,7 @@
 
 .con{
   height: 500px;
-  width: 800px;
+  width: 1000px;
 }
 
 .close-btn {
