@@ -95,30 +95,36 @@ return true;
 
    <?php include_once('includes/header.php');?>
 <div class="right-panel mb-5">
+
         <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Dashboard</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right" style="background: transparent;">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="change-password.php">Change Password</a></li>
-                                    <li class="active">Change Password</li>
-                                </ol>
-                            </div>
-                        </div>
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <!-- START: Left Section -->
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="page-header float-md-left text-center text-md-left">
+                    <div class="page-title">
+                        <h3>Change Password</h3>
                     </div>
                 </div>
             </div>
+            <!-- END: Left Section -->
+
+            <!-- START: Right Section -->
+            <div class="col-12 col-md-8">
+                <div class="page-header float-md-right text-center text-md-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                                     <li><a href="dashboard.php">Dashboard</a></li>
+                                    <li><a href="change-password.php">Change Password</a></li>
+                                    <li class="active">Change Password</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Right Section -->
         </div>
+    </div>
+</div>
 
         <div class="content">
             <div class="animated fadeIn">

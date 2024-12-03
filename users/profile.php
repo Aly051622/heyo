@@ -279,14 +279,13 @@ html,body{
     <?php include_once('includes/sidebar.php'); ?>
     
    <?php include_once('includes/header.php');?>
-
+<div class="right-panel">
    <!-- Notification system -->
   
     <div id="notification"><!-- START: Notification -->
         <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
         <button id="notification-close">&times;</button>
     </div><!-- END: Notification -->
-    <div class="right-panel"><!-- START: Right Panel -->
     <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
         <div class="row m-0">
