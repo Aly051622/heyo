@@ -234,7 +234,7 @@
     </footer>
 
     <!-- Slide Modal -->
-  <div id="slide-modal" class="modal modal-lg">
+  <div id="slide-modal" class="modal modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <iframe src="slide.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
