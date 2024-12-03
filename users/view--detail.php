@@ -140,9 +140,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                   display: block;
                   margin-bottom: 5px;
               }
-              .breadcrumbs{
-                display: none;
-              }
           }
     </style>
 <body>

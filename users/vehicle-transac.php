@@ -228,7 +228,6 @@ body, * {
     
  
 <div class="right-panel">
-<div class="breadcrumbs">
     
 <div class="breadcrumbs">
     <div class="breadcrumbs-inner">
