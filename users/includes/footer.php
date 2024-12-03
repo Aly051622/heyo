@@ -71,7 +71,8 @@
   padding: 1px;
   border-radius: 10px;
   width: 90%;
-  max-width: 900px;
+  height: 600px;
+  max-width: 800px;
   position: relative;
 }
 
