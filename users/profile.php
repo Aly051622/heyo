@@ -123,10 +123,10 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     font-size: 18px;
     font-weight: bold;
 }
-body{
+html,body{
         background-color: whitesmoke;
         height: 100vh;
-        overflow: hidden;
+        overflow: auto;
     }
     .card, .card-header{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
@@ -351,7 +351,7 @@ body{
                                 </div>
                             <?php } ?>
 
-                            <div class="container mt-5"><!-- START: Container -->
+                            <div class="container"><!-- START: Container -->
                                 <div class="row">
                                     <?php if ($orImage): ?>
                                         <div class="col-md-4 mb-4">
