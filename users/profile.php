@@ -91,7 +91,9 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    
+
+</head>
     <style>
 
 #notification {
@@ -356,8 +358,6 @@ html,body{
     }
 }
 </style>
-
-</head>
 <body>
     <!-- Include sidebar -->
     <?php include_once('includes/sidebar.php'); ?>
