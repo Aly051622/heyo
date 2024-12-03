@@ -91,7 +91,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
     
 
 </head>
@@ -161,7 +160,7 @@ html,body{
         width: 935px;
     }
     .imgp input[type="file"]{
-        margin-left: 15em;
+        margin-left: 1em;
         margin-top:-40px;
         cursor: pointer;
         text-align: left;
@@ -288,14 +287,14 @@ html,body{
         <button id="notification-close">&times;</button>
     </div><!-- END: Notification -->
 
-    <div class="breadcrumbs mb-5"><!-- START: Breadcrumbs -->
+    <div class="breadcrumbs">
         <div class="breadcrumbs-inner">
             <div class="row m-0">
                 <div class="col-sm-4">
                     <div class="page-header float-left">
-                        <div class="page-title">
-                            <h3>My Profile</h3>
-                        </div>
+                    <div class="page-title">
+                        <h3>My Profile</h3>
+                    </div>
                     </div>
                 </div>
                 <div class="col-sm-8">
@@ -303,15 +302,16 @@ html,body{
                         <div class="page-title">
                             <ol class="breadcrumb text-right" style="background: transparent;">
                                 <li><a href="dashboard.php">Dashboard</a></li>
-                                <li><a href="profile.php">Profile</a></li>
-                                <li class="active">User Profile</li>
+                                <li class="profile.php">Profile</li>
+                                <li class="active">User's Information</li>                              
                             </ol>
                         </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- END: Breadcrumbs -->
+    </div>
 
     <div class="content"><!-- START: Content -->
         <div class="animated fadeIn"><!-- START: Animated Fade In -->
