@@ -66,12 +66,13 @@
 }
 
 .modal-content {
-  background: #fff;
+  background: transparent;
   border-radius: 10px;
   width: 90%;
   height: 600px;
-  max-width: 750px;
+  max-width: 740px;
   position: relative;
+  padding: 0;
 }
 
 .iframe-content {
