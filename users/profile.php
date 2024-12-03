@@ -200,8 +200,7 @@ html,body{
     }
 
     .modal-dialog {
-    max-width: 100%;
-    width: 1000px; 
+    width: 100%;
 }
 
     .modal-content {
@@ -371,7 +370,7 @@ while ($row = mysqli_fetch_array($ret)) {
         if (img.width > img.height) {
             // Landscape image
             modalImage.css({
-                'max-width': '90%',
+                'max-width': '100%',
                 'max-height': '80vh',
                 'width': 'auto',
                 'height': 'auto'
