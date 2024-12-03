@@ -203,7 +203,7 @@ html,body{
 .modal-body img {
     display: block;
     margin: auto;
-    object-fit: contain;
+    object-fit: cover;
     max-width: none; /* Ensure image is not constrained */
     max-height: none; /* Ensure image is not constrained */
 }
@@ -224,7 +224,7 @@ html,body{
 }
 
 .modal.fade .modal-dialog {
-    transform: none; /* Prevent sliding animations */
+    transform: none; 
 }
 
 
