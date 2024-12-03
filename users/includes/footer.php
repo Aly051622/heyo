@@ -68,8 +68,8 @@
     }
 
     .modal-dialog.custom-width {
-      max-width: 90%; /* Set the modal width to 90% of the viewport */
-      width: auto;
+      max-width: 100%; /* Set the modal width to 90% of the viewport */
+      width: 1000px;
     }
 
     .modal-content {
