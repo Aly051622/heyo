@@ -196,22 +196,15 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Allows scrolling for large images */
-    height: 80vh; /* Limit height for smaller screens */
-}
-
-.modal-dialog {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: auto; /* Enable scrolling for large images */
 }
 
 .modal-body img {
-    display: block;
-    margin: auto;
-    max-width: none; /* Prevent shrinking */
-    max-height: none; /* Prevent shrinking */
+    max-width: none; /* Ensure the image displays at its full size */
+    max-height: none; /* Ensure the image displays at its full size */
 }
+
+
 
 
 .modal-dialog {
