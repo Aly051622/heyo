@@ -78,6 +78,7 @@
   width: 100%;
   height: 400px;
   border: none;
+  z-index: 1;
 }
 
 .con{
