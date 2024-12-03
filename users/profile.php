@@ -367,42 +367,6 @@ while ($row = mysqli_fetch_array($ret)) {
 </div>
 
 
-<script>
-$(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src'); 
-    const title = $(this).attr('alt'); 
-    const img = new Image(); 
-    img.src = src; 
-
-    img.onload = function () {
-        const naturalWidth = img.naturalWidth;
-        const naturalHeight = img.naturalHeight;
-
-        $('#modalImage').attr('src', src).css({
-            display: 'block',
-            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
-            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
-            maxWidth: '100%',
-            maxHeight: '100%',
-            objectFit: 'contain',
-        });
-
-        // Update modal title dynamically if needed
-        if (title) {
-            $('#imageModalTitle').text(title);
-        }
-
-        // Open the modal
-        $('#imageModal').modal('show');
-    };
-});
-
-
-
-</script>
-
-
-<!-- HTML Form -->
 <div class="container mt-5">
     <div class="row">
         <?php if ($orImage): ?>
@@ -437,45 +401,6 @@ $(document).on('click', '.clickable-image', function () {
     </div>
 </div>
 
-<!-- Include Bootstrap JS and jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<!-- JavaScript for Modal Image Handling -->
-<script>
-  $(document).on('click', '.clickable-image', function () {
-    const src = $(this).attr('src');
-    const img = new Image();
-    img.src = src;
-
-    img.onload = function () {
-        const modalImage = $('#modalImage');
-        const modalBody = $('.modal-body');
-
-        // Set the modal image source
-        modalImage.attr('src', src);
-
-        if (img.width > img.height) {
-            modalImage.css({
-                'max-width': '100%',
-                'max-height': '100vh',
-                'width': 'auto',
-                'height': 'auto'
-            });
-        } else {
-            modalImage.css({
-                'max-width': '60%',
-                'max-height': '80vh',
-                'width': 'auto',
-                'height': 'auto'
-            });
-        }
-
-        $('#imageModalTitle').text($(this).data('title'));
-    };
-});
-
-</script>
     <div class="reg">
     <p>Registration Status: <?php echo $registrationStatus; ?></p>
 
@@ -557,9 +482,7 @@ $(document).on('click', '.clickable-image', function () {
         document.getElementById('notification-close').addEventListener('click', function() {
             document.getElementById('notification').style.display = 'none';
         });
-    </script>
-
-<script>
+ 
     function startReminderNotification() {
         var notification = document.getElementById('notification');
         var notificationMessage = document.getElementById('notification-message');
@@ -630,30 +553,94 @@ $(document).on('click', '.clickable-image', function () {
 
         const form = document.querySelector('#myForm');
 
-function checkNotification() {
-    const fileInput = document.querySelector('#fileInput');
-    if (!fileInput.files.length) {
-        alert("Please upload a file before submitting!");
-        return false;
-    }
-    return true;
-}
+        function checkNotification() {
+            const fileInput = document.querySelector('#fileInput');
+            if (!fileInput.files.length) {
+                alert("Please upload a file before submitting!");
+                return false;
+            }
+            return true;
+        }
 
-form.addEventListener('submit', function (event) {
-    if (!checkNotification()) {
-        event.preventDefault();
-    }
-});
-
-
-        // Close button event listener for the notification
-        document.getElementById('notification-close').addEventListener('click', function () {
-            hideNotification();
+        form.addEventListener('submit', function (event) {
+            if (!checkNotification()) {
+                event.preventDefault();
+            }
         });
 
-        // Initial check and setup on page load
-        checkNotification();
+
+                // Close button event listener for the notification
+                document.getElementById('notification-close').addEventListener('click', function () {
+                    hideNotification();
+                });
+
+                // Initial check and setup on page load
+                checkNotification();
+            });
+
+            $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src'); 
+    const title = $(this).attr('alt'); 
+    const img = new Image(); 
+    img.src = src; 
+
+    img.onload = function () {
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+
+        $('#modalImage').attr('src', src).css({
+            display: 'block',
+            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
+            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain',
+        });
+
+        // Update modal title dynamically if needed
+        if (title) {
+            $('#imageModalTitle').text(title);
+        }
+
+        // Open the modal
+        $('#imageModal').modal('show');
+    };
+});
+
+//JavaScript for Modal Image Handling 
+
+  $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src');
+    const img = new Image();
+    img.src = src;
+
+        img.onload = function () {
+            const modalImage = $('#modalImage');
+            const modalBody = $('.modal-body');
+
+            // Set the modal image source
+            modalImage.attr('src', src);
+
+            if (img.width > img.height) {
+                modalImage.css({
+                    'max-width': '100%',
+                    'max-height': '100vh',
+                    'width': 'auto',
+                    'height': 'auto'
+                });
+            } else {
+                modalImage.css({
+                    'max-width': '60%',
+                    'max-height': '80vh',
+                    'width': 'auto',
+                    'height': 'auto'
+                });
+            }
+
+            $('#imageModalTitle').text($(this).data('title'));
+        };
     });
+
 </script>
 
          <?php } ?>
@@ -662,8 +649,6 @@ form.addEventListener('submit', function (event) {
             </div>    
                 </div>
                     </div>
-                <div class="col-lg-6">
-                </div>
             </div>
 
         </div><!-- .animated -->
@@ -676,6 +661,9 @@ form.addEventListener('submit', function (event) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
+ <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
