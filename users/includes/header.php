@@ -320,10 +320,11 @@ body, * {
         margin-top: 7px;
     }
     #hh{
-        margin-left: 50px;
+        margin-right: 50px;
     }
+   
     .user-menu{
-        margin-left: 15em;
+        margin-right: 15em;
     }
     
 }
@@ -351,10 +352,11 @@ body, * {
         margin-top: 7px;
     }
     #hh{
-        margin-left: 50px;
+        margin-right: 50px;
     }
+   
     .user-menu{
-        margin-left: 15em;
+        margin-right: 15em;
     }
     
 }
@@ -382,11 +384,11 @@ body, * {
         margin-top: 7px;
     }
     #hh{
-        margin-left: 50px;
+        margin-right: 50px;
     }
    
     .user-menu{
-        margin-left: 15em;
+        margin-right: 15em;
     }
 }
 </style>
