@@ -206,7 +206,7 @@ html,body{
 
 .modal-dialog {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -222,6 +222,8 @@ html,body{
 
 .modal.fade .modal-dialog {
     transform: none; 
+    width: 1000px;
+    height: 1000px;
 }
 
 
