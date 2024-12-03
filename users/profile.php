@@ -272,6 +272,58 @@ html,body{
         }
     }
 
+    /*for all the braeadcrumbs for users*/
+@media (max-width: 1024px) {
+    .breadcrumbs {
+        width: 95%;
+        margin-left: 3em;
+    }
+}
+
+@media (max-width: 954px) {
+    .breadcrumbs {
+        width: 90%;
+        margin-left: 2em;
+    }
+
+}
+
+@media (max-width: 780px) {
+    .breadcrumbs {
+        width: 85%;
+        margin-left: 1.5em;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .breadcrumbs {
+        width: auto;
+        margin-left: -2em;
+        padding: 5px;
+    }
+
+}
+
+@media (max-width: 480px) {
+    
+    .breadcrumbs {
+        width: 80%;
+        margin-right: 20em;
+        padding: 5px;
+    }
+ 
+}
+
+
+@media (max-width: 300px) {
+    .breadcrumbs {
+        width: 100%;
+        margin-left: 0.5em;
+        padding: 4px;
+    }
+
+}
     
 </style>
 <body>
@@ -287,7 +339,31 @@ html,body{
         <button id="notification-close">&times;</button>
     </div><!-- END: Notification -->
 
-    <?php include_once('includes/profile-bread.php');?>
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-inner">
+            <div class="row m-0">
+                <div class="col-sm-4">
+                    <div class="page-header float-left">
+                    <div class="page-title">
+                        <h3>My Profile</h3>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="page-header float-right">
+                        <div class="page-title">
+                            <ol class="breadcrumb text-right" style="background: transparent;">
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li class="profile.php">Profile</li>
+                                <li class="active">User's Information</li>                              
+                            </ol>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="content"><!-- START: Content -->
         <div class="animated fadeIn"><!-- START: Animated Fade In -->
