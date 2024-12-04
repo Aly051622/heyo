@@ -330,7 +330,9 @@ body, * {
     .user-menu{
         margin-right: 15em;
     }
-    
+    .alert-message{
+        margin-left: 5em;
+    }
     
 }
 @media (max-width: 480px) {
@@ -363,7 +365,9 @@ body, * {
     .user-menu{
         margin-right: 15em;
     }
-    
+    .alert-message{
+        margin-left: 15em;
+    }
 }
 @media (max-width: 300px) {
     .navbar-header {
@@ -394,6 +398,9 @@ body, * {
    
     .user-menu{
         margin-right: 15em;
+    }
+    .alert-message{
+        margin-left: 5em;
     }
 }
 
