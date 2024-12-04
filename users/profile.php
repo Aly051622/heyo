@@ -542,7 +542,7 @@ $(document).on('click', '.clickable-image', function () {
                     <div class="col-md-3">
                         <label for="nv-file" class="form-control-label ">Upload MV File</label>
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-9"><br>
                         <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
                     </div>
                 </div>
