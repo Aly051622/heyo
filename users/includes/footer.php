@@ -161,34 +161,34 @@
 
 @media (max-width: 500px) {
   .modal-content {
-    max-width: 480px;
+    max-width: 600px;
     height: 500px;
   }
 
   .iframe-content {
-    height: 350px;
+    height: 450px;
   }
 }
 
 @media (max-width: 480px) {
   .modal-content {
-    max-width: 300px;
+    max-width: 500px;
     height: 450px;
   }
 
   .iframe-content {
-    height: 300px;
+    height: 400px;
   }
 }
 
 @media (max-width: 300px) {
   .modal-content {
-    max-width: 280px;
+    max-width: 50px;
     height: 400px;
   }
 
   .iframe-content {
-    height: 250px;
+    height: 300px;
   }
 }
 
