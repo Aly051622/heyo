@@ -213,7 +213,7 @@ body, * {
         }
         
         .text-center {
-    color: red;
+    color: black;
     font-weight: bold;
 }
 
