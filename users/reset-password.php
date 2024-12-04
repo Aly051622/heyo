@@ -192,7 +192,7 @@ return true;
     </style>
 </head>
 <body class="bg-dark">
-    <div class="content">
+    <div class="content " style="opacity:1;">
         <div> <a href="forgot-password.php" id="x">
                 X</a>
         </div>
