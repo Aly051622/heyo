@@ -273,6 +273,9 @@ html,body{
             max-width: 250px;
         }
     }
+    .table-responsive{
+        overflow: hidden;
+    }
 
 </style>
 
@@ -337,10 +340,10 @@ html,body{
 
                     <div class="col-lg-12">
                         <div class="card ">
-                            <div class="card-header table-responsive">
+                            <div class="card-header ">
                                 <strong>User </strong> Profile
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block table-responsive">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                    
                                    <?php
