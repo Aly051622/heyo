@@ -150,7 +150,7 @@ return true;
                         <div class="input-group">
                             <input type="password" name="currentpassword" id="currentpassword" class="form-control" required="true">
                             <div class="input-group-append">
-                                <button type="button" class="btn toggle-password" data-target="#currentpassword">
+                                <button type="button" class="btn toggle-password" data-target="#currentpassword" style="background: none; border: none; font-weight: bold;">
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </div>
@@ -166,7 +166,7 @@ return true;
                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
                                 title="Password must be at least 8 characters long, and include at least one lowercase letter, one uppercase letter, one number, and one special character.">
                             <div class="input-group-append">
-                                <button type="button" class="btn toggle-password" data-target="#newpassword">
+                                <button type="button" class="btn toggle-password" data-target="#newpassword" style="background: none; border: none; font-weight: bold;">
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </div>
@@ -180,7 +180,7 @@ return true;
                         <div class="input-group">
                             <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" required="true">
                             <div class="input-group-append">
-                                <button type="button" class="btn toggle-password" data-target="#confirmpassword">
+                                <button type="button" class="btn toggle-password" data-target="#confirmpassword" style="background: none; border: none; font-weight: bold;">
                                     <i class="bi bi-eye"></i>
                                 </button>
                             </div>
