@@ -24,7 +24,6 @@ if (strlen($_SESSION['vpmsuid']==0)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <link rel="stylesheet" href="css/responsive/.css">
     <title>FAQs | CTU Danao VPMS</title>
     <style>
         body {
@@ -123,7 +122,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 </div>
     <br>
     <!-- Header -->
-    <div class="faq-header mb-5">
+    <div class="faq-header mb-5 table-responsive">
         <h3>Frequently Asked Questions</h3>
     </div>
     <!-- FAQ Section -->

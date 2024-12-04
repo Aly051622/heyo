@@ -133,18 +133,22 @@ body, * {
 
  /* logout message */
  .alert-message {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        background-color: red;
-        color: white;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
+    position: fixed; 
+    top: 50%; /
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    padding: 20px;
+    background-color: red; 
+    color: white; 
+    border: 1px solid #f5c6cb; 
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 16px;
+    z-index: 9999; 
+    max-width: 90%; 
+  }
+
   
 /* modal for logout */
 .modal {
@@ -327,6 +331,7 @@ body, * {
         margin-right: 15em;
     }
     
+    
 }
 @media (max-width: 480px) {
     .navbar-header {
@@ -391,6 +396,8 @@ body, * {
         margin-right: 15em;
     }
 }
+
+
 </style>
 <header>
     <div class="navbar-header">
@@ -437,9 +444,9 @@ body, * {
                         <button onclick="confirmLogout(false)" class="btn-warning">No</button>
                     </div>
                 </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
+                <div class="alert-message text-center" id="logout-alert" style="display: none;">
+  <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+</div>
         </div>
         <script>
              function handleLogout() {

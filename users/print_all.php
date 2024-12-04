@@ -81,7 +81,7 @@ include('../DBconnection/dbconnection.php');
                 <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Parking Number</th>
+                            
                             <th>Vehicle Category</th>
                             <th>Company</th>
                             <th>Owner</th>
@@ -89,7 +89,7 @@ include('../DBconnection/dbconnection.php');
                             <th>In Time</th>
                             <th>Out Time</th>
                             <th>Status</th>
-                            <th>Remark</th>
+                            
                         </tr>
                         </thead>
                     <tbody>
@@ -100,10 +100,10 @@ include('../DBconnection/dbconnection.php');
                         while ($row = mysqli_fetch_array($result)) {
                             $status = ($row['Status'] == "Out") ? "Outgoing Vehicle" : "Incoming Vehicle";
                             $outTime = ($row['Status'] == "Out") ? $row['OutTime'] : "N/A";
-                            $remark = ($row['Status'] == "Out") ? $row['Remark'] : "N/A";
+                           
                         ?>
                             <tr>
-                                <td><?php echo $row['ParkingNumber']; ?></td>
+                        
                                 <td><?php echo $row['VehicleCategory']; ?></td>
                                 <td><?php echo $row['VehicleCompanyname']; ?></td>
                                 <td><?php echo $row['OwnerName']; ?></td>
@@ -111,7 +111,7 @@ include('../DBconnection/dbconnection.php');
                                 <td><?php echo $row['InTime']; ?></td>
                                 <td><?php echo $outTime; ?></td>
                                 <td><?php echo $status; ?></td>
-                                <td><?php echo $remark; ?></td>
+                                
                             </tr>
                         <?php } ?>
                     </tbody>
