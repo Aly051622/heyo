@@ -325,7 +325,7 @@ if (strlen($_SESSION['vpmsuid'] == 0)) {
 </div>
 
         <!-- Content -->
-        <div class="content">
+        <div class="content table-responsive">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
