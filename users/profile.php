@@ -337,7 +337,7 @@ html,body{
 
                     <div class="col-lg-12">
                         <div class="card ">
-                            <div class="card-header">
+                            <div class="card-header table-responsive">
                                 <strong>User </strong> Profile
                             </div>
                             <div class="card-body card-block">
