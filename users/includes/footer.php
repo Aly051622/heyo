@@ -66,7 +66,7 @@
   object-fit: contain;
 }
 
-.modal-content {
+.modal-contents {
   background: transparent;
   width: 90%;
   height: 750px;
@@ -116,7 +116,7 @@
   }
 }
 @media (max-width: 1600px) {
-  .modal-content {
+  .modal-contents{
     max-width: 1200px;
     height: 700px;
   }
@@ -127,7 +127,7 @@
 }
 
 @media (max-width: 1200px) {
-  .modal-content {
+  .modal-contents {
     max-width: 1024px;
     height: 650px;
   }
@@ -138,7 +138,7 @@
 }
 
 @media (max-width: 1024px) {
-  .modal-content {
+  .modal-contents{
     max-width: 760px;
     height: 600px;
   }
@@ -149,7 +149,7 @@
 }
 
 @media (max-width: 760px) {
-  .modal-content {
+  .modal-contents {
     max-width: 500px;
     height: 550px;
   }
