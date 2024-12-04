@@ -123,7 +123,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
 </div>
     <br>
     <!-- Header -->
-    <div class="faq-header mb-5">
+    <div class="faq-header mb-5 table-responsive">
         <h3>Frequently Asked Questions</h3>
     </div>
     <!-- FAQ Section -->
