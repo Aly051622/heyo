@@ -69,7 +69,7 @@
 .modal-content {
   background: transparent;
   width: 90%;
-  height: 720px;
+  height: 750px;
   max-width: 730px;
   position: relative;
   border: none;
