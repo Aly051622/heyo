@@ -52,7 +52,7 @@
 }
 
 /* Modal Styling */
-.modal {
+.modals {
   display: none;
   position: fixed;
   top: 0;
@@ -216,7 +216,7 @@
     </footer>
 <div class="con">
     <!-- Slide Modal -->
-  <div id="slide-modal" class="modal">
+  <div id="slide-modal" class="modals">
     <div class="modal-contents">
       <iframe src="slide.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
@@ -224,7 +224,7 @@
   </div>
 </div>
   <!-- Privacy Policy Modal -->
-  <div id="privacy-modal" class="modal">
+  <div id="privacy-modal" class="modals">
     <div class="modal-contents">
       <iframe src="policy.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-privacy"><i class="bi bi-x-circle-fill"></i></button>
@@ -232,7 +232,7 @@
   </div>
 
   <!-- Terms and Conditions Modal -->
-  <div id="terms-modal" class="modal">
+  <div id="terms-modal" class="modals">
     <div class="modal-contents">
       <iframe src="terms.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-terms"><i class="bi bi-x-circle-fill"></i></button>
