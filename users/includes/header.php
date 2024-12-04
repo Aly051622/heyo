@@ -366,7 +366,7 @@ body, * {
         margin-right: 15em;
     }
     .alert-message{
-        margin-left: 5em;
+        margin-left: 15em;
     }
 }
 @media (max-width: 300px) {
