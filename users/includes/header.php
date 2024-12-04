@@ -405,6 +405,7 @@ body, * {
     font-size: 14px;
     padding: 12px;
     width: 85%;
+    margin-right: 50px;
   }
 }
 
