@@ -501,7 +501,7 @@ body, * {
                         <button onclick="confirmLogout(false)" class="btn-warning">No</button>
                     </div>
                 </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
+                <div class="alert-message modal-dialog-centered" id="logout-alert" style="display: none;">
                 <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
                 </div>
         </div>
