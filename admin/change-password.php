@@ -74,8 +74,13 @@ return true;
         background: orange;
     }
         .btn{
-            cursor: url('https://img.icons8.com/ios-glyphs/28/drag-left.png') 14 14, auto;
+            cursor: pointer;
         }
+        .input-group-append .btn {
+    border: none;
+    background: transparent;
+}
+
     </style>
 <body>
    <?php include_once('includes/sidebar.php');?>
@@ -138,20 +143,49 @@ $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Current Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" name="currentpassword" class=" form-control" required= "true" value=""></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">New Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" name="newpassword" class="form-control" value="" required="true"></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Confirm Password</label></div>
-                                        <div class="col-12 col-md-9"> <input type="password" name="confirmpassword" class="form-control" value="" required="true"></div>
-                                    </div>
-                                   
-                                  
+                             <div class="row form-group">
+            <div class="col col-md-3"><label for="currentpassword" class="form-control-label">Current Password</label></div>
+            <div class="col-12 col-md-9">
+                <div class="input-group">
+                    <input type="password" id="currentpassword" name="currentpassword" class="form-control" required="true">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="currentpassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="newpassword" class="form-control-label">New Password</label></div>
+            <div class="col-12 col-md-9">
+                <div class="input-group">
+                    <input type="password" id="newpassword" name="newpassword" class="form-control" required="true">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="newpassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col col-md-3"><label for="confirmpassword" class="form-control-label">Confirm Password</label></div>
+            <div class="col-12 col-md-9">
+                <div class="input-group">
+                    <input type="password" id="confirmpassword" name="confirmpassword" class="form-control" required="true">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary toggle-password" data-target="confirmpassword">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                                        
                                     
                                     <?php } ?>
                                    <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >⚙ Change</button></p>
@@ -182,7 +216,26 @@ while ($row=mysqli_fetch_array($ret)) {
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
+<script>
+    document.querySelectorAll('.toggle-password').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const inputField = document.getElementById(targetId);
+        const icon = button.querySelector('i');
 
+        if (inputField.type === 'password') {
+            inputField.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        } else {
+            inputField.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        }
+    });
+});
+
+    </script>
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>

@@ -327,6 +327,7 @@ body, * {
         margin-right: 15em;
     }
     
+    
 }
 @media (max-width: 480px) {
     .navbar-header {
@@ -390,6 +391,69 @@ body, * {
     .user-menu{
         margin-right: 15em;
     }
+}
+@media (max-width: 300px) {
+  .alert-message {
+    font-size: 12px;
+    padding: 10px;
+    width: 90%;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 480px) {
+  .alert-message {
+    font-size: 14px;
+    padding: 12px;
+    width: 85%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 500px) {
+  .alert-message {
+    font-size: 14px;
+    padding: 14px;
+    width: 80%;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 760px) {
+  .alert-message {
+    font-size: 16px;
+    padding: 15px;
+    width: 70%;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1024px) {
+  .alert-message {
+    font-size: 18px;
+    padding: 16px;
+    width: 60%;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .alert-message {
+    font-size: 18px;
+    padding: 18px;
+    width: 50%;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) {
+  .alert-message {
+    font-size: 20px;
+    padding: 20px;
+    width: 40%;
+  }
+}
+
+@media (min-width: 1601px) {
+  .alert-message {
+    font-size: 22px;
+    padding: 22px;
+    width: 30%;
+  }
 }
 </style>
 <header>
