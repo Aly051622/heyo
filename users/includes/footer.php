@@ -66,7 +66,7 @@
   object-fit: contain;
 }
 
-.modal-content {
+.modal-contents {
   background: transparent;
   width: 90%;
   height: 750px;
@@ -116,7 +116,7 @@
   }
 }
 @media (max-width: 1600px) {
-  .modal-content {
+  .modal-contents{
     max-width: 1200px;
     height: 700px;
   }
@@ -127,7 +127,7 @@
 }
 
 @media (max-width: 1200px) {
-  .modal-content {
+  .modal-contents {
     max-width: 1024px;
     height: 650px;
   }
@@ -138,7 +138,7 @@
 }
 
 @media (max-width: 1024px) {
-  .modal-content {
+  .modal-contents{
     max-width: 760px;
     height: 600px;
   }
@@ -149,7 +149,7 @@
 }
 
 @media (max-width: 760px) {
-  .modal-content {
+  .modal-contents {
     max-width: 500px;
     height: 550px;
   }
@@ -160,7 +160,7 @@
 }
 
 @media (max-width: 500px) {
-  .modal-content {
+  .modal-contents {
     max-width: 600px;
     height: 500px;
   }
@@ -171,7 +171,7 @@
 }
 
 @media (max-width: 480px) {
-  .modal-content {
+  .modal-contents {
     max-width: 500px;
     height: 450px;
   }
@@ -182,7 +182,7 @@
 }
 
 @media (max-width: 300px) {
-  .modal-content {
+  .modal-contents {
     max-width: 50px;
     height: 400px;
   }
@@ -217,7 +217,7 @@
 <div class="con">
     <!-- Slide Modal -->
   <div id="slide-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-contents">
       <iframe src="slide.php" class="iframe-content"></iframe>
       <button class="close-btn" id="close-slide"><i class="bi bi-x-circle-fill"></i></button>
     </div>
