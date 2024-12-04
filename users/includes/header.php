@@ -133,18 +133,22 @@ body, * {
 
  /* logout message */
  .alert-message {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        background-color: red;
-        color: white;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
+    position: fixed; 
+    top: 50%; /
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    padding: 20px;
+    background-color: red; 
+    color: white; 
+    border: 1px solid #f5c6cb; 
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 16px;
+    z-index: 9999; 
+    max-width: 90%; 
+  }
+
   
 /* modal for logout */
 .modal {
@@ -392,70 +396,8 @@ body, * {
         margin-right: 15em;
     }
 }
-@media (max-width: 300px) {
-  .alert-message {
-    font-size: 12px;
-    padding: 10px;
-    width: 90%;
-  }
-}
 
-@media (min-width: 301px) and (max-width: 480px) {
-  .alert-message {
-    font-size: 14px;
-    padding: 12px;
-    width: 85%;
-    margin-right: 50px;
-  }
-}
 
-@media (min-width: 481px) and (max-width: 500px) {
-  .alert-message {
-    font-size: 14px;
-    padding: 14px;
-    width: 80%;
-  }
-}
-
-@media (min-width: 501px) and (max-width: 760px) {
-  .alert-message {
-    font-size: 16px;
-    padding: 15px;
-    width: 70%;
-  }
-}
-
-@media (min-width: 761px) and (max-width: 1024px) {
-  .alert-message {
-    font-size: 18px;
-    padding: 16px;
-    width: 60%;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .alert-message {
-    font-size: 18px;
-    padding: 18px;
-    width: 50%;
-  }
-}
-
-@media (min-width: 1201px) and (max-width: 1600px) {
-  .alert-message {
-    font-size: 20px;
-    padding: 20px;
-    width: 40%;
-  }
-}
-
-@media (min-width: 1601px) {
-  .alert-message {
-    font-size: 22px;
-    padding: 22px;
-    width: 30%;
-  }
-}
 </style>
 <header>
     <div class="navbar-header">
@@ -503,8 +445,8 @@ body, * {
                     </div>
                 </div>
                 <div class="alert-message text-center" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
+  <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+</div>
         </div>
         <script>
              function handleLogout() {
