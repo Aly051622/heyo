@@ -60,18 +60,19 @@
   width: 100%;
   height: 100%;
   background: whitesmoke;
+  opacity: 0.9;
   justify-content: center;
   align-items: center;
   object-fit: contain;
 }
 
 .modal-content {
-  background: #fff;
-  border-radius: 10px;
+  background: transparent;
   width: 90%;
   height: 720px;
   max-width: 730px;
   position: relative;
+  border: none;
 }
 
 .iframe-content {
