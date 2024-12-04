@@ -76,6 +76,7 @@ return true;
     }
     .content {
       background-color:#ff9933;
+      opacity: 1;
       border-radius: 20px;
       position: absolute;
       top: 50%;
