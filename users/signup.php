@@ -36,21 +36,20 @@ if (isset($_POST['submit'])) {
         // Insert new user into tblregusers
         $insert_query = mysqli_prepare($con, 
             "INSERT INTO tblregusers 
-            (FirstName, LastName, MobileNumber, Email, Password, user_type, place, registration_status, verification_status, status) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            (FirstName, LastName, MobileNumber, Email, Password, place, registration_status, verification_status, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
         if ($insert_query) {
             // Define default values for columns
-            $user_type = 'user';
             $place = 'Unknown';
             $registration_status = 'pending';
             $verification_status = 'pending';
             $status = 'inactive';
 
-            mysqli_stmt_bind_param($insert_query, "ssisssssss", 
+            mysqli_stmt_bind_param($insert_query, "ssissssss", 
                 $fname, $lname, $contno, $email, $password, 
-                $user_type, $place, $registration_status, $verification_status, $status
+                $place, $registration_status, $verification_status, $status
             );
 
             if (mysqli_stmt_execute($insert_query)) {
@@ -74,6 +73,7 @@ if (isset($_POST['submit'])) {
     mysqli_close($con);
 }
 ?>
+
 
 
 
