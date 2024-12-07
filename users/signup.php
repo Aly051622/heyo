@@ -36,19 +36,18 @@ if (isset($_POST['submit'])) {
         // Insert new user into tblregusers
         $insert_query = mysqli_prepare($con, 
             "INSERT INTO tblregusers 
-            (FirstName, LastName, MobileNumber, Email, Password, registration_status, verification_status, status) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+            (FirstName, LastName, MobileNumber, Email, Password, registration_status, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
 
         if ($insert_query) {
             // Define default values for columns
             $registration_status = 'pending';
-            $verification_status = 'pending';
             $status = 'inactive';
 
-            mysqli_stmt_bind_param($insert_query, "ssisssss", 
+            mysqli_stmt_bind_param($insert_query, "ssissss", 
                 $fname, $lname, $contno, $email, $password, 
-                $registration_status, $verification_status, $status
+                $registration_status, $status
             );
 
             if (mysqli_stmt_execute($insert_query)) {
