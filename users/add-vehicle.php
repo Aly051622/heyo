@@ -786,6 +786,7 @@ if (mysqli_query($con, $query)) {
               cursor: pointer;
               font-weight: bold;
               box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+              font-family: 'Open Sans', sans-serif; 
           }
     </style>
     
