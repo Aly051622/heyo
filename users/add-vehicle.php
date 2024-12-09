@@ -706,7 +706,6 @@ if (mysqli_query($con, $query)) {
 
     <title>CTU- Danao Parking Management System- Add Vehicle</title>
    
-
     <link rel="apple-touch-icon" href="../images/aa.png">
       <link rel="shortcut icon" href="../images/aa.png">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -718,16 +717,9 @@ if (mysqli_query($con, $query)) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="css/responsive/.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -773,12 +765,12 @@ if (mysqli_query($con, $query)) {
             background: whitesmoke;
             overflow: auto;
         }
-       .btn-sm:hover {
+       .btn:hover, .btn-sm:hover, .btn-primary:hover, #addbtn:hover  {
               background-color: darkblue;
               border: solid blue;
           }
   
-         .btn-sm {
+         .btn-sm, #addbtn{
               border-radius: 9px;
               background-color: rgb(53, 97, 255);
               color: white;
@@ -794,34 +786,40 @@ if (mysqli_query($con, $query)) {
     </head>
 <body>
 
-<?php include_once('includes/header.php'); ?>
 <?php include_once('includes/sidebar.php'); ?>
+<?php include_once('includes/header.php'); ?>
 
 <div class="right-panel">
     <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h3>Add Vehicle</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a></li>
-                                <li><a href="add-vehicle.php">Vehicle</a></li>
-                                <li class="active">Add Vehicle</li>
-                            </ol>
-                        </div>
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <!-- START: Left Section -->
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="page-header float-md-left text-center text-md-left">
+                    <div class="page-title">
+                        <h3>Add Vehicle</h3>
                     </div>
                 </div>
             </div>
+            <!-- END: Left Section -->
+
+            <!-- START: Right Section -->
+            <div class="col-12 col-md-8">
+                <div class="page-header float-md-right text-center text-md-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                                <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="add-vehicle.php">Vehicle</a></li>
+                                <li class="active">Add Vehicle</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Right Section -->
         </div>
     </div>
+</div>
+
 
     <div class="content">
         <div class="animated fadeIn">
@@ -954,8 +952,8 @@ if (mysqli_query($con, $query)) {
 
                                 <!-- Submit Button -->
                                 <p style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary btn-sm" name="submit">
-                                        <i class="fa fa-plus"> Add</i>
+                                    <button type="submit" class="btn btn-primary btn-sm" name="submit" id="addbtn">
+                                        <i class="fa bi bi-plus"> Add</i>
                                     </button>
                                 </p>
                             </form>

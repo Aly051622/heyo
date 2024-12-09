@@ -36,14 +36,13 @@ if (strlen($_SESSION['vpmsuid']) == 0) {
 <!doctype html>
 <html class="no-js" lang="">
 <head>
-    
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>CTU- Danao Parking System - Change Password</title>
    
     <link rel="apple-touch-icon" href="../images/aa.png">
-      <link rel="shortcut icon" href="../images/aa.png">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-
+    <link rel="shortcut icon" href="../images/aa.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
@@ -88,6 +87,10 @@ return true;
                 background-color: darkblue;
                 border: solid blue;
             }
+            .input-group-append .btn {
+    border: none;
+    background: transparent;
+}
     </style>
 </head>
 <body>
@@ -96,30 +99,36 @@ return true;
 
    <?php include_once('includes/header.php');?>
 <div class="right-panel mb-5">
+
         <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Dashboard</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="change-password.php">Change Password</a></li>
-                                    <li class="active">Change Password</li>
-                                </ol>
-                            </div>
-                        </div>
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <!-- START: Left Section -->
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="page-header float-md-left text-center text-md-left">
+                    <div class="page-title">
+                        <h3>Change Password</h3>
                     </div>
                 </div>
             </div>
+            <!-- END: Left Section -->
+
+            <!-- START: Right Section -->
+            <div class="col-12 col-md-8">
+                <div class="page-header float-md-right text-center text-md-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                                     <li><a href="dashboard.php">Dashboard</a></li>
+                                    <li><a href="change-password.php">Change Password</a></li>
+                                    <li class="active">Change Password</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Right Section -->
         </div>
+    </div>
+</div>
 
         <div class="content">
             <div class="animated fadeIn">
@@ -135,18 +144,50 @@ return true;
                                 <form action="" method="post" class="form-horizontal" name="changepassword" onsubmit="return checkpass();">
                                    
                                    
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Current Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" name="currentpassword" class=" form-control" required= "true" value=""></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">New Password</label></div>
-                                        <div class="col-12 col-md-9"><input type="password" name="newpassword" class="form-control" value="" required="true"></div>
-                                    </div>
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Confirm Password</label></div>
-                                        <div class="col-12 col-md-9"> <input type="password" name="confirmpassword" class="form-control" value="" required="true"></div>
-                                    </div>
+                                <div class="row form-group">
+                    <div class="col col-md-3"><label for="currentpassword" class="form-control-label">Current Password</label></div>
+                    <div class="col-12 col-md-9">
+                        <div class="input-group">
+                            <input type="password" name="currentpassword" id="currentpassword" class="form-control" required="true">
+                            <div class="input-group-append">
+                                <button type="button" class="btn toggle-password" data-target="#currentpassword" style="background: none; border: none; font-weight: bold;">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="newpassword" class="form-control-label">New Password</label></div>
+                    <div class="col-12 col-md-9">
+                        <div class="input-group">
+                            <input type="password" name="newpassword" id="newpassword" class="form-control" required="true"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                                title="Password must be at least 8 characters long, and include at least one lowercase letter, one uppercase letter, one number, and one special character.">
+                            <div class="input-group-append">
+                                <button type="button" class="btn toggle-password" data-target="#newpassword" style="background: none; border: none; font-weight: bold;">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="confirmpassword" class="form-control-label">Confirm Password</label></div>
+                    <div class="col-12 col-md-9">
+                        <div class="input-group">
+                            <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" required="true">
+                            <div class="input-group-append">
+                                <button type="button" class="btn toggle-password" data-target="#confirmpassword" style="background: none; border: none; font-weight: bold;">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                                    
                                   
                                     
@@ -177,6 +218,24 @@ return true;
 </div><!-- /#right-panel -->
 
 <!-- Right Panel -->
+<script>
+    document.querySelectorAll('.toggle-password').forEach(button => {
+        button.addEventListener('click', () => {
+            const input = document.querySelector(button.getAttribute('data-target'));
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        });
+    });
+</script>
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>

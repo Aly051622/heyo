@@ -1,9 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <head>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
 </head> 
@@ -23,7 +20,7 @@ body, * {
     width: 200px;
     position: fixed;
     left: 0;
-    height: 100bh;
+    height: 100vh;
     overflow: hidden;
     transition: width 0.3s ease;
 
@@ -59,6 +56,9 @@ body, * {
     #right-panel {
         margin-left: 0;
     }
+    .left-panel{
+        height:100vh;
+    }
 }
 
 @media (max-width: 576px) {
@@ -74,6 +74,9 @@ body, * {
     #toggleSidebar {
         left: 5px;
         top: 5px;
+    }
+    .left-panel{
+        height:100vh;
     }
 }
 
@@ -91,6 +94,9 @@ body, * {
         left: 5px;
         top: 5px;
     }
+    .left-panel{
+        height:100vh;
+    }
 }
 </style> 
 <aside id="left-panel" class="left-panel">
@@ -99,27 +105,27 @@ body, * {
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="dashboard.php" style="text-decoration: none;">
-                        <i class="menu-icon fa fa-laptop"></i>Dashboard
+                        <i class="menu-icon fa bi bi-laptop-fill"></i>Dashboard
                     </a>
                 </li>
                 <li>
                     <a href="view-vehicle.php"  style="text-decoration: none;">
-                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
+                    <i class="menu-icon fa bi bi-bus-front-fill"></i> Owned Vehicle/s
                     </a>
                 </li>
                 <li>
                     <a href="vehicle-transac.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-truck"></i>Vehicle Logs
+                        <i class="menu-icon fa bi bi-train-front-fill"></i>Vehicle Logs
                     </a>
                 </li>
                 <li>
                     <a href="add-vehicle.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
+                        <i class="menu-icon fa bi bi-journal-album"></i>Register Vehicle
                     </a>
                 </li>
                 <li>
                     <a href="service.php"  style="text-decoration: none;">
-                        <i class="menu-icon fa fa-headset"></i>Chat Concern
+                        <i class="menu-icon fa bi bi-question-circle-fill"></i>FAQs
                     </a>
                 </li>
             </ul>

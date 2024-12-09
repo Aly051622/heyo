@@ -76,6 +76,7 @@ return true;
     }
     .content {
       background-color:#ff9933;
+      opacity: 1;
       border-radius: 20px;
       position: absolute;
       top: 50%;
@@ -87,12 +88,6 @@ return true;
       transform: translate(-50%, -50%);
     }
 
-    .content:hover {
-      opacity: 1;      
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
     .field{
       position: relative;
       height: 45px;
@@ -197,7 +192,7 @@ return true;
     </style>
 </head>
 <body class="bg-dark">
-    <div class="content">
+    <div class="content " style="opacity:1;">
         <div> <a href="forgot-password.php" id="x">
                 X</a>
         </div>
@@ -210,10 +205,18 @@ return true;
     echo $msg;
   }  ?> </p>
                         <div class="form-group field space">
-                        <span class="fa bi bi-lock-fill"></span>
-                        <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password" required="true">
-                        <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 11px; cursor: pointer; color: black;"></i>
-                    </div>
+    <span class="fa bi bi-lock-fill"></span>
+    <input type="password" 
+           class="form-control" 
+           id="newpassword" 
+           name="newpassword" 
+           placeholder="New Password" 
+           required="true" 
+           pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}" 
+           title="Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.">
+    <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 11px; cursor: pointer; color: black;"></i>
+</div>
+
                     <div class="form-group field space">
                         <span class="fa bi bi-shield-lock-fill"></span>
                         <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" required="true">

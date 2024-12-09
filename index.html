@@ -1302,6 +1302,35 @@
         height: 320px;
       }
 }
+@media (max-width: 480px){
+        #title{
+            display: none;
+        }
+        .navbar-item{
+          justify-content: space-around;
+          position:absolute;
+          margin-left:-50px;
+          z-index: 1;
+        }
+    }
+    @media (max-width: 300px){
+        #title{
+            display: none;
+        }
+        .navbar-item{
+          justify-content: space-around;
+          position:relative;
+        }
+    }
+    @media (max-width: 500px){
+        #title{
+            display: none;
+        }
+        .navbar-item{
+          justify-content: space-around;
+          position:relative;
+        }
+    }
 </style>
 
     </head>
@@ -1332,7 +1361,7 @@
           <div class="modal-header">
               <h3 class="modal-title" id="commentModalLabel">Comment Section</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">X</span>
+                  <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
               </button>
           </div>
           <div class="modal-body" id="modalContent">
@@ -1351,7 +1380,7 @@
           <div class="modal-header">
               <h3 class="modal-title" id="feedbackModalLabel">Feedbacks</h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">X</span>
+                  <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
               </button>
           </div>
           <div class="modal-body" id="modalContent">
@@ -1390,7 +1419,7 @@
                     <button class="explore" id="view-more-button" style="color: white; font-weight: bold; text-decoration: none;">View More</button>
                   </div>
                       <div class="videoContainer" style=" margin-top: 100px;">
-                        <iframe allowfullscreen="allowfullscreen" class="mainVideo" controls="controls" src="https://www.youtube.com/embed/watch?v=zAhYoX5JTp8">
+                        <iframe allowfullscreen="allowfullscreen" class="mainVideo" controls="controls" src="https://www.youtube.com/embed/ZwVIXjfDCrk" title="CTU DANAO PARKING SYSTEM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </iframe>
                         <img class="dotsImg image-block" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/cw3.svg">
                       </div>
@@ -1687,7 +1716,7 @@
               <!-- Footer Location-->
               <div class="col-lg-4 mb-5">
                   <h5 class="text-uppercase mb-4" style="color: #ff9933;">Location</h5>
-                  <p class="lead mb-0">
+                  <p class="lead mb-0" style="color: white;">
                       Cebu Technological University - Danao Campus<br />
                       Sabang, Danao
                   </p>
@@ -1703,7 +1732,7 @@
               <!-- Footer About Text-->
               <div class="col-lg-4">
                   <h5 class="text-uppercase mb-4" style="color: #ff9933;">Explore Now!</h5>
-                  <p class="lead mb-0">
+                  <p class="lead mb-0" style="color: white;">
                       Ready to use the system? Click the link below to explore:<br />
                       <a href="index.php" class="text-decoration-none" style="color: orange;"><i class="bi bi-house-door-fill"></i> CTU Parking System</a>
                   </p>

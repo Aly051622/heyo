@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="navbar-item" href="users/service.php" id="surbtn"><i class=""></i></a>
           <a class="navbar-brand" id="title" style="display: hidden; margin-bottom:5px;  margin-left: 3.5em;">CTU Danao Parking System</a>
             <div class="navbar-menu">   
-                <!--<a class="navbar-item" href="admin/index.php">Admin</a>-->
+               <!-- <a class="navbar-item" href="admin/index.php">Admin</a>-->
                 <a class="navbar-item" href="users/login.php">Client</a>
                 <a class="navbar-item" href="index.html">About</a>
                 <a class="navbar-item btn btn-primary" href="#" id="surbtn" data-toggle="modal" data-target="#commentModal">
@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="modal-header">
                 <h3 class="modal-title" id="commentModalLabel">Comment Section</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body" id="modalContent">
@@ -636,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="modal-header">
                 <h3 class="modal-title" id="feedbackModalLabel">Feedbacks</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">X</span>
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body" id="modalContent">

@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <?php
 session_start();
 include('../DBconnection/dbconnection.php');
@@ -74,7 +75,6 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
@@ -88,30 +88,30 @@ $registrationStatus = htmlspecialchars($row['registration_status']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="../admin/assets/css/style.css">   
-    <link rel="stylesheet" href="css/responsive.css">   
-    <!-- Include Bootstrap CSS (required for styling) -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
+    
+    <link rel="stylesheet" href="css/responsive/.css">
+    
 
-   <style>
+</head>
+    <style>
 
 #notification {
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: #f8d7da; /* Light red background */
-    color: #721c24; /* Dark red text for contrast */
-    border: 1px solid #f5c6cb; /* Border color similar to background */
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb; 
     border-radius: 5px;
-    padding: 15px; /* Increased padding for better readability */
+    padding: 15px; 
     display: none;
     z-index: 9999;
     width: 300px;
     max-width: 90%;
-    font-size: 16px; /* Increased font size for better visibility */
+    font-size: 16px; 
 }
 
 #notification span {
@@ -137,7 +137,7 @@ html,body{
         box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             top: 50%;
                  }
-                 .btn{
+                 .close, .btn{
                 border: solid lightgray;
                 border-radius: 10px;
                 padding: 10px;
@@ -148,7 +148,7 @@ html,body{
                 font-weight: bolder;
         }
 
-           .btn:hover{
+         .close:hover  .btn:hover{
                 background-color: darkblue;
                 border: solid blue;
             }
@@ -162,8 +162,8 @@ html,body{
         width: 935px;
     }
     .imgp input[type="file"]{
-        margin-left: 15em;
-        margin-top:-40px;
+        margin-left: 1em;
+        margin-top:-20px;
         cursor: pointer;
         text-align: left;
     }
@@ -189,25 +189,94 @@ html,body{
         transform: scale(1.1); 
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
     }
+    .modal-backdrop {
+    z-index: 1040; 
+    pointer-events: none;
+    background-color: transparent;
+    }
+
+    .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; 
+}
+
+.modal-body img {
+    max-width: none; 
+    max-height: none; 
+}
+
+.modal-dialog {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.modal-content {
+    background: transparent; 
+    border: none;
+    box-shadow: none; 
+}
+
+.modal.fade .modal-dialog {
+    transform: none; 
+}
+
+.table-responsive{
+    overflow: hidden;
+}
     .reg{
         margin-left: 18px;
         width: 500px;
     }
+    @media (max-width: 560px){
+        .regs{
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
+        }
+    }
     @media (max-width: 480px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
         }
     }
     @media (max-width: 300px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
         }
     }
     @media (max-width: 500px){
         .regs{
-            max-width: 50px;
+            max-width: 250px;
+        }
+        .fil{
+            margin-top: 20px;
+            margin-left: 10px;
+            max-width: 250px;
         }
     }
+    .table-responsive{
+        overflow: hidden;
+    }
+
 </style>
 
 </head>
@@ -217,7 +286,6 @@ html,body{
     
    <?php include_once('includes/header.php');?>
 
-    <!-- Notification system -->
    <!-- Notification system -->
 <div class="right-panel">
 <div id="notification">
@@ -225,40 +293,57 @@ html,body{
     <button id="notification-close">&times;</button>
 </div>
 
-        <div class="breadcrumbs mb-5">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>My Profile</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="profile.php">Profile</a></li>
-                                    <li class="active">User Profile</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+         <!-- Include sidebar -->
+    <?php include_once('includes/sidebar.php'); ?>
+    
+    <?php include_once('includes/header.php');?>
+ 
+   
+     <div id="notification"><!-- START: Notification -->
+         <span id="notification-message"><?php if (isset($_GET['notification'])) echo htmlspecialchars($_GET['notification']); ?></span>
+         <button id="notification-close">&times;</button>
+     </div><!-- END: Notification -->
 
-        <div class="content">
+    <!-- Notification system -->
+     <div class="breadcrumbs">
+     <div class="breadcrumbs-inner">
+         <div class="row m-0">
+             <!-- START: Left Section -->
+             <div class="col-12 col-md-4 mb-2 mb-md-0">
+                 <div class="page-header float-md-left text-center text-md-left">
+                     <div class="page-title">
+                         <h3>My Profile</h3>
+                     </div>
+                 </div>
+             </div>
+             <!-- END: Left Section -->
+ 
+             <!-- START: Right Section -->
+             <div class="col-12 col-md-8">
+                 <div class="page-header float-md-right text-center text-md-right">
+                     <div class="page-title">
+                         <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                             <li><a href="dashboard.php">Dashboard</a></li>
+                             <li class="profile.php">Profile</li>
+                             <li class="active">User's Information</li>
+                         </ol>
+                     </div>
+                 </div>
+             </div>
+             <!-- END: Right Section -->
+         </div>
+     </div>
+ </div>
+
+        <div class="content ">
             <div class="animated fadeIn">
 
                     <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card ">
+                            <div class="card-header ">
                                 <strong>User </strong> Profile
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block table-responsive">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                    
                                    <?php
@@ -270,12 +355,12 @@ while ($row = mysqli_fetch_array($ret)) {
     ?>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">First Name</label></div>
-                                        <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" value="<?php  echo $row['FirstName'];?>">
+                                        <div class="col-12 col-md-9"> <input type="text" name="firstname" required="true" class="form-control" readonly="true" value="<?php  echo $row['FirstName'];?>">
                                             </div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="email-input" class=" form-control-label">Last Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" name="lastname" required="true" class="form-control" value="<?php  echo $row['LastName'];?>"></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="lastname" required="true" class="form-control"  readonly="true"value="<?php  echo $row['LastName'];?>"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="password-input" class=" form-control-label">Contact Number</label></div>
@@ -306,31 +391,55 @@ while ($row = mysqli_fetch_array($ret)) {
 </form>-->
 
 <!-- Bootstrap Modal -->
-<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document" style="width: 50em; height: 50em;">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="imageModalTitle"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+            <div class="modal-header" style="padding: 2px;">
+                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="background: transparent; border: none;">
+                    <span aria-hidden="true"><i class="bi bi-x-circle-fill"></i></span>
                 </button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" src="" alt="" class="img-fluid">
+                <img id="modalImage" src="" alt="Preview Image" style="display: block; margin: auto;">
             </div>
         </div>
     </div>
 </div>
 
 
-
 <script>
-    $(document).on('click', '.clickable-image', function () {
-        var src = $(this).attr('src');
-        var title = $(this).data('title');
-        $('#modalImage').attr('src', src);
-        $('#imageModalTitle').text(title);
-    });
+$(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src'); 
+    const title = $(this).attr('alt'); 
+    const img = new Image(); 
+    img.src = src; 
+
+    img.onload = function () {
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+
+        $('#modalImage').attr('src', src).css({
+            display: 'block',
+            width: naturalWidth > window.innerWidth ? '90%' : `${naturalWidth}px`, 
+            height: naturalHeight > window.innerHeight ? '90%' : `${naturalHeight}px`, 
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain',
+        });
+
+        // Update modal title dynamically if needed
+        if (title) {
+            $('#imageModalTitle').text(title);
+        }
+
+        // Open the modal
+        $('#imageModal').modal('show');
+    };
+});
+
+
+
 </script>
 
 
@@ -375,12 +484,38 @@ while ($row = mysqli_fetch_array($ret)) {
 
 <!-- JavaScript for Modal Image Handling -->
 <script>
-    $(document).on('click', '.clickable-image', function () {
-        var src = $(this).attr('src');
-        var title = $(this).data('title');
-        $('#modalImage').attr('src', src);
-        $('#imageModalTitle').text(title);
-    });
+  $(document).on('click', '.clickable-image', function () {
+    const src = $(this).attr('src');
+    const img = new Image();
+    img.src = src;
+
+    img.onload = function () {
+        const modalImage = $('#modalImage');
+        const modalBody = $('.modal-body');
+
+        // Set the modal image source
+        modalImage.attr('src', src);
+
+        if (img.width > img.height) {
+            modalImage.css({
+                'max-width': '100%',
+                'max-height': '100vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        } else {
+            modalImage.css({
+                'max-width': '60%',
+                'max-height': '80vh',
+                'width': 'auto',
+                'height': 'auto'
+            });
+        }
+
+        $('#imageModalTitle').text($(this).data('title'));
+    };
+});
+
 </script>
     <div class="reg">
     <p>Registration Status: <?php echo $registrationStatus; ?></p>
@@ -388,7 +523,7 @@ while ($row = mysqli_fetch_array($ret)) {
     <!-- Persistent Notification system -->
     <div id="notification" style="display: none;">
         <span id="notification-message">Please upload your files.</span>
-        <button id="notification-close">&times;</button>
+        <button id="notification-close"><i class="bi bi-x-circle-fill"></i></button>
     </div>
 
     <form id="upload-form" action="your_upload_handler.php" method="POST" enctype="multipart/form-data">
@@ -408,27 +543,29 @@ while ($row = mysqli_fetch_array($ret)) {
         <div class="imgp">
                 <div class="row form-group" id="for-registration-files" style="display: none;">
                     <div class="col-md-3">
-                        <label for="nv-file" class="form-control-label">Upload MV File</label>
+                        <label for="nv-file" class="form-control-label ">Upload MV File</label>
                     </div>
-                    <div class="col-md-9">
-                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control">
+                    <div class="col-md-9"><br>
+                        <input type="file" id="nv-file" name="NV_image" accept=".jpeg, .jpg" class="form-control fil">
                     </div>
                 </div>
 
                 <div class="row form-group" id="registered-files" style="display: none;">
-                    <div class="col-md-3">
-                        <label for="or-file" class="form-control-label">Upload OR File</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control">
-                    </div><br>
-                    <div class="col-md-3">
-                        <label for="cr-file" class="form-control-label">Upload CR File</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control">
-                    </div>
+                <div class="col-12 col-md-3"><br>
+                    <label for="or-file" class="form-control-label">Upload OR File</label>
                 </div>
+                <div class="col-12 col-md-9"><br>
+                    <input type="file" id="or-file" name="OR_image" accept=".jpeg, .jpg" class="form-control fil">
+                </div>
+                <div class="w-100 d-md-none"></div> <!-- Forces a new row on small screens -->
+                <div class="col-12 col-md-3 mt-3 mt-md-0"><br>
+                    <label for="cr-file" class="form-control-label ">Upload CR File</label>
+                </div>
+                <div class="col-12 col-md-9"><br>
+                    <input type="file" id="cr-file" name="CR_image" accept=".jpeg, .jpg" class="form-control fil">
+                </div>
+            </div>
+
         </div>
         
         <div class="row form-group">
@@ -580,11 +717,11 @@ form.addEventListener('submit', function (event) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-<script src="../admin/assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="../admin/assets/js/main.js"></script>
 
 
 </body>

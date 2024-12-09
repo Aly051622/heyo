@@ -41,7 +41,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               height: 100%;
               margin: 0;
               padding: 0;
-              overflow-x: auto;
+              overflow: auto;
               
               background: whitesmoke;
           }
@@ -51,7 +51,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               font-family: 'Poppins', sans-serif;
               transition: all 0.3s ease;
           }
-  
+    
          
           /* Card and button styles */
           .card,
@@ -60,9 +60,10 @@ if (strlen($_SESSION['vpmsuid']==0)) {
           }
   
           #printbtn:hover,
-          #viewbtn:hover, .download-icon:hover {
+          #viewbtn:hover, .download-icon:hover, .btn-sm:hover, .btn:hover {
               background-color: darkblue;
               border: solid blue;
+              color: white;
           }
   
           #printbtn, #viewbtn, .download-icon {
@@ -81,23 +82,21 @@ if (strlen($_SESSION['vpmsuid']==0)) {
               padding: 6px 7px;
               text-decoration: none;
               font-size: 18px;
+              font-weight: bold;
               transition: background-color 0.3s ease;
           }
   
-          .download-icon:hover {
-              color: white;
-          }
           .text-right{
               color: gray;
           }
   
           /* Table responsive adjustments for mobile */
           .table-responsive {
-              overflow-x: auto;
+              overflow: auto;
               -webkit-overflow-scrolling: touch;
           }
           .table-responsive {
-              overflow-x: auto;
+              overflow: auto;
               -webkit-overflow-scrolling: touch;
           }
   
@@ -132,43 +131,96 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                   display: block;
                   margin-bottom: 5px;
               }
+              .breadcrumbs{
+                display: none;
+              }
           }
           .clearfix{
               background: whitesmoke; 
+          }
+          @media (max-width: 300px) {
+              .table-responsive th, .table-responsive td {
+                  display: block;
+                  width: 100%;
+                  box-sizing: border-box;
+                  padding: 10px;
+              }
+              .table-responsive tr {
+                  display: block;
+                  margin-bottom: 15px;
+                  border: 1px solid #ddd;
+              }
+              .table-responsive td::before {
+                  content: attr(data-label);
+                  font-weight: bold;
+                  display: block;
+                  margin-bottom: 5px;
+              }
+              .breadcrumbs{
+                display: none;
+              }
+          }
+          @media (max-width: 500px) {
+              .table-responsive th, .table-responsive td {
+                  display: block;
+                  width: 100%;
+                  box-sizing: border-box;
+                  padding: 10px;
+              }
+              .table-responsive tr {
+                  display: block;
+                  margin-bottom: 15px;
+                  border: 1px solid #ddd;
+              }
+              .table-responsive td::before {
+                  content: attr(data-label);
+                  font-weight: bold;
+                  display: block;
+                  margin-bottom: 5px;
+              }
+              .breadcrumbs{
+                display: none;
+              }
           }
       </style>
   </head>
   <body>
     
-    <?php include_once('includes/header.php'); ?>
+<?php include_once('includes/header.php');?>
     <?php include_once('includes/sidebar.php'); ?>
    
 
 <div class="right-panel">
+
     <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-1">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h3>Owned Vehicles</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="dashboard.php">Dashboard</a>&nbsp;/&nbsp;</li>
-                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a>&nbsp;/&nbsp;</li>
-                                <li class="active">View Vehicle Parking Details</li>
-                            </ol>
-                        </div>
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <!-- START: Left Section -->
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="page-header float-md-left text-center text-md-left">
+                    <div class="page-title">
+                    <h3>Owned Vehicles</h3>
                     </div>
                 </div>
             </div>
+            <!-- END: Left Section -->
+
+            <!-- START: Right Section -->
+            <div class="col-12 col-md-8">
+                <div class="page-header float-md-right text-center text-md-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                                <li><a href="view-vehicle.php">View Vehicle Parking Details</a></li>
+                                <li class="active">View Vehicle Parking Details</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Right Section -->
         </div>
     </div>
+</div>
 
     <div class="content">
         <div class="animated fadeIn">
@@ -179,7 +231,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                             <strong class="card-title">View Vehicle Parking Details</strong>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="overflow: hidden; padding: 2px;">
                                 <?php
                                 $ownerno = $_SESSION['vpmsumn'];
                                 $ret = mysqli_query($con, "SELECT RegistrationNumber, Model, VehicleCompanyname, Color, ImagePath, QRCodePath, ID as vehid FROM tblvehicle WHERE OwnerContactNumber='$ownerno'");
@@ -191,7 +243,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                         : '../admin/' . $row['QRCodePath'];
                                     $fullImagePath = __DIR__ . '/' . $imagePath;
                                 ?>
-                                    <div class="d-flex align-items-center border rounded p-3 mb-3">
+                                    <div class="d-flex align-items-center  rounded p-0.2 mb-3">
                                         <div class="flex-shrink-0 mr-3">
                                             <?php if (!empty($imagePath) && file_exists($fullImagePath)) { ?>
                                                 <img src="<?php echo $imagePath; ?>" alt="Vehicle Image" style="width: 170px; height: 100px;" />
@@ -214,7 +266,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                                         <p style="margin: 0;"><strong>Download QR Code</strong></p>
                                                         <img src="<?php echo htmlspecialchars($row['QRCodePath']); ?>" alt="User's QR Code" style="width:100px;height:100px;" class="img-fluid" />
                                                         <a href="<?php echo htmlspecialchars($row['QRCodePath']); ?>" download="<?php echo basename($row['QRCodePath']); ?>" class="download-icon">
-                                                            <i class="fa fa-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
+                                                            <i class="bi bi-download" aria-hidden="true"></i> <span class="sr-only">Download QR Code</span>
                                                         </a>
                                                     <?php } else { ?>
                                                         <p>QR Code image not found</p>
@@ -240,6 +292,7 @@ if (strlen($_SESSION['vpmsuid']==0)) {
                                                     
 </div>
 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>

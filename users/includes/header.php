@@ -1,60 +1,22 @@
 <?php
+// Start the session only if it hasn't been started yet
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-include('includes/dbconnection.php');
+// Include database connection
+include('../DBconnection/dbconnection.php');
 
-// Ensure user is logged in
+// Check if the user ID is set in the session
 if (!isset($_SESSION['vpmsuid'])) {
     echo '<p>Debug: User ID not found in session.</p>';
-    exit;
+    exit; // Stop further execution
 }
 
 $userId = $_SESSION['vpmsuid'];
 
-// Fetch the user's profile picture
-$query = "SELECT profile_pictures FROM tblregusers WHERE ID = '$userId'";
-$result = mysqli_query($con, $query);
-
-$profilePicturePath = '../admin/images/images.png'; // Default avatar
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $profilePicture = $row['profile_pictures'] ?? '';
-    $profilePicturePath = (!empty($profilePicture) && file_exists('../uploads/profile_uploads/' . $profilePicture)) 
-        ? '../uploads/profile_uploads/' . htmlspecialchars($profilePicture, ENT_QUOTES, 'UTF-8') 
-        : $profilePicturePath;
-}
-
-$uploadSuccess = false;
-
-// Handle image upload
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])) {
-    if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
-        $uploadsDir = '../uploads/profile_uploads/';
-        $fileName = uniqid('profile_', true) . '.' . pathinfo($_FILES['profilePic']['name'], PATHINFO_EXTENSION);
-        $targetFilePath = $uploadsDir . $fileName;
-
-        // Create the uploads directory if it doesn't exist
-        if (!is_dir($uploadsDir)) {
-            mkdir($uploadsDir, 0777, true);
-        }
-
-        // Move the uploaded file and update the database
-        if (move_uploaded_file($_FILES['profilePic']['tmp_name'], $targetFilePath)) {
-            $updateQuery = "UPDATE tblregusers SET profile_pictures='$fileName' WHERE ID='$userId'";
-            if (mysqli_query($con, $updateQuery)) {
-                $uploadSuccess = true;
-                $profilePicturePath = $targetFilePath; // Update the displayed picture path
-            } else {
-                error_log("Database update failed: " . mysqli_error($con));
-            }
-        } else {
-            error_log("File upload failed for: " . $targetFilePath);
-        }
-    }
-}
 ?>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 <style>
@@ -79,7 +41,9 @@ body, * {
     #viewbtn:hover, .btn:hover {
         background: orange;
     }
-
+    .nav-link{
+        cursor: pointer;
+    }
     .navbar-header {
         background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
@@ -102,7 +66,6 @@ body, * {
         object-fit: cover;
         text-shadow: 0px 4px 4px gray;
         border: groove 2px white;
-        z-index: 5;
     }
 
     .user-avatar:hover {
@@ -128,19 +91,15 @@ body, * {
 
     .user-area {
         display: flex;
-        align-items: center;
         margin-top: -60px;
-        margin-right: 10px;
+        margin-right: 50px;
         position:fixed;
+    }
+    .dropdown{
+        margin-top: -60px;
     }
     .dropdown-toggle {
         margin-top: 50px;
-    }
-    
-    .user-avatar img {
-        float: right;
-        margin-top: 52px;
-        z-index: 1;
     }
 
     .menuToggle {
@@ -163,9 +122,34 @@ body, * {
     }
     #hh {
         margin-top: 30px;
+        height: 155px;
+        width: 100px;
+    }
+    .nav-link:hover{
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 5px;
     }
 
-     
+ /* logout message */
+ .alert-message {
+    position: fixed; 
+    top: 50%; /
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    padding: 20px;
+    background-color: red; 
+    color: white; 
+    border: 1px solid #f5c6cb; 
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 16px;
+    z-index: 9999; 
+    max-width: 90%; 
+  }
+
+  
 /* modal for logout */
 .modal {
     display: none; 
@@ -176,7 +160,7 @@ body, * {
     width: 100%;
     height: 100%;
 }
-.modal-contents {
+.modal-content {
     background: whitesmoke;
     margin: 15% auto;
     padding: 20px;
@@ -184,16 +168,17 @@ body, * {
     width: 80%;
     max-width: 300px;
     text-align: center;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.modal-contents button {
+.modal-content button {
     margin: 10px;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    color: white;
+    color: black;
     cursor: pointer;
+      color: white;
       font-size: 18px;
       letter-spacing: 1px;
       font-weight: 600;
@@ -202,34 +187,21 @@ body, * {
     border: 1px solid white;
 }
 
-.modal-contents button:first-of-type {
+.modal-content button:first-of-type {
     background-color:#2691d9;
     color: white;
 }
 
-.modal-contents button:last-of-type {
+.modal-content button:last-of-type {
     background-color: #2691d9;
     color: white;
 }
-.modal-contents button:first-of-type:hover,
-.modal-contents button:last-of-type:hover
+.modal-content button:first-of-type:hover,
+.modal-content button:last-of-type:hover
 {
     background-color: darkblue;
     border: solid 1px blue;
 }
-.alert-message {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        background-color: red;
-        color: white;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
 
 /* Responsive na ni */
 
@@ -322,6 +294,9 @@ body, * {
         margin-top: -50px;
         margin-right: 10px;
     }
+    .user-menu{
+        margin-left: 10em;
+    }
 }
 
 /* 480px to 575px screens */
@@ -329,7 +304,7 @@ body, * {
     .navbar-header {
         padding: 5px;
         width: 100%;
-        height: 50px;
+        height: 70px;
     }
     .user-avatar {
         height: 30px;
@@ -344,16 +319,27 @@ body, * {
         margin-top: 50px;
         margin-right: 20px;
     }
-    .menuToggle {
+    #menuToggle {
         margin-left: 3em;
-        margin-top: 10px;
+        margin-top: 7px;
     }
+    #hh{
+        margin-right: 50px;
+    }
+   
+    .user-menu{
+        margin-right: 15em;
+    }
+    .alert-message{
+        margin-left: 5em;
+    }
+    
 }
 @media (max-width: 480px) {
     .navbar-header {
         padding: 5px;
         width: 100%;
-        height: 50px;
+        height: 70px;
     }
     .user-avatar {
         height: 30px;
@@ -370,100 +356,107 @@ body, * {
     }
     #menuToggle {
         margin-left: 3em;
-        margin-top: 10px;
+        margin-top: 7px;
+    }
+    #hh{
+        margin-right: 50px;
+    }
+   
+    .user-menu{
+        margin-right: 15em;
+    }
+    .alert-message{
+        margin-left: 15em;
     }
 }
-</style>
+@media (max-width: 300px) {
+    .navbar-header {
+        padding: 5px;
+        width: 100%;
+        height: 70px;
+    }
+    .user-avatar {
+        height: 30px;
+        width: 30px;
+    }
+    .user-area {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 30em;
+    }
+    .dropdown {
+        margin-top: 50px;
+        margin-right: 100px;
+    }
+    #menuToggle {
+        margin-left: 3em;
+        margin-top: 7px;
+    }
+    #hh{
+        margin-right: 50px;
+    }
+   
+    .user-menu{
+        margin-right: 15em;
+    }
+    .alert-message{
+        margin-left: 5em;
+    }
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
-<style>
-    /* Add relevant styles here */
+
 </style>
-<body>
+<header>
     <div class="navbar-header">
        <!-- <a  style="color: white; z-index: 1;"><i class="fa fa-bars"></i></a>-->
         <a ><img src="images/clientlogo.png"  id="menuToggle"></a>
-        <div class="user-area dropdown">
-            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="profile-container">
-                    <img class="user-avatar" src="<?php echo htmlspecialchars($profilePicturePath, ENT_QUOTES, 'UTF-8') . '?v=' . time(); ?>" alt="User Avatar">
-                    <span class="active-indicator"></span>
-                </div>
-            </a>
-            <div class="user-menu dropdown-menu">
-                <div class="hh">
-                <a class="nav-link" href="profile.php"><i class="fa fa-user"></i> My Profile</a>
-                <a class="nav-link" href="change-password.php"><i class="fa fa-cog"></i> Change Password</a>
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#uploadModal"><i class="fa fa-upload"></i> Upload Picture</a>
-                <a class="nav-link" onclick="return handleLogout();"><i class="fa fa-power-off"></i> Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        <div class="top-right">
+                        <div class="header-menu">
+                                <div class="header-left">  
+                                    <div class="form-inline"></div>
+                                </div>
 
-    <!-- Upload Modal -->
-    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadModalLabel">Upload Profile Picture</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data">
-                        <input type="file" name="profilePic" accept="image/*" required>
-                        <button type="submit" name="upload" class="btn btn-primary btn-sm">Upload</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div class="user-area dropdown float-right">
+                                    <div class="avatar"  style="margin-top: -100px; position fixed;">
+                                    <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class="user-avatar " src="../admin/images/images.png" alt="User Avatar" style="width: 50px; height: 50px; ">
+                                    </a>
+                                <div class="user-menu dropdown-menu" id="hh"style="margin-top: -40px; position fixed; margin-right: -10px; font-size: 18px; ">
+                                    <a class="nav-link" href="profile.php" style="margin-bottom: 8px; margin-top: 8px; font-weight: normal;"><i class="fa bi-person-fill" > My Profile
+                                    </i></a>
 
-    <!-- Success Modal -->
-    <?php if ($uploadSuccess): ?>
-    <div class="modal fade" id="uploadSuccessModal" tabindex="-1" aria-labelledby="uploadSuccessModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="uploadSuccessModalLabel"><i class="bi bi-check-circle-fill"></i> Success</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Profile picture uploaded successfully.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="location.reload();">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-        <script>
-            var successModal = new bootstrap.Modal(document.getElementById('uploadSuccessModal'));
-            successModal.show();
-            </script>
-    
-    <div id="logout-confirm-modal" class="modal">
-                    <div class="modal-contents">
+                                     <!-- <form action="upload-profile.php" method="POST" enctype="multipart/form-data" style="padding: 5px;">
+                                    <label for="profilePic" class="nav-link">Upload Profile Picture:</label>
+                                    <input type="file" name="profilePic" id="profilePic" accept="image/*" class="form-control nav-link">
+                               <button type="submit" name="upload" class="btn btn-primary mt-2" class="nav-link">Upload</button>-->
+
+                                    <a class="nav-link" href="change-password.php" style="margin-bottom: 8px; font-weight: normal;"><i class="fa bi-gear-fill"> Change Password</i></a>
+
+                                    <a class="nav-link" onclick="return handleLogout();" style="margin-bottom: 8px; font-weight: normal;"><i class="fa bi-box-arrow-right"> Logout
+                                    </i></a>
+                                </div>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+            <div id="logout-confirm-modal" class="modal">
+                    <div class="modal-content">
                         <p>Are you sure you want to log out?</p>
                         <button onclick="confirmLogout(true)" class="btn-danger">Yes</button>
                         <button onclick="confirmLogout(false)" class="btn-warning">No</button>
                     </div>
                 </div>
-                <div class="alert-message" id="logout-alert" style="display: none;">
-                <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
-                </div>
-            </div>
-    <script>
-
-        function handleLogout() {
+                <div class="alert-message text-center" id="logout-alert" style="display: none;">
+  <i class="bi bi-shield-fill-check"></i> You have successfully logged out.
+</div>
+        </div>
+        <script>
+             function handleLogout() {
                 // Show the modal for confirmation
                 document.getElementById("logout-confirm-modal").style.display = "block";
                 return false; // Prevent the default action temporarily
@@ -479,12 +472,9 @@ body, * {
                     alertMessage.style.display = "block";
 
                     // Redirect or proceed with logout actions if necessary
-                    window.location.href = "login.php"; 
+                    window.location.href = "login.php"; // Or any other logout URL
                 }
             }
-    </script>
-    <?php endif; ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        </script>
+        </div>
+</header>

@@ -89,6 +89,17 @@ else {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../admin/assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
 
@@ -112,36 +123,7 @@ else {
             transition: all 0.3s ease;
         }
 
-        /* Breadcrumb styles */
-        .breadcrumbs {
-            width: 90%;
-            background-color: #ffffff;
-            padding: 7px;
-            border-radius: 5px;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            margin-bottom: 10px;
-            margin-top: 10px;
-            margin-left: 5em;
-        }
-
-        .breadcrumbs .breadcrumb {
-            background: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .breadcrumb a {
-            color: gray;
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            color: black;
-        }
-
-        .breadcrumb .active {
-            color: #6c757d;
-        }
+        
 
         /* Card and button styles */
         .card,
@@ -231,128 +213,44 @@ else {
     font-weight: bold;
 }
 
-        #header{
-        background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, 
-            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, 
-            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-    .nav-link:hover{
-        background-image: transparent;
-        border-radius: 4px;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-       
-    }
-    #hh{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-        font: 20px;
-        font-weight: bold;
-           }
-        .user-avatar{
-            height: 35px;
-            width: 27px;
-        }
     </style>
+    
+    <?php include_once('includes/header.php');?>
 <body>
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="dashboard.php">
-                        <i class="menu-icon fa fa-laptop"></i>Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="view-vehicle.php">
-                    <i class="menu-icon fa fa-car-side"></i> Owned Vehicle/s
-                    </a>
-                </li>
-                <li>
-                    <a href="vehicle-transac.php">
-                        <i class="menu-icon fa fa-address-book"></i>Vehicle Logs
-                    </a>
-                </li>
-                <li>
-                    <a href="add-vehicle.php">
-                        <i class="menu-icon fa fa-address-book"></i>Register Vehicle
-                    </a>
-                </li>
-                <li>
-                    <a href="service.php">
-                        <i class="menu-icon fa fa-headset"></i>Chat Concern
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</aside>
+    
 
-<!--HEADER -->
-<div id="right-panel" class="right-panel">
-<header id="header" class="header">
-            <div class="top-left">
-            <div class="navbar-header" style="background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);">
-                    <a class="navbar-brand" href="dashboard.php"><img src="images/clientlogo.png" alt="Logo" style=" width: 120px; height: auto;"></a>
+<?php include_once('includes/sidebar.php');?>
+<div class="right-panel">
+               
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <!-- START: Left Section -->
+            <div class="col-12 col-md-4 mb-2 mb-md-0">
+                <div class="page-header float-md-left text-center text-md-left">
+                    <div class="page-title" style="color: black;">
+                    <h3>View Vehicle Details</h3>
+                    </div>
                 </div>
             </div>
-            <div class="top-right">
-                <div class="header-menu">
-                    <div class="header-left">
-                        
-                        <div class="form-inline">
-                           
-                        </div>
+            <!-- END: Left Section -->
 
-                     
-                    </div>
-
-                    <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="../admin/images/images.png" alt="User Avatar">
-                        </a>
-
-                        <div class="user-menu dropdown-menu" id="hh">
-                            <a class="nav-link" href="profile.php"><i class="fa fa-user" > My Profile
-                            </i></a>
-
-                            <a class="nav-link" href="change-password.php"><i class="fa fa-cog"> Change Password
-                            </i></a>
-
-                            <a class="nav-link" href="logout.php"><i class="fa fa-power-off"> Logout
-                            </i></a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Dashboard</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="view-vehicle.php">View Vehicle</a></li>
+            <!-- START: Right Section -->
+            <div class="col-12 col-md-8">
+                <div class="page-header float-md-right text-center text-md-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb d-flex justify-content-center justify-content-md-end text-right" style="background: transparent;">
+                        <li><a href="dashboard.php">Dashboard</a></li>
+                                    <li><a href="vehicle-transac.php">View Vehicle</a></li>
                                     <li class="active">View Vehicle details</li>
-                                </ol>
-                            </div>
-                        </div>
+                        </ol>
                     </div>
                 </div>
             </div>
+            <!-- END: Right Section -->
         </div>
+    </div>
+</div>
 
         <div class="content">
         <div class="animated fadeIn">
@@ -412,12 +310,6 @@ else {
 
                     </div>
                 </div>
-                
-
-  
-
-
-            </div>
 
 
 
@@ -426,8 +318,6 @@ else {
 </div><!-- .content -->
 
 <div class="clearfix"></div>
-
-<?php include_once('includes/footer.php');?>
 
 </div><!-- /#right-panel -->
 
@@ -439,7 +329,6 @@ else {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="../admin/assets/js/main.js"></script>
-
 
 </body>
 </html>

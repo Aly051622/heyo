@@ -36,21 +36,18 @@ if (isset($_POST['submit'])) {
         // Insert new user into tblregusers
         $insert_query = mysqli_prepare($con, 
             "INSERT INTO tblregusers 
-            (FirstName, LastName, MobileNumber, Email, Password, user_type, place, registration_status, verification_status, status) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            (FirstName, LastName, MobileNumber, Email, Password, registration_status, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
 
         if ($insert_query) {
             // Define default values for columns
-            $user_type = 'user';
-            $place = 'Unknown';
             $registration_status = 'pending';
-            $verification_status = 'pending';
             $status = 'inactive';
 
-            mysqli_stmt_bind_param($insert_query, "ssisssssss", 
+            mysqli_stmt_bind_param($insert_query, "ssissss", 
                 $fname, $lname, $contno, $email, $password, 
-                $user_type, $place, $registration_status, $verification_status, $status
+                $registration_status, $status
             );
 
             if (mysqli_stmt_execute($insert_query)) {
@@ -74,6 +71,7 @@ if (isset($_POST['submit'])) {
     mysqli_close($con);
 }
 ?>
+
 
 
 
@@ -376,7 +374,7 @@ input[type="text"]:hover, input[type="password"]:hover {
       <div class="bg-img">
          <div class="content">
          <a href="login.php" id="x">
-         <i class="fa-solid fa fa-xmark"></i></a>
+         <i class="bi bi-x-circle-fill"></i></a>
          <a style="text-decoration:none;">
             <header>CREATE ACCOUNT</header> </a>
 
@@ -410,7 +408,13 @@ input[type="text"]:hover, input[type="password"]:hover {
             <!-- Inside the Password Field -->
             <div class="form-group field space">
             <span class="fa bi bi-lock-fill" style="font-size: 20px"></span>
-            <input type="password" name="password" id="password" placeholder="Enter password" required class="form-control">
+            <input type="password" name="password" id="password" 
+       placeholder="Enter password" 
+       required 
+       class="form-control" 
+       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+       title="Password must be at least 8 characters long, and include at least one lowercase letter, one uppercase letter, one number, and one special character.">
+
             <i class="fa fa-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 5px; cursor: pointer; color: black;"></i>
         </div>
         <div class="form-group field space">
