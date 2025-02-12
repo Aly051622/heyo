@@ -578,8 +578,21 @@ setTimeout(() => {
     vehicleImage.style.opacity = 0;
 }, 12000);
 
- // JavaScript to toggle the mobile menu
  const navbarMenu = document.getElementById('navbarMenu');
+
+
+
+
+
+// BAHALA NANI OOOOOOOOOOOYYYYYYYYYYYYYYYYYYYYYYYYY
+
+
+
+
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Add a click event listener to the navbar brand

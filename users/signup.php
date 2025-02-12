@@ -2,45 +2,101 @@
 session_start();
 include('../DBconnection/dbconnection.php');
 
+
+
+
+
+// HOOOOOOOOOOOOOY KAKAPOOOOOOOOOOOY BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+
+
+
+
 // Enable error reporting to debug issues
-ini_set('display_errors', 1);
+ini_set('display_errors', 1); 
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) 
+
+{
     // Retrieve form inputs
     $fname = trim($_POST['firstname']);
+
     $lname = trim($_POST['lastname']);
+
     $contno = trim($_POST['mobilenumber']);
+
     $email = trim($_POST['email']);
+
     $password = password_hash(trim($_POST['password']), PASSWORD_DEFAULT); // Encrypt password
 
+
+
+
+
+
+
+
+
     // Validate required fields
-    if (empty($fname) || empty($lname) || empty($contno) || empty($email) || empty($_POST['password'])) {
+    if (empty($fname) || empty($lname) || empty($contno) || empty($email) || empty($_POST['password'])) 
+    
+    {
         echo '<script>alert("All fields are required. Please fill out the form completely.")</script>';
         exit();
     }
 
+
+
+
+
+
+
+
+// PWEDE MA DEDZ USA MA BUHI RAG OK NA
+
+
+
+
+
+
+
+
+
     // Check for duplicates (Email or Mobile Number)
     $stmt = mysqli_prepare($con, "SELECT Email FROM tblregusers WHERE Email = ? OR MobileNumber = ?");
-    if (!$stmt) {
+    if (!$stmt) 
+    
+    
+    {
         die("SQL Error: " . mysqli_error($con));
     }
+
     mysqli_stmt_bind_param($stmt, "ss", $email, $contno);
+
     mysqli_stmt_execute($stmt);
+
     mysqli_stmt_store_result($stmt);
 
-    if (mysqli_stmt_num_rows($stmt) > 0) {
+
+    if (mysqli_stmt_num_rows($stmt) > 0) 
+    
+    {
         echo '<script>alert("This email or contact number is already associated with another account.")</script>';
-    } else {
+    } else 
+    
+    {
         // Insert new user into tblregusers
         $insert_query = mysqli_prepare($con, 
-            "INSERT INTO tblregusers 
-            (FirstName, LastName, MobileNumber, Email, Password, registration_status, status) 
+            "INSERT INTO tblregusers  (FirstName, LastName, MobileNumber, Email, Password, registration_status, status) 
             VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
 
-        if ($insert_query) {
+        if ($insert_query) 
+        
+        {
             // Define default values for columns
             $registration_status = 'pending';
             $status = 'inactive';
@@ -50,14 +106,24 @@ if (isset($_POST['submit'])) {
                 $registration_status, $status
             );
 
-            if (mysqli_stmt_execute($insert_query)) {
+
+            if (mysqli_stmt_execute($insert_query)) 
+            
+            {
                 // Success: Redirect to verification page
                 $_SESSION['verification_email'] = $email; // Store email in session
                 echo '<script>
                     alert("A verification code has been sent to your email.");
                     window.location.href = "send_verification_code.php";
                 </script>';
-            } else {
+            } 
+            
+            
+            
+            else 
+            
+            
+            {
                 echo '<script>alert("Something went wrong. Please try again.")</script>';
             }
 
@@ -71,6 +137,10 @@ if (isset($_POST['submit'])) {
     mysqli_close($con);
 }
 ?>
+
+
+
+
 
 
 
